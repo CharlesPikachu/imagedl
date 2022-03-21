@@ -2,6 +2,6 @@
     "savedir": "outputs",
 	"auto_set_proxies": true,
 	"auto_set_headers": true,
-	"search_limits": 1000,
+	"search_limits": 100,
 	"num_threadings": 5
 }

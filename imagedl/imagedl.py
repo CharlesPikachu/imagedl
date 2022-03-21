@@ -38,6 +38,7 @@ class imagedl():
         self.supported_sources = {
             'bing': BingImageDownloader,
             'baidu': BaiduImageDownloader,
+            'google': GoogleImageDownloader,
         }
     '''运行'''
     def run(self, target_src=None):
@@ -96,6 +97,7 @@ def imagedlcmd(keyword, savedir, target, limits, nthreadings):
         supported_sources = {
             'bing': BingImageDownloader,
             'baidu': BaiduImageDownloader,
+            'google': GoogleImageDownloader,
         }
         selected_api = supported_sources[target](
             auto_set_proxies=config.get('auto_set_proxies', True), 

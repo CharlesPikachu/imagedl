@@ -29,24 +29,27 @@ class BaiduImageDownloader(BaseImageDownloader):
         # 构建所有urls
         base_url = 'https://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&lm=7&fp=result&ie=utf-8&oe=utf-8&st=-1&word={}&queryWord={}&face=0&pn={}&rn={}'
         search_urls, pagesize = [], 30
-        for pn in range(math.ceil(search_limits / pagesize)):
+        for pn in range(math.ceil(search_limits * 1.2 / pagesize)):
             search_url = base_url.format(quote(keyword), quote(keyword), pn * pagesize, pagesize)
             search_urls.append(search_url)
         # 多线程请求获取所有图片链接
         def searchapi(self, search_urls, image_urls, bar):
             while len(search_urls) > 0:
-                bar()
                 search_url = search_urls.pop(0)
                 response = self.get(search_url)
+                if response is None: 
+                    bar()
+                    continue
                 response.encoding = 'utf-8'
                 response_json = json.loads(response.text.replace(r"\'", ""), encoding='utf-8', strict=False)
                 for item in response_json['data']:
                     if 'objURL' in item.keys():
-                        image_urls.append(self.parseurl(item['objURL']))
+                        image_urls.add(self.parseurl(item['objURL']))
                     elif 'replaceUrl' in item.keys() and len(item['replaceUrl']) == 2:
-                        image_urls.append(item['replaceUrl'][1]['ObjURL'])
-        task_pool, image_urls, num_urls_per_threading = [], [], round(len(search_urls) / num_threadings)
-        with alive_bar(len(search_urls)) as bar:
+                        image_urls.add(item['replaceUrl'][1]['ObjURL'])
+                bar()
+        task_pool, image_urls = [], set()
+        with alive_bar(min(len(search_urls), search_limits)) as bar:
             for idx in range(num_threadings):
                 task = threading.Thread(
                     target=searchapi,
@@ -56,7 +59,7 @@ class BaiduImageDownloader(BaseImageDownloader):
                 task.start()
             for task in task_pool: task.join()
         # 返回结果
-        return image_urls
+        return list(image_urls)[:search_limits]
     '''解码url'''
     def parseurl(self, url):
         in_table, out_table = '0123456789abcdefghijklmnopqrstuvw', '7dgjmoru140852vsnkheb963wtqplifca'

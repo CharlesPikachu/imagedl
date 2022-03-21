@@ -3,3 +3,4 @@ alive-progress
 freeproxy
 user_agent
 bs4
+lxml

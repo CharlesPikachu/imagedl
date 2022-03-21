@@ -23,13 +23,13 @@ class BaseImageDownloader():
         self.session = requests.Session()
         self.auto_set_proxies = auto_set_proxies
         self.auto_set_headers = auto_set_headers
-        self.max_retries = kwargs.get('max_retries', 5)
+        self.max_retries = kwargs.get('max_retries', 3)
         self.headers = {
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36'
         }
         self.session.headers.update(self.headers)
         if auto_set_proxies:
-            self.proxy_client = freeproxy.FreeProxy(logfilepath=None)
+            self.proxy_client = freeproxy.FreeProxy(logfilepath=None, proxy_sources=['proxylistplus', 'kuaidaili', 'yqie', 'ip3366', 'jiangxianli'])
     '''搜索'''
     def search(self, keyword):
         raise NotImplementedError('not to be implemented')
@@ -44,18 +44,20 @@ class BaseImageDownloader():
         def downloadapi(self, savepaths, image_urls, bar):
             assert len(savepaths) == len(image_urls)
             while len(image_urls) > 0:
-                bar()
                 savepath, image_url = savepaths.pop(0), image_urls.pop(0)
                 response = self.get(image_url)
-                if response is None: continue
+                if response is None: 
+                    bar()
+                    continue
                 with open(savepath, 'wb') as fp: fp.write(response.content)
                 filetype = imghdr.what(savepath)
-                if filetype in ['jpg', 'jpeg', 'png', 'bmp']:
+                if filetype in ['jpg', 'jpeg', 'png', 'bmp', 'gif']:
                     savepath_correct = f'{savepath}.{filetype}'
                     shutil.move(savepath, savepath_correct)
                 else:
                     os.remove(savepath)
-        task_pool, savepaths, num_downloads_per_threading = [], [], round(len(image_urls) / num_threadings)
+                bar()
+        task_pool, savepaths = [], []
         for idx in range(len(image_urls)):
             savename = f'image_{str(idx).zfill(8)}'
             savepaths.append(os.path.join(savedir, savename))
