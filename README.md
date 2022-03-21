@@ -37,7 +37,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 #### Pip install
 
 ```
-run "pip install imagedl"
+run "pip install pyimagedl"
 ```
 
 #### Source code install
