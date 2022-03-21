@@ -1,0 +1,7 @@
+{
+    "savedir": "outputs",
+	"auto_set_proxies": true,
+	"auto_set_headers": true,
+	"search_limits": 1000,
+	"num_threadings": 5
+}
