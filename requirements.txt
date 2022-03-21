@@ -2,5 +2,5 @@ requests
 alive-progress
 freeproxy
 user_agent
-bs4
+beautifulsoup4
 lxml

@@ -1,5 +1,5 @@
 '''title'''
-__title__ = 'imagedl'
+__title__ = 'pyimagedl'
 '''description'''
 __description__ = 'Imagedl: Search and download images from specific websites'
 '''url'''
