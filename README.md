@@ -25,10 +25,11 @@ You can star this repository to keep track of the project if it's helpful for yo
 
 # Support List
 
-|  Source_EN                        |  Source_CN       |   Support Search?  |  Support Download?   |
-|  :----:                           |  :----:          |   :----:           |  :----:              |
-|  [baidu](https://baidu.com/)      |  百度图片        |   ✓                |  ✓                   |
-|  [bing](https://cn.bing.com/)     |  必应图片        |   ✓                |  ✓                   |
+|  Source_EN                          |  Source_CN       |   Support Search?  |  Support Download?   |
+|  :----:                             |  :----:          |   :----:           |  :----:              |
+|  [baidu](https://baidu.com/)        |  百度图片        |   ✓                |  ✓                   |
+|  [bing](https://cn.bing.com/)       |  必应图片        |   ✓                |  ✓                   |
+|  [google](https://www.google.com/)  |  谷歌图片        |   ✓                |  ✓                   |
 
 
 # Install
