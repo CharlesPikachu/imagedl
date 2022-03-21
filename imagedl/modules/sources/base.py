@@ -12,8 +12,8 @@ import imghdr
 import shutil
 import requests
 import threading
-from tqdm import tqdm
 from freeproxy import freeproxy
+from alive_progress import alive_bar
 from ..utils import randomua, touchdir
 
 
@@ -23,6 +23,7 @@ class BaseImageDownloader():
         self.session = requests.Session()
         self.auto_set_proxies = auto_set_proxies
         self.auto_set_headers = auto_set_headers
+        self.max_retries = kwargs.get('max_retries', 5)
         self.headers = {
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36'
         }
@@ -40,10 +41,13 @@ class BaseImageDownloader():
         image_urls = self.search(keyword, search_limits, num_threadings)
         # 多线程下载图片
         self.logging(f'Start to download images from {self.source_name}')
-        def downloadapi(self, savepaths, image_urls):
+        def downloadapi(self, savepaths, image_urls, bar):
             assert len(savepaths) == len(image_urls)
-            for savepath, image_url in tqdm(zip(savepaths, image_urls)):
+            while len(image_urls) > 0:
+                bar()
+                savepath, image_url = savepaths.pop(0), image_urls.pop(0)
                 response = self.get(image_url)
+                if response is None: continue
                 with open(savepath, 'wb') as fp: fp.write(response.content)
                 filetype = imghdr.what(savepath)
                 if filetype in ['jpg', 'jpeg', 'png', 'bmp']:
@@ -55,40 +59,53 @@ class BaseImageDownloader():
         for idx in range(len(image_urls)):
             savename = f'image_{str(idx).zfill(8)}'
             savepaths.append(os.path.join(savedir, savename))
-        for idx in range(num_threadings):
-            start, end = idx * num_downloads_per_threading, (idx + 1) * num_downloads_per_threading
-            task = threading.Thread(
-                target=downloadapi,
-                args=(self, savepaths[start: end], image_urls[start: end])
-            )
-            task_pool.append(task)
-            task.start()
-        for task in task_pool: task.join()
+        with alive_bar(len(image_urls)) as bar:
+            for idx in range(num_threadings):
+                task = threading.Thread(
+                    target=downloadapi,
+                    args=(self, savepaths, image_urls, bar)
+                )
+                task_pool.append(task)
+                task.start()
+            for task in task_pool: task.join()
     '''get请求'''
     def get(self, url, **kwargs):
         if self.auto_set_headers: self.session.headers.update({'user-agent': randomua()})
-        while True:
-            response = self.session.get(url, **kwargs)
-            if response.status_code != 200:
+        try_pointer = 0
+        while try_pointer < self.max_retries:
+            try_pointer += 1
+            try: response = self.session.get(url, **kwargs)
+            except: response = None
+            if response is None or response.status_code != 200:
                 if self.auto_set_proxies:
                     headers = self.session.headers.copy()
                     self.session = requests.Session()
-                    self.session.proxies.update(self.proxy_client.getrandomproxy())
+                    while True:
+                        try: 
+                            self.session.proxies.update(self.proxy_client.getrandomproxy())
+                            break
+                        except: continue
                     self.session.headers.update(headers)
                     continue
                 else:
                     return None
             return response
+        return None
     '''post请求'''
     def post(self, url, **kwargs):
         if self.auto_set_headers: self.session.headers.update({'user-agent': randomua()})
         while True:
-            response = self.session.post(url, **kwargs)
-            if response.status_code != 200:
+            try: response = self.session.get(url, **kwargs)
+            except: response = None
+            if response is None or response.status_code != 200:
                 if self.auto_set_proxies:
                     headers = self.session.headers.copy()
                     self.session = requests.Session()
-                    self.session.proxies.update(self.proxy_client.getrandomproxy())
+                    while True:
+                        try: 
+                            self.session.proxies.update(self.proxy_client.getrandomproxy())
+                            break
+                        except: continue
                     self.session.headers.update(headers)
                     continue
                 else:

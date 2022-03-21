@@ -1,4 +1,5 @@
 requests
-tqdm
+alive-progress
 freeproxy
 user_agent
+bs4

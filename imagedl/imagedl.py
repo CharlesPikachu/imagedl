@@ -36,6 +36,7 @@ class imagedl():
         assert configpath or config, 'configpath or config should be given'
         self.config = loadconfig(configpath) if config is None else config
         self.supported_sources = {
+            'bing': BingImageDownloader,
             'baidu': BaiduImageDownloader,
         }
     '''运行'''
@@ -93,6 +94,7 @@ def imagedlcmd(keyword, savedir, target, limits, nthreadings):
         dl_client.run(target_src=target)
     else:
         supported_sources = {
+            'bing': BingImageDownloader,
             'baidu': BaiduImageDownloader,
         }
         selected_api = supported_sources[target](
