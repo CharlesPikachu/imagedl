@@ -1,6 +1,6 @@
 requests
 alive-progress
-freeproxy
+pyfreeproxy
 user_agent
 beautifulsoup4
 lxml
