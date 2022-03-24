@@ -56,6 +56,6 @@ imagedl -k 狗狗 -s dogs -t baidu -l 1000
 效果如下:
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/CharlesPikachu/imagedl/main/docs/screeshot.gif" width="600"/>
+  <img src="https://github.com/CharlesPikachu/imagedl/raw/main/docs/screenshot.gif" width="600"/>
 </div>
 <br />
