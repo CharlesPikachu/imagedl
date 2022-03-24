@@ -85,6 +85,11 @@ Options:
 ```
 
 
+# Screenshot
+
+![img](./docs/screenshot.gif)
+
+
 # Projects in Charles_pikachu
 
 - [Games](https://github.com/CharlesPikachu/Games): Create interesting games by pure python.

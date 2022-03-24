@@ -72,6 +72,9 @@ class imagedl():
     '''logging'''
     def logging(self, msg, tip='INFO'):
         print(f'[{time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())} {tip}]: {msg}')
+    '''str'''
+    def __str__(self):
+        return 'Welcome to use imagedl!\nYou can visit https://github.com/CharlesPikachu/imagedl for more details.'
 
 
 '''cmd直接运行'''
@@ -90,10 +93,11 @@ def imagedlcmd(keyword, savedir, target, limits, nthreadings):
         'search_limits': limits,
         'num_threadings': nthreadings,
     }
+    dl_client = imagedl(config=config)
     if keyword is None:
-        dl_client = imagedl(config=config)
         dl_client.run(target_src=target)
     else:
+        print(dl_client)
         supported_sources = {
             'bing': BingImageDownloader,
             'baidu': BaiduImageDownloader,
