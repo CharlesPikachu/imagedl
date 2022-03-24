@@ -59,11 +59,11 @@ run "pip install git+https://github.com/CharlesPikachu/imagedl.git@master"
 from imagedl import imagedl
 
 config = {
-	'savedir': 'outputs',
-	'auto_set_proxies': True,
-	'auto_set_headers': True,
-	'search_limits': 1000,
-	'num_threadings': 5,
+    'savedir': 'outputs',
+    'auto_set_proxies': True,
+    'auto_set_headers': True,
+    'search_limits': 1000,
+    'num_threadings': 5,
 }
 client = imagedl.imagedl(config=config)
 client.run('baidu')
