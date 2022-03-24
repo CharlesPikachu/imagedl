@@ -89,7 +89,7 @@ Options:
 
 - [Games](https://github.com/CharlesPikachu/Games): Create interesting games by pure python.
 - [DecryptLogin](https://github.com/CharlesPikachu/DecryptLogin): APIs for loginning some websites by using requests.
-- [imagedl](https://github.com/CharlesPikachu/imagedl): A lightweight music downloader written by pure python.
+- [Musicdl](https://github.com/CharlesPikachu/musicdl): A lightweight music downloader written by pure python.
 - [Videodl](https://github.com/CharlesPikachu/videodl): A lightweight video downloader written by pure python.
 - [Pytools](https://github.com/CharlesPikachu/pytools): Some useful tools written by pure python.
 - [PikachuWeChat](https://github.com/CharlesPikachu/pikachuwechat): Play WeChat with itchat-uos.
