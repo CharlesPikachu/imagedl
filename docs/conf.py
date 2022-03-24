@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'freeproxy'
+project = 'imagedl'
 copyright = '2022, Zhenchao Jin'
 author = 'Zhenchao Jin'
 release = '0.1.0'
