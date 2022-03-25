@@ -4,3 +4,4 @@ pyfreeproxy
 user_agent
 beautifulsoup4
 lxml
+click
