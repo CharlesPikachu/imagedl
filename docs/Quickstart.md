@@ -32,7 +32,7 @@ run函数支持的参数如下:
 
 #### 编译调用
 
-pip安装之后, 环境变量中会自动生成image.exe文件, 只需要在终端直接输入imagedl即可调用, 使用方式如下:
+pip安装之后, 环境变量中会自动生成imagedl.exe文件, 只需要在终端直接输入imagedl即可调用, 使用方式如下:
 
 ```sh
 Usage: imagedl [OPTIONS]
