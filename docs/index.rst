@@ -9,7 +9,7 @@ Imagedl中文文档
 .. toctree::
 	:maxdepth: 2
 	
-	State.md
+	Disclaimer.md
 	Install.md
 	Quickstart.md
 	Changelog.md

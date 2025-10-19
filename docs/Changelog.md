@@ -1,11 +1,7 @@
-# 开发日志
+# Release Log
 
-**2022-03-22**
+- 2025-10-19: Released pyimagedl v0.1.3 — code cleanup, deprecated/invalid functions removed, new functions added.
 
-- 版本号: v0.1.0-0.1.1, 
-- 更新内容: 支持百度, 必应和谷歌三种图片源。
+- 2022-03-24: Released pyimagedl v0.1.2 — added author information.
 
-**2022-03-24** 
-
-- 版本号: v0.1.2, 
-- 更新内容: 添加作者信息。
+- 2022-03-22: Released pyimagedl v0.1.0–0.1.1 — added Baidu, Bing, and Google image sources.
