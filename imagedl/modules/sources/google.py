@@ -20,8 +20,12 @@ class GoogleImageClient(BaseImageClient):
     source = 'GoogleImageClient'
     def __init__(self, **kwargs):
         if 'auto_set_proxies' not in kwargs: kwargs['auto_set_proxies'] = False
-        if 'auto_set_headers' not in kwargs: kwargs['auto_set_headers'] = False
         super(GoogleImageClient, self).__init__(**kwargs)
+        self.headers = {
+            "Accept-Language": 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+            "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
+        }
+        self.session.headers.update(self.headers)
     '''officialsearchanddownload'''
     def officialsearchanddownload(self, google_image_search_overrides: dict = {}, search_overrides: dict = {}):
         # import official api
