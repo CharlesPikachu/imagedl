@@ -147,7 +147,10 @@ class BaseImageClient():
                 self.session.headers = headers
                 self.session.headers.update({'user-agent': generate_user_agent()})
             if self.auto_set_proxies:
-                self.session.proxies = self.proxied_session_client.getrandomproxy()
+                try:
+                    self.session.proxies = self.proxied_session_client.getrandomproxy()
+                except:
+                    self.session.proxies = {}
             try:
                 resp = self.session.get(url, **kwargs)
             except:
@@ -166,7 +169,10 @@ class BaseImageClient():
                 self.session.headers = headers
                 self.session.headers.update({'user-agent': generate_user_agent()})
             if self.auto_set_proxies:
-                self.session.proxies = self.proxied_session_client.getrandomproxy()
+                try:
+                    self.session.proxies = self.proxied_session_client.getrandomproxy()
+                except:
+                    self.session.proxies = {}
             try:
                 resp = self.session.post(url, **kwargs)
             except:

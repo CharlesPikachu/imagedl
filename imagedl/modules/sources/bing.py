@@ -40,7 +40,7 @@ class BingImageClient(BaseImageClient):
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
         base_url = 'https://www.bing.com/images/async?q={}&first={}'
-        filter_str = self.getfilter().apply(filters, sep="&")
+        filter_str = self.getfilter().apply(filters)
         filter_str = "&qft=" + filter_str if filter_str else ""
         search_urls, page_size = [], 20
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
