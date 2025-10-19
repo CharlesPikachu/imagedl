@@ -1,61 +1,53 @@
-# 快速开始
+# Quick Start
 
-#### API调用
+#### ImageClient
 
-示例代码如下:
+After a successful installation, you can run the snippet below,
 
 ```python
 from imagedl import imagedl
 
-config = {
-    'savedir': 'outputs',
-    'auto_set_proxies': True,
-    'auto_set_headers': True,
-    'search_limits': 1000,
-    'num_threadings': 5,
-}
-client = imagedl.imagedl(config=config)
-client.run('baidu')
+image_client = imagedl.ImageClient()
+image_client.startcmdui()
 ```
 
-config中的参数解释如下:
+Or just run `imagedl` (maybe `imagedl --help` to show usage information) from the terminal.
 
-- savedir: 图片保存文件夹;
-- auto_set_proxies: 本地IP因为请求过于频繁被目标服务器禁止访问后, 是否自带开启代理, 代理是用[freeproxy](https://github.com/CharlesPikachu/freeproxy)从网上抓取的;
-- auto_set_headers: 请求过程中是否自动更好请求头;
-- search_limits: 下载的图片数量;
-- num_threadings: 使用的线程数量。
+For class `ImageClient`, the acceptable arguments include,
 
-run函数支持的参数如下:
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient']`.
+- `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
+- `search_limits` (`int`, default: `1000`): Scale of image downloads.
+- `num_threadings` (`int`, default: `5`): Number of threads used.
+- `request_overrides` (`dict`, default: `{}`): Requests.get kwargs such as `{'headers': {'User-Agent': xxx}, 'proxies': {}}`.
 
-- target_src: 使用的图片源, 目前支持"bing", "baidu"和"google"。
-
-#### 编译调用
-
-pip安装之后, 环境变量中会自动生成imagedl.exe文件, 只需要在终端直接输入imagedl即可调用, 使用方式如下:
-
-```sh
-Usage: imagedl [OPTIONS]
-
-Options:
-  --version                  Show the version and exit.
-  -k, --keyword TEXT         想要搜索下载的图片关键字, 若不指定, 则进入imagedl终端版
-  -s, --savedir TEXT         下载的图片的保存路径
-  -t, --target TEXT          指定图片搜索下载的平台, 例如"baidu"
-  -l, --limits INTEGER       下载的图片数量
-  -n, --nthreadings INTEGER  使用的线程数量
-  --help                     Show this message and exit.
-```
-
-例如:
-
-```sh
-imagedl -k 狗狗 -s dogs -t baidu -l 1000
-```
-
-效果如下:
+The demonstration is as follows,
 
 <div align="center">
   <img src="https://github.com/CharlesPikachu/imagedl/raw/main/docs/screenshot.gif" width="600"/>
 </div>
 <br />
+
+#### BingImageClient, BaiduImageClient and GoogleImageClient
+
+Example code for searching and downloading images on different platforms such as Baidu, Google, and Bing is as follows,
+
+```python
+from imagedl.modules.sources.bing import BingImageClient
+from imagedl.modules.sources.baidu import BaiduImageClient
+from imagedl.modules.sources.google import GoogleImageClient
+
+
+# bing tests
+client = BingImageClient()
+image_infos = client.search('美女', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# baidu tests
+client = BaiduImageClient()
+image_infos = client.search('美女', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# google tests
+client = GoogleImageClient()
+image_infos = client.search('美女', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+```

@@ -20,6 +20,6 @@ client = BaiduImageClient()
 image_infos = client.search('美女', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # google tests
-client = GoogleImageClient(auto_set_proxies=False, auto_set_headers=False)
+client = GoogleImageClient()
 image_infos = client.search('美女', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)

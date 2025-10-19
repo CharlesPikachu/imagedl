@@ -137,7 +137,7 @@ class BaseImageClient():
             for task in task_pool: task.join()
         # logging
         self.savetopkl(processed_image_infos, os.path.join(self.work_dir, f'{self.source}_processed_image_infos_t{int(time.time())}.pkl'))
-        self.logger_handle.info(f'Finished downloading images using {self.source}. All results have been saved to {self.work_dir}, successful downloads: {len(processed_image_infos)}.')
+        self.logger_handle.info(f'Finished downloading images using {self.source}. All results have been saved to {self.work_dir}, valid downloads: {len(processed_image_infos)}.')
     '''get'''
     def get(self, url, **kwargs):
         resp = None
