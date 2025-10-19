@@ -68,7 +68,10 @@ class BaseImageClient():
                 bar()
                 continue
             resp.encoding = 'utf-8'
-            search_result = self._parsesearchresult(resp.text)
+            try:
+                search_result = self._parsesearchresult(resp.text)
+            except:
+                search_result = []
             if isinstance(search_result, dict):
                 image_infos.append(search_result)
             else:
