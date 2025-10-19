@@ -25,7 +25,7 @@ from user_agent import generate_user_agent
 class BaseImageClient():
     source = 'BaseImageClient'
     def __init__(self, auto_set_proxies: bool = True, auto_set_headers: bool = True, max_retries: int = 5, maintain_session: bool = False, 
-                 logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_downloaded_images'):
+                 logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_downloaded_images', proxy_sources: list = None):
         # set up work dir
         touchdir(work_dir)
         # set attributes
@@ -43,7 +43,7 @@ class BaseImageClient():
         self.session.headers.update({'user-agent': generate_user_agent()})
         # proxied_session_client
         self.proxied_session_client = freeproxy.ProxiedSessionClient(
-            proxy_sources=['KuaidailiProxiedSession', 'IP3366ProxiedSession', 'QiyunipProxiedSession', 'ProxyhubProxiedSession', 'ProxydbProxiedSession'], 
+            proxy_sources=['KuaidailiProxiedSession', 'IP3366ProxiedSession', 'QiyunipProxiedSession', 'ProxyhubProxiedSession', 'ProxydbProxiedSession'] if proxy_sources is None else proxy_sources, 
             disable_print=True
         ) if auto_set_proxies else None
     '''_constructsearchurls'''
@@ -60,10 +60,10 @@ class BaseImageClient():
             image_info['file_path'] = os.path.join(self.work_dir, f'{keyword}_t{time_stamp}_{str(idx).zfill(8)}')
         return image_infos
     '''_search'''
-    def _search(self, search_urls: list, bar: alive_bar, image_infos: list):
+    def _search(self, search_urls: list, bar: alive_bar, image_infos: list, request_overrides: dict = {}):
         while len(search_urls) > 0:
             search_url = search_urls.pop(0)
-            resp = self.get(search_url)
+            resp = self.get(search_url, **request_overrides)
             if resp is None or resp.status_code != 200:
                 bar()
                 continue
@@ -79,7 +79,7 @@ class BaseImageClient():
                 image_infos.extend(search_result)
             bar()
     '''search'''
-    def search(self, keyword, search_limits=1000, num_threadings=5):
+    def search(self, keyword, search_limits=1000, num_threadings=5, request_overrides: dict = {}):
         # logging
         self.logger_handle.info(f'Start to search images using {self.source}.')
         # construct search urls
@@ -88,7 +88,7 @@ class BaseImageClient():
         task_pool, image_infos = [], []
         with alive_bar(len(search_urls)) as bar:
             for _ in range(num_threadings):
-                task = threading.Thread(target=self._search, args=(search_urls, bar, image_infos))
+                task = threading.Thread(target=self._search, args=(search_urls, bar, image_infos, request_overrides))
                 task_pool.append(task)
                 task.start()
             for task in task_pool: task.join()
@@ -99,11 +99,11 @@ class BaseImageClient():
         # return
         return image_infos
     '''_download'''
-    def _download(self, image_infos: list, bar: alive_bar):
+    def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = {}):
         while len(image_infos) > 0:
             image_info = image_infos.pop(0)
             file_path, image_url = image_info['file_path'], image_info['url']
-            resp = self.get(image_url)
+            resp = self.get(image_url, **request_overrides)
             if resp is None or resp.status_code != 200:
                 bar()
                 continue
@@ -122,14 +122,14 @@ class BaseImageClient():
                 os.remove(file_path)
             bar()
     '''download'''
-    def download(self, image_infos, num_threadings=5):
+    def download(self, image_infos, num_threadings=5, request_overrides: dict = {}):
         # logging
         self.logger_handle.info(f'Start to download images using {self.source}.')
         # multi threadings for downloading images
         task_pool = []
         with alive_bar(len(image_infos)) as bar:
             for _ in range(num_threadings):
-                task = threading.Thread(target=self._download, args=(image_infos, bar))
+                task = threading.Thread(target=self._download, args=(image_infos, bar, request_overrides))
                 task_pool.append(task)
                 task.start()
             for task in task_pool: task.join()

@@ -1,63 +1,77 @@
 '''
 Function:
-    谷歌图片搜索和下载类
+    Implementation of GoogleImageClient
 Author:
-    Charles
-微信公众号:
+    Zhenchao Jin
+WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
 import re
 import math
-import threading
 from bs4 import BeautifulSoup
-from alive_progress import alive_bar
-from .base import BaseImageDownloader
+from .base import BaseImageClient
 from six.moves.urllib.parse import urlencode
 
 
-'''谷歌图片搜索和下载类'''
-class GoogleImageDownloader(BaseImageDownloader):
-    def __init__(self, auto_set_proxies=False, auto_set_headers=False, **kwargs):
-        super(GoogleImageDownloader, self).__init__(auto_set_proxies=False, auto_set_headers=False, **kwargs)
-        self.source_name = 'google'
-    '''搜索'''
-    def search(self, keyword, search_limits=1000, num_threadings=5):
-        # 构建所有urls
+'''GoogleImageClient'''
+class GoogleImageClient(BaseImageClient):
+    source = 'GoogleImageClient'
+    def __init__(self, **kwargs):
+        super(GoogleImageClient, self).__init__(**kwargs)
+    '''officialsearchanddownload'''
+    def officialsearchanddownload(self, google_image_search_overrides: dict = {}, search_overrides: dict = {}):
+        # import official api
+        try:
+            from google_images_search import GoogleImagesSearch
+        except:
+            print('You must install the official API before using this function via `pip install google_images_search`')
+            return
+        # asserts
+        assert 'q' in search_overrides, 'please set `q` in `search_overrides` as the search keywords'
+        # instance GoogleImagesSearch
+        google_image_search_params = {
+            'validate_images': True, 'developer_key': 'AIzaSyCGyqf36D5k3QghaZLhAqb1R2OUtRFraF8', 'custom_search_cx': '0d386b282da5209ea',
+        }
+        google_image_search_params.update(google_image_search_overrides)
+        gis = GoogleImagesSearch(**google_image_search_params)
+        # search and download
+        search_params = {'q': 'girls', 'num': 1000}
+        search_params.update(search_overrides)
+        gis.search(search_params=search_params, path_to_dir=self.work_dir)
+    '''serpapisearch'''
+    def serpapisearch(self, search_overrides: dict = {}):
+        # import api
+        try:
+            from serpapi import GoogleSearch
+        except:
+            print('You must install the official API before using this function via `pip install google google-search-results serpapi`')
+            return
+        # asserts
+        assert 'q' in search_overrides, 'please set `q` in `search_overrides` as the search keywords'
+        # search
+        search_params = {'q': 'girls', 'google_domain': 'google.com', 'tbm': 'isch', 'api_key': 'cb37586e2a8d129c4142b06c3d46a19aa8bb11187c776a85977298893a5a3266'}
+        search_engine = GoogleSearch(search_params)
+        search_results = search_engine.get_results()
+        # return
+        return search_results
+    '''_parsesearchresult'''
+    def _parsesearchresult(self, search_result: str):
+        print(search_result)
+        image_infos = []
+        soup = BeautifulSoup(search_result)
+        for div in soup.find_all(name='script'):
+            txt = str(div)
+            if 'AF_initDataCallback' not in txt: continue
+            if 'ds:0' in txt or 'ds:1' not in txt: continue
+            print(div)
+            # for image_url in re.findall(r'http[^\[]*?\.(?:jpg|png|bmp|gif)', txt): image_urls.add(image_url)
+    '''_constructsearchurls'''
+    def _constructsearchurls(self, keyword, search_limits=1000):
         base_url = 'https://www.google.com/search?'
-        search_urls, pagesize = [], 20
-        for pn in range(math.ceil(search_limits * 1.2 / pagesize)):
+        search_urls, page_size = [], 20
+        for pn in range(math.ceil(search_limits * 1.2 / page_size)):
             params = {
-                'q': keyword,
-                'ijn': pn,
-                'start': pn * pagesize,
-                'tbs': '',
-                'tbm': 'isch',
+                'q': keyword, 'ijn': pn, 'start': pn * page_size, 'tbs': '', 'tbm': 'isch',
             }
             search_urls.append(base_url + urlencode(params))
-        # 多线程请求获取所有图片链接
-        def searchapi(self, search_urls, image_urls, bar):
-            while len(search_urls) > 0:
-                search_url = search_urls.pop(0)
-                response = self.get(search_url)
-                if response is None: 
-                    bar()
-                    continue
-                soup = BeautifulSoup(response.text)
-                for div in soup.find_all(name='script'):
-                    txt = str(div)
-                    if 'AF_initDataCallback' not in txt: continue
-                    if 'ds:0' in txt or 'ds:1' not in txt: continue
-                    for image_url in re.findall(r'http[^\[]*?\.(?:jpg|png|bmp|gif)', txt): image_urls.add(image_url)
-                bar()
-        task_pool, image_urls = [], set()
-        with alive_bar(min(len(search_urls), search_limits)) as bar:
-            for idx in range(num_threadings):
-                task = threading.Thread(
-                    target=searchapi,
-                    args=(self, search_urls, image_urls, bar)
-                )
-                task_pool.append(task)
-                task.start()
-            for task in task_pool: task.join()
-        # 返回结果
-        return list(image_urls)[:search_limits]
+        return search_urls

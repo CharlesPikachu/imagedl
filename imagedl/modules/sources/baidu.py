@@ -76,8 +76,3 @@ class BaiduImageClient(BaseImageClient):
         for k, v in mapping.items():
             url = url.replace(k, v)
         return url.translate(translate_table)
-
-
-'''tests'''
-if __name__ == '__main__':
-    BaiduImageClient().search('美女')
