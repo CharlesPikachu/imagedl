@@ -24,7 +24,7 @@ from ..utils import touchdir, LoggerHandle
 '''BaseImageClient'''
 class BaseImageClient():
     source = 'BaseImageClient'
-    def __init__(self, auto_set_proxies: bool = True, auto_set_headers: bool = True, max_retries: int = 5, maintain_session: bool = False, 
+    def __init__(self, auto_set_proxies: bool = True, maintain_headers: bool = False, random_update_ua: bool = False, max_retries: int = 5, maintain_session: bool = False, 
                  logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_downloaded_images', proxy_sources: list = None):
         # set up work dir
         touchdir(work_dir)
@@ -33,12 +33,14 @@ class BaseImageClient():
         self.max_retries = max_retries
         self.disable_print = disable_print
         self.logger_handle = logger_handle if logger_handle else LoggerHandle()
+        self.random_update_ua = random_update_ua
         self.maintain_session = maintain_session
         self.auto_set_proxies = auto_set_proxies
-        self.auto_set_headers = auto_set_headers
+        self.maintain_headers = maintain_headers
         # init requests.Session
         self.session = requests.Session()
-        self.session.headers.update({'User-Agent': UserAgent().random})
+        self.default_headers = {'User-Agent': UserAgent().random}
+        self.session.headers.update(self.default_headers)
         # proxied_session_client
         self.proxied_session_client = freeproxy.ProxiedSessionClient(
             proxy_sources=['KuaidailiProxiedSession', 'IP3366ProxiedSession', 'QiyunipProxiedSession', 'ProxyhubProxiedSession', 'ProxydbProxiedSession'] if proxy_sources is None else proxy_sources, 
@@ -143,14 +145,18 @@ class BaseImageClient():
             headers = self.session.headers
             if not self.maintain_session:
                 self.session = requests.Session()
-            if self.auto_set_headers:
+            if self.maintain_headers:
                 self.session.headers = headers
-                self.session.headers.update({'User-Agent': UserAgent().random})
+            else:
+                self.session.headers = self.default_headers
+                if self.random_update_ua: self.session.headers.update({'User-Agent': UserAgent().random})
             if self.auto_set_proxies:
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
                 except:
                     self.session.proxies = {}
+            else:
+                self.session.proxies = {}
             try:
                 resp = self.session.get(url, **kwargs)
             except:
@@ -165,14 +171,18 @@ class BaseImageClient():
             headers = self.session.headers
             if not self.maintain_session:
                 self.session = requests.Session()
-            if self.auto_set_headers:
+            if self.maintain_headers:
                 self.session.headers = headers
-                self.session.headers.update({'User-Agent': UserAgent().random})
+            else:
+                self.session.headers = self.default_headers
+                if self.random_update_ua: self.session.headers.update({'User-Agent': UserAgent().random})
             if self.auto_set_proxies:
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
                 except:
                     self.session.proxies = {}
+            else:
+                self.session.proxies = {}
             try:
                 resp = self.session.post(url, **kwargs)
             except:

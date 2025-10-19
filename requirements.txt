@@ -6,3 +6,5 @@ beautifulsoup4
 lxml
 click
 json-repair
+prettytable
+platformdirs
