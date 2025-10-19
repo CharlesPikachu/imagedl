@@ -1,70 +1,83 @@
 '''
 Function:
-    百度图片搜索和下载类
+    Implementation of BaiduImageClient
 Author:
-    Charles
-微信公众号:
+    Zhenchao Jin
+WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
-import json
 import math
-import threading
+import json_repair
 from urllib.parse import quote
-from alive_progress import alive_bar
-from .base import BaseImageDownloader
+from .base import BaseImageClient
+from ..utils import lowerdictkeys
 
 
-'''百度图片搜索和下载类'''
-class BaiduImageDownloader(BaseImageDownloader):
-    def __init__(self, auto_set_proxies=True, auto_set_headers=True, **kwargs):
-        super(BaiduImageDownloader, self).__init__(auto_set_proxies=auto_set_proxies, auto_set_headers=auto_set_headers, **kwargs)
-        self.source_name = 'baidu'
-        self.session.headers.update({
+'''BaiduImageClient'''
+class BaiduImageClient(BaseImageClient):
+    source = 'BaiduImageClient'
+    def __init__(self, **kwargs):
+        super(BaiduImageClient, self).__init__(**kwargs)
+        self.headers = {
             'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
             'Connection': 'keep-alive',
             'Upgrade-Insecure-Requests': '1'
-        })
-    '''搜索'''
-    def search(self, keyword, search_limits=1000, num_threadings=5):
-        # 构建所有urls
+        }
+        self.session.headers.update(self.headers)
+    '''_parsesearchresult'''
+    def _parsesearchresult(self, search_result: str):
+        # parse json text in safety
+        search_result: dict = json_repair.loads(search_result)
+        # pick best image url
+        def pickbesturl(item: dict):
+            # --all lower letters for keys with str type
+            item = lowerdictkeys(item)
+            # --parse try1
+            if ('objurl' in item) and isinstance(item['objurl'], str) and item['objurl'].strip():
+                return self._parseurl(item['objurl'].strip())
+            # --parse try2
+            for r in item.get("replaceurl", []):
+                r = lowerdictkeys(r)
+                if ('objurl' in r) and isinstance(r['objurl'], str) and r['objurl'].strip():
+                    return r['objurl'].strip()
+            # --parse try3
+            if ('middleurl' in item) and isinstance(item['middleurl'], str) and item['middleurl'].strip():
+                return item['middleurl'].strip()
+            # --parse try4
+            if ('thumburl' in item) and isinstance(item['thumburl'], str) and item['thumburl'].strip():
+                return item['thumburl'].strip()
+            # --failure
+            return None
+        # parse search result
+        image_infos = []
+        for item in search_result.get('data', []):
+            if not isinstance(item, dict): continue
+            url = pickbesturl(item=item)
+            if not url: continue
+            image_info = {
+                'url': url, 'raw_data': item
+            }
+            image_infos.append(image_info)
+        # return
+        return image_infos
+    '''_constructsearchurls'''
+    def _constructsearchurls(self, keyword, search_limits=1000):
         base_url = 'https://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&lm=7&fp=result&ie=utf-8&oe=utf-8&st=-1&word={}&queryWord={}&face=0&pn={}&rn={}'
-        search_urls, pagesize = [], 30
-        for pn in range(math.ceil(search_limits * 1.2 / pagesize)):
-            search_url = base_url.format(quote(keyword), quote(keyword), pn * pagesize, pagesize)
+        search_urls, page_size = [], 30
+        for pn in range(math.ceil(search_limits * 1.2 / page_size)):
+            search_url = base_url.format(quote(keyword), quote(keyword), pn * page_size, page_size)
             search_urls.append(search_url)
-        # 多线程请求获取所有图片链接
-        def searchapi(self, search_urls, image_urls, bar):
-            while len(search_urls) > 0:
-                search_url = search_urls.pop(0)
-                response = self.get(search_url)
-                if response is None: 
-                    bar()
-                    continue
-                response.encoding = 'utf-8'
-                response_json = json.loads(response.text.replace(r"\'", ""), encoding='utf-8', strict=False)
-                for item in response_json['data']:
-                    if 'objURL' in item.keys():
-                        image_urls.add(self.parseurl(item['objURL']))
-                    elif 'replaceUrl' in item.keys() and len(item['replaceUrl']) == 2:
-                        image_urls.add(item['replaceUrl'][1]['ObjURL'])
-                bar()
-        task_pool, image_urls = [], set()
-        with alive_bar(min(len(search_urls), search_limits)) as bar:
-            for idx in range(num_threadings):
-                task = threading.Thread(
-                    target=searchapi,
-                    args=(self, search_urls, image_urls, bar)
-                )
-                task_pool.append(task)
-                task.start()
-            for task in task_pool: task.join()
-        # 返回结果
-        return list(image_urls)[:search_limits]
-    '''解码url'''
-    def parseurl(self, url):
+        return search_urls
+    '''_parseurl'''
+    def _parseurl(self, url: str):
         in_table, out_table = '0123456789abcdefghijklmnopqrstuvw', '7dgjmoru140852vsnkheb963wtqplifca'
         translate_table = str.maketrans(in_table, out_table)
         mapping = {'_z2C$q': ':', '_z&e3B': '.', 'AzdH3F': '/'}
         for k, v in mapping.items():
             url = url.replace(k, v)
         return url.translate(translate_table)
+
+
+'''tests'''
+if __name__ == '__main__':
+    BaiduImageClient().search('美女')

@@ -5,3 +5,4 @@ user_agent
 beautifulsoup4
 lxml
 click
+json-repair

@@ -1,4 +1,3 @@
 '''initialize'''
-from .bing import BingImageDownloader
-from .baidu import BaiduImageDownloader
-from .google import GoogleImageDownloader
+from .base import BaseImageClient
+from .baidu import BaiduImageClient
