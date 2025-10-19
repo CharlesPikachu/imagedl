@@ -12,11 +12,11 @@ from imagedl.modules.sources.google import GoogleImageClient
 
 
 # bing tests
-client = BingImageClient(auto_set_proxies=False, auto_set_headers=False)
+client = BingImageClient()
 image_infos = client.search('美女', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # baidu tests
-client = BaiduImageClient(auto_set_proxies=False, auto_set_headers=False)
+client = BaiduImageClient()
 image_infos = client.search('美女', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # google tests
