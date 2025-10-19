@@ -1,12 +1,12 @@
 '''
 Function:
-    setup the imagedl
+    Implementation of Setup
 Author:
-    Charles
-微信公众号:
+    Zhenchao Jin
+WeChat Official Account (微信公众号):
     Charles的皮卡丘
 GitHub:
-    https://github.com/CharlesPikachu
+    https://github.com/CharlesPikachu/imagedl
 '''
 import imagedl
 from setuptools import setup, find_packages
@@ -35,7 +35,7 @@ setup(
     author_email=imagedl.__email__,
     license=imagedl.__license__,
     include_package_data=True,
-    entry_points={'console_scripts': ['imagedl = imagedl.imagedl:imagedlcmd']},
+    entry_points={'console_scripts': ['imagedl = imagedl.imagedl:ImageClientCMD']},
     install_requires=[lab.strip('\n') for lab in list(open('requirements.txt', 'r').readlines())],
     zip_safe=True,
     packages=find_packages()

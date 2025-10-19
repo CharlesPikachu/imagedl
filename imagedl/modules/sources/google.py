@@ -17,6 +17,8 @@ from six.moves.urllib.parse import urlencode
 class GoogleImageClient(BaseImageClient):
     source = 'GoogleImageClient'
     def __init__(self, **kwargs):
+        if 'auto_set_proxies' not in kwargs: kwargs['auto_set_proxies'] = False
+        if 'auto_set_headers' not in kwargs: kwargs['auto_set_headers'] = False
         super(GoogleImageClient, self).__init__(**kwargs)
     '''officialsearchanddownload'''
     def officialsearchanddownload(self, google_image_search_overrides: dict = {}, search_overrides: dict = {}):
