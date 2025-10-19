@@ -47,7 +47,7 @@ class BaseImageClient():
             disable_print=True
         ) if auto_set_proxies else None
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters=None):
         raise NotImplementedError('not to be implemented')
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
@@ -79,11 +79,11 @@ class BaseImageClient():
                 image_infos.extend(search_result)
             bar()
     '''search'''
-    def search(self, keyword, search_limits=1000, num_threadings=5, request_overrides: dict = {}):
+    def search(self, keyword, search_limits=1000, num_threadings=5, filters=None, request_overrides: dict = {}):
         # logging
         self.logger_handle.info(f'Start to search images using {self.source}.')
         # construct search urls
-        search_urls = self._constructsearchurls(keyword=keyword, search_limits=search_limits)
+        search_urls = self._constructsearchurls(keyword=keyword, search_limits=search_limits, filters=filters)
         # multi threadings for searching images
         task_pool, image_infos = [], []
         with alive_bar(len(search_urls)) as bar:
@@ -102,8 +102,10 @@ class BaseImageClient():
     def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = {}):
         while len(image_infos) > 0:
             image_info = image_infos.pop(0)
-            file_path, image_url = image_info['file_path'], image_info['url']
-            resp = self.get(image_url, **request_overrides)
+            file_path, image_candidate_urls = image_info['file_path'], image_info['candidate_urls']
+            for image_candidate_url in image_candidate_urls:
+                resp = self.get(image_candidate_url, **request_overrides)
+                if resp.status_code == 200: break
             if resp is None or resp.status_code != 200:
                 bar()
                 continue

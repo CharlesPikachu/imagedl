@@ -10,7 +10,7 @@ import math
 import json_repair
 from urllib.parse import quote
 from .base import BaseImageClient
-from ..utils import lowerdictkeys
+from ..utils import lowerdictkeys, Filter
 
 
 '''BaiduImageClient'''
@@ -28,44 +28,50 @@ class BaiduImageClient(BaseImageClient):
     def _parsesearchresult(self, search_result: str):
         # parse json text in safety
         search_result: dict = json_repair.loads(search_result)
-        # pick best image url
-        def pickbesturl(item: dict):
+        # pick all image urls
+        def pickallimageurls(item: dict):
+            candidate_urls = []
             # --all lower letters for keys with str type
             item = lowerdictkeys(item)
             # --parse try1
             if ('objurl' in item) and isinstance(item['objurl'], str) and item['objurl'].strip():
-                return self._parseurl(item['objurl'].strip())
+                candidate_urls.append(self._parseurl(item['objurl'].strip()))
             # --parse try2
+            if ('hoverurl' in item) and isinstance(item['hoverurl'], str) and item['hoverurl'].strip():
+                candidate_urls.append(item['hoverurl'].strip())
+            # --parse try3
             for r in item.get("replaceurl", []):
                 r = lowerdictkeys(r)
                 if ('objurl' in r) and isinstance(r['objurl'], str) and r['objurl'].strip():
-                    return r['objurl'].strip()
-            # --parse try3
-            if ('middleurl' in item) and isinstance(item['middleurl'], str) and item['middleurl'].strip():
-                return item['middleurl'].strip()
+                    candidate_urls.append(r['objurl'].strip())
             # --parse try4
+            if ('middleurl' in item) and isinstance(item['middleurl'], str) and item['middleurl'].strip():
+                candidate_urls.append(item['middleurl'].strip())
+            # --parse try5
             if ('thumburl' in item) and isinstance(item['thumburl'], str) and item['thumburl'].strip():
-                return item['thumburl'].strip()
-            # --failure
-            return None
+                candidate_urls.append(item['thumburl'].strip())
+            # --return
+            return candidate_urls
         # parse search result
         image_infos = []
         for item in search_result.get('data', []):
             if not isinstance(item, dict): continue
-            url = pickbesturl(item=item)
-            if not url: continue
+            candidate_urls = pickallimageurls(item=item)
+            if not candidate_urls: continue
             image_info = {
-                'url': url, 'raw_data': item
+                'candidate_urls': candidate_urls, 'raw_data': item
             }
             image_infos.append(image_info)
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000):
-        base_url = 'https://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&lm=7&fp=result&ie=utf-8&oe=utf-8&st=-1&word={}&queryWord={}&face=0&pn={}&rn={}'
+    def _constructsearchurls(self, keyword, search_limits=1000, filters=None):
+        base_url = 'http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&word={}&pn={}&rn={}'
+        filter_str = self.getfilter().apply(filters, sep="&")
         search_urls, page_size = [], 30
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
-            search_url = base_url.format(quote(keyword), quote(keyword), pn * page_size, page_size)
+            search_url = base_url.format(quote(keyword), pn * page_size, page_size)
+            if filter_str: search_url += f'&{filter_str}'
             search_urls.append(search_url)
         return search_urls
     '''_parseurl'''
@@ -76,3 +82,38 @@ class BaiduImageClient(BaseImageClient):
         for k, v in mapping.items():
             url = url.replace(k, v)
         return url.translate(translate_table)
+    '''getfilter: refer to https://github.com/hellock/icrawler/blob/master/icrawler/builtin/baidu.py'''
+    def getfilter(self):
+        search_filter = Filter()
+        # type filter
+        type_code = {
+            "portrait": "s=3&lm=0&st=-1&face=0", "face": "s=0&lm=0&st=-1&face=1", "clipart": "s=0&lm=0&st=1&face=0", "linedrawing": "s=0&lm=0&st=2&face=0",
+            "animated": "s=0&lm=6&st=-1&face=0", "static": "s=0&lm=7&st=-1&face=0",
+        }
+        def formattype(img_type):
+            return type_code[img_type]
+        type_choices = list(type_code.keys())
+        search_filter.addrule("type", formattype, type_choices)
+        # color filter
+        color_code = {
+            "red": 1, "orange": 256, "yellow": 2, "green": 4, "purple": 32, "pink": 64,
+            "teal": 8, "blue": 16, "brown": 12, "white": 1024, "black": 512, "blackandwhite": 2048,
+        }
+        def formatcolor(color):
+            return f"ic={color_code[color]}"
+        color_choices = list(color_code.keys())
+        search_filter.addrule("color", formatcolor, color_choices)
+        # size filter
+        def formatsize(size: str):
+            if size in ["extralarge", "large", "medium", "small"]:
+                size_code = {"extralarge": 9, "large": 3, "medium": 2, "small": 1}
+                return f"z={size_code[size]}"
+            elif size.startswith("="):
+                wh = size[1:].split("x")
+                assert len(wh) == 2
+                return "width={}&height={}".format(*wh)
+            else:
+                raise ValueError('filter option "size" must be one of the following: `extralarge, large, medium, small, =[]x[]`, where [] is an integer')
+        search_filter.addrule("size", formatsize)
+        # return
+        return search_filter

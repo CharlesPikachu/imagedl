@@ -58,15 +58,19 @@ class GoogleImageClient(BaseImageClient):
         return search_results
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
-        print(search_result)
         image_infos = []
-        soup = BeautifulSoup(search_result)
+        soup = BeautifulSoup(search_result, 'lxml')
         for div in soup.find_all(name='script'):
             txt = str(div)
-            if 'AF_initDataCallback' not in txt: continue
-            if 'ds:0' in txt or 'ds:1' not in txt: continue
-            print(div)
-            # for image_url in re.findall(r'http[^\[]*?\.(?:jpg|png|bmp|gif)', txt): image_urls.add(image_url)
+            urls = re.findall(r"http[^\[]*?.(?:jpg|png|bmp)", txt)
+            if not urls: urls = re.findall(r"http[^\[]*?\.(?:jpg|png|bmp)", txt)
+            urls = [bytes(url, "utf-8").decode("unicode-escape") for url in urls]
+            for url in urls:
+                image_info = {
+                    'url': url, 'raw_data': txt
+                }
+                image_infos.append(image_info)
+        return image_infos
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000):
         base_url = 'https://www.google.com/search?'
