@@ -19,6 +19,8 @@ from urllib.parse import urlencode
 class GoogleImageClient(BaseImageClient):
     source = 'GoogleImageClient'
     def __init__(self, **kwargs):
+        if 'auto_set_proxies' not in kwargs: kwargs['auto_set_proxies'] = False
+        if 'auto_set_headers' not in kwargs: kwargs['auto_set_headers'] = False
         super(GoogleImageClient, self).__init__(**kwargs)
         self.headers = {
             'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',

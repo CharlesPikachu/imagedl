@@ -24,7 +24,7 @@ from ..utils import touchdir, LoggerHandle
 '''BaseImageClient'''
 class BaseImageClient():
     source = 'BaseImageClient'
-    def __init__(self, auto_set_proxies: bool = False, auto_set_headers: bool = False, max_retries: int = 5, maintain_session: bool = False, 
+    def __init__(self, auto_set_proxies: bool = True, auto_set_headers: bool = True, max_retries: int = 5, maintain_session: bool = False, 
                  logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_downloaded_images', proxy_sources: list = None):
         # set up work dir
         touchdir(work_dir)
@@ -38,7 +38,7 @@ class BaseImageClient():
         self.auto_set_headers = auto_set_headers
         # init requests.Session
         self.session = requests.Session()
-        self.session.headers.update({'user-agent': UserAgent().random})
+        self.session.headers.update({'User-Agent': UserAgent().random})
         # proxied_session_client
         self.proxied_session_client = freeproxy.ProxiedSessionClient(
             proxy_sources=['KuaidailiProxiedSession', 'IP3366ProxiedSession', 'QiyunipProxiedSession', 'ProxyhubProxiedSession', 'ProxydbProxiedSession'] if proxy_sources is None else proxy_sources, 
@@ -145,7 +145,7 @@ class BaseImageClient():
                 self.session = requests.Session()
             if self.auto_set_headers:
                 self.session.headers = headers
-                self.session.headers.update({'user-agent': UserAgent().random})
+                self.session.headers.update({'User-Agent': UserAgent().random})
             if self.auto_set_proxies:
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
@@ -167,7 +167,7 @@ class BaseImageClient():
                 self.session = requests.Session()
             if self.auto_set_headers:
                 self.session.headers = headers
-                self.session.headers.update({'user-agent': UserAgent().random})
+                self.session.headers.update({'User-Agent': UserAgent().random})
             if self.auto_set_proxies:
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
