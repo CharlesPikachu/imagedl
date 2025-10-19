@@ -68,8 +68,8 @@ class GoogleImageClient(BaseImageClient):
         soup = BeautifulSoup(search_result, 'lxml')
         for div in soup.find_all(name='script'):
             txt = str(div)
-            urls = re.findall(r"http[^\[]*?.(?:jpg|png|bmp)", txt)
-            if not urls: urls = re.findall(r"http[^\[]*?\.(?:jpg|png|bmp)", txt)
+            urls = re.findall(r"http[^\[]*?.(?:jpg|png|bmp|gif|jpeg)", txt)
+            if not urls: urls = re.findall(r"http[^\[]*?\.(?:jpg|png|bmp|gif|jpeg)", txt)
             urls = [bytes(url, "utf-8").decode("unicode-escape") for url in urls]
             for url in urls:
                 image_info = {
