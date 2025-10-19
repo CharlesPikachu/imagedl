@@ -130,4 +130,4 @@ def ImageClientCMD(keyword, image_source, search_limits, num_threadings, init_im
 '''tests'''
 if __name__ == '__main__':
     image_client = ImageClient()
-    image_client.startcmdui(keyword='美女')
+    image_client.startcmdui()

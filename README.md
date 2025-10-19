@@ -1,88 +1,85 @@
 <div align="center">
-  <img src="./docs/logo.png" width="600"/>
+  <img src="https://raw.githubusercontent.com/CharlesPikachu/imagedl/main/docs/logo.png" width="600"/>
 </div>
 <br />
 
-[![docs](https://img.shields.io/badge/docs-latest-blue)](https://imagedl.readthedocs.io/)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pyimagedl)](https://pypi.org/project/pyimagedl/)
-[![PyPI](https://img.shields.io/pypi/v/pyimagedl)](https://pypi.org/project/pyimagedl)
-[![license](https://img.shields.io/github/license/CharlesPikachu/imagedl.svg)](https://github.com/CharlesPikachu/imagedl/blob/master/LICENSE)
-[![PyPI - Downloads](https://pepy.tech/badge/pyimagedl)](https://pypi.org/project/pyimagedl/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/pyimagedl?style=flat-square)](https://pypi.org/project/pyimagedl/)
-[![issue resolution](https://isitmaintained.com/badge/resolution/CharlesPikachu/imagedl.svg)](https://github.com/CharlesPikachu/imagedl/issues)
-[![open issues](https://isitmaintained.com/badge/open/CharlesPikachu/imagedl.svg)](https://github.com/CharlesPikachu/imagedl/issues)
+<p align="center">
+  <a href="https://imagedl.readthedocs.io/">
+    <img src="https://img.shields.io/badge/docs-latest-blue" alt="docs">
+  </a>
+  <a href="https://pypi.org/project/pyimagedl/">
+    <img src="https://img.shields.io/pypi/pyversions/pyimagedl" alt="PyPI - Python Version">
+  </a>
+  <a href="https://pypi.org/project/pyimagedl/">
+    <img src="https://img.shields.io/pypi/v/pyimagedl" alt="PyPI">
+  </a>
+  <a href="https://github.com/CharlesPikachu/imagedl/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/CharlesPikachu/imagedl.svg" alt="license">
+  </a>
+  <a href="https://pypi.org/project/pyimagedl/">
+    <img src="https://pepy.tech/badge/pyimagedl" alt="PyPI - Downloads (pepy)">
+  </a>
+  <a href="https://pypi.org/project/pyimagedl/">
+    <img src="https://img.shields.io/pypi/dm/pyimagedl?style=flat-square" alt="PyPI - Downloads">
+  </a>
+  <a href="https://github.com/CharlesPikachu/imagedl/issues">
+    <img src="https://isitmaintained.com/badge/resolution/CharlesPikachu/imagedl.svg" alt="issue resolution">
+  </a>
+  <a href="https://github.com/CharlesPikachu/imagedl/issues">
+    <img src="https://isitmaintained.com/badge/open/CharlesPikachu/imagedl.svg" alt="open issues">
+  </a>
+</p>
 
-Documents: https://imagedl.readthedocs.io/
+<p align="center">
+  <a href="https://imagedl.readthedocs.io/">Documents: imagedl.readthedocs.io</a>
+</p>
 
 
-# Imagedl
+# What's New
 
-```
-Search and download images from specific websites.
-You can star this repository to keep track of the project if it's helpful for you, thank you for your support.
-```
+- 2025-10-19: Released pyimagedl v0.1.3 — code cleanup, deprecated/invalid functions removed, new functions added.
 
 
-# Support List
+# Introduction
 
-|  Source_EN                          |  Source_CN       |   Support Search?  |  Support Download?   |
-|  :----:                             |  :----:          |   :----:           |  :----:              |
-|  [baidu](https://baidu.com/)        |  百度图片        |   ✓                |  ✓                   |
-|  [bing](https://cn.bing.com/)       |  必应图片        |   ✓                |  ✓                   |
-|  [google](https://www.google.com/)  |  谷歌图片        |   ✓                |  ✓                   |
+imagedl lets you search for and download images from specific websites. If you find it useful, please consider starring the repository to follow updates—thank you for your support!
+
+
+# Support Image Client
+
+|  ImageClient_EN                |  ImageClient_CN    |   Search           |  Download            |    Code Snippet                                                                                        |
+|  :----:                        |  :----:            |   :----:           |  :----:              |    :----:                                                                                              |
+|  BaiduImageClient              |  百度图片          |   ✓                |  ✓                   |    [baidu.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/baidu.py)    |
+|  BingImageClient               |  必应图片          |   ✓                |  ✓                   |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)      |
+|  GoogleImageClient             |  谷歌图片          |   ✓                |  ✓                   |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)  |
 
 
 # Install
 
-#### Pip install
-
-```
-run "pip install pyimagedl"
-```
-
-#### Source code install
-
 ```sh
-(1) Offline
-Step1: git clone https://github.com/CharlesPikachu/imagedl.git
-Step2: cd imagedl -> run "python setup.py install"
-(2) Online
-run "pip install git+https://github.com/CharlesPikachu/imagedl.git@master"
+# from pip
+pip install pyimagedl
+# from github repo method-1
+pip install git+https://github.com/CharlesPikachu/imagedl.git@main
+# from github repo method-2
+git clone https://github.com/CharlesPikachu/imagedl.git
+cd imagedl
+python setup.py install
 ```
 
 
 # Quick Start
 
-#### Run by leveraging the API
+After a successful installation, you can run the snippet below,
 
 ```python
 from imagedl import imagedl
 
-config = {
-    'savedir': 'outputs',
-    'auto_set_proxies': True,
-    'auto_set_headers': True,
-    'search_limits': 1000,
-    'num_threadings': 5,
-}
-client = imagedl.imagedl(config=config)
-client.run('baidu')
+image_client = imagedl.ImageClient()
+image_client.startcmdui()
 ```
 
-#### Run by leveraging compiled file
-
-```
-Usage: imagedl [OPTIONS]
-
-Options:
-  --version                  Show the version and exit.
-  -k, --keyword TEXT         想要搜索下载的图片关键字, 若不指定, 则进入imagedl终端版
-  -s, --savedir TEXT         下载的图片的保存路径
-  -t, --target TEXT          指定图片搜索下载的平台, 例如"baidu"
-  -l, --limits INTEGER       下载的图片数量
-  -n, --nthreadings INTEGER  使用的线程数量
-  --help                     Show this message and exit.
-```
+Or just run `imagedl` (maybe `imagedl --help` to show usage information) from the terminal.
 
 
 # Screenshot
@@ -90,7 +87,7 @@ Options:
 ![img](./docs/screenshot.gif)
 
 
-# Projects in Charles_pikachu
+# Recommended Projects
 
 - [Games](https://github.com/CharlesPikachu/Games): Create interesting games by pure python.
 - [DecryptLogin](https://github.com/CharlesPikachu/DecryptLogin): APIs for loginning some websites by using requests.
@@ -111,9 +108,7 @@ Options:
 - [NovelDL](https://github.com/CharlesPikachu/noveldl): Search and download novels from some specific websites.
 
 
-# More
+# WeChat Official Account (微信公众号):
 
-#### WeChat Official Accounts
-
-*Charles_pikachu*  
-![img](./docs/pikachu.jpg)
+Charles的皮卡丘 (*Charles_pikachu*)  
+![img](https://raw.githubusercontent.com/CharlesPikachu/imagedl/main/docs/pikachu.jpg)
