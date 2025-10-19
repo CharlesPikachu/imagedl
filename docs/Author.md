@@ -7,7 +7,7 @@ Personal Homepage: https://charlespikachu.github.io/
 #### WeChat Official Account (微信公众号)
 
 Charles的皮卡丘 (*Charles_pikachu*)  
-![img](https://raw.githubusercontent.com/CharlesPikachu/freeproxy/master/docs/pikachu.jpg)
+![img](https://raw.githubusercontent.com/CharlesPikachu/imagedl/main/docs/pikachu.jpg)
 
 #### Github
 
