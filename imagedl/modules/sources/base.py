@@ -36,8 +36,6 @@ class BaseImageClient():
         self.maintain_session = maintain_session
         self.auto_set_proxies = auto_set_proxies
         self.auto_set_headers = auto_set_headers
-        # record processed image infos
-        self.processed_image_infos = []
         # init requests.Session
         self.session = requests.Session()
         self.session.headers.update({'user-agent': generate_user_agent()})
@@ -47,7 +45,7 @@ class BaseImageClient():
             disable_print=True
         ) if auto_set_proxies else None
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters=None):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
         raise NotImplementedError('not to be implemented')
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
@@ -57,7 +55,7 @@ class BaseImageClient():
     def _appenduniquefilepathforimages(self, keyword, image_infos: list):
         time_stamp = int(time.time())
         for idx, image_info in enumerate(image_infos):
-            image_info['file_path'] = os.path.join(self.work_dir, f'{keyword}_t{time_stamp}_{str(idx).zfill(8)}')
+            image_info['file_path'] = os.path.join(self.work_dir, f'{self.source}_{keyword}_t{time_stamp}_{str(idx).zfill(8)}')
         return image_infos
     '''_search'''
     def _search(self, search_urls: list, bar: alive_bar, image_infos: list, request_overrides: dict = {}):
@@ -79,7 +77,7 @@ class BaseImageClient():
                 image_infos.extend(search_result)
             bar()
     '''search'''
-    def search(self, keyword, search_limits=1000, num_threadings=5, filters=None, request_overrides: dict = {}):
+    def search(self, keyword, search_limits=1000, num_threadings=5, filters: dict = None, request_overrides: dict = {}):
         # logging
         self.logger_handle.info(f'Start to search images using {self.source}.')
         # construct search urls
@@ -94,18 +92,18 @@ class BaseImageClient():
             for task in task_pool: task.join()
         # logging
         self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
-        self.savetopkl(image_infos, os.path.join(self.work_dir, f'image_infos_t{int(time.time())}.pkl'))
+        self.savetopkl(image_infos, os.path.join(self.work_dir, f'{self.source}_image_infos_t{int(time.time())}.pkl'))
         self.logger_handle.info(f'Finished searching images using {self.source}. All results have been saved to {self.work_dir}, valid items: {len(image_infos)}.')
         # return
         return image_infos
     '''_download'''
-    def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = {}):
+    def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = {}, processed_image_infos: list = None):
         while len(image_infos) > 0:
             image_info = image_infos.pop(0)
             file_path, image_candidate_urls = image_info['file_path'], image_info['candidate_urls']
             for image_candidate_url in image_candidate_urls:
                 resp = self.get(image_candidate_url, **request_overrides)
-                if resp.status_code == 200: break
+                if resp is not None and resp.status_code == 200: break
             if resp is None or resp.status_code != 200:
                 bar()
                 continue
@@ -119,7 +117,7 @@ class BaseImageClient():
                 shutil.move(file_path, file_path_with_ext)
                 processed_image_info = copy.deepcopy(image_info)
                 processed_image_info['file_path'] = file_path_with_ext
-                self.processed_image_infos.append(processed_image_info)
+                processed_image_infos.append(processed_image_info)
             else:
                 os.remove(file_path)
             bar()
@@ -128,16 +126,16 @@ class BaseImageClient():
         # logging
         self.logger_handle.info(f'Start to download images using {self.source}.')
         # multi threadings for downloading images
-        task_pool = []
+        task_pool, processed_image_infos = [], []
         with alive_bar(len(image_infos)) as bar:
             for _ in range(num_threadings):
-                task = threading.Thread(target=self._download, args=(image_infos, bar, request_overrides))
+                task = threading.Thread(target=self._download, args=(image_infos, bar, request_overrides, processed_image_infos))
                 task_pool.append(task)
                 task.start()
             for task in task_pool: task.join()
         # logging
-        self.savetopkl(self.processed_image_infos, os.path.join(self.work_dir, f'processed_image_infos_t{int(time.time())}.pkl'))
-        self.logger_handle.info(f'Finished downloading images using {self.source}. All results have been saved to {self.work_dir}.')
+        self.savetopkl(processed_image_infos, os.path.join(self.work_dir, f'{self.source}_processed_image_infos_t{int(time.time())}.pkl'))
+        self.logger_handle.info(f'Finished downloading images using {self.source}. All results have been saved to {self.work_dir}, successful downloads: {len(processed_image_infos)}.')
     '''get'''
     def get(self, url, **kwargs):
         resp = None

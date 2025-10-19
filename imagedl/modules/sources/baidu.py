@@ -65,7 +65,7 @@ class BaiduImageClient(BaseImageClient):
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters=None):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
         base_url = 'http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&word={}&pn={}&rn={}'
         filter_str = self.getfilter().apply(filters, sep="&")
         search_urls, page_size = [], 30
