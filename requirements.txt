@@ -1,7 +1,7 @@
 requests
 alive-progress
 pyfreeproxy
-user_agent
+fake-useragent
 beautifulsoup4
 lxml
 click
