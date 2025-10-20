@@ -37,6 +37,7 @@
 
 # What's New
 
+- 2025-10-19: Released pyimagedl v0.1.4 — Add a deduplication feature and support 360 image search.
 - 2025-10-19: Released pyimagedl v0.1.3 — code cleanup, deprecated/invalid functions removed, new functions added.
 
 
@@ -52,6 +53,7 @@ imagedl lets you search for and download images from specific websites. If you f
 |  BaiduImageClient              |  百度图片          |   ✓                |  ✓                   |    [baidu.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/baidu.py)    |
 |  BingImageClient               |  必应图片          |   ✓                |  ✓                   |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)      |
 |  GoogleImageClient             |  谷歌图片          |   ✓                |  ✓                   |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)  |
+|  I360ImageClient               |  360图片           |   ✓                |  ✓                   |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)      |
 
 
 # Install
@@ -75,16 +77,26 @@ After a successful installation, you can run the snippet below,
 ```python
 from imagedl import imagedl
 
-image_client = imagedl.ImageClient()
+image_client = imagedl.ImageClient(image_source='BaiduImageClient')
 image_client.startcmdui()
 ```
 
 Or just run `imagedl` (maybe `imagedl --help` to show usage information) from the terminal.
 
+For class `ImageClient`, the acceptable arguments include,
 
-# Screenshot
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient']`.
+- `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
+- `search_limits` (`int`, default: `1000`): Scale of image downloads.
+- `num_threadings` (`int`, default: `5`): Number of threads used.
+- `request_overrides` (`dict`, default: `{}`): Requests.get kwargs such as `{'headers': {'User-Agent': xxx}, 'proxies': {}}`.
 
-![img](./docs/screenshot.gif)
+The demonstration is as follows,
+
+<div align="center">
+  <img src="https://github.com/CharlesPikachu/imagedl/raw/main/docs/screenshot.gif" width="600"/>
+</div>
+<br />
 
 
 # Recommended Projects

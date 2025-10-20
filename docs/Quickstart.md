@@ -1,13 +1,13 @@
 # Quick Start
 
-#### ImageClient
+#### Uniform ImageClient
 
 After a successful installation, you can run the snippet below,
 
 ```python
 from imagedl import imagedl
 
-image_client = imagedl.ImageClient()
+image_client = imagedl.ImageClient(image_source='BaiduImageClient')
 image_client.startcmdui()
 ```
 
@@ -15,7 +15,7 @@ Or just run `imagedl` (maybe `imagedl --help` to show usage information) from th
 
 For class `ImageClient`, the acceptable arguments include,
 
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient']`.
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient']`.
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
@@ -28,26 +28,30 @@ The demonstration is as follows,
 </div>
 <br />
 
-#### BingImageClient, BaiduImageClient and GoogleImageClient
+#### Dedicated ImageClient
 
-Example code for searching and downloading images on different platforms such as Baidu, Google, and Bing is as follows,
+Example code for searching and downloading images on different platforms such as Baidu and Google is as follows,
 
 ```python
 from imagedl.modules.sources.bing import BingImageClient
+from imagedl.modules.sources.i360 import I360ImageClient
 from imagedl.modules.sources.baidu import BaiduImageClient
 from imagedl.modules.sources.google import GoogleImageClient
 
-
 # bing tests
 client = BingImageClient()
-image_infos = client.search('美女', search_limits=10, num_threadings=1)
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# 360 tests
+client = I360ImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # baidu tests
 client = BaiduImageClient()
-image_infos = client.search('美女', search_limits=10, num_threadings=1)
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # google tests
 client = GoogleImageClient()
-image_infos = client.search('美女', search_limits=10, num_threadings=1)
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ```

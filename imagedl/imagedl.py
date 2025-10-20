@@ -86,7 +86,7 @@ class ImageClient():
     '-k', '--keyword', default=None, help='The keywords for the image search. If left empty, an interactive terminal will open automatically.', type=str, show_default=True,
 )
 @click.option(
-    '-i', '--image-source', '--image_source', default='BaiduImageClient', help='The image search and download source.', type=click.Choice(["BaiduImageClient", "GoogleImageClient", "BingImageClient"], case_sensitive=False), show_default=True, 
+    '-i', '--image-source', '--image_source', default='BaiduImageClient', help='The image search and download source.', type=click.Choice(["BaiduImageClient", "GoogleImageClient", "BingImageClient", "I360ImageClient"], case_sensitive=False), show_default=True, 
 )
 @click.option(
     '-s', '--search_limits', default=1000, help='Scale of image downloads.', type=click.IntRange(min=1, max=1e8), show_default=True,

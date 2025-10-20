@@ -72,8 +72,9 @@ class GoogleImageClient(BaseImageClient):
             if not urls: urls = re.findall(r"http[^\[]*?\.(?:jpg|png|bmp|gif|jpeg)", txt)
             urls = [bytes(url, "utf-8").decode("unicode-escape") for url in urls]
             for url in urls:
+                if not url.strip(): continue
                 image_info = {
-                    'candidate_urls': [url], 'raw_data': txt
+                    'candidate_urls': [url.strip()], 'raw_data': txt, 'identifier': url.strip(),
                 }
                 image_infos.append(image_info)
         return image_infos

@@ -53,6 +53,15 @@ class BaseImageClient():
     def _parsesearchresult(self, search_result: str):
         search_result = json_repair.loads(search_result)
         return search_result
+    '''_removeduplicates'''
+    def _removeduplicates(self, image_infos: list = None):
+        unique_image_infos, identifiers = [], set()
+        for image_info in image_infos:
+            if image_info['identifier'] in identifiers:
+                continue
+            identifiers.add(image_info['identifier'])
+            unique_image_infos.append(image_info)
+        return unique_image_infos
     '''_appenduniquefilepathforimages'''
     def _appenduniquefilepathforimages(self, keyword, image_infos: list):
         time_stamp = int(time.time())
@@ -93,6 +102,7 @@ class BaseImageClient():
                 task.start()
             for task in task_pool: task.join()
         # logging
+        image_infos = self._removeduplicates(image_infos)
         self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
         self.savetopkl(image_infos, os.path.join(self.work_dir, f'{self.source}_image_infos_t{int(time.time())}.pkl'))
         self.logger_handle.info(f'Finished searching images using {self.source}. All results have been saved to {self.work_dir}, valid items: {len(image_infos)}.')

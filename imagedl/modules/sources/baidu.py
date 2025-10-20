@@ -60,7 +60,7 @@ class BaiduImageClient(BaseImageClient):
             candidate_urls = pickallimageurls(item=item)
             if not candidate_urls: continue
             image_info = {
-                'candidate_urls': candidate_urls, 'raw_data': item
+                'candidate_urls': candidate_urls, 'raw_data': item, 'identifier': candidate_urls[0],
             }
             image_infos.append(image_info)
         # return

@@ -37,8 +37,9 @@ class BingImageClient(BaseImageClient):
                 continue
             match = pattern.search(href_str)
             if not match: continue
+            if not match.group(1).strip(): continue
             image_info = {
-                'candidate_urls': [match.group(1)], 'raw_data': str(item)
+                'candidate_urls': [match.group(1).strip()], 'raw_data': str(item), 'identifier': match.group(1).strip(),
             }
             image_infos.append(image_info)
         return image_infos

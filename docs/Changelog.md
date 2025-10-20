@@ -1,5 +1,7 @@
 # Release Log
 
+- 2025-10-19: Released pyimagedl v0.1.4 — Add a deduplication feature and support 360 image search.
+
 - 2025-10-19: Released pyimagedl v0.1.3 — code cleanup, deprecated/invalid functions removed, new functions added.
 
 - 2022-03-24: Released pyimagedl v0.1.2 — added author information.
