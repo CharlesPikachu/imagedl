@@ -8,13 +8,13 @@ WeChat Official Account (微信公众号):
 '''
 import os
 import copy
-import time
 import imghdr
 import pickle
 import shutil
 import requests
 import threading
 import json_repair
+from datetime import datetime
 from freeproxy import freeproxy
 from fake_useragent import UserAgent
 from alive_progress import alive_bar
@@ -64,9 +64,9 @@ class BaseImageClient():
         return unique_image_infos
     '''_appenduniquefilepathforimages'''
     def _appenduniquefilepathforimages(self, keyword, image_infos: list):
-        time_stamp = int(time.time())
+        time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         for idx, image_info in enumerate(image_infos):
-            image_info['file_path'] = os.path.join(self.work_dir, f'{self.source}_{keyword}_t{time_stamp}_{str(idx).zfill(8)}')
+            image_info['file_path'] = os.path.join(self.work_dir, f'{self.source.replace("ImageClient", "")}_{keyword}_{time_stamp}_{str(idx+1).zfill(8)}')
         return image_infos
     '''_search'''
     def _search(self, search_urls: list, bar: alive_bar, image_infos: list, request_overrides: dict = {}):
@@ -104,7 +104,8 @@ class BaseImageClient():
         # logging
         image_infos = self._removeduplicates(image_infos)
         self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
-        self.savetopkl(image_infos, os.path.join(self.work_dir, f'{self.source}_image_infos_t{int(time.time())}.pkl'))
+        time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        self.savetopkl(image_infos, os.path.join(self.work_dir, f'{self.source.replace("ImageClient", "")}_image_infos_{time_stamp}.pkl'))
         self.logger_handle.info(f'Finished searching images using {self.source}. All results have been saved to {self.work_dir}, valid items: {len(image_infos)}.')
         # return
         return image_infos
@@ -146,7 +147,8 @@ class BaseImageClient():
                 task.start()
             for task in task_pool: task.join()
         # logging
-        self.savetopkl(processed_image_infos, os.path.join(self.work_dir, f'{self.source}_processed_image_infos_t{int(time.time())}.pkl'))
+        time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        self.savetopkl(processed_image_infos, os.path.join(self.work_dir, f'{self.source.replace("ImageClient", "")}_processed_image_infos_{time_stamp}.pkl'))
         self.logger_handle.info(f'Finished downloading images using {self.source}. All results have been saved to {self.work_dir}, valid downloads: {len(processed_image_infos)}.')
     '''get'''
     def get(self, url, **kwargs):

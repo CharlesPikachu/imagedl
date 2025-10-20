@@ -47,6 +47,7 @@ class I360ImageClient(BaseImageClient):
                 'candidate_urls': candidate_urls, 'raw_data': item, 'identifier': item['id'],
             }
             image_infos.append(image_info)
+        # return
         return image_infos
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):

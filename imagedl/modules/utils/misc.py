@@ -28,7 +28,7 @@ class Filter:
     '''addrule'''
     def addrule(self, name, format_fn, choices=None):
         assert callable(format_fn)
-        assert choices is None or isinstance(choices, list)
+        assert choices is None or isinstance(choices, list) or isinstance(choices, type)
         self.rules[name] = (format_fn, choices)
     '''apply'''
     def apply(self, options, sep=""):
