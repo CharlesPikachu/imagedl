@@ -1,5 +1,7 @@
 # Release Log
 
+- 2025-10-21: Released pyimagedl v0.1.5 — Fix maintain session bugs, support pixabay and yandex image search.
+
 - 2025-10-20: Released pyimagedl v0.1.4 — Add a deduplication feature and support 360 image search.
 
 - 2025-10-19: Released pyimagedl v0.1.3 — code cleanup, deprecated/invalid functions removed, new functions added.

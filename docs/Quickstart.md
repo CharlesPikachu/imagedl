@@ -15,7 +15,7 @@ Or just run `imagedl` (maybe `imagedl --help` to show usage information) from th
 
 For class `ImageClient`, the acceptable arguments include,
 
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient']`.
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient']`.
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
@@ -37,6 +37,7 @@ from imagedl.modules.sources.bing import BingImageClient
 from imagedl.modules.sources.i360 import I360ImageClient
 from imagedl.modules.sources.baidu import BaiduImageClient
 from imagedl.modules.sources.google import GoogleImageClient
+from imagedl.modules.sources.yandex import YandexImageClient
 from imagedl.modules.sources.pixabay import PixabayImageClient
 
 # bing tests
@@ -53,6 +54,10 @@ image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # google tests
 client = GoogleImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# yandex tests
+client = YandexImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # pixabay tests
