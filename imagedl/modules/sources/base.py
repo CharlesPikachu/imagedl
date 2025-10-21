@@ -26,7 +26,7 @@ from ..utils import touchdir, LoggerHandle, Filter
 class BaseImageClient():
     source = 'BaseImageClient'
     def __init__(self, auto_set_proxies: bool = True, maintain_headers: bool = False, random_update_ua: bool = False, max_retries: int = 5, maintain_session: bool = False, 
-                 logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_downloaded_images', proxy_sources: list = None):
+                 logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_outputs', proxy_sources: list = None):
         # set up work dir
         touchdir(work_dir)
         # set attributes
