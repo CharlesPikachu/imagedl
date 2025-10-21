@@ -61,6 +61,7 @@ class GoogleImageClient(BaseImageClient):
         assert 'q' in search_overrides, 'please set `q` in `search_overrides` as the search keywords'
         # search
         search_params = {'q': 'girls', 'google_domain': 'google.com', 'tbm': 'isch', 'api_key': 'cb37586e2a8d129c4142b06c3d46a19aa8bb11187c776a85977298893a5a3266'}
+        search_params.update(search_overrides)
         search_engine = GoogleSearch(search_params)
         search_results = search_engine.get_results()
         # return
