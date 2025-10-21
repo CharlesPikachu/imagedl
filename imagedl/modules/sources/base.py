@@ -18,7 +18,7 @@ from datetime import datetime
 from freeproxy import freeproxy
 from fake_useragent import UserAgent
 from alive_progress import alive_bar
-from ..utils import touchdir, LoggerHandle
+from ..utils import touchdir, LoggerHandle, Filter
 
 
 '''BaseImageClient'''
@@ -105,10 +105,14 @@ class BaseImageClient():
         image_infos = self._removeduplicates(image_infos)
         self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
         time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        self.savetopkl(image_infos, os.path.join(self.work_dir, f'{self.source.replace("ImageClient", "")}_image_infos_{time_stamp}.pkl'))
+        self._savetopkl(image_infos, os.path.join(self.work_dir, f'{self.source.replace("ImageClient", "")}_image_infos_{time_stamp}.pkl'))
         self.logger_handle.info(f'Finished searching images using {self.source}. All results have been saved to {self.work_dir}, valid items: {len(image_infos)}.')
         # return
         return image_infos
+    '''_getfilter'''
+    def _getfilter(self):
+        search_filter = Filter()
+        return search_filter
     '''_download'''
     def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = {}, processed_image_infos: list = None):
         while len(image_infos) > 0:
@@ -148,7 +152,7 @@ class BaseImageClient():
             for task in task_pool: task.join()
         # logging
         time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        self.savetopkl(processed_image_infos, os.path.join(self.work_dir, f'{self.source.replace("ImageClient", "")}_processed_image_infos_{time_stamp}.pkl'))
+        self._savetopkl(processed_image_infos, os.path.join(self.work_dir, f'{self.source.replace("ImageClient", "")}_processed_image_infos_{time_stamp}.pkl'))
         self.logger_handle.info(f'Finished downloading images using {self.source}. All results have been saved to {self.work_dir}, valid downloads: {len(processed_image_infos)}.')
     '''get'''
     def get(self, url, **kwargs):
@@ -202,7 +206,7 @@ class BaseImageClient():
             if resp.status_code != 200: continue
             return resp
         return resp
-    '''savetopkl'''
-    def savetopkl(self, data, file_path):
+    '''_savetopkl'''
+    def _savetopkl(self, data, file_path):
         with open(file_path, 'wb') as fp:
             pickle.dump(data, fp)

@@ -85,15 +85,15 @@ class GoogleImageClient(BaseImageClient):
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, language: str = None):
         base_url = 'https://www.google.com/search?'
-        filter_str = self.getfilter().apply(filters, sep=",")
+        filter_str = self._getfilter().apply(filters, sep=",")
         search_urls, page_size = [], 100
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
             params = dict(q=keyword, ijn=pn, start=pn*page_size, tbs=filter_str, tbm="isch")
             if language: params["lr"] = "lang_" + language
             search_urls.append(base_url + urlencode(params))
         return search_urls
-    '''getfilter: refer to https://github.com/hellock/icrawler/blob/master/icrawler/builtin/google.py'''
-    def getfilter(self):
+    '''_getfilter: refer to https://github.com/hellock/icrawler/blob/master/icrawler/builtin/google.py'''
+    def _getfilter(self):
         search_filter = Filter()
         # type filter
         def formattype(img_type):

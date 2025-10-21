@@ -52,15 +52,15 @@ class I360ImageClient(BaseImageClient):
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
         base_url = 'https://image.so.com/j?pn={}&q={}&sn={}'
-        filter_str = self.getfilter().apply(filters, sep='&')
+        filter_str = self._getfilter().apply(filters, sep='&')
         search_urls, page_size = [], 60
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
             search_url = base_url.format(page_size, quote(keyword), pn * page_size)
             if filter_str: search_url += f'&{filter_str}'
             search_urls.append(search_url)
         return search_urls
-    '''getfilter'''
-    def getfilter(self):
+    '''_getfilter'''
+    def _getfilter(self):
         search_filter = Filter()
         # TODO: add valid filters for I360ImageClient
         # return
