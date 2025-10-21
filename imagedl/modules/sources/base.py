@@ -18,6 +18,7 @@ from datetime import datetime
 from freeproxy import freeproxy
 from fake_useragent import UserAgent
 from alive_progress import alive_bar
+from pathvalidate import sanitize_filepath
 from ..utils import touchdir, LoggerHandle, Filter
 
 
@@ -63,10 +64,13 @@ class BaseImageClient():
             unique_image_infos.append(image_info)
         return unique_image_infos
     '''_appenduniquefilepathforimages'''
-    def _appenduniquefilepathforimages(self, keyword, image_infos: list):
+    def _appenduniquefilepathforimages(self, keyword: str, image_infos: list):
         time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        work_dir = os.path.join(self.work_dir, self.source, f'{time_stamp} {keyword.replace(' ', '')}')
+        touchdir(work_dir)
         for idx, image_info in enumerate(image_infos):
-            image_info['file_path'] = os.path.join(self.work_dir, f'{self.source.replace("ImageClient", "")}_{keyword}_{time_stamp}_{str(idx+1).zfill(8)}')
+            image_info['work_dir'] = work_dir
+            image_info['file_path'] = os.path.join(work_dir, f'{str(idx+1).zfill(8)}')
         return image_infos
     '''_search'''
     def _search(self, search_urls: list, bar: alive_bar, image_infos: list, request_overrides: dict = {}):
@@ -104,9 +108,10 @@ class BaseImageClient():
         # logging
         image_infos = self._removeduplicates(image_infos)
         self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
-        time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        self._savetopkl(image_infos, os.path.join(self.work_dir, f'{self.source.replace("ImageClient", "")}_image_infos_{time_stamp}.pkl'))
-        self.logger_handle.info(f'Finished searching images using {self.source}. All results have been saved to {self.work_dir}, valid items: {len(image_infos)}.')
+        if len(image_infos) > 0:
+            work_dir = image_infos[0]['work_dir']
+            self._savetopkl(image_infos, os.path.join(work_dir, 'search_results.pkl'))
+        self.logger_handle.info(f'Finished searching images using {self.source}. Search results have been saved to {work_dir}, valid items: {len(image_infos)}.')
         # return
         return image_infos
     '''_getfilter'''
@@ -114,7 +119,7 @@ class BaseImageClient():
         search_filter = Filter()
         return search_filter
     '''_download'''
-    def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = {}, processed_image_infos: list = None):
+    def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = {}, downloaded_image_infos: list = None):
         while len(image_infos) > 0:
             image_info = image_infos.pop(0)
             file_path, image_candidate_urls = image_info['file_path'], image_info['candidate_urls']
@@ -132,9 +137,9 @@ class BaseImageClient():
                 file_path_with_ext = f'{file_path}.{ext}'
                 assert (not os.path.exists(file_path_with_ext))
                 shutil.move(file_path, file_path_with_ext)
-                processed_image_info = copy.deepcopy(image_info)
-                processed_image_info['file_path'] = file_path_with_ext
-                processed_image_infos.append(processed_image_info)
+                downloaded_image_info = copy.deepcopy(image_info)
+                downloaded_image_info['file_path'] = file_path_with_ext
+                downloaded_image_infos.append(downloaded_image_info)
             else:
                 os.remove(file_path)
             bar()
@@ -143,17 +148,18 @@ class BaseImageClient():
         # logging
         self.logger_handle.info(f'Start to download images using {self.source}.')
         # multi threadings for downloading images
-        task_pool, processed_image_infos = [], []
+        task_pool, downloaded_image_infos = [], []
         with alive_bar(len(image_infos)) as bar:
             for _ in range(num_threadings):
-                task = threading.Thread(target=self._download, args=(image_infos, bar, request_overrides, processed_image_infos))
+                task = threading.Thread(target=self._download, args=(image_infos, bar, request_overrides, downloaded_image_infos))
                 task_pool.append(task)
                 task.start()
             for task in task_pool: task.join()
         # logging
-        time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        self._savetopkl(processed_image_infos, os.path.join(self.work_dir, f'{self.source.replace("ImageClient", "")}_processed_image_infos_{time_stamp}.pkl'))
-        self.logger_handle.info(f'Finished downloading images using {self.source}. All results have been saved to {self.work_dir}, valid downloads: {len(processed_image_infos)}.')
+        if len(downloaded_image_infos) > 0:
+            work_dir = downloaded_image_infos[0]['work_dir']
+            self._savetopkl(downloaded_image_infos, os.path.join(work_dir, 'download_results.pkl'))
+        self.logger_handle.info(f'Finished downloading images using {self.source}. Download results have been saved to {work_dir}, valid downloads: {len(downloaded_image_infos)}.')
     '''get'''
     def get(self, url, **kwargs):
         resp = None
@@ -207,6 +213,7 @@ class BaseImageClient():
             return resp
         return resp
     '''_savetopkl'''
-    def _savetopkl(self, data, file_path):
+    def _savetopkl(self, data, file_path, auto_sanitize=True):
+        if auto_sanitize: file_path = sanitize_filepath(file_path)
         with open(file_path, 'wb') as fp:
             pickle.dump(data, fp)

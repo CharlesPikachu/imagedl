@@ -28,10 +28,10 @@ class I360ImageClient(BaseImageClient):
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
         # parse json text in safety
-        search_result = json_repair.loads(search_result)
+        search_result: dict = json_repair.loads(search_result)
         # parse search result
         image_infos = []
-        for item in search_result['list']:
+        for item in search_result.get('list', []):
             candidate_urls = []
             if ('img' in item) and isinstance(item['img'], str) and item['img'].strip():
                 candidate_urls.append(item['img'])

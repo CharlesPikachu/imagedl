@@ -34,10 +34,10 @@ class PixabayImageClient(BaseImageClient):
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
         # parse json text in safety
-        search_result = json_repair.loads(search_result)
+        search_result: dict = json_repair.loads(search_result)
         # parse search result
         image_infos = []
-        for item in search_result['hits']:
+        for item in search_result.get('hits', []):
             candidate_urls = []
             if ('fullHDURL' in item) and isinstance(item['fullHDURL'], str) and item['fullHDURL'].strip():
                 candidate_urls.append(item['fullHDURL'])
