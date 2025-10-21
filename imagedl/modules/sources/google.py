@@ -8,6 +8,7 @@ WeChat Official Account (微信公众号):
 '''
 import re
 import math
+import random
 import datetime
 from ..utils import Filter
 from bs4 import BeautifulSoup
@@ -37,9 +38,11 @@ class GoogleImageClient(BaseImageClient):
         # asserts
         assert 'q' in search_overrides, 'please set `q` in `search_overrides` as the search keywords'
         # instance GoogleImagesSearch
-        google_image_search_params = {
-            'validate_images': True, 'developer_key': 'AIzaSyCGyqf36D5k3QghaZLhAqb1R2OUtRFraF8', 'custom_search_cx': '0d386b282da5209ea',
-        }
+        google_image_search_params = random.choice([
+            {'validate_images': True, 'developer_key': 'AIzaSyCGyqf36D5k3QghaZLhAqb1R2OUtRFraF8', 'custom_search_cx': '0d386b282da5209ea'},
+            {'validate_images': True, 'developer_key': 'AIzaSyD4dFGSan50nEmXh2Jnm4l6JHCAgEATWJc', 'custom_search_cx': '495179597de2e4ab6'},
+            {'validate_images': True, 'developer_key': 'AIzaSyBRlama1N7tiW0yVq45CrqCx9hyFrESmIs', 'custom_search_cx': '144af1a5b59944a2b'},
+        ])
         google_image_search_params.update(google_image_search_overrides)
         gis = GoogleImagesSearch(**google_image_search_params)
         # search and download
