@@ -40,13 +40,15 @@ class DuckduckgoImageClient(BaseImageClient):
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
         # parse json text in safety
+        while search_result[0] != '{':
+            search_result = search_result[1:]
         search_result: dict = json_repair.loads(search_result)
         # parse search result
         image_infos = []
         for item in search_result.get('results', []):
             candidate_urls = []
             if ('image' in item) and isinstance(item['image'], str) and item['image'].strip():
-                candidate_urls.append(item['img'])
+                candidate_urls.append(item['image'])
             if ('thumbnail' in item) and isinstance(item['thumbnail'], str) and item['thumbnail'].strip():
                 candidate_urls.append(item['thumbnail'])
             image_info = {
@@ -85,16 +87,18 @@ class DuckduckgoImageClient(BaseImageClient):
             for pn in range(math.ceil(search_limits * 1.2 / page_size)):
                 if pn == 0:
                     search_url = base_url + 'i.js?' + urlencode(params, quote_via=quote)
-                    self._search(search_urls=[search_url], bar=alive_bar, image_infos=image_infos, request_overrides=request_overrides)
+                    self._search(search_urls=[search_url], bar=bar, image_infos=image_infos, request_overrides=request_overrides)
                 else:
                     search_url = base_url + image_infos[-1]['next']
-                    self._search(search_urls=[search_url], bar=alive_bar, image_infos=image_infos, request_overrides=request_overrides)
+                    self._search(search_urls=[search_url], bar=bar, image_infos=image_infos, request_overrides=request_overrides)
         # logging
         image_infos = self._removeduplicates(image_infos)
         self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
         if len(image_infos) > 0:
             work_dir = image_infos[0]['work_dir']
             self._savetopkl(image_infos, os.path.join(work_dir, 'search_results.pkl'))
+        else:
+            work_dir = self.work_dir
         self.logger_handle.info(f'Finished searching images using {self.source}. Search results have been saved to {work_dir}, valid items: {len(image_infos)}.')
         # return
         return image_infos

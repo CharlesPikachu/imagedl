@@ -66,7 +66,7 @@ class BaseImageClient():
     '''_appenduniquefilepathforimages'''
     def _appenduniquefilepathforimages(self, keyword: str, image_infos: list):
         time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        work_dir = os.path.join(self.work_dir, self.source, f'{time_stamp} {keyword.replace(' ', '')}')
+        work_dir = os.path.join(self.work_dir, self.source, f'{time_stamp} {keyword.replace(" ", "")}')
         touchdir(work_dir)
         for idx, image_info in enumerate(image_infos):
             image_info['work_dir'] = work_dir
@@ -83,7 +83,8 @@ class BaseImageClient():
             resp.encoding = 'utf-8'
             try:
                 search_result = self._parsesearchresult(resp.text)
-            except:
+            except Exception as err:
+                self.logger_handle.error(err, disable_print=self.disable_print)
                 search_result = []
             if isinstance(search_result, dict):
                 image_infos.append(search_result)
@@ -111,6 +112,8 @@ class BaseImageClient():
         if len(image_infos) > 0:
             work_dir = image_infos[0]['work_dir']
             self._savetopkl(image_infos, os.path.join(work_dir, 'search_results.pkl'))
+        else:
+            work_dir = self.work_dir
         self.logger_handle.info(f'Finished searching images using {self.source}. Search results have been saved to {work_dir}, valid items: {len(image_infos)}.')
         # return
         return image_infos
@@ -159,6 +162,8 @@ class BaseImageClient():
         if len(downloaded_image_infos) > 0:
             work_dir = downloaded_image_infos[0]['work_dir']
             self._savetopkl(downloaded_image_infos, os.path.join(work_dir, 'download_results.pkl'))
+        else:
+            work_dir = self.work_dir
         self.logger_handle.info(f'Finished downloading images using {self.source}. Download results have been saved to {work_dir}, valid downloads: {len(downloaded_image_infos)}.')
     '''get'''
     def get(self, url, **kwargs):
@@ -175,13 +180,15 @@ class BaseImageClient():
             if self.auto_set_proxies:
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
-                except:
+                except Exception as err:
+                    self.logger_handle.error(err, disable_print=self.disable_print)
                     self.session.proxies = {}
             else:
                 self.session.proxies = {}
             try:
                 resp = self.session.get(url, **kwargs)
-            except:
+            except Exception as err:
+                self.logger_handle.error(err, disable_print=self.disable_print)
                 continue
             if resp.status_code != 200: continue
             return resp
@@ -201,13 +208,15 @@ class BaseImageClient():
             if self.auto_set_proxies:
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
-                except:
+                except Exception as err:
+                    self.logger_handle.error(err, disable_print=self.disable_print)
                     self.session.proxies = {}
             else:
                 self.session.proxies = {}
             try:
                 resp = self.session.post(url, **kwargs)
-            except:
+            except Exception as err:
+                self.logger_handle.error(err, disable_print=self.disable_print)
                 continue
             if resp.status_code != 200: continue
             return resp
