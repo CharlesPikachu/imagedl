@@ -37,6 +37,7 @@
 
 # What's New
 
+- 2025-10-21: Released pyimagedl v0.1.5 — Fix maintain session bugs, support pixabay and yandex image search.
 - 2025-10-20: Released pyimagedl v0.1.4 — Add a deduplication feature and support 360 image search.
 - 2025-10-19: Released pyimagedl v0.1.3 — code cleanup, deprecated/invalid functions removed, new functions added.
 
@@ -55,6 +56,7 @@ imagedl lets you search for and download images from specific websites. If you f
 |  GoogleImageClient             |  谷歌图片          |   ✓                |  ✓                   |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)        |
 |  I360ImageClient               |  360图片           |   ✓                |  ✓                   |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)            |
 |  PixabayImageClient            |  Pixabay图片       |   ✓                |  ✓                   |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)      |
+|  YandexImageClient             |  Yandex图片        |   ✓                |  ✓                   |    [yandex.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yandex.py)        |
 
 
 # Install
@@ -86,7 +88,7 @@ Or just run `imagedl` (maybe `imagedl --help` to show usage information) from th
 
 For class `ImageClient`, the acceptable arguments include,
 
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient']`.
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient']`.
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.

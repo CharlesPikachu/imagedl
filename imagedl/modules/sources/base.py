@@ -157,11 +157,11 @@ class BaseImageClient():
             headers = self.session.headers
             if not self.maintain_session:
                 self.session = requests.Session()
-            if self.maintain_headers:
-                self.session.headers = headers
-            else:
-                self.session.headers = self.default_headers
-                if self.random_update_ua: self.session.headers.update({'User-Agent': UserAgent().random})
+                if self.maintain_headers:
+                    self.session.headers = headers
+                else:
+                    self.session.headers = self.default_headers
+                    if self.random_update_ua: self.session.headers.update({'User-Agent': UserAgent().random})
             if self.auto_set_proxies:
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
