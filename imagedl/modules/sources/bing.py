@@ -85,7 +85,7 @@ class BingImageClient(BaseImageClient):
                 assert len(wh) == 2
                 return "+filterui:imagesize-custom_{}_{}".format(*wh)
             else:
-                raise ValueError('filter option "size" must be one of the following: `extralarge, large, medium, small, =[]x[]` where [] is an integer')
+                raise ValueError('filter option "size" must be one of the following: "extralarge, large, medium, small, =[]x[]" where [] is an integer')
         search_filter.addrule("size", formatsize)
         # licence filter
         license_code = {

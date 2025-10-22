@@ -34,10 +34,10 @@ class GoogleImageClient(BaseImageClient):
         try:
             from google_images_search import GoogleImagesSearch
         except:
-            print('You must install the official API before using this function via `pip install google_images_search`')
+            print('You must install the official API before using this function via "pip install google_images_search"')
             return
         # asserts
-        assert 'q' in search_overrides, 'please set `q` in `search_overrides` as the search keywords'
+        assert 'q' in search_overrides, 'please set "q" in "search_overrides" as the search keywords'
         # instance GoogleImagesSearch
         google_image_search_params = random.choice([
             {'validate_images': True, 'developer_key': 'AIzaSyCGyqf36D5k3QghaZLhAqb1R2OUtRFraF8', 'custom_search_cx': '0d386b282da5209ea'},
@@ -56,10 +56,10 @@ class GoogleImageClient(BaseImageClient):
         try:
             from serpapi import GoogleSearch
         except:
-            print('You must install the official API before using this function via `pip install google google-search-results serpapi`')
+            print('You must install the official API before using this function via "pip install google google-search-results serpapi"')
             return
         # asserts
-        assert 'q' in search_overrides, 'please set `q` in `search_overrides` as the search keywords'
+        assert 'q' in search_overrides, 'please set "q" in "search_overrides" as the search keywords'
         # search
         search_params = {'q': 'girls', 'google_domain': 'google.com', 'tbm': 'isch', 'api_key': 'cb37586e2a8d129c4142b06c3d46a19aa8bb11187c776a85977298893a5a3266'}
         search_params.update(search_overrides)
@@ -84,14 +84,20 @@ class GoogleImageClient(BaseImageClient):
                 image_infos.append(image_info)
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, language: str = None):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
+        # base url
         base_url = 'https://www.google.com/search?'
+        # apply filter
+        if filters is not None:
+            language = filters.pop('language', None)
         filter_str = self._getfilter().apply(filters, sep=",")
+        # construct search_urls
         search_urls, page_size = [], 100
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
             params = dict(q=keyword, ijn=pn, start=pn*page_size, tbs=filter_str, tbm="isch")
             if language: params["lr"] = "lang_" + language
             search_urls.append(base_url + urlencode(params))
+        # return
         return search_urls
     '''_getfilter: refer to https://github.com/hellock/icrawler/blob/master/icrawler/builtin/google.py'''
     def _getfilter(self):
@@ -129,7 +135,7 @@ class GoogleImageClient(BaseImageClient):
                 assert len(wh) == 2
                 return "isz:ex,iszw:{},iszh:{}".format(*wh)
             else:
-                raise ValueError('filter option "size" must be one of the following: `large, medium, icon, >[]x[], =[]x[]` where [] is an integer')
+                raise ValueError('filter option "size" must be one of the following: "large, medium, icon, >[]x[], =[]x[]" where [] is an integer')
         search_filter.addrule("size", formatsize)
         # licence filter
         license_code = {
