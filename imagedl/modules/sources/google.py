@@ -8,12 +8,13 @@ WeChat Official Account (微信公众号):
 '''
 import re
 import math
+import html
 import random
 import datetime
 from ..utils import Filter
 from bs4 import BeautifulSoup
 from .base import BaseImageClient
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlparse, parse_qs
 
 
 '''GoogleImageClient'''
@@ -69,27 +70,118 @@ class GoogleImageClient(BaseImageClient):
         return search_results
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
+        # judge whether url is valid image url
+        IMAGE_EXT_RE = re.compile(r"\.(?:jpg|jpeg|png|gif|webp|bmp|tiff)(?:$|\?)", re.IGNORECASE)
+        def isprobableimageurl(url: str):
+            # --filter invalid format
+            url = url.strip()
+            if not url:
+                return False
+            try:
+                p = urlparse(url)
+            except:
+                return False
+            if p.scheme not in ("http", "https"):
+                return False
+            # --filter out trackers, data URIs, or base64 placeholders
+            if url.startswith("data:") or "gstatic.com/images/branding" in url:
+                return False
+            # --clear vaild image urls
+            if IMAGE_EXT_RE.search(url):
+                return True
+            # --fall back heuristic: common image hosts or Google cached images that keep format in params
+            if any(h in p.netloc for h in ("ggpht.com", "googleusercontent.com", "gstatic.com")) and ("=s" in url or "imgurl=" in url):
+                return True
+            # --some sites serve images without extensions; allow a few well-known CDNs
+            if any(h in p.netloc for h in ("cdn.", "images.", "static.", "media.")):
+                return True
+            # --otherwise
+            return False
+        # clean escapes
+        def cleanescapes(s: str):
+            s = html.unescape(s)
+            s = s.replace("\\u003d", "=").replace("\\u0026", "&").replace("\\u002F", "/").replace("\\/", "/")
+            s = s.replace("\\u003c", "<").replace("\\u003e", ">").replace("\\u0027", "'")
+            s = s.replace("\\\"", "\"")
+            return s
+        # extract from img tags
+        def extractfromimgtags(soup: BeautifulSoup):
+            urls = set()
+            for img in soup.find_all("img"):
+                candidates = [img.get("src", ""), img.get("data-src", ""), img.get("data-iurl", "")]
+                srcset = img.get("srcset")
+                if srcset:
+                    for part in srcset.split(","):
+                        u = part.strip().split(" ")[0]
+                        candidates.append(u)
+                for u in candidates:
+                    u = u.strip()
+                    if u and isprobableimageurl(u):
+                        urls.add(u)
+            return urls
+        # extract from anchor imgres
+        def extractfromanchorimgres(soup: BeautifulSoup):
+            urls = set()
+            for a in soup.find_all("a", href=True):
+                href = a["href"]
+                if "/imgres?" in href:
+                    try:
+                        q = parse_qs(urlparse(href).query)
+                        for u in q.get("imgurl", []):
+                            u = cleanescapes(u)
+                            u = u.strip()
+                            if u and isprobableimageurl(u):
+                                urls.add(u)
+                    except:
+                        continue
+            return urls
+        # regex find
+        def regexfind(pattern: str, text: str):
+            for m in re.finditer(pattern, text, flags=re.IGNORECASE):
+                yield m.group(1)
+        # extract from scripts raw
+        def extractfromscriptsraw(text: str):
+            urls = set()
+            t = cleanescapes(text)
+            for key in ("ou", "murl", "image_url", "thumbnailUrl", "thumbnail_url"):
+                pat = rf'"{key}"\s*:\s*"(https?://[^"\\]+)"'
+                for u in regexfind(pat, t):
+                    u = u.strip()
+                    if u and isprobableimageurl(u):
+                        urls.add(u)
+            for u in regexfind(r'(https?://[^\s"\'<>]+)', t):
+                u = u.strip()
+                if u and isprobableimageurl(u):
+                    urls.add(u)
+            return urls
+        # extract all
+        def extractall(html_text: str):
+            soup = BeautifulSoup(html_text, "lxml")
+            image_urls = set()
+            image_urls |= extractfromimgtags(soup)
+            image_urls |= extractfromanchorimgres(soup)
+            image_urls |= extractfromscriptsraw(html_text)
+            return list(image_urls)
+        # construct valid image infos
         image_infos = []
-        soup = BeautifulSoup(search_result, 'lxml')
-        for div in soup.find_all(name='script'):
-            txt = str(div)
-            urls = re.findall(r"http[^\[]*?.(?:jpg|png|bmp|gif|jpeg)", txt)
-            if not urls: urls = re.findall(r"http[^\[]*?\.(?:jpg|png|bmp|gif|jpeg)", txt)
-            urls = [bytes(url, "utf-8").decode("unicode-escape") for url in urls]
-            for url in urls:
-                if not url.strip(): continue
-                image_info = {
-                    'candidate_urls': [url.strip()], 'raw_data': txt, 'identifier': url.strip(),
-                }
-                image_infos.append(image_info)
+        for url in extractall(search_result):
+            image_info = {
+                'candidate_urls': [url], 'raw_data': search_result, 'identifier': url,
+            }
+            image_infos.append(image_info)
+        # return
         return image_infos
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
         # base url
         base_url = 'https://www.google.com/search?'
         # apply filter
+        # --language
         if filters is not None:
             language = filters.pop('language', None)
+        else:
+            language = None
+        # --others
         filter_str = self._getfilter().apply(filters, sep=",")
         # construct search_urls
         search_urls, page_size = [], 100
