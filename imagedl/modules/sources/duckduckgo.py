@@ -77,6 +77,8 @@ class DuckduckgoImageClient(BaseImageClient):
         # logging
         self.logger_handle.info(f'Start to search images using {self.source}.')
         # obtain image infos
+        self.default_headers = self.default_search_headers
+        self._initsession()
         image_infos, base_url, page_size = [], 'https://duckduckgo.com/', 100
         params = {
             "o": "json", "q": "dogs", "l": "wt-wt", "vqd": "4-39911919969715559825435217871297706556",
