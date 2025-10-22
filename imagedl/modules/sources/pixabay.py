@@ -57,11 +57,11 @@ class PixabayImageClient(BaseImageClient):
         return image_infos
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
-        base_url = 'https://pixabay.com/api/?key={}&q={}&per_page={}&page={}'
+        base_url = 'https://pixabay.com/api/?key={api_key}&q={keyword}&per_page={page_size}&page={page}'
         filter_str = self._getfilter().apply(filters, sep='&')
         search_urls, page_size = [], 20
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
-            search_url = base_url.format(self.api_key, quote(keyword), page_size, pn+1)
+            search_url = base_url.format(api_key=self.api_key, keyword=quote(keyword), page_size=page_size, page=pn+1)
             if filter_str: search_url += f'&{filter_str}'
             search_urls.append(search_url)
         return search_urls

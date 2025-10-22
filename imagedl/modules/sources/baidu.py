@@ -68,11 +68,11 @@ class BaiduImageClient(BaseImageClient):
         return image_infos
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
-        base_url = 'http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&word={}&pn={}&rn={}'
+        base_url = 'http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&word={keyword}&pn={page}&rn={page_size}'
         filter_str = self._getfilter().apply(filters, sep="&")
         search_urls, page_size = [], 30
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
-            search_url = base_url.format(quote(keyword), pn * page_size, page_size)
+            search_url = base_url.format(keyword=quote(keyword), page=pn*page_size, page_size=page_size)
             if filter_str: search_url += f'&{filter_str}'
             search_urls.append(search_url)
         return search_urls

@@ -46,12 +46,12 @@ class BingImageClient(BaseImageClient):
         return image_infos
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
-        base_url = 'https://www.bing.com/images/async?q={}&first={}'
+        base_url = 'https://www.bing.com/images/async?q={keyword}&first={page}'
         filter_str = self._getfilter().apply(filters)
         filter_str = "&qft=" + filter_str if filter_str else ""
         search_urls, page_size = [], 20
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
-            search_url = base_url.format(quote(keyword), pn) + filter_str
+            search_url = base_url.format(keyword=quote(keyword), page=pn*page_size) + filter_str
             search_urls.append(search_url)
         return search_urls
     '''_getfilter: refer to https://github.com/hellock/icrawler/blob/master/icrawler/builtin/bing.py'''
