@@ -19,13 +19,14 @@ class PixabayImageClient(BaseImageClient):
     source = 'PixabayImageClient'
     def __init__(self, api_key=None, **kwargs):
         super(PixabayImageClient, self).__init__(**kwargs)
-        self.default_headers = {
+        self.default_search_headers = {
             'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
             'Referer': 'keep-alive',
             'Upgrade-Insecure-Requests': '1',
         }
-        self.session.headers.update(self.default_headers)
+        self.default_headers = self.default_search_headers
+        self._initsession()
         self.api_key = random.choice([
             '52293499-20edab5a9aeb2872ddc6cf68d', '51464414-1d83eb06bfdf3164b71156c0d', '50096047-8bb459140d4c19e045f4f2381', '35428194-f806941a429b19ee5838722ec',
             '43843784-ca8a7d4eb022dffa63faad957', '34748321-56ec586673804760cca13f7f6', '22850428-9964a4ca16315545d67c15abc', '20524560-a948ec896d1e8c0b8ba1135a6',

@@ -22,7 +22,7 @@ class DuckduckgoImageClient(BaseImageClient):
     def __init__(self, **kwargs):
         if 'maintain_session' not in kwargs: kwargs['maintain_session'] = True
         super(DuckduckgoImageClient, self).__init__(**kwargs)
-        self.default_headers = {
+        self.default_search_headers = {
             "Accept": "*/*",
             "Accept-Encoding": "gzip, deflate, br, zstd",
             "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
@@ -36,7 +36,8 @@ class DuckduckgoImageClient(BaseImageClient):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
             "Priority": "u=1, i",
         }
-        self.session.headers.update(self.default_headers)
+        self.default_headers = self.default_search_headers
+        self._initsession()
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
         # parse json text in safety
@@ -52,7 +53,8 @@ class DuckduckgoImageClient(BaseImageClient):
             if ('thumbnail' in item) and isinstance(item['thumbnail'], str) and item['thumbnail'].strip():
                 candidate_urls.append(item['thumbnail'])
             image_info = {
-                'candidate_urls': candidate_urls, 'raw_data': item, 'identifier': item['image_token'],
+                'candidate_urls': candidate_urls, 'raw_data': item, 'identifier': item['image_token'], 
+                'next': search_result['next'].strip() if 'next' in search_result else '',
             }
             image_infos.append(image_info)
         # return
@@ -90,6 +92,9 @@ class DuckduckgoImageClient(BaseImageClient):
                     self._search(search_urls=[search_url], bar=bar, image_infos=image_infos, request_overrides=request_overrides)
                 else:
                     search_url = base_url + image_infos[-1]['next']
+                    if not image_infos[-1]['next']:
+                        bar()
+                        continue
                     self._search(search_urls=[search_url], bar=bar, image_infos=image_infos, request_overrides=request_overrides)
         # logging
         image_infos = self._removeduplicates(image_infos)

@@ -25,7 +25,7 @@ from ..utils import touchdir, LoggerHandle, Filter
 '''BaseImageClient'''
 class BaseImageClient():
     source = 'BaseImageClient'
-    def __init__(self, auto_set_proxies: bool = True, maintain_headers: bool = False, random_update_ua: bool = False, max_retries: int = 5, maintain_session: bool = False, 
+    def __init__(self, auto_set_proxies: bool = True, random_update_ua: bool = False, max_retries: int = 5, maintain_session: bool = False, 
                  logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_outputs', proxy_sources: list = None):
         # set up work dir
         touchdir(work_dir)
@@ -37,16 +37,20 @@ class BaseImageClient():
         self.random_update_ua = random_update_ua
         self.maintain_session = maintain_session
         self.auto_set_proxies = auto_set_proxies
-        self.maintain_headers = maintain_headers
         # init requests.Session
-        self.session = requests.Session()
-        self.default_headers = {'User-Agent': UserAgent().random}
-        self.session.headers.update(self.default_headers)
+        self.default_search_headers = {'User-Agent': UserAgent().random}
+        self.default_download_headers = {'User-Agent': UserAgent().random}
+        self.default_headers = self.default_search_headers
+        self._initsession()
         # proxied_session_client
         self.proxied_session_client = freeproxy.ProxiedSessionClient(
             proxy_sources=['KuaidailiProxiedSession', 'IP3366ProxiedSession', 'QiyunipProxiedSession', 'ProxyhubProxiedSession', 'ProxydbProxiedSession'] if proxy_sources is None else proxy_sources, 
             disable_print=True
         ) if auto_set_proxies else None
+    '''_initsession'''
+    def _initsession(self):
+        self.session = requests.Session()
+        self.session.headers = self.default_headers
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
         raise NotImplementedError('not to be implemented')
@@ -99,6 +103,8 @@ class BaseImageClient():
         # construct search urls
         search_urls = self._constructsearchurls(keyword=keyword, search_limits=search_limits, filters=filters)
         # multi threadings for searching images
+        self.default_headers = self.default_search_headers
+        self._initsession()
         task_pool, image_infos = [], []
         with alive_bar(len(search_urls)) as bar:
             for _ in range(num_threadings):
@@ -151,6 +157,8 @@ class BaseImageClient():
         # logging
         self.logger_handle.info(f'Start to download images using {self.source}.')
         # multi threadings for downloading images
+        self.default_headers = self.default_download_headers
+        self._initsession()
         task_pool, downloaded_image_infos = [], []
         with alive_bar(len(image_infos)) as bar:
             for _ in range(num_threadings):
@@ -169,14 +177,9 @@ class BaseImageClient():
     def get(self, url, **kwargs):
         resp = None
         for _ in range(self.max_retries):
-            headers = self.session.headers
             if not self.maintain_session:
-                self.session = requests.Session()
-                if self.maintain_headers:
-                    self.session.headers = headers
-                else:
-                    self.session.headers = self.default_headers
-                    if self.random_update_ua: self.session.headers.update({'User-Agent': UserAgent().random})
+                self._initsession()
+                if self.random_update_ua: self.session.headers.update({'User-Agent': UserAgent().random})
             if self.auto_set_proxies:
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
@@ -197,14 +200,9 @@ class BaseImageClient():
     def post(self, url, **kwargs):
         resp = None
         for _ in range(self.max_retries):
-            headers = self.session.headers
             if not self.maintain_session:
-                self.session = requests.Session()
-                if self.maintain_headers:
-                    self.session.headers = headers
-                else:
-                    self.session.headers = self.default_headers
-                    if self.random_update_ua: self.session.headers.update({'User-Agent': UserAgent().random})
+                self._initsession()
+                if self.random_update_ua: self.session.headers.update({'User-Agent': UserAgent().random})
             if self.auto_set_proxies:
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
