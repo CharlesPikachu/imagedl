@@ -17,10 +17,10 @@
     <img src="https://img.shields.io/github/license/CharlesPikachu/imagedl.svg" alt="license">
   </a>
   <a href="https://pypi.org/project/pyimagedl/">
-    <img src="https://pepy.tech/badge/pyimagedl" alt="PyPI - Downloads (pepy)">
+    <img src="https://static.pepy.tech/badge/pyimagedl" alt="PyPI - Downloads">
   </a>
   <a href="https://pypi.org/project/pyimagedl/">
-    <img src="https://img.shields.io/pypi/dm/pyimagedl?style=flat-square" alt="PyPI - Downloads">
+    <img src="https://static.pepy.tech/badge/pyimagedl/month" alt="PyPI - Downloads">
   </a>
   <a href="https://github.com/CharlesPikachu/imagedl/issues">
     <img src="https://isitmaintained.com/badge/resolution/CharlesPikachu/imagedl.svg" alt="issue resolution">
