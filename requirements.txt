@@ -9,3 +9,4 @@ json-repair
 prettytable
 platformdirs
 pathvalidate
+imghdr
