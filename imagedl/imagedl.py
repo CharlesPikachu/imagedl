@@ -39,7 +39,7 @@ class ImageClient():
         if image_source is None: random.choice(ImageClientBuilder.REGISTERED_MODULES.keys())
         # instance image_client
         default_image_client_cfg = {
-            'work_dir': 'imagedl_downloaded_images', 'logger_handle': self.logger_handle, 'type': image_source,
+            'work_dir': 'imagedl_outputs', 'logger_handle': self.logger_handle, 'type': image_source,
         }
         default_image_client_cfg.update(init_image_client_cfg)
         self.image_client = BuildImageClient(module_cfg=default_image_client_cfg)
