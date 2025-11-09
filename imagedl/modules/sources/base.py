@@ -99,7 +99,7 @@ class BaseImageClient():
     '''search'''
     def search(self, keyword, search_limits=1000, num_threadings=5, filters: dict = None, request_overrides: dict = {}):
         # logging
-        self.logger_handle.info(f'Start to search images using {self.source}.')
+        self.logger_handle.info(f'Start to search images using {self.source}.', disable_print=self.disable_print)
         # construct search urls
         search_urls = self._constructsearchurls(keyword=keyword, search_limits=search_limits, filters=filters)
         # multi threadings for searching images
@@ -120,7 +120,7 @@ class BaseImageClient():
             self._savetopkl(image_infos, os.path.join(work_dir, 'search_results.pkl'))
         else:
             work_dir = self.work_dir
-        self.logger_handle.info(f'Finished searching images using {self.source}. Search results have been saved to {work_dir}, valid items: {len(image_infos)}.')
+        self.logger_handle.info(f'Finished searching images using {self.source}. Search results have been saved to {work_dir}, valid items: {len(image_infos)}.', disable_print=self.disable_print)
         # return
         return image_infos
     '''_getfilter'''
@@ -155,7 +155,7 @@ class BaseImageClient():
     '''download'''
     def download(self, image_infos, num_threadings=5, request_overrides: dict = {}):
         # logging
-        self.logger_handle.info(f'Start to download images using {self.source}.')
+        self.logger_handle.info(f'Start to download images using {self.source}.', disable_print=self.disable_print)
         # multi threadings for downloading images
         self.default_headers = self.default_download_headers
         self._initsession()
@@ -172,7 +172,7 @@ class BaseImageClient():
             self._savetopkl(downloaded_image_infos, os.path.join(work_dir, 'download_results.pkl'))
         else:
             work_dir = self.work_dir
-        self.logger_handle.info(f'Finished downloading images using {self.source}. Download results have been saved to {work_dir}, valid downloads: {len(downloaded_image_infos)}.')
+        self.logger_handle.info(f'Finished downloading images using {self.source}. Download results have been saved to {work_dir}, valid downloads: {len(downloaded_image_infos)}.', disable_print=self.disable_print)
     '''get'''
     def get(self, url, **kwargs):
         resp = None
