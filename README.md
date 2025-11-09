@@ -37,6 +37,7 @@
 
 # What's New
 
+- 2025-11-10: Released pyimagedl v0.1.8 — fix logging and requirements.
 - 2025-10-22: Released pyimagedl v0.1.7 — refactor codes for google and DuckDuckGo, fix base module requests bugs, and add sogou image search.
 - 2025-10-22: Released pyimagedl v0.1.6 — Fix serpapisearch bugs, more robust code structure, add DuckDuckGo image search.
 - 2025-10-21: Released pyimagedl v0.1.5 — Fix maintain session bugs, support pixabay and yandex image search.
@@ -51,7 +52,7 @@ imagedl lets you search for and download images from specific websites. If you f
 
 # Support Image Client
 
-|  ImageClient_EN                |  ImageClient_CN    |   Search           |  Download            |    Code Snippet                                                                                                    |
+|  ImageClient (EN)              |  ImageClient (CN)  |   Search           |  Download            |    Code Snippet                                                                                                    |
 |  :----:                        |  :----:            |   :----:           |  :----:              |    :----:                                                                                                          |
 |  BaiduImageClient              |  百度图片          |   ✓                |  ✓                   |    [baidu.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/baidu.py)                |
 |  BingImageClient               |  必应图片          |   ✓                |  ✓                   |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)                  |
@@ -96,7 +97,7 @@ For class `ImageClient`, the acceptable arguments include,
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
-- `request_overrides` (`dict`, default: `{}`): Requests.get kwargs such as `{'headers': {'User-Agent': xxx}, 'proxies': {}}`.
+- `request_overrides` (`dict`, default: `{}`): Requests.get (or Requests.post) kwargs such as `{'headers': {'User-Agent': xxx}, 'proxies': {}}`.
 
 The demonstration is as follows,
 

@@ -19,7 +19,7 @@ For class `ImageClient`, the acceptable arguments include,
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
-- `request_overrides` (`dict`, default: `{}`): Requests.get kwargs such as `{'headers': {'User-Agent': xxx}, 'proxies': {}}`.
+- `request_overrides` (`dict`, default: `{}`): Requests.get (or Requests.post) kwargs such as `{'headers': {'User-Agent': xxx}, 'proxies': {}}`.
 
 The demonstration is as follows,
 
