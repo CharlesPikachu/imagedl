@@ -117,6 +117,7 @@ class BaseImageClient():
         self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
         if len(image_infos) > 0:
             work_dir = image_infos[0]['work_dir']
+            touchdir(work_dir)
             self._savetopkl(image_infos, os.path.join(work_dir, 'search_results.pkl'))
         else:
             work_dir = self.work_dir
@@ -169,6 +170,7 @@ class BaseImageClient():
         # logging
         if len(downloaded_image_infos) > 0:
             work_dir = downloaded_image_infos[0]['work_dir']
+            touchdir(work_dir)
             self._savetopkl(downloaded_image_infos, os.path.join(work_dir, 'download_results.pkl'))
         else:
             work_dir = self.work_dir
