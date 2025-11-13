@@ -89,25 +89,25 @@ class ImageClient():
     '-i', '--image-source', '--image_source', default='BaiduImageClient', help='The image search and download source.', type=click.Choice(ImageClientBuilder.REGISTERED_MODULES.keys(), case_sensitive=False), show_default=True, 
 )
 @click.option(
-    '-s', '--search_limits', default=1000, help='Scale of image downloads.', type=click.IntRange(min=1, max=1e8), show_default=True,
+    '-s', '--search-limits', '--search_limits', default=1000, help='Scale of image downloads.', type=click.IntRange(min=1, max=1e8), show_default=True,
 )
 @click.option(
     '-n', '--num-threadings', '--num_threadings', default=5, help='Number of threads used.', type=click.IntRange(min=1, max=256), show_default=True,
 )
 @click.option(
-    '-c', '--init_image_client_cfg', default=None, help='Client config such as `work_dir` as a JSON string.', type=str, show_default=True,
+    '-c', '--init-image-client-cfg', '--init_image_client_cfg', default=None, help='Client config such as `work_dir` as a JSON string.', type=str, show_default=True,
 )
 @click.option(
-    '-r', '--request_overrides', default=None, help='Requests.get kwargs such as `headers` and `proxies` as a JSON string.', type=str, show_default=True,
+    '-r', '--request-overrides', '--request_overrides', default=None, help='Requests.get kwargs such as `headers` and `proxies` as a JSON string.', type=str, show_default=True,
 )
 def ImageClientCMD(keyword, image_source, search_limits, num_threadings, init_image_client_cfg, request_overrides):
     # load json string
     if init_image_client_cfg is not None:
-        init_image_client_cfg = json_repair.loads(init_image_client_cfg)
+        init_image_client_cfg = json_repair.loads(init_image_client_cfg) or {}
     else:
         init_image_client_cfg = {}
     if request_overrides is not None:
-        request_overrides = json_repair.loads(request_overrides)
+        request_overrides = json_repair.loads(request_overrides) or {}
     else:
         request_overrides = {}
     # instance image client
