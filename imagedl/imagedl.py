@@ -102,14 +102,14 @@ class ImageClient():
 )
 def ImageClientCMD(keyword, image_source, search_limits, num_threadings, init_image_client_cfg, request_overrides):
     # load json string
-    if init_image_client_cfg is not None:
-        init_image_client_cfg = json_repair.loads(init_image_client_cfg) or {}
-    else:
-        init_image_client_cfg = {}
-    if request_overrides is not None:
-        request_overrides = json_repair.loads(request_overrides) or {}
-    else:
-        request_overrides = {}
+    def _safe_load(string):
+        if string is not None:
+            result = json_repair.loads(string) or {}
+        else:
+            result = {}
+        return result
+    init_image_client_cfg = _safe_load(init_image_client_cfg)
+    request_overrides = _safe_load(request_overrides)
     # instance image client
     image_client = ImageClient(
         image_source=image_source, init_image_client_cfg=init_image_client_cfg, request_overrides=request_overrides, search_limits=search_limits, num_threadings=num_threadings,
