@@ -59,6 +59,7 @@
 
 # 🆕 What's New
 
+- 2025-11-16: Released pyimagedl v0.2.1 — fixed some minor bugs in duckduckgo and BaseImageClient.
 - 2025-11-16: Released pyimagedl v0.2.0 — upgrade ImageClient and fixed some minor bugs.
 - 2025-11-10: Released pyimagedl v0.1.8 — fix logging and requirements.
 - 2025-10-22: Released pyimagedl v0.1.7 — refactor codes for google and DuckDuckGo, fix base module requests bugs, and add sogou image search.
