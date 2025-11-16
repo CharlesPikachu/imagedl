@@ -55,7 +55,7 @@ def main():
         if client_name in ['BaiduImageClient', 'DuckduckgoImageClient']:
             client = client_module(
                 disable_print=False, work_dir=tmp_dir, auto_set_proxies=True, max_retries=20,
-                proxy_sources=['KuaidailiProxiedSession', 'KxdailiProxiedSession']
+                proxy_sources=['FineProxyProxiedSession']
             )
         else:
             client = client_module(disable_print=False, work_dir=tmp_dir, auto_set_proxies=False)
