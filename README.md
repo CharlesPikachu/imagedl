@@ -31,7 +31,27 @@
 </p>
 
 <p align="center">
-  <a href="https://imagedl.readthedocs.io/"><strong>📚 Documents: imagedl.readthedocs.io</strong></a>
+  <a href="https://imagedl.readthedocs.io/">
+    <strong>📚 Documents: imagedl.readthedocs.io</strong>
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://charlespikachu.github.io/imagedl/">
+    <strong>🧪 Online API Health &amp; Demo: charlespikachu.github.io/imagedl</strong>
+  </a>
+  <br />
+  <sub>
+    Automatically runs daily checks on all registered imagedl modules (search + download)
+    via GitHub Actions and visualizes the latest results on this page.
+  </sub>
+  <br /><br />
+  <a href="https://charlespikachu.github.io/imagedl/">
+    <img
+      alt="demo"
+      src="https://img.shields.io/badge/demo-online-brightgreen?style=for-the-badge"
+    />
+  </a>
 </p>
 
 
