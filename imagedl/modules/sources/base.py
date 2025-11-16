@@ -175,6 +175,8 @@ class BaseImageClient():
         else:
             work_dir = self.work_dir
         self.logger_handle.info(f'Finished downloading images using {self.source}. Download results have been saved to {work_dir}, valid downloads: {len(downloaded_image_infos)}.', disable_print=self.disable_print)
+        # return
+        return downloaded_image_infos
     '''get'''
     def get(self, url, **kwargs):
         resp = None

@@ -31,7 +31,7 @@
 </p>
 
 <p align="center">
-  <a href="https://imagedl.readthedocs.io/">📚 Documents: imagedl.readthedocs.io</a>
+  <a href="https://imagedl.readthedocs.io/"><strong>📚 Documents: imagedl.readthedocs.io</strong></a>
 </p>
 
 
