@@ -1,6 +1,6 @@
 {
   "date": "2025-11-16",
-  "timestamp_utc": "2025-11-16T11:59:16.460073+00:00",
+  "timestamp_utc": "2025-11-16T18:07:16.720304+00:00",
   "query": "Cute Animals",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,24 +10,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 35,
-      "n_downloaded": 9,
+      "n_results": 12,
+      "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/BingImageClient/00000001.jpeg",
-        "daily_test_results/BingImageClient/00000002.jpeg",
-        "daily_test_results/BingImageClient/00000003.jpeg",
         "daily_test_results/BingImageClient/00000004.jpeg",
+        "daily_test_results/BingImageClient/00000008.jpeg",
         "daily_test_results/BingImageClient/00000005.jpeg",
+        "daily_test_results/BingImageClient/00000001.jpeg",
         "daily_test_results/BingImageClient/00000006.jpeg",
-        "daily_test_results/BingImageClient/00000007.jpeg",
+        "daily_test_results/BingImageClient/00000002.jpeg",
         "daily_test_results/BingImageClient/00000009.jpeg",
+        "daily_test_results/BingImageClient/00000007.jpeg",
+        "daily_test_results/BingImageClient/00000003.jpeg",
         "daily_test_results/BingImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "http://getwallpapers.com/wallpaper/full/4/a/5/947707-cute-baby-animals-wallpapers-1920x1080-for-samsung-galaxy.jpg",
-        "https://wallpapercave.com/wp/wp2698601.jpg",
-        "https://wallpaperaccess.com/full/536212.jpg"
+        "https://wallpaperaccess.com/full/536212.jpg",
+        "http://getwallpapers.com/wallpaper/full/c/6/1/947646-cute-baby-animals-wallpapers-1920x1080-for-4k-monitor.jpg",
+        "https://wallpaperaccess.com/full/536225.jpg"
       ]
     },
     {
@@ -39,16 +40,16 @@
       "n_downloaded": 5,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/BaiduImageClient/00000002.jpeg",
-        "daily_test_results/BaiduImageClient/00000004.jpeg",
-        "daily_test_results/BaiduImageClient/00000006.jpeg",
         "daily_test_results/BaiduImageClient/00000008.jpeg",
-        "daily_test_results/BaiduImageClient/00000009.jpeg"
+        "daily_test_results/BaiduImageClient/00000006.jpeg",
+        "daily_test_results/BaiduImageClient/00000002.jpeg",
+        "daily_test_results/BaiduImageClient/00000009.jpeg",
+        "daily_test_results/BaiduImageClient/00000003.jpeg"
       ],
       "search_samples": [
         "https://hellorfimg.zcool.cn/large/2437059527.jpg",
         "https://res.cqnews.net/contentcloud/1/REPRINT/DEFAULT/PICTURE/2024/6/12/2712af869d1941519bde373972276dce_wh1024x683.png",
-        "https://hellorfimg.zcool.cn/large/2176938441.jpg"
+        "https://hellorfimg.zcool.cn/large/1233741550.jpg"
       ]
     },
     {
@@ -56,25 +57,24 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 219,
-      "n_downloaded": 10,
+      "n_results": 220,
+      "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/GoogleImageClient/00000001.jpeg",
-        "daily_test_results/GoogleImageClient/00000002.jpeg",
-        "daily_test_results/GoogleImageClient/00000003.jpeg",
         "daily_test_results/GoogleImageClient/00000004.jpeg",
-        "daily_test_results/GoogleImageClient/00000005.jpeg",
-        "daily_test_results/GoogleImageClient/00000006.jpeg",
-        "daily_test_results/GoogleImageClient/00000007.jpeg",
         "daily_test_results/GoogleImageClient/00000008.jpeg",
+        "daily_test_results/GoogleImageClient/00000005.jpeg",
+        "daily_test_results/GoogleImageClient/00000001.jpeg",
+        "daily_test_results/GoogleImageClient/00000006.jpeg",
+        "daily_test_results/GoogleImageClient/00000002.jpeg",
         "daily_test_results/GoogleImageClient/00000009.jpeg",
-        "daily_test_results/GoogleImageClient/00000010.jpeg"
+        "daily_test_results/GoogleImageClient/00000007.jpeg",
+        "daily_test_results/GoogleImageClient/00000003.jpeg"
       ],
       "search_samples": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaL2KK4SujNYiJe3DWyw0D1NDTq8h-VDp1zimDCtiE&s=0",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5R5oyv4FQ4vl5kgqdMHQI94TH4U9ZsaXWiA&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQMXAtI2Raus4gxA_W83SwiG9cX9p3cSRR6g&s"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDyKU0iZkzjw4tedchyZVmqa2me-dZ0rYVyWdq1CMU85GtkzGdepIs&s=0",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGteJ_j7HyI9PnoIObXXvgNzRz5Ey7GTBWg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlMpq6jmTtxfVljePnoygNiRFgQYgOHb-jNvBtrqaEPup4kJEKFaKQ&s=0"
       ]
     },
     {
@@ -86,14 +86,14 @@
       "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/I360ImageClient/00000001.jpeg",
-        "daily_test_results/I360ImageClient/00000002.jpeg",
-        "daily_test_results/I360ImageClient/00000003.jpeg",
         "daily_test_results/I360ImageClient/00000004.jpeg",
         "daily_test_results/I360ImageClient/00000005.jpeg",
+        "daily_test_results/I360ImageClient/00000001.jpeg",
         "daily_test_results/I360ImageClient/00000006.jpeg",
-        "daily_test_results/I360ImageClient/00000007.jpeg",
+        "daily_test_results/I360ImageClient/00000002.jpeg",
         "daily_test_results/I360ImageClient/00000009.jpeg",
+        "daily_test_results/I360ImageClient/00000007.jpeg",
+        "daily_test_results/I360ImageClient/00000003.jpeg",
         "daily_test_results/I360ImageClient/00000010.jpeg"
       ],
       "search_samples": [
@@ -111,21 +111,21 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
+        "daily_test_results/PixabayImageClient/00000004.png",
+        "daily_test_results/PixabayImageClient/00000008.jpeg",
+        "daily_test_results/PixabayImageClient/00000006.png",
         "daily_test_results/PixabayImageClient/00000001.jpeg",
         "daily_test_results/PixabayImageClient/00000002.jpeg",
-        "daily_test_results/PixabayImageClient/00000003.jpeg",
-        "daily_test_results/PixabayImageClient/00000004.png",
         "daily_test_results/PixabayImageClient/00000005.png",
-        "daily_test_results/PixabayImageClient/00000006.png",
+        "daily_test_results/PixabayImageClient/00000009.png",
         "daily_test_results/PixabayImageClient/00000007.jpeg",
-        "daily_test_results/PixabayImageClient/00000008.png",
-        "daily_test_results/PixabayImageClient/00000009.jpeg",
+        "daily_test_results/PixabayImageClient/00000003.jpeg",
         "daily_test_results/PixabayImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/gc4385a2ef4cdd7835065d1706a7d35b6db25f8ce7f4b180ab2c7a76585e95498a35f5197699ed477c799421fe23d084dc0c4d1faddd5e950cfed30b3920ded57_1280.jpg",
-        "https://pixabay.com/get/g9dc25191056435b2d1a32924b994bff67185e02bd21e90f8c4ac57ef72343b447f7bb03b2a62635b28edfdd778de046edc1f0cda14a5770fba3f56bcb34fa677_1280.jpg",
-        "https://pixabay.com/get/gb2db46091c9ee046b1dafb654d02a5dd768275daef24016b6af5dd09ec424aa874f456ab0ec6141165f3cac7b04bfb0ef79bf785a8e37315cd09880d0e3bcade_1280.jpg"
+        "https://pixabay.com/get/g54e6d58b1649fd70ac87f99ee5df90436f1c5d74663df0649b437a7464538d8dd82d9963103f38cf276b29a61cf2a65eb3c7d07e13aa331bf003a2c776f86712_1280.jpg",
+        "https://pixabay.com/get/g0524acd810d100e9ad7b5ae216e5a4fb24aeee1e2cd97081989df2a0f546a25737a82dd2ee11aaa3ac428a53e608bbf9743c7cf1b3330e1a976e49bb34d3b43f_1280.jpg",
+        "https://pixabay.com/get/g0bf330f769b409168a44d738e413a291b36fc27577893005f0424bd2c6efc8a6867df9fa7b5314be25b4be6c5d009a0cf8ad0d69f2c55db55bd4c0a815bcc82a_1280.jpg"
       ]
     },
     {
@@ -137,21 +137,21 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/YandexImageClient/00000001.jpeg",
-        "daily_test_results/YandexImageClient/00000002.jpeg",
-        "daily_test_results/YandexImageClient/00000003.jpeg",
         "daily_test_results/YandexImageClient/00000004.jpeg",
-        "daily_test_results/YandexImageClient/00000005.jpeg",
-        "daily_test_results/YandexImageClient/00000006.jpeg",
-        "daily_test_results/YandexImageClient/00000007.jpeg",
         "daily_test_results/YandexImageClient/00000008.jpeg",
+        "daily_test_results/YandexImageClient/00000005.jpeg",
+        "daily_test_results/YandexImageClient/00000001.jpeg",
+        "daily_test_results/YandexImageClient/00000006.jpeg",
+        "daily_test_results/YandexImageClient/00000002.jpeg",
         "daily_test_results/YandexImageClient/00000009.jpeg",
+        "daily_test_results/YandexImageClient/00000007.jpeg",
+        "daily_test_results/YandexImageClient/00000003.jpeg",
         "daily_test_results/YandexImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://ae01.alicdn.com/kf/S57ae80a54b344e5a90271ccb29a9193cz/DIY.jpg",
-        "https://i.pinimg.com/originals/2d/71/6d/2d716dd450b73383402f276d5f041655.jpg",
-        "https://www.tapeciarnia.pl/tapety/normalne/107715_maly_krolik_trawa.jpg"
+        "https://i.pinimg.com/originals/be/63/8d/be638d9b9a13859ee0a321a34b78c1ef.jpg",
+        "https://i.pinimg.com/originals/c6/93/3c/c6933c5b8a4efc80dae94fea73d473ba.jpg",
+        "https://yt3.ggpht.com/ytc/AMLnZu-wYBAsm8484u_0jWWDnv0eOZRkr2_f7nW8Sm6j=s900-c-k-c0x00ffffff-no-rj"
       ]
     },
     {
@@ -159,23 +159,24 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 96,
-      "n_downloaded": 9,
+      "n_results": 30,
+      "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/DuckduckgoImageClient/00000001.jpeg",
-        "daily_test_results/DuckduckgoImageClient/00000002.jpeg",
-        "daily_test_results/DuckduckgoImageClient/00000003.jpeg",
         "daily_test_results/DuckduckgoImageClient/00000004.jpeg",
-        "daily_test_results/DuckduckgoImageClient/00000005.jpeg",
-        "daily_test_results/DuckduckgoImageClient/00000006.jpeg",
-        "daily_test_results/DuckduckgoImageClient/00000007.jpeg",
         "daily_test_results/DuckduckgoImageClient/00000008.jpeg",
-        "daily_test_results/DuckduckgoImageClient/00000009.jpeg"
+        "daily_test_results/DuckduckgoImageClient/00000005.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000001.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000006.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000002.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000009.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000007.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000003.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000010.jpeg"
       ],
       "search_samples": [
         "https://factanimal.com/wp-content/uploads/2023/03/cute-red-panda.jpg",
-        "http://getwallpapers.com/wallpaper/full/4/a/5/947707-cute-baby-animals-wallpapers-1920x1080-for-samsung-galaxy.jpg",
+        "https://wallpaperaccess.com/full/536212.jpg",
         "https://wallpaperaccess.com/full/536225.jpg"
       ]
     },
@@ -188,15 +189,15 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/SogouImageClient/00000001.jpeg",
-        "daily_test_results/SogouImageClient/00000002.jpeg",
-        "daily_test_results/SogouImageClient/00000003.jpeg",
         "daily_test_results/SogouImageClient/00000004.jpeg",
-        "daily_test_results/SogouImageClient/00000005.jpeg",
-        "daily_test_results/SogouImageClient/00000006.jpeg",
-        "daily_test_results/SogouImageClient/00000007.jpeg",
         "daily_test_results/SogouImageClient/00000008.jpeg",
+        "daily_test_results/SogouImageClient/00000005.jpeg",
+        "daily_test_results/SogouImageClient/00000001.jpeg",
+        "daily_test_results/SogouImageClient/00000006.jpeg",
+        "daily_test_results/SogouImageClient/00000002.jpeg",
         "daily_test_results/SogouImageClient/00000009.jpeg",
+        "daily_test_results/SogouImageClient/00000007.jpeg",
+        "daily_test_results/SogouImageClient/00000003.jpeg",
         "daily_test_results/SogouImageClient/00000010.jpeg"
       ],
       "search_samples": [
