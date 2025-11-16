@@ -9,8 +9,8 @@
       --bg: #020617;
       --bg-elevated: rgba(15, 23, 42, 0.9);
       --border-subtle: rgba(148, 163, 184, 0.2);
-      --accent: #22d3ee;
-      --accent-soft: rgba(34, 211, 238, 0.16);
+      --accent: #facc15;          /* 皮卡丘黄 */
+      --accent-soft: rgba(250, 204, 21, 0.16);
       --danger: #fb7185;
       --text: #e5e7eb;
       --text-muted: #9ca3af;
@@ -39,6 +39,18 @@
     body {
       display: flex;
       justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* 粒子背景画布：放在内容后面但在背景前面 */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
     }
 
     .app {
@@ -48,6 +60,8 @@
       opacity: 0;
       transform: translateY(8px);
       transition: opacity 0.4s ease, transform 0.4s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .app-loaded {
@@ -63,7 +77,11 @@
       padding: 18px 22px;
       margin-bottom: 24px;
       border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.96),
+        rgba(24, 24, 27, 0.95)
+      );
       border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(18px);
@@ -72,6 +90,21 @@
     .header-title h1 {
       margin: 0 0 6px;
       font-size: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pika-badge {
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.4);
+      color: #facc15;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .header-title p {
@@ -103,8 +136,8 @@
     }
 
     .badge-ok {
-      background: rgba(45, 212, 191, 0.2);
-      color: #5eead4;
+      background: rgba(250, 204, 21, 0.22);
+      color: #facc15;
     }
 
     .badge-fail {
@@ -141,8 +174,9 @@
       position: relative;
       padding: 14px 16px 14px;
       border-radius: var(--radius-md);
-      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.04), transparent 45%),
-        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.05), transparent 55%),
+      background:
+        radial-gradient(circle at top left, rgba(250, 204, 21, 0.04), transparent 45%),
+        radial-gradient(circle at bottom right, rgba(253, 224, 71, 0.05), transparent 55%),
         var(--bg-elevated);
       border: 1px solid var(--border-subtle);
       box-shadow: 0 14px 35px rgba(15, 23, 42, 0.7);
@@ -156,7 +190,7 @@
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      border: 1px solid rgba(34, 211, 238, 0.18);
+      border: 1px solid rgba(250, 204, 21, 0.2);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s ease;
@@ -165,7 +199,7 @@
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 22px 50px rgba(15, 23, 42, 0.85);
-      border-color: rgba(148, 163, 184, 0.35);
+      border-color: rgba(250, 204, 21, 0.45);
     }
 
     .card:hover::before {
@@ -180,9 +214,14 @@
       margin-bottom: 10px;
     }
 
+    /* 模块名过长省略号显示，并用 title 提示完整内容 */
     .card-header h3 {
       margin: 0;
       font-size: 1rem;
+      max-width: 70%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .status-pill {
@@ -235,10 +274,13 @@
       color: #fecaca;
     }
 
+    /* Sample 文本自动换行，避免太长的 URL 撑爆布局 */
     .sample-text {
       margin: 6px 0 0;
       font-size: 0.75rem;
       color: var(--text-muted);
+      overflow-wrap: anywhere;
+      word-break: break-all;
     }
 
     .error-text {
@@ -279,7 +321,7 @@
     .gallery-item:hover {
       transform: translateY(-3px);
       box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
-      border-color: rgba(148, 163, 184, 0.38);
+      border-color: rgba(250, 204, 21, 0.45);
     }
 
     .gallery-item:hover img {
@@ -296,6 +338,10 @@
 
     .gallery-module {
       color: var(--text-muted);
+      max-width: 70%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .gallery-status {
@@ -337,6 +383,7 @@
 
       .header-title h1 {
         font-size: 1.35rem;
+        flex-wrap: wrap;
       }
 
       .header-meta {
@@ -348,11 +395,21 @@
   </style>
 </head>
 <body>
+  <!-- 粒子背景画布 -->
+  <canvas id="bg-canvas"></canvas>
+
   <div class="app">
     <header class="header">
       <div class="header-title">
-        <h1>imagedl API Health</h1>
-        <p>Daily auto-check of all registered modules using query: <code>"Cute Dogs"</code></p>
+        <span>
+          imagedl API Health
+        </span>
+        <span class="pika-badge" title="Pikachu-powered monitoring">
+          ⚡ Pikachu Mode
+        </span>
+        <p style="margin: 4px 0 0; font-size: 0.78rem; color: var(--text-muted);">
+          Author: <strong>Zhenchao Jin + GPT 5.1</strong>
+        </p>
       </div>
       <div class="header-meta">
         <span id="last-run" class="meta-pill">Last run: --</span>
@@ -383,7 +440,7 @@
     </main>
 
     <footer class="footer">
-      <!-- TODO: 换成你自己的 repo 链接 -->
+      Built with ⚡ by <strong>Zhenchao Jin + GPT 5.1</strong> ·
       <a href="https://github.com/your-name/imagedl-monitor" target="_blank" rel="noreferrer">
         View on GitHub
       </a>
@@ -419,10 +476,12 @@
     }
 
     function escapeHtml(str) {
-      return str
+      return String(str)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
     }
 
     function truncate(str, maxLen) {
@@ -436,14 +495,13 @@
 
       const statusClass = mod.ok ? "status-ok" : "status-fail";
       const statusText = mod.ok ? "Healthy" : "Issue";
-      const sample =
-        mod.search_samples && mod.search_samples[0]
-          ? truncate(mod.search_samples[0], 80)
-          : null;
+      const sampleRaw =
+        mod.search_samples && mod.search_samples[0] ? String(mod.search_samples[0]) : null;
+      const sampleShort = sampleRaw ? truncate(sampleRaw, 80) : null;
 
       card.innerHTML = `
         <div class="card-header">
-          <h3>${mod.name}</h3>
+          <h3 title="${escapeHtml(mod.name)}">${escapeHtml(mod.name)}</h3>
           <span class="status-pill ${statusClass}">${statusText}</span>
         </div>
         <div class="card-body">
@@ -467,7 +525,13 @@
               ${mod.download_ok ? "OK" : "FAIL"}
             </span>
           </div>
-          ${sample ? `<p class="sample-text">Sample: ${escapeHtml(sample)}</p>` : ""}
+          ${
+            sampleShort
+              ? `<p class="sample-text" title="${escapeHtml(sampleRaw)}">
+                   Sample: ${escapeHtml(sampleShort)}
+                 </p>`
+              : ""
+          }
           ${mod.error ? `<p class="error-text">${escapeHtml(mod.error)}</p>` : ""}
         </div>
       `;
@@ -479,10 +543,12 @@
       div.className = "gallery-item";
       div.innerHTML = `
         <div class="gallery-image-wrapper">
-          <img src="${imgPath}" alt="${mod.name} image" loading="lazy">
+          <img src="${imgPath}" alt="${escapeHtml(mod.name)} image" loading="lazy">
         </div>
         <div class="gallery-meta">
-          <span class="gallery-module">${mod.name}</span>
+          <span class="gallery-module" title="${escapeHtml(mod.name)}">
+            ${escapeHtml(mod.name)}
+          </span>
           <span class="gallery-status ${
             mod.ok ? "gallery-status-ok" : "gallery-status-fail"
           }">
@@ -493,7 +559,7 @@
       return div;
     }
 
-    async function init() {
+    async function initDashboard() {
       const cardsContainer = document.getElementById("cards-container");
       const galleryGrid = document.getElementById("gallery-grid");
       const app = document.querySelector(".app");
@@ -526,7 +592,100 @@
       }
     }
 
-    document.addEventListener("DOMContentLoaded", init);
+    /* 粒子背景：更亮、更明显的电光效果 */
+    function initParticles() {
+      const canvas = document.getElementById("bg-canvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      resize();
+      window.addEventListener("resize", resize);
+
+      const particles = [];
+      const maxParticles = Math.min(110, Math.floor(width / 12));
+
+      for (let i = 0; i < maxParticles; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          r: 1.5 + Math.random() * 2.5,
+          alpha: 0.5 + Math.random() * 0.5,
+          flicker: Math.random() * Math.PI * 2,
+        });
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, width, height);
+
+        // 粒子移动
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.flicker += 0.03;
+
+          if (p.x < -20) p.x = width + 20;
+          if (p.x > width + 20) p.x = -20;
+          if (p.y < -20) p.y = height + 20;
+          if (p.y > height + 20) p.y = -20;
+        }
+
+        // 画点 + 连线
+        for (let i = 0; i < particles.length; i++) {
+          const p1 = particles[i];
+          const flickerFactor = 0.6 + Math.sin(p1.flicker) * 0.4;
+
+          // 画点（偏黄的电光）
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(250, 204, 21, ${p1.alpha * flickerFactor})`;
+          ctx.shadowColor = "rgba(250, 204, 21, 0.5)";
+          ctx.shadowBlur = 8;
+          ctx.arc(p1.x, p1.y, p1.r, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          // 和附近粒子连线
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 180) {
+              const lineAlpha = (1 - dist / 180) * 0.55 * flickerFactor;
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(250, 250, 210, ${lineAlpha})`;
+              ctx.lineWidth = 0.7;
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      step();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initDashboard();
+      initParticles();
+    });
   </script>
 </body>
 </html>
