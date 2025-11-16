@@ -88,7 +88,7 @@ class BaseImageClient():
             try:
                 search_result = self._parsesearchresult(resp.text)
             except Exception as err:
-                self.logger_handle.error(err, disable_print=self.disable_print)
+                self.logger_handle.error(f'{self.source}._search >>> {search_url} (Error: {err})', disable_print=self.disable_print)
                 search_result = []
             if isinstance(search_result, dict):
                 image_infos.append(search_result)
@@ -96,6 +96,7 @@ class BaseImageClient():
                 assert isinstance(search_result, list)
                 image_infos.extend(search_result)
             bar()
+        return image_infos
     '''search'''
     def search(self, keyword, search_limits=1000, num_threadings=5, filters: dict = None, request_overrides: dict = {}):
         # logging
@@ -158,6 +159,7 @@ class BaseImageClient():
             else:
                 os.remove(file_path)
             bar()
+        return downloaded_image_infos
     '''download'''
     def download(self, image_infos, num_threadings=5, request_overrides: dict = {}):
         # logging
@@ -193,14 +195,14 @@ class BaseImageClient():
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
                 except Exception as err:
-                    self.logger_handle.error(err, disable_print=self.disable_print)
+                    self.logger_handle.error(f'{self.source}.get >>> {url} (Error: {err})', disable_print=self.disable_print)
                     self.session.proxies = {}
             else:
                 self.session.proxies = {}
             try:
                 resp = self.session.get(url, **kwargs)
             except Exception as err:
-                self.logger_handle.error(err, disable_print=self.disable_print)
+                self.logger_handle.error(f'{self.source}.get >>> {url} (Error: {err})', disable_print=self.disable_print)
                 continue
             if resp.status_code != 200: continue
             return resp
@@ -216,14 +218,14 @@ class BaseImageClient():
                 try:
                     self.session.proxies = self.proxied_session_client.getrandomproxy()
                 except Exception as err:
-                    self.logger_handle.error(err, disable_print=self.disable_print)
+                    self.logger_handle.error(f'{self.source}.post >>> {url} (Error: {err})', disable_print=self.disable_print)
                     self.session.proxies = {}
             else:
                 self.session.proxies = {}
             try:
                 resp = self.session.post(url, **kwargs)
             except Exception as err:
-                self.logger_handle.error(err, disable_print=self.disable_print)
+                self.logger_handle.error(f'{self.source}.post >>> {url} (Error: {err})', disable_print=self.disable_print)
                 continue
             if resp.status_code != 200: continue
             return resp
