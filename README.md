@@ -42,8 +42,10 @@
   </a>
   <br />
   <sub>
-    Automatically runs daily checks on all registered imagedl modules (search + download)
-    via GitHub Actions and visualizes the latest results on this page.
+    <em>
+      Automatically runs daily checks on all registered imagedl modules (search + download)
+      via GitHub Actions and visualizes the latest results on this page.
+    </em>
   </sub>
   <br /><br />
   <a href="https://charlespikachu.github.io/imagedl/">
