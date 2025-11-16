@@ -8,12 +8,11 @@ WeChat Official Account (微信公众号):
 '''
 import os
 import json
-import glob
 import shutil
 import contextlib
 from pathlib import Path
 from datetime import datetime, timezone
-from imagedl.modules import BaseModuleBuilder
+from imagedl.modules import ImageClientBuilder
 
 
 '''settings'''
@@ -51,7 +50,7 @@ def main():
     print(f"=== imagedl daily check @ {timestamp} (UTC) ===")
     print(f"Query: {QUERY}")
     # iter
-    for client_name, client_module in BaseModuleBuilder.REGISTERED_MODULES.items():
+    for client_name, client_module in ImageClientBuilder.REGISTERED_MODULES.items():
         print(f"\n[Module] {client_name}")
         client = client_module(disable_print=True, work_dir=tmp_dir)
         status = {
@@ -80,10 +79,11 @@ def main():
         # --download checking
         try:
             subset = image_infos[:MAX_DL_PER_CLIENT]
-            downloaded_image_infos = client.download(subset, num_threadings=1)
-            status["n_downloaded"] = len(downloaded_image_infos) if downloaded_image_infos is not None else 0
+            client.download(subset, num_threadings=1)
+            n_downloaded = len([os.path.join(r, f) for r, _, fs in os.walk(tmp_dir) for f in fs if f.lower().endswith(('.jpg','.jpeg','.png','.gif','.bmp','.tif','.tiff','.webp'))])
+            status["n_downloaded"] = n_downloaded
             status["download_ok"] = status["n_downloaded"] > 0
-            print(f"  Downloaded images: {len(downloaded_image_infos)} (Success)" if status["download_ok"] else f"  Downloaded images: {len(downloaded_image_infos)} (NULL)")
+            print(f"  Downloaded images: {n_downloaded} (Success)" if status["download_ok"] else f"  Downloaded images: {n_downloaded} (NULL)")
         except Exception as err:
             msg = f"download_error: {type(err).__name__}: {err}"
             status["error"] = f"{status['error']} | {msg}" if status["error"] else msg

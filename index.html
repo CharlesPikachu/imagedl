@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>imagedl API Health Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-elevated: rgba(15, 23, 42, 0.9);
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --accent: #22d3ee;
+      --accent-soft: rgba(34, 211, 238, 0.16);
+      --danger: #fb7185;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --radius-lg: 1.5rem;
+      --radius-md: 0.9rem;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1200px;
+      padding: 24px 18px 40px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .app-loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-title h1 {
+      margin: 0 0 6px;
+      font-size: 1.75rem;
+    }
+
+    .header-title p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .meta-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+    }
+
+    .badge {
+      border-color: transparent;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .badge-ok {
+      background: rgba(45, 212, 191, 0.2);
+      color: #5eead4;
+    }
+
+    .badge-fail {
+      background: rgba(248, 113, 113, 0.18);
+      color: #fecaca;
+    }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      margin-bottom: 14px;
+    }
+
+    .section-header h2 {
+      margin: 0 0 4px;
+      font-size: 1.3rem;
+    }
+
+    .section-header p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      position: relative;
+      padding: 14px 16px 14px;
+      border-radius: var(--radius-md);
+      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.04), transparent 45%),
+        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.05), transparent 55%),
+        var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      transform: translateY(0);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(34, 211, 238, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.85);
+      border-color: rgba(148, 163, 184, 0.35);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card-header h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .status-pill {
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .status-ok {
+      background: rgba(45, 212, 191, 0.2);
+      color: #5eead4;
+    }
+
+    .status-fail {
+      background: rgba(248, 113, 113, 0.16);
+      color: #fecaca;
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .metric-row.small {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .tag-ok,
+    .tag-fail {
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+    }
+
+    .tag-ok {
+      background: rgba(45, 212, 191, 0.15);
+      color: #6ee7b7;
+    }
+
+    .tag-fail {
+      background: rgba(248, 113, 113, 0.16);
+      color: #fecaca;
+    }
+
+    .sample-text {
+      margin: 6px 0 0;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .error-text {
+      margin: 6px 0 0;
+      font-size: 0.78rem;
+      color: var(--danger);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+      transform: translateY(0);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .gallery-image-wrapper {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .gallery-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.22s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+      border-color: rgba(148, 163, 184, 0.38);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 10px 8px;
+      font-size: 0.8rem;
+    }
+
+    .gallery-module {
+      color: var(--text-muted);
+    }
+
+    .gallery-status {
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+    }
+
+    .gallery-status-ok {
+      background: rgba(45, 212, 191, 0.16);
+      color: #6ee7b7;
+    }
+
+    .gallery-status-fail {
+      background: rgba(248, 113, 113, 0.16);
+      color: #fecaca;
+    }
+
+    .footer {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+      .header {
+        padding: 14px 14px;
+      }
+
+      .header-title h1 {
+        font-size: 1.35rem;
+      }
+
+      .header-meta {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-title">
+        <h1>imagedl API Health</h1>
+        <p>Daily auto-check of all registered modules using query: <code>"Cute Dogs"</code></p>
+      </div>
+      <div class="header-meta">
+        <span id="last-run" class="meta-pill">Last run: --</span>
+        <span id="overall-status" class="meta-pill badge">Loading...</span>
+      </div>
+    </header>
+
+    <main>
+      <section id="summary-section" class="section">
+        <div class="section-header">
+          <h2>Module Status</h2>
+          <p>Each card shows the latest search &amp; download health for a module.</p>
+        </div>
+        <div id="cards-container" class="cards-grid">
+          <!-- JS 动态填充 -->
+        </div>
+      </section>
+
+      <section id="gallery-section" class="section">
+        <div class="section-header">
+          <h2>Latest Image Gallery</h2>
+          <p>Real images downloaded in the most recent run, directly from this repo.</p>
+        </div>
+        <div id="gallery-grid" class="gallery-grid">
+          <!-- JS 动态填充 -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <!-- TODO: 换成你自己的 repo 链接 -->
+      <a href="https://github.com/your-name/imagedl-monitor" target="_blank" rel="noreferrer">
+        View on GitHub
+      </a>
+    </footer>
+  </div>
+
+  <script>
+    const SUMMARY_URL = "daily_test_results/summary_latest.json";
+
+    async function fetchSummary() {
+      const res = await fetch(SUMMARY_URL + "?cache-bust=" + Date.now());
+      if (!res.ok) {
+        throw new Error("Failed to load summary.json");
+      }
+      return res.json();
+    }
+
+    function setOverallStatus(data) {
+      const badge = document.getElementById("overall-status");
+      const lastRunEl = document.getElementById("last-run");
+      const modules = data.modules || [];
+      const allOk = modules.length > 0 && modules.every((m) => m.ok);
+      const okCount = modules.filter((m) => m.ok).length;
+
+      if (badge) {
+        badge.textContent = allOk ? "ALL GREEN" : `${okCount}/${modules.length} OK`;
+        badge.classList.toggle("badge-ok", allOk);
+        badge.classList.toggle("badge-fail", !allOk);
+      }
+      if (lastRunEl) {
+        lastRunEl.textContent = `Last run: ${data.timestamp_utc || data.date}`;
+      }
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    function truncate(str, maxLen) {
+      if (!str || str.length <= maxLen) return str;
+      return str.slice(0, maxLen - 1) + "…";
+    }
+
+    function createModuleCard(mod) {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const statusClass = mod.ok ? "status-ok" : "status-fail";
+      const statusText = mod.ok ? "Healthy" : "Issue";
+      const sample =
+        mod.search_samples && mod.search_samples[0]
+          ? truncate(mod.search_samples[0], 80)
+          : null;
+
+      card.innerHTML = `
+        <div class="card-header">
+          <h3>${mod.name}</h3>
+          <span class="status-pill ${statusClass}">${statusText}</span>
+        </div>
+        <div class="card-body">
+          <div class="metric-row">
+            <span>Search results</span>
+            <span>${mod.n_results}</span>
+          </div>
+          <div class="metric-row">
+            <span>Images downloaded</span>
+            <span>${mod.n_downloaded}</span>
+          </div>
+          <div class="metric-row small">
+            <span>Search</span>
+            <span class="${mod.search_ok ? "tag-ok" : "tag-fail"}">
+              ${mod.search_ok ? "OK" : "FAIL"}
+            </span>
+          </div>
+          <div class="metric-row small">
+            <span>Download</span>
+            <span class="${mod.download_ok ? "tag-ok" : "tag-fail"}">
+              ${mod.download_ok ? "OK" : "FAIL"}
+            </span>
+          </div>
+          ${sample ? `<p class="sample-text">Sample: ${escapeHtml(sample)}</p>` : ""}
+          ${mod.error ? `<p class="error-text">${escapeHtml(mod.error)}</p>` : ""}
+        </div>
+      `;
+      return card;
+    }
+
+    function createGalleryItem(mod, imgPath) {
+      const div = document.createElement("div");
+      div.className = "gallery-item";
+      div.innerHTML = `
+        <div class="gallery-image-wrapper">
+          <img src="${imgPath}" alt="${mod.name} image" loading="lazy">
+        </div>
+        <div class="gallery-meta">
+          <span class="gallery-module">${mod.name}</span>
+          <span class="gallery-status ${
+            mod.ok ? "gallery-status-ok" : "gallery-status-fail"
+          }">
+            ${mod.ok ? "OK" : "Issue"}
+          </span>
+        </div>
+      `;
+      return div;
+    }
+
+    async function init() {
+      const cardsContainer = document.getElementById("cards-container");
+      const galleryGrid = document.getElementById("gallery-grid");
+      const app = document.querySelector(".app");
+
+      try {
+        const data = await fetchSummary();
+        setOverallStatus(data);
+        const modules = data.modules || [];
+
+        modules.forEach((mod) => {
+          if (cardsContainer) {
+            cardsContainer.appendChild(createModuleCard(mod));
+          }
+          if (galleryGrid) {
+            (mod.downloaded_images || []).forEach((imgPath) => {
+              galleryGrid.appendChild(createGalleryItem(mod, imgPath));
+            });
+          }
+        });
+
+        if (app) {
+          app.classList.add("app-loaded");
+        }
+      } catch (err) {
+        console.error(err);
+        if (cardsContainer) {
+          cardsContainer.innerHTML =
+            '<p class="error-text">Failed to load latest results. Check if the workflow has run.</p>';
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>

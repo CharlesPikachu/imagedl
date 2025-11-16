@@ -61,9 +61,9 @@ class ImageClient():
             # download
             self.image_client.download(image_infos=image_infos, num_threadings=self.num_threadings, request_overrides=self.request_overrides)
     '''processinputs'''
-    def processinputs(self, input_tip=''):
+    def processinputs(self, input_tip='', prefix: str = '\n'):
         # accept user inputs
-        user_input = input(input_tip)
+        user_input = input(prefix + input_tip)
         # quit
         if user_input.lower() == 'q':
             self.logger_handle.info('Goodbye — thanks for using imagedl; come back anytime!')
@@ -81,7 +81,7 @@ class ImageClient():
 
 '''ImageClientCMD'''
 @click.command()
-@click.version_option()
+@click.version_option(version=__version__)
 @click.option(
     '-k', '--keyword', default=None, help='The keywords for the image search. If left empty, an interactive terminal will open automatically.', type=str, show_default=True,
 )

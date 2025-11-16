@@ -66,6 +66,8 @@ Imagedl lets you search for and download images from specific websites. If you f
 
 # 📦 Install
 
+You have three installation methods to choose from,
+
 ```sh
 # from pip
 pip install pyimagedl
