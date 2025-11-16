@@ -31,11 +31,11 @@
 </p>
 
 <p align="center">
-  <a href="https://imagedl.readthedocs.io/">Documents: imagedl.readthedocs.io</a>
+  <a href="https://imagedl.readthedocs.io/">📚 Documents: imagedl.readthedocs.io</a>
 </p>
 
 
-# What's New
+# 🆕 What's New
 
 - 2025-11-10: Released pyimagedl v0.1.8 — fix logging and requirements.
 - 2025-10-22: Released pyimagedl v0.1.7 — refactor codes for google and DuckDuckGo, fix base module requests bugs, and add sogou image search.
@@ -45,12 +45,12 @@
 - 2025-10-19: Released pyimagedl v0.1.3 — code cleanup, deprecated/invalid functions removed, new functions added.
 
 
-# Introduction
+# 📘 Introduction
 
-imagedl lets you search for and download images from specific websites. If you find it useful, please consider starring the repository to follow updates—thank you for your support!
+Imagedl lets you search for and download images from specific websites. If you find it useful, please consider starring the repository to follow updates—thank you for your support!
 
 
-# Supported Image Client
+# 🖼️ Supported Image Client
 
 |  ImageClient (EN)              |  ImageClient (CN)  |   Search           |  Download            |    Code Snippet                                                                                                    |
 |  :----:                        |  :----:            |   :----:           |  :----:              |    :----:                                                                                                          |
@@ -64,7 +64,7 @@ imagedl lets you search for and download images from specific websites. If you f
 |  SogouImageClient              |  搜狗图片          |   ✓                |  ✓                   |    [sogou.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/sogou.py)                |
 
 
-# Install
+# 📦 Install
 
 ```sh
 # from pip
@@ -78,7 +78,7 @@ python setup.py install
 ```
 
 
-# Quick Start
+# ⚡ Quick Start
 
 After a successful installation, you can run the snippet below,
 
@@ -107,7 +107,7 @@ The demonstration is as follows,
 <br />
 
 
-# Recommended Projects
+# 💡 Recommended Projects
 
 - [Games](https://github.com/CharlesPikachu/Games): Create interesting games in pure python.
 - [DecryptLogin](https://github.com/CharlesPikachu/DecryptLogin): APIs for loginning some websites by using requests.
@@ -128,7 +128,12 @@ The demonstration is as follows,
 - [NovelDL](https://github.com/CharlesPikachu/noveldl): Search and download novels from some specific websites.
 
 
-# WeChat Official Account (微信公众号):
+# 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=CharlesPikachu/imagedl&type=date&legend=top-left)](https://www.star-history.com/#CharlesPikachu/imagedl&type=date&legend=top-left)
+
+
+# 📱 WeChat Official Account (微信公众号):
 
 Charles的皮卡丘 (*Charles_pikachu*)  
 ![img](https://raw.githubusercontent.com/CharlesPikachu/imagedl/main/docs/pikachu.jpg)
