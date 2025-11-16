@@ -128,21 +128,25 @@
       color: var(--text-muted);
     }
 
+    /* Overall 状态徽章，基于 meta-pill 再覆盖颜色 */
     .badge {
-      border-color: transparent;
-      background: var(--accent-soft);
-      color: var(--accent);
+      border-width: 1px;
+      border-style: solid;
       font-weight: 600;
     }
 
+    /* 真·全部正常 = 绿色 */
     .badge-ok {
-      background: rgba(250, 204, 21, 0.22);
-      color: #facc15;
+      background: rgba(34, 197, 94, 0.18);   /* 绿 */
+      color: #bbf7d0;
+      border-color: rgba(34, 197, 94, 0.6);
     }
 
+    /* 有模块挂了 = 红色 */
     .badge-fail {
-      background: rgba(248, 113, 113, 0.18);
+      background: rgba(248, 113, 113, 0.18); /* 红 */
       color: #fecaca;
+      border-color: rgba(248, 113, 113, 0.6);
     }
 
     .section {
@@ -251,6 +255,15 @@
       justify-content: space-between;
       margin-bottom: 4px;
     }
+	
+    .metric-row .query-value {
+      flex: 1;
+      text-align: right;
+      margin-left: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     .metric-row.small {
       font-size: 0.8rem;
@@ -281,6 +294,15 @@
       color: var(--text-muted);
       overflow-wrap: anywhere;
       word-break: break-all;
+    }
+	
+    .query-text {
+      margin: 6px 0 0;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      overflow-wrap: anywhere;
+      word-break: break-all;
+      opacity: 0.95;
     }
 
     .error-text {
@@ -405,7 +427,7 @@
           imagedl API Health
         </span>
         <span class="pika-badge" title="Pikachu-powered monitoring">
-          ⚡ Pikachu Mode
+          ⚡ CharlesPikachu
         </span>
         <p style="margin: 4px 0 0; font-size: 0.78rem; color: var(--text-muted);">
           Author: <strong>Zhenchao Jin + GPT 5.1</strong>
@@ -449,7 +471,8 @@
 
   <script>
     const SUMMARY_URL = "daily_test_results/summary_latest.json";
-
+    let GLOBAL_QUERY = null;
+	
     async function fetchSummary() {
       const res = await fetch(SUMMARY_URL + "?cache-bust=" + Date.now());
       if (!res.ok) {
@@ -495,8 +518,16 @@
 
       const statusClass = mod.ok ? "status-ok" : "status-fail";
       const statusText = mod.ok ? "Healthy" : "Issue";
+
+      // 这里优先用每个模块自己的 mod.query，没有的话用全局 GLOBAL_QUERY
+      const querySource = mod.query != null ? mod.query : GLOBAL_QUERY;
+      const queryRaw = querySource != null ? String(querySource) : null;
+      const queryShort = queryRaw ? truncate(queryRaw, 80) : null;
+
       const sampleRaw =
-        mod.search_samples && mod.search_samples[0] ? String(mod.search_samples[0]) : null;
+        mod.search_samples && mod.search_samples[0]
+          ? String(mod.search_samples[0])
+          : null;
       const sampleShort = sampleRaw ? truncate(sampleRaw, 80) : null;
 
       card.innerHTML = `
@@ -505,6 +536,18 @@
           <span class="status-pill ${statusClass}">${statusText}</span>
         </div>
         <div class="card-body">
+
+          ${
+            // ✅ 这一块就是插在最上面的一行 Query
+            queryShort
+              ? `<div class="metric-row">
+                  <span>Query</span>
+                  <span class="query-value" title="${escapeHtml(queryRaw)}">
+                    ${escapeHtml(queryShort)}
+                  </span>
+                </div>`
+              : ""
+          }
           <div class="metric-row">
             <span>Search results</span>
             <span>${mod.n_results}</span>
@@ -525,13 +568,15 @@
               ${mod.download_ok ? "OK" : "FAIL"}
             </span>
           </div>
+
           ${
             sampleShort
               ? `<p class="sample-text" title="${escapeHtml(sampleRaw)}">
-                   Sample: ${escapeHtml(sampleShort)}
-                 </p>`
+                  Sample: ${escapeHtml(sampleShort)}
+                </p>`
               : ""
           }
+
           ${mod.error ? `<p class="error-text">${escapeHtml(mod.error)}</p>` : ""}
         </div>
       `;
@@ -567,6 +612,10 @@
       try {
         const data = await fetchSummary();
         setOverallStatus(data);
+
+        // 把顶层的 query 存到全局变量
+        GLOBAL_QUERY = data.query || null;
+
         const modules = data.modules || [];
 
         modules.forEach((mod) => {
