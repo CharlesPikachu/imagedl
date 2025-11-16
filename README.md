@@ -59,6 +59,7 @@
 
 # 🆕 What's New
 
+- 2025-11-16: Released pyimagedl v0.2.0 — upgrade ImageClient and fixed some minor bugs.
 - 2025-11-10: Released pyimagedl v0.1.8 — fix logging and requirements.
 - 2025-10-22: Released pyimagedl v0.1.7 — refactor codes for google and DuckDuckGo, fix base module requests bugs, and add sogou image search.
 - 2025-10-22: Released pyimagedl v0.1.6 — fix serpapisearch bugs, more robust code structure, add DuckDuckGo image search.
@@ -129,6 +130,55 @@ The demonstration is as follows,
   <img src="https://github.com/CharlesPikachu/imagedl/raw/main/docs/screenshot.gif" width="600"/>
 </div>
 <br />
+
+If you just want to do an image search, you can also do it like this,
+
+```python
+from imagedl import imagedl
+
+image_client = imagedl.ImageClient(image_source='DuckduckgoImageClient', search_limits=1000, num_threadings=5)
+image_infos = image_client.search('cut animals', search_limits_overrides=10, num_threadings_overrides=1)
+print(image_infos)
+```
+
+In the code above, `search_limits_overrides` overrides the `search_limits` parameter set when initializing `ImageClient`, and `num_threadings_overrides` works in the same way.
+The output of this code looks like,
+
+```python
+[
+    {
+        "candidate_urls": [
+            "https://img.freepik.com/.../cut-animal-cartoon-bundle-set_508290-2349.jpg",
+            "https://tse2.mm.bing.net/th/id/OIP.vD-8G0MjAMREv1bYbKaqEwHaHa..."
+        ],
+        "raw_data": {
+            "height": 626,
+            "width": 626,
+            "image": "https://img.freepik.com/.../cut-animal-cartoon-bundle-set_508290-2349.jpg",
+            "image_token": "fbff471d31328...",
+            "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.vD-8G0MjAMREv1bYbKaqEwHaHa...",
+            "thumbnail_token": "4ca07ad2aab9...",
+            "source": "Bing",
+            "title": "Premium Vector | Cut animal cartoon bundle set",
+            "url": "https://www.freepik.com/premium-vector/cut-animal-cartoon-bundle-set_25750969.htm"
+        },
+        "identifier": "fbff471d31328...",
+        "work_dir": "imagedl_outputs\\DuckduckgoImageClient\\2025-11-16-22-34-25 cutanimals",
+        "file_path": "imagedl_outputs\\DuckduckgoImageClient\\2025-11-16-22-34-25 cutanimals\\00000001"
+    },
+    ...
+]
+```
+
+Then you can also call the image downloading function to download the images found by the search. The code is as follows:
+
+```python
+from imagedl import imagedl
+
+image_client = imagedl.ImageClient(image_source='DuckduckgoImageClient', search_limits=1000, num_threadings=5)
+image_infos = image_client.search('cut animals', search_limits_overrides=10, num_threadings_overrides=1)
+image_client.download(image_infos=image_infos)
+```
 
 
 # 💡 Recommended Projects

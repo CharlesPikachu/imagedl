@@ -11,10 +11,10 @@ import click
 import random
 import json_repair
 if __name__ == '__main__':
-    from modules import BuildImageClient, LoggerHandle, ImageClientBuilder
+    from modules import BuildImageClient, LoggerHandle, ImageClientBuilder, BaseImageClient
     from __init__ import __version__
 else:
-    from .modules import BuildImageClient, LoggerHandle, ImageClientBuilder
+    from .modules import BuildImageClient, LoggerHandle, ImageClientBuilder, BaseImageClient
     from .__init__ import __version__
 
 
@@ -42,7 +42,7 @@ class ImageClient():
             'work_dir': 'imagedl_outputs', 'logger_handle': self.logger_handle, 'type': image_source,
         }
         default_image_client_cfg.update(init_image_client_cfg)
-        self.image_client = BuildImageClient(module_cfg=default_image_client_cfg)
+        self.image_client: BaseImageClient = BuildImageClient(module_cfg=default_image_client_cfg)
         # set attributes
         self.work_dir = default_image_client_cfg['work_dir']
         self.search_limits = search_limits
@@ -60,6 +60,18 @@ class ImageClient():
             )
             # download
             self.image_client.download(image_infos=image_infos, num_threadings=self.num_threadings, request_overrides=self.request_overrides)
+    '''search'''
+    def search(self, keyword, search_limits_overrides: int = None, num_threadings_overrides: int = None, filters: dict = None):
+        return self.image_client.search(
+            keyword=keyword, search_limits=search_limits_overrides or self.search_limits, 
+            num_threadings=num_threadings_overrides or self.num_threadings, filters=filters,
+            request_overrides=self.request_overrides
+        )
+    '''download'''
+    def download(self, image_infos: list, num_threadings_overrides: int = None):
+        return self.image_client.download(
+            image_infos=image_infos, num_threadings=num_threadings_overrides or self.num_threadings, request_overrides=self.request_overrides
+        )
     '''processinputs'''
     def processinputs(self, input_tip='', prefix: str = '\n'):
         # accept user inputs
