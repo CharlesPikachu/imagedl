@@ -172,7 +172,7 @@ class GoogleImageClient(BaseImageClient):
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = {}):
         # base url
         base_url = 'https://www.google.com/search?'
         # apply filter

@@ -56,7 +56,7 @@ class SogouImageClient(BaseImageClient):
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = {}):
         base_url = 'https://pic.sogou.com/napi/pc/searchList?'
         params = {'mode': '1', 'start': '384', 'xml_len': '48', 'query': keyword, 'channel': 'pc_pic', 'scene': 'pic_result'}
         if filters is not None: params.update(filters)

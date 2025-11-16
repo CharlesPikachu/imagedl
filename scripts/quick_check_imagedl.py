@@ -52,8 +52,11 @@ def main():
     # iter
     for client_name, client_module in ImageClientBuilder.REGISTERED_MODULES.items():
         print(f"\n[Module] {client_name}")
-        if client_name in ['BaiduImageClient']:
-            client = client_module(disable_print=False, work_dir=tmp_dir, auto_set_proxies=False, proxy_sources=['QiyunipProxiedSession'])
+        if client_name in ['BaiduImageClient', 'DuckduckgoImageClient']:
+            client = client_module(
+                disable_print=False, work_dir=tmp_dir, auto_set_proxies=True, max_retries=20,
+                proxy_sources=['QiyunipProxiedSession', 'FreeproxylistProxiedSession', 'KuaidailiProxiedSession', 'KxdailiProxiedSession']
+            )
         else:
             client = client_module(disable_print=False, work_dir=tmp_dir, auto_set_proxies=False)
         status = {

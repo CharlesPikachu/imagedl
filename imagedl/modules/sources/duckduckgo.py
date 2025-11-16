@@ -72,9 +72,9 @@ class DuckduckgoImageClient(BaseImageClient):
         # return
         return image_infos
     '''_getvqd'''
-    def _getvqd(self, keyword: str, base_url: str):
+    def _getvqd(self, keyword: str, base_url: str, request_overrides: dict = {}):
         q = urlencode({"q": keyword}, quote_via=quote, safe="")
-        resp = self.get(f'{base_url}?{q}')
+        resp = self.get(f'{base_url}?{q}', **request_overrides)
         if resp is None or resp.status_code != 200:
             raise requests.HTTPError('fail to get "vqd" as the session parameters')
         m = re.search(r"vqd=([\d-]+)&", resp.text)
@@ -83,7 +83,7 @@ class DuckduckgoImageClient(BaseImageClient):
         vqd = m.group(1)
         return vqd
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = {}):
         # base url
         base_url = 'https://duckduckgo.com/i.js?'
         # apply filter
@@ -111,7 +111,7 @@ class DuckduckgoImageClient(BaseImageClient):
         filter_str = self._getfilter().apply(filters, sep=',')
         # construct params
         params = {
-            "o": "json", "q": keyword, "l": region, "vqd": self._getvqd(keyword=keyword, base_url='https://duckduckgo.com/'),
+            "o": "json", "q": keyword, "l": region, "vqd": self._getvqd(keyword=keyword, base_url='https://duckduckgo.com/', request_overrides=request_overrides),
             "p": valid_safesearchs[safesearch], "f": filter_str, "s": 0,
         }
         # construct search_urls

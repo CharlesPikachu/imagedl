@@ -52,7 +52,7 @@ class BaseImageClient():
         self.session = requests.Session()
         self.session.headers = self.default_headers
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = {}):
         raise NotImplementedError('not to be implemented')
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
@@ -101,7 +101,7 @@ class BaseImageClient():
         # logging
         self.logger_handle.info(f'Start to search images using {self.source}.', disable_print=self.disable_print)
         # construct search urls
-        search_urls = self._constructsearchurls(keyword=keyword, search_limits=search_limits, filters=filters)
+        search_urls = self._constructsearchurls(keyword=keyword, search_limits=search_limits, filters=filters, request_overrides=request_overrides)
         # multi threadings for searching images
         self.default_headers = self.default_search_headers
         self._initsession()
