@@ -130,6 +130,11 @@ class BaseImageClient():
         return search_filter
     '''_download'''
     def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = {}, downloaded_image_infos: list = None):
+        checked_work_dirs = set()
+        for image_info in image_infos:
+            if image_info['work_dir'] not in checked_work_dirs:
+                touchdir(image_info['work_dir'])
+                checked_work_dirs.add(image_info['work_dir'])
         while len(image_infos) > 0:
             image_info = image_infos.pop(0)
             file_path, image_candidate_urls = image_info['file_path'], image_info['candidate_urls']
