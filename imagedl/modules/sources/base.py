@@ -8,9 +8,9 @@ WeChat Official Account (微信公众号):
 '''
 import os
 import copy
-import imghdr
 import pickle
 import shutil
+import imghdr
 import requests
 import threading
 import json_repair
