@@ -19,7 +19,7 @@ from freeproxy import freeproxy
 from fake_useragent import UserAgent
 from alive_progress import alive_bar
 from pathvalidate import sanitize_filepath
-from ..utils import touchdir, LoggerHandle, Filter
+from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir, LoggerHandle, Filter
 
 
 '''BaseImageClient'''
@@ -77,6 +77,7 @@ class BaseImageClient():
             image_info['file_path'] = os.path.join(work_dir, f'{str(idx+1).zfill(8)}')
         return image_infos
     '''_search'''
+    @usesearchheaderscookies
     def _search(self, search_urls: list, bar: alive_bar, image_infos: list, request_overrides: dict = {}):
         while len(search_urls) > 0:
             search_url = search_urls.pop(0)
@@ -98,14 +99,13 @@ class BaseImageClient():
             bar()
         return image_infos
     '''search'''
+    @usesearchheaderscookies
     def search(self, keyword, search_limits=1000, num_threadings=5, filters: dict = None, request_overrides: dict = {}):
         # logging
         self.logger_handle.info(f'Start to search images using {self.source}.', disable_print=self.disable_print)
         # construct search urls
         search_urls = self._constructsearchurls(keyword=keyword, search_limits=search_limits, filters=filters, request_overrides=request_overrides)
         # multi threadings for searching images
-        self.default_headers = self.default_search_headers
-        self._initsession()
         task_pool, image_infos = [], []
         with alive_bar(len(search_urls)) as bar:
             for _ in range(num_threadings):
@@ -130,6 +130,7 @@ class BaseImageClient():
         search_filter = Filter()
         return search_filter
     '''_download'''
+    @usedownloadheaderscookies
     def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = {}, downloaded_image_infos: list = None):
         checked_work_dirs = set()
         for image_info in image_infos:
@@ -161,12 +162,11 @@ class BaseImageClient():
             bar()
         return downloaded_image_infos
     '''download'''
+    @usedownloadheaderscookies
     def download(self, image_infos, num_threadings=5, request_overrides: dict = {}):
         # logging
         self.logger_handle.info(f'Start to download images using {self.source}.', disable_print=self.disable_print)
         # multi threadings for downloading images
-        self.default_headers = self.default_download_headers
-        self._initsession()
         task_pool, downloaded_image_infos = [], []
         with alive_bar(len(image_infos)) as bar:
             for _ in range(num_threadings):

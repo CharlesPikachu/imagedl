@@ -7,6 +7,43 @@ WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
 import copy
+import functools
+
+
+'''usedownloadheaderscookies'''
+def usedownloadheaderscookies(func):
+    @functools.wraps(func)
+    def wrapper(self, *args, **kwargs):
+        self.default_headers = self.default_download_headers
+        if hasattr(self, 'default_download_cookies'):
+            self.default_cookies = self.default_download_cookies
+        if hasattr(self, '_initsession'): self._initsession()
+        return func(self, *args, **kwargs)
+    return wrapper
+
+
+'''useparseheaderscookies'''
+def useparseheaderscookies(func):
+    @functools.wraps(func)
+    def wrapper(self, *args, **kwargs):
+        self.default_headers = self.default_parse_headers
+        if hasattr(self, 'default_parse_cookies'):
+            self.default_cookies = self.default_parse_cookies
+        if hasattr(self, '_initsession'): self._initsession()
+        return func(self, *args, **kwargs)
+    return wrapper
+
+
+'''usesearchheaderscookies'''
+def usesearchheaderscookies(func):
+    @functools.wraps(func)
+    def wrapper(self, *args, **kwargs):
+        self.default_headers = self.default_search_headers
+        if hasattr(self, 'default_search_cookies'):
+            self.default_cookies = self.default_search_cookies
+        if hasattr(self, '_initsession'): self._initsession()
+        return func(self, *args, **kwargs)
+    return wrapper
 
 
 '''lowerdictkeys'''
