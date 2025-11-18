@@ -11,11 +11,11 @@ import click
 import random
 import json_repair
 if __name__ == '__main__':
-    from modules import BuildImageClient, LoggerHandle, ImageClientBuilder, BaseImageClient
     from __init__ import __version__
+    from modules import BuildImageClient, LoggerHandle, ImageClientBuilder, BaseImageClient
 else:
-    from .modules import BuildImageClient, LoggerHandle, ImageClientBuilder, BaseImageClient
     from .__init__ import __version__
+    from .modules import BuildImageClient, LoggerHandle, ImageClientBuilder, BaseImageClient
 
 
 '''BASIC_INFO'''
