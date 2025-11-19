@@ -32,6 +32,85 @@ Arguments supported when initializing this class include:
 
 #### `ImageClient.startcmdui`
 
+Start an interactive command-line interface (CLI) for searching and downloading images. Intended mainly for end users running `imagedl` from the terminal.
+
+Behavior:
+
+- Repeatedly:
+  - Prints a banner with basic information (version, work dir, usage help).
+  - Prompts the user for a search keyword:  
+    "Please enter keywords for the image search:"
+- Special inputs:
+  - `q` / `Q`: exit the program.
+  - `r` / `R`: restart and return to the main menu.
+- Any other input is treated as a search keyword:
+  - Calls the underlying backend’s `search()`:
+    - `keyword` = user input
+    - `search_limits` = `ImageClient.search_limits`
+    - `num_threadings` = `ImageClient.num_threadings`
+    - `request_overrides` = `ImageClient.request_overrides`
+  - Immediately calls the backend’s `download()` on the search results.
+
+Example (CLI usage):
+
+    `python -m imagedl.imagedl`
+
 #### `ImageClient.search`
 
+Perform an image search programmatically using the configured backend. This method only retrieves metadata; it does NOT download any images.
+
+Arguments:
+
+- **keyword** (`str`): The search query string, e.g. `"Eiffel Tower"`, `"golden retriever"`.
+
+- **search_limits_overrides** (`int | None`, default: `None`): Per-call maximum number of images to retrieve. If `None`, falls back to `ImageClient.search_limits`.
+
+- **num_threadings_overrides** (`int | None`, default: `None`): Per-call override for the number of threads. If `None`, falls back to `ImageClient.num_threadings`.
+
+- **filters** (`dict | None`, default: `None`): Optional filter configuration passed directly to the backend (*e.g.*, image size, color, type), if supported by the chosen `image_source`.
+
+Returns:
+
+- `list`: A list of image metadata objects (backend-defined structure) that can be passed directly to `ImageClient.download()`.
+
+Example:
+
+    ```python
+    from imagedl.imagedl import ImageClient
+
+    client = ImageClient(
+        image_source="BaiduImageClient", search_limits=200, num_threadings=10,
+    )
+
+    image_infos = client.search(
+        keyword="cute cat", search_limits_overrides=50,
+    )
+	```
+
 #### `ImageClient.download`
+
+Download images from a list of image metadata entries, typically returned by `ImageClient.search()`.
+
+Arguments:
+
+- **image_infos** (`list`): A list of image metadata objects returned by `ImageClient.search()`. Each entry must contain enough information (e.g. URL) for the backend to download the corresponding image.
+
+- **num_threadings_overrides** (`int | None`, default: `None`): Per-call override for the number of threads used for downloading. If `None`, falls back to `ImageClient.num_threadings`.
+
+Returns:
+
+- `list`: A list of image metadata objects (backend-defined structure) that can be downloaded successfully.
+
+Example:
+    
+	```python
+    from imagedl.imagedl import ImageClient
+
+    client = ImageClient(work_dir="my_images")
+
+    # 1. Search
+    infos = client.search("Eiffel Tower", search_limits_overrides=30)
+
+    # 2. Download
+    client.download(infos, num_threadings_overrides=8)
+	```
