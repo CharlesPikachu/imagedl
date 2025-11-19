@@ -3,10 +3,10 @@
 
 ## `imagedl.imagedl.ImageClient`
 
-`ImageClient` is a high-level interface for searching and downloading images using different backends (e.g. `BaiduImageClient`, `BingImageClient` and `GoogleImageClient`) registered in `ImageClientBuilder.REGISTERED_MODULES`.
+`ImageClient` is a high-level interface for searching and downloading images using different backends (*e.g.*, `BaiduImageClient`, `BingImageClient` and `GoogleImageClient`) registered in `ImageClientBuilder.REGISTERED_MODULES`.
 Arguments supported when initializing this class include:
 
-- **image_source** (`str`, default: `BaiduImageClient`): Name of the image client backend to use. Must be one of the registered modules in ImageClientBuilder.REGISTERED_MODULES.
+- **image_source** (`str`, default: `BaiduImageClient`): Name of the image client backend to use. Must be one of the registered modules in `ImageClientBuilder.REGISTERED_MODULES`.
 
 - **init_image_client_cfg** (`dict` or `None`, default: `None`): Extra configuration passed to the underlying image client on initialization. It is merged into a default config:
   ```python
@@ -53,7 +53,7 @@ Behavior:
 
 Example (CLI usage):
 
-    `python -m imagedl.imagedl`
+    python -m imagedl.imagedl
 
 #### `ImageClient.search`
 
@@ -75,7 +75,6 @@ Returns:
 
 Example:
 
-    ```python
     from imagedl.imagedl import ImageClient
 
     client = ImageClient(
@@ -85,7 +84,6 @@ Example:
     image_infos = client.search(
         keyword="cute cat", search_limits_overrides=50,
     )
-	```
 
 #### `ImageClient.download`
 
@@ -103,7 +101,6 @@ Returns:
 
 Example:
     
-	```python
     from imagedl.imagedl import ImageClient
 
     client = ImageClient(work_dir="my_images")
@@ -113,4 +110,98 @@ Example:
 
     # 2. Download
     client.download(infos, num_threadings_overrides=8)
-	```
+
+
+## `imagedl.imagedl.modules.sources.BaseImageClient`
+
+`BaseImageClient` is the **abstract base class** for all image search & download clients in this project.
+Concrete clients inherit from it and reuse its common logic for:
+
+- Session management (headers, cookies, user-agent, retries)
+- Optional proxy auto-configuration
+- Multithreaded search and download
+- Progress bars and logging
+- Result saving (`search_results.pkl`, `download_results.pkl`)
+
+Current implementations built on top of `BaseImageClient` include:
+
+- `imagedl.imagedl.modules.sources.BaiduImageClient`
+- `imagedl.imagedl.modules.sources.BingImageClient`
+- `imagedl.imagedl.modules.sources.GoogleImageClient`
+- `imagedl.imagedl.modules.sources.I360ImageClient`
+- `imagedl.imagedl.modules.sources.PixabayImageClient`
+- `imagedl.imagedl.modules.sources.YandexImageClient`
+- `imagedl.imagedl.modules.sources.DuckduckgoImageClient`
+- `imagedl.imagedl.modules.sources.SogouImageClient`
+
+In most cases, users do **not** instantiate `BaseImageClient` directly. 
+Instead, they use high-level wrappers such as `BaiduImageClient`. 
+However, the external **API surface** of all clients is the same as `BaseImageClient` (`search` + `download`).
+Arguments supported when initializing this class include:
+
+- **auto_set_proxies** (`bool`, default: `True`): If `True`, automatically configures HTTP proxies via `freeproxy.ProxiedSessionClient`. Each request will try to use a randomly selected proxy from `proxy_sources`.
+
+- **random_update_ua** (`bool`, default: `False`): If `True`, randomly updates the `User-Agent` header before each request (using `fake_useragent.UserAgent().random`), providing additional variability.
+
+- **max_retries** (`int`, default: `5`): Maximum number of retry attempts in `BaseImageClient.get()` / `BaseImageClient.post()` when requests fail or return non-200 HTTP status codes.
+
+- **maintain_session** (`bool`, default: `False`): If `False`: a new `requests.Session` is created before each request. If `True`: the same session is reused across requests. Combined with `random_update_ua`, this controls how “sticky” your session is.
+
+- **logger_handle** (`LoggerHandle` or `None`, default: `None`): Logger used for informational messages and error reporting. If `None`, a default `LoggerHandle` instance is created.
+
+- **disable_print** (`bool`, default: `False`): If `True`, suppresses console printing in `LoggerHandle` (logging still happens internally).
+
+- **work_dir** (`str`, default: `"imagedl_outputs"`): Root directory for all outputs produced by this client. Under this directory, the client will create per-source and per-search subfolders, for example:
+  - `imagedl_outputs/BaiduImageClient/2025-11-19-18-30-00 cat/`
+  - Inside each search folder:
+    - `search_results.pkl`
+    - `download_results.pkl`
+    - image files: `00000001.jpg`, `00000002.png`, ...
+
+- **proxy_sources** (`list` or `None`, default: `None`): List of proxy provider backends for `freeproxy.ProxiedSessionClient`. If `None`, a default list is used:
+  - `["KuaidailiProxiedSession", "IP3366ProxiedSession", "QiyunipProxiedSession", "ProxyhubProxiedSession", "ProxydbProxiedSession"]`
+
+#### `BaseImageClient.search`
+
+Argument:
+
+- **keyword** (`str`): Search keyword / query sent to the image provider (e.g., `"Eiffel Tower"`, `"golden retriever"`).
+
+- **search_limits** (`int`, default: `1000`): Target maximum number of image records to retrieve. Exact behavior depends on how `BaseImageClient._constructsearchurls` is implemented in the subclass.
+
+- **num_threadings** (`int`, default: `5`): Number of worker threads used to fetch search pages in parallel. Each thread runs `BaseImageClient._search`, pulling URLs from the shared `search_urls` list.
+
+- **filters** (`dict` or `None`, default: `None`): Optional filter configuration that subclasses may use to refine search results (*e.g.*, image size, color, type). The structure is client-specific.
+
+- **request_overrides** (`dict` or `None`, default: `None`): Extra keyword arguments forwarded to `requests.get` for search requests (e.g., `timeout`, `headers`, `proxies`). These are merged on top of the session’s default headers and proxy settings.
+
+Returns:
+
+- `list` of `image_info` dicts. The exact keys are determined by the subclass, but `BaseImageClient` expects at least:
+  - `identifier`: a unique ID used for deduplication.
+  - `candidate_urls`: list of candidate image URLs for downloading.
+  - After the search pipeline, it also fills:
+    - `work_dir`: per-search directory.
+    - `file_path`: **base** file path (without extension) reserved for downloading.
+
+#### `BaseImageClient.download`
+
+Argument:
+
+- **image_infos** (`list`): List of image metadata entries produced by `BaseImageClient.search()`, or loaded from `search_results.pkl`. Each entry should contain at least:
+
+  - `work_dir`: directory where the image should be saved.
+  - `file_path`: base file path (without extension).
+  - `candidate_urls`: list of URLs to try when downloading the image.
+
+- **num_threadings** (`int`, default: `5`): Number of worker threads to use for downloading images in parallel.
+
+- **request_overrides** (`dict` or `None`, default: `None`): Extra keyword arguments forwarded to `requests.get` for **download** requests (*e.g.*, `timeout`, per-request headers or proxies). These options override or extend the session-level defaults.
+
+Returns:
+
+- `list` of `downloaded_image_info` dicts. For each successfully downloaded image:
+
+  - `file_path` is updated to include the actual file extension (e.g. `.../00000001.jpg`).
+  - Other fields are copied from the original `image_info`.
+
