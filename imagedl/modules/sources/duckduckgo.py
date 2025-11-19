@@ -38,7 +38,9 @@ class DuckduckgoImageClient(BaseImageClient):
         self.default_headers = self.default_search_headers
         self._initsession()
     '''ddgssearch'''
-    def ddgssearch(self, search_overrides: dict = {}):
+    def ddgssearch(self, search_overrides: dict = None):
+        # init
+        search_overrides = search_overrides or {}
         # import api
         try:
             from ddgs import DDGS
@@ -72,7 +74,8 @@ class DuckduckgoImageClient(BaseImageClient):
         # return
         return image_infos
     '''_getvqd'''
-    def _getvqd(self, keyword: str, base_url: str, request_overrides: dict = {}):
+    def _getvqd(self, keyword: str, base_url: str, request_overrides: dict = None):
+        request_overrides = request_overrides or {}
         q = urlencode({"q": keyword}, quote_via=quote, safe="")
         resp = self.get(f'{base_url}?{q}', **request_overrides)
         if resp is None or resp.status_code != 200:
@@ -83,7 +86,9 @@ class DuckduckgoImageClient(BaseImageClient):
         vqd = m.group(1)
         return vqd
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = {}):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
+        # init
+        request_overrides = request_overrides or {}
         # base url
         base_url = 'https://duckduckgo.com/i.js?'
         # apply filter

@@ -51,7 +51,8 @@ class I360ImageClient(BaseImageClient):
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = {}):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
+        request_overrides = request_overrides or {}
         base_url = 'https://image.so.com/j?pn={page_size}&q={keyword}&sn={page}'
         filter_str = self._getfilter().apply(filters, sep='&')
         search_urls, page_size = [], 60

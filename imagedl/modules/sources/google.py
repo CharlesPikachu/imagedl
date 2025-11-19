@@ -30,7 +30,9 @@ class GoogleImageClient(BaseImageClient):
         self.default_headers = self.default_search_headers
         self._initsession()
     '''officialsearchanddownload'''
-    def officialsearchanddownload(self, google_image_search_overrides: dict = {}, search_overrides: dict = {}):
+    def officialsearchanddownload(self, google_image_search_overrides: dict = None, search_overrides: dict = None):
+        # init
+        google_image_search_overrides, search_overrides = google_image_search_overrides or {}, search_overrides or {}
         # import official api
         try:
             from google_images_search import GoogleImagesSearch
@@ -52,7 +54,9 @@ class GoogleImageClient(BaseImageClient):
         search_params.update(search_overrides)
         gis.search(search_params=search_params, path_to_dir=self.work_dir)
     '''serpapisearch'''
-    def serpapisearch(self, search_overrides: dict = {}):
+    def serpapisearch(self, search_overrides: dict = None):
+        # init
+        search_overrides = search_overrides or {}
         # import api
         try:
             from serpapi import GoogleSearch
@@ -172,7 +176,9 @@ class GoogleImageClient(BaseImageClient):
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = {}):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
+        # init
+        request_overrides = request_overrides or {}
         # base url
         base_url = 'https://www.google.com/search?'
         # apply filter

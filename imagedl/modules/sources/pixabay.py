@@ -56,7 +56,8 @@ class PixabayImageClient(BaseImageClient):
             image_infos.append(image_info)
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = {}):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
+        request_overrides = request_overrides or {}
         base_url = 'https://pixabay.com/api/?key={api_key}&q={keyword}&per_page={page_size}&page={page}'
         filter_str = self._getfilter().apply(filters, sep='&')
         search_urls, page_size = [], 20

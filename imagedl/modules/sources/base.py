@@ -52,7 +52,7 @@ class BaseImageClient():
         self.session = requests.Session()
         self.session.headers = self.default_headers
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = {}):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
         raise NotImplementedError('not to be implemented')
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
@@ -78,7 +78,8 @@ class BaseImageClient():
         return image_infos
     '''_search'''
     @usesearchheaderscookies
-    def _search(self, search_urls: list, bar: alive_bar, image_infos: list, request_overrides: dict = {}):
+    def _search(self, search_urls: list, bar: alive_bar, image_infos: list, request_overrides: dict = None):
+        request_overrides = request_overrides or {}
         while len(search_urls) > 0:
             search_url = search_urls.pop(0)
             resp = self.get(search_url, **request_overrides)
@@ -100,7 +101,9 @@ class BaseImageClient():
         return image_infos
     '''search'''
     @usesearchheaderscookies
-    def search(self, keyword, search_limits=1000, num_threadings=5, filters: dict = None, request_overrides: dict = {}):
+    def search(self, keyword, search_limits=1000, num_threadings=5, filters: dict = None, request_overrides: dict = None):
+        # init
+        request_overrides = request_overrides or {}
         # logging
         self.logger_handle.info(f'Start to search images using {self.source}.', disable_print=self.disable_print)
         # construct search urls
@@ -131,7 +134,8 @@ class BaseImageClient():
         return search_filter
     '''_download'''
     @usedownloadheaderscookies
-    def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = {}, downloaded_image_infos: list = None):
+    def _download(self, image_infos: list, bar: alive_bar, request_overrides: dict = None, downloaded_image_infos: list = None):
+        request_overrides = request_overrides or {}
         checked_work_dirs = set()
         for image_info in image_infos:
             if image_info['work_dir'] not in checked_work_dirs:
@@ -163,7 +167,9 @@ class BaseImageClient():
         return downloaded_image_infos
     '''download'''
     @usedownloadheaderscookies
-    def download(self, image_infos, num_threadings=5, request_overrides: dict = {}):
+    def download(self, image_infos, num_threadings=5, request_overrides: dict = None):
+        # init
+        request_overrides = request_overrides or {}
         # logging
         self.logger_handle.info(f'Start to download images using {self.source}.', disable_print=self.disable_print)
         # multi threadings for downloading images

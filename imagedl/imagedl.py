@@ -33,7 +33,7 @@ Image Save Path:
 
 '''ImageClient'''
 class ImageClient():
-    def __init__(self, image_source: str = 'BaiduImageClient', init_image_client_cfg: dict = {}, search_limits: int = 1000, num_threadings: int = 5, request_overrides: dict = {}):
+    def __init__(self, image_source: str = 'BaiduImageClient', init_image_client_cfg: dict = None, search_limits: int = 1000, num_threadings: int = 5, request_overrides: dict = None):
         # init
         self.logger_handle = LoggerHandle()
         if image_source is None: random.choice(ImageClientBuilder.REGISTERED_MODULES.keys())
@@ -41,13 +41,13 @@ class ImageClient():
         default_image_client_cfg = {
             'work_dir': 'imagedl_outputs', 'logger_handle': self.logger_handle, 'type': image_source,
         }
-        default_image_client_cfg.update(init_image_client_cfg)
+        default_image_client_cfg.update(init_image_client_cfg or {})
         self.image_client: BaseImageClient = BuildImageClient(module_cfg=default_image_client_cfg)
         # set attributes
         self.work_dir = default_image_client_cfg['work_dir']
         self.search_limits = search_limits
         self.num_threadings = num_threadings
-        self.request_overrides = request_overrides
+        self.request_overrides = request_overrides or {}
     '''startcmdui'''
     def startcmdui(self):
         while True:

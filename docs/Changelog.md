@@ -1,5 +1,7 @@
 # Release Log
 
+- 2025-11-19: Released pyimagedl v0.2.2 — fix potential in-place modified bugs in HTTP requests.
+
 - 2025-11-16: Released pyimagedl v0.2.1 — fixed some minor bugs in duckduckgo and BaseImageClient.
 
 - 2025-11-16: Released pyimagedl v0.2.0 — upgrade ImageClient and fixed some minor bugs.

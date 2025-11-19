@@ -50,7 +50,8 @@ class YandexImageClient(BaseImageClient):
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = {}):
+    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
+        request_overrides = request_overrides or {}
         candidate_domains = ['https://yandex.com', 'https://yandex.ru', 'https://yandex.kz', 'https://yandex.by', 'https://yandex.com.tr']
         for domain in candidate_domains:
             resp = self.session.get(domain)
