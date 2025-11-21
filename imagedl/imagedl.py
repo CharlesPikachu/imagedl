@@ -12,23 +12,21 @@ import random
 import json_repair
 if __name__ == '__main__':
     from __init__ import __version__
-    from modules import BuildImageClient, LoggerHandle, ImageClientBuilder, BaseImageClient
+    from modules import BuildImageClient, LoggerHandle, ImageClientBuilder, BaseImageClient, printfullline
 else:
     from .__init__ import __version__
-    from .modules import BuildImageClient, LoggerHandle, ImageClientBuilder, BaseImageClient
+    from .modules import BuildImageClient, LoggerHandle, ImageClientBuilder, BaseImageClient, printfullline
 
 
 '''BASIC_INFO'''
-BASIC_INFO = '''************************************************************
-Function: Image Downloader --- v%s
+BASIC_INFO = '''Function: Image Downloader --- v%s
 Author: Zhenchao Jin
 WeChat Official Account (微信公众号): Charles的皮卡丘
 Operation Help:
     Enter `r`: Reinitialize the program (i.e., return to the main menu).
     Enter `q`: Exit the program.
 Image Save Path:
-    Inside the %s folder (root dir is the current directory if using relative path).
-************************************************************'''
+    Inside the %s folder (root dir is the current directory if using relative path).'''
 
 
 '''ImageClient'''
@@ -48,10 +46,15 @@ class ImageClient():
         self.search_limits = search_limits
         self.num_threadings = num_threadings
         self.request_overrides = request_overrides or {}
+    '''printbasicinfo'''
+    def printbasicinfo(self):
+        printfullline(ch='-')
+        print(BASIC_INFO % (__version__, self.work_dir))
+        printfullline(ch='-')
     '''startcmdui'''
     def startcmdui(self):
         while True:
-            print(BASIC_INFO % (__version__, self.work_dir))
+            self.printbasicinfo()
             # process user inputs
             user_input = self.processinputs('Please enter keywords for the image search: ')
             # search

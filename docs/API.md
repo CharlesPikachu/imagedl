@@ -14,7 +14,7 @@ Arguments supported when initializing this class include:
     "work_dir": "imagedl_outputs",
     "logger_handle": ImageClient.logger_handle,
     "type": image_source,
-	"auto_set_proxies": True,
+	"auto_set_proxies": False,
 	"random_update_ua": False,
 	"max_retries": 5,
 	"maintain_session": False,
@@ -139,7 +139,7 @@ Instead, they use high-level wrappers such as `BaiduImageClient`.
 However, the external **API surface** of all clients is the same as `BaseImageClient` (`search` + `download`).
 Arguments supported when initializing this class include:
 
-- **auto_set_proxies** (`bool`, default: `True`): If `True`, automatically configures HTTP proxies via `freeproxy.ProxiedSessionClient`. Each request will try to use a randomly selected proxy from `proxy_sources`.
+- **auto_set_proxies** (`bool`, default: `False`): If `True`, automatically configures HTTP proxies via `freeproxy.ProxiedSessionClient`. Each request will try to use a randomly selected proxy from `proxy_sources`.
 
 - **random_update_ua** (`bool`, default: `False`): If `True`, randomly updates the `User-Agent` header before each request (using `fake_useragent.UserAgent().random`), providing additional variability.
 
