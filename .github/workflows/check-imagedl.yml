@@ -1,4 +1,4 @@
-name: Daily imagedl check
+name: daily imagedl check
 
 on:
   schedule:
