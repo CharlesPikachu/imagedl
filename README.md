@@ -204,6 +204,22 @@ image_client.download(image_infos=image_infos)
 - [NovelDL](https://github.com/CharlesPikachu/noveldl): Search and download novels from some specific websites.
 
 
+# 📚 Citation
+
+If you use this project in your research, please cite the repository.
+
+```
+@misc{freeproxy2022,
+    author = {Zhenchao Jin},
+    title = {Imagedl: Search and download images from specific websites},
+    year = {2022},
+    publisher = {GitHub},
+    journal = {GitHub repository},
+    howpublished = {\url{https://github.com/CharlesPikachu/imagedl/}},
+}
+```
+
+
 # 🌟 Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=CharlesPikachu/imagedl&type=date&legend=top-left)](https://www.star-history.com/#CharlesPikachu/imagedl&type=date&legend=top-left)
