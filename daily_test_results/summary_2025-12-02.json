@@ -1,0 +1,207 @@
+{
+  "date": "2025-12-02",
+  "timestamp_utc": "2025-12-02T02:47:58.311154+00:00",
+  "query": "Cute Animals",
+  "max_search": 10,
+  "max_download_per_client": 10,
+  "modules": [
+    {
+      "name": "BingImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 35,
+      "n_downloaded": 8,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/BingImageClient/00000004.jpeg",
+        "daily_test_results/BingImageClient/00000001.jpeg",
+        "daily_test_results/BingImageClient/00000006.jpeg",
+        "daily_test_results/BingImageClient/00000002.jpeg",
+        "daily_test_results/BingImageClient/00000009.jpeg",
+        "daily_test_results/BingImageClient/00000005.png",
+        "daily_test_results/BingImageClient/00000007.jpeg",
+        "daily_test_results/BingImageClient/00000003.jpeg"
+      ],
+      "search_samples": [
+        "https://a-z-animals.com/media/2021/04/Cutest-Animals_-Red-Panda-1024x535.jpg",
+        "https://i.guim.co.uk/img/media/399a0e38b86dd8da6564c61281783c300498f2f9/0_7_2496_1498/master/2496.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=f76586bf5cb0f8d696696f5fa2c24c88",
+        "https://loveincorporated.blob.core.windows.net/contentimages/gallery/bbab3875-550b-4445-ab96-f4699b2b43da-meerkat-worlds-cutest-baby-animals-ranked.jpg"
+      ]
+    },
+    {
+      "name": "BaiduImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 30,
+      "n_downloaded": 5,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/BaiduImageClient/00000008.jpeg",
+        "daily_test_results/BaiduImageClient/00000006.jpeg",
+        "daily_test_results/BaiduImageClient/00000002.jpeg",
+        "daily_test_results/BaiduImageClient/00000009.jpeg",
+        "daily_test_results/BaiduImageClient/00000003.jpeg"
+      ],
+      "search_samples": [
+        "https://hellorfimg.zcool.cn/large/2437059527.jpg",
+        "https://res.cqnews.net/contentcloud/1/REPRINT/DEFAULT/PICTURE/2024/6/12/2712af869d1941519bde373972276dce_wh1024x683.png",
+        "https://hellorfimg.zcool.cn/large/1233741550.jpg"
+      ]
+    },
+    {
+      "name": "GoogleImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 216,
+      "n_downloaded": 9,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/GoogleImageClient/00000004.jpeg",
+        "daily_test_results/GoogleImageClient/00000008.jpeg",
+        "daily_test_results/GoogleImageClient/00000005.jpeg",
+        "daily_test_results/GoogleImageClient/00000001.jpeg",
+        "daily_test_results/GoogleImageClient/00000006.jpeg",
+        "daily_test_results/GoogleImageClient/00000002.jpeg",
+        "daily_test_results/GoogleImageClient/00000007.jpeg",
+        "daily_test_results/GoogleImageClient/00000003.jpeg",
+        "daily_test_results/GoogleImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbwJvey3lyCU3s8A7DGtq9JyBRZQjlXZL1ig&s",
+        "https://media.cnn.com/api/v1/images/stellar/prod/130819142015-cutest-animal-1-fennec-fox.jpg?q=w_1110,c_fill",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1PYZTfg0SQjtQhrSRqrnbnTGqnrqhnpa2dw&s"
+      ]
+    },
+    {
+      "name": "I360ImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 59,
+      "n_downloaded": 9,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/I360ImageClient/00000004.jpeg",
+        "daily_test_results/I360ImageClient/00000008.jpeg",
+        "daily_test_results/I360ImageClient/00000005.jpeg",
+        "daily_test_results/I360ImageClient/00000001.jpeg",
+        "daily_test_results/I360ImageClient/00000006.jpeg",
+        "daily_test_results/I360ImageClient/00000002.jpeg",
+        "daily_test_results/I360ImageClient/00000007.jpeg",
+        "daily_test_results/I360ImageClient/00000003.jpeg",
+        "daily_test_results/I360ImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://images-new-cdn.123rf.com.cn/450wm/reginast777/reginast7771601/reginast777160100034.jpg",
+        "https://preview.qiantucdn.com/freepik/free-vector/6512373e5b0fc.jpg!qt_w320",
+        "https://bpic.wotucdn.com/21/28/55/541d11a0980bdaf641e54eed851d2473.jpg!/fw/275/quality/91/unsharp/true/compress/true/canvas/275x478a0a0"
+      ]
+    },
+    {
+      "name": "PixabayImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 20,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/PixabayImageClient/00000004.png",
+        "daily_test_results/PixabayImageClient/00000006.png",
+        "daily_test_results/PixabayImageClient/00000008.png",
+        "daily_test_results/PixabayImageClient/00000001.jpeg",
+        "daily_test_results/PixabayImageClient/00000002.jpeg",
+        "daily_test_results/PixabayImageClient/00000009.jpeg",
+        "daily_test_results/PixabayImageClient/00000005.png",
+        "daily_test_results/PixabayImageClient/00000007.jpeg",
+        "daily_test_results/PixabayImageClient/00000003.jpeg",
+        "daily_test_results/PixabayImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://pixabay.com/get/gc8d788f2168dd793568cbe38f62f2c5a243adec665e8e87a5f56babe1b6ccf16c24941a306e6137677fa2dc54fda229584bbf92aa05c2408856c080637ad34b9_1280.jpg",
+        "https://pixabay.com/get/gbc9b6eaac96d067d2cfa0fa7dbbc99170c49a4a613491c743c0b94457482d9631671457c472436223dd9f8c1438bc585823677d6c34f2c036fceb904391516ff_1280.jpg",
+        "https://pixabay.com/get/ga70c18bc6b4c0b509c2859eaf1318087724774e0a824f5e79c0b6684e495d7750282d0dc3bda4da09cacc5d0f17b119cc72ae34c270a1565ef729d15861b78a4_1280.jpg"
+      ]
+    },
+    {
+      "name": "YandexImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 44,
+      "n_downloaded": 9,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/YandexImageClient/00000004.jpeg",
+        "daily_test_results/YandexImageClient/00000008.jpeg",
+        "daily_test_results/YandexImageClient/00000003.png",
+        "daily_test_results/YandexImageClient/00000002.png",
+        "daily_test_results/YandexImageClient/00000006.jpeg",
+        "daily_test_results/YandexImageClient/00000009.jpeg",
+        "daily_test_results/YandexImageClient/00000005.png",
+        "daily_test_results/YandexImageClient/00000007.jpeg",
+        "daily_test_results/YandexImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://i.pinimg.com/videos/thumbnails/originals/ac/a6/d0/aca6d027b355dc3a367f3ec95ad217f4.0000000.jpg",
+        "https://i.pinimg.com/originals/7d/59/ee/7d59ee3f348e5245caa68926939f236e.png",
+        "https://i.pinimg.com/originals/a3/4d/4a/a34d4ade53655b888a8a4281e722599d.png"
+      ]
+    },
+    {
+      "name": "DuckduckgoImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 30,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/DuckduckgoImageClient/00000004.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000008.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000005.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000001.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000006.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000002.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000009.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000007.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000003.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://factanimal.com/wp-content/uploads/2023/03/cute-red-panda.jpg",
+        "https://wallpaperaccess.com/full/536212.jpg",
+        "https://wallpaperaccess.com/full/536225.jpg"
+      ]
+    },
+    {
+      "name": "SogouImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 48,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/SogouImageClient/00000004.jpeg",
+        "daily_test_results/SogouImageClient/00000008.jpeg",
+        "daily_test_results/SogouImageClient/00000005.jpeg",
+        "daily_test_results/SogouImageClient/00000001.jpeg",
+        "daily_test_results/SogouImageClient/00000006.jpeg",
+        "daily_test_results/SogouImageClient/00000002.jpeg",
+        "daily_test_results/SogouImageClient/00000009.jpeg",
+        "daily_test_results/SogouImageClient/00000007.jpeg",
+        "daily_test_results/SogouImageClient/00000003.jpeg",
+        "daily_test_results/SogouImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://www.kfzimg.com/sw/kfzimg/1867/016e879676f47ed9d2_n.jpg",
+        "http://imgs.focus.cn/upload/bd/6843/b_68428806.jpg",
+        "http://cdnimg103.lizhi.fm/audio_cover/2016/04/09/27712991938495879_320x320.jpg"
+      ]
+    }
+  ]
+}
