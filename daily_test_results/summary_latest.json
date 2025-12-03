@@ -1,6 +1,6 @@
 {
-  "date": "2025-12-02",
-  "timestamp_utc": "2025-12-02T02:47:58.311154+00:00",
+  "date": "2025-12-03",
+  "timestamp_utc": "2025-12-03T02:47:26.455316+00:00",
   "query": "Cute Animals",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -11,22 +11,23 @@
       "download_ok": true,
       "ok": true,
       "n_results": 35,
-      "n_downloaded": 8,
+      "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
         "daily_test_results/BingImageClient/00000004.jpeg",
+        "daily_test_results/BingImageClient/00000008.jpeg",
+        "daily_test_results/BingImageClient/00000005.jpeg",
         "daily_test_results/BingImageClient/00000001.jpeg",
-        "daily_test_results/BingImageClient/00000006.jpeg",
         "daily_test_results/BingImageClient/00000002.jpeg",
         "daily_test_results/BingImageClient/00000009.jpeg",
-        "daily_test_results/BingImageClient/00000005.png",
         "daily_test_results/BingImageClient/00000007.jpeg",
-        "daily_test_results/BingImageClient/00000003.jpeg"
+        "daily_test_results/BingImageClient/00000003.jpeg",
+        "daily_test_results/BingImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://a-z-animals.com/media/2021/04/Cutest-Animals_-Red-Panda-1024x535.jpg",
-        "https://i.guim.co.uk/img/media/399a0e38b86dd8da6564c61281783c300498f2f9/0_7_2496_1498/master/2496.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=f76586bf5cb0f8d696696f5fa2c24c88",
-        "https://loveincorporated.blob.core.windows.net/contentimages/gallery/bbab3875-550b-4445-ab96-f4699b2b43da-meerkat-worlds-cutest-baby-animals-ranked.jpg"
+        "https://factanimal.com/wp-content/uploads/2023/03/cute-red-panda.jpg",
+        "https://i2.wp.com/earthnworld.com/wp-content/uploads/2017/07/Red-Panda.jpg?ssl=1",
+        "https://images1.wionews.com/images/wion/900x1600/2023/3/20/1679293106992_redpanda.jpg"
       ]
     },
     {
@@ -55,8 +56,8 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 216,
-      "n_downloaded": 9,
+      "n_results": 220,
+      "n_downloaded": 8,
       "error": null,
       "downloaded_images": [
         "daily_test_results/GoogleImageClient/00000004.jpeg",
@@ -66,13 +67,12 @@
         "daily_test_results/GoogleImageClient/00000006.jpeg",
         "daily_test_results/GoogleImageClient/00000002.jpeg",
         "daily_test_results/GoogleImageClient/00000007.jpeg",
-        "daily_test_results/GoogleImageClient/00000003.jpeg",
-        "daily_test_results/GoogleImageClient/00000010.jpeg"
+        "daily_test_results/GoogleImageClient/00000003.jpeg"
       ],
       "search_samples": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbwJvey3lyCU3s8A7DGtq9JyBRZQjlXZL1ig&s",
-        "https://media.cnn.com/api/v1/images/stellar/prod/130819142015-cutest-animal-1-fennec-fox.jpg?q=w_1110,c_fill",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1PYZTfg0SQjtQhrSRqrnbnTGqnrqhnpa2dw&s"
+        "https://images.indianexpress.com/2024/12/9_315c9c.png",
+        "https://img.buzzfeed.com/buzzfeed-static/static/2023-10/5/20/asset/e5aedefdeecb/sub-buzz-1322-1696537165-2.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDsOHb-Dz0yC4OGyO1w4WeCAIfuhNI8tzB0Q&s"
       ]
     },
     {
@@ -110,20 +110,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/PixabayImageClient/00000004.png",
+        "daily_test_results/PixabayImageClient/00000007.png",
+        "daily_test_results/PixabayImageClient/00000008.jpeg",
         "daily_test_results/PixabayImageClient/00000006.png",
-        "daily_test_results/PixabayImageClient/00000008.png",
         "daily_test_results/PixabayImageClient/00000001.jpeg",
         "daily_test_results/PixabayImageClient/00000002.jpeg",
         "daily_test_results/PixabayImageClient/00000009.jpeg",
         "daily_test_results/PixabayImageClient/00000005.png",
-        "daily_test_results/PixabayImageClient/00000007.jpeg",
         "daily_test_results/PixabayImageClient/00000003.jpeg",
         "daily_test_results/PixabayImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/gc8d788f2168dd793568cbe38f62f2c5a243adec665e8e87a5f56babe1b6ccf16c24941a306e6137677fa2dc54fda229584bbf92aa05c2408856c080637ad34b9_1280.jpg",
-        "https://pixabay.com/get/gbc9b6eaac96d067d2cfa0fa7dbbc99170c49a4a613491c743c0b94457482d9631671457c472436223dd9f8c1438bc585823677d6c34f2c036fceb904391516ff_1280.jpg",
-        "https://pixabay.com/get/ga70c18bc6b4c0b509c2859eaf1318087724774e0a824f5e79c0b6684e495d7750282d0dc3bda4da09cacc5d0f17b119cc72ae34c270a1565ef729d15861b78a4_1280.jpg"
+        "https://pixabay.com/get/g35ace819e84c1e1642d92e283fbc7c2c50ebc1d562696f1d50a032bea43e98f0208f23fbbb2b8bab09064297e7214f03f6ecb75937a04fea28680c78ff0902df_1280.jpg",
+        "https://pixabay.com/get/gec6406118a4624639ff4bd88f2b3939067ba9f56263a715f1d43fda1a4dc27c27728c602187a5e298cefa8ca95c6b3d13595e9fe7fbd777a448f36d54d15886a_1280.jpg",
+        "https://pixabay.com/get/gea56ca752dd4923d832019d8f23e696cfdf074b87a5689ff8a9474dd81df7c46aae29ae5c5b7ebf17a28052f70294f9adae801291ed27dc9b0e22c6c018cd210_1280.jpg"
       ]
     },
     {
@@ -131,24 +131,24 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 44,
+      "n_results": 42,
       "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
         "daily_test_results/YandexImageClient/00000004.jpeg",
-        "daily_test_results/YandexImageClient/00000008.jpeg",
-        "daily_test_results/YandexImageClient/00000003.png",
-        "daily_test_results/YandexImageClient/00000002.png",
+        "daily_test_results/YandexImageClient/00000005.jpeg",
+        "daily_test_results/YandexImageClient/00000001.jpeg",
         "daily_test_results/YandexImageClient/00000006.jpeg",
+        "daily_test_results/YandexImageClient/00000002.jpeg",
         "daily_test_results/YandexImageClient/00000009.jpeg",
-        "daily_test_results/YandexImageClient/00000005.png",
         "daily_test_results/YandexImageClient/00000007.jpeg",
+        "daily_test_results/YandexImageClient/00000003.jpeg",
         "daily_test_results/YandexImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://i.pinimg.com/videos/thumbnails/originals/ac/a6/d0/aca6d027b355dc3a367f3ec95ad217f4.0000000.jpg",
-        "https://i.pinimg.com/originals/7d/59/ee/7d59ee3f348e5245caa68926939f236e.png",
-        "https://i.pinimg.com/originals/a3/4d/4a/a34d4ade53655b888a8a4281e722599d.png"
+        "https://i.pinimg.com/originals/cb/d6/91/cbd69180680e78d58f1f4cf79ddaac18.jpg",
+        "https://i.ytimg.com/vi/qg55nMKbYYc/maxresdefault.jpg",
+        "https://i.pinimg.com/736x/3f/ef/41/3fef41042cd35ebabaf262180a90596d.jpg"
       ]
     },
     {

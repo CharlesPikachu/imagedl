@@ -1,0 +1,207 @@
+{
+  "date": "2025-12-03",
+  "timestamp_utc": "2025-12-03T02:47:26.455316+00:00",
+  "query": "Cute Animals",
+  "max_search": 10,
+  "max_download_per_client": 10,
+  "modules": [
+    {
+      "name": "BingImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 35,
+      "n_downloaded": 9,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/BingImageClient/00000004.jpeg",
+        "daily_test_results/BingImageClient/00000008.jpeg",
+        "daily_test_results/BingImageClient/00000005.jpeg",
+        "daily_test_results/BingImageClient/00000001.jpeg",
+        "daily_test_results/BingImageClient/00000002.jpeg",
+        "daily_test_results/BingImageClient/00000009.jpeg",
+        "daily_test_results/BingImageClient/00000007.jpeg",
+        "daily_test_results/BingImageClient/00000003.jpeg",
+        "daily_test_results/BingImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://factanimal.com/wp-content/uploads/2023/03/cute-red-panda.jpg",
+        "https://i2.wp.com/earthnworld.com/wp-content/uploads/2017/07/Red-Panda.jpg?ssl=1",
+        "https://images1.wionews.com/images/wion/900x1600/2023/3/20/1679293106992_redpanda.jpg"
+      ]
+    },
+    {
+      "name": "BaiduImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 30,
+      "n_downloaded": 5,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/BaiduImageClient/00000008.jpeg",
+        "daily_test_results/BaiduImageClient/00000006.jpeg",
+        "daily_test_results/BaiduImageClient/00000002.jpeg",
+        "daily_test_results/BaiduImageClient/00000009.jpeg",
+        "daily_test_results/BaiduImageClient/00000003.jpeg"
+      ],
+      "search_samples": [
+        "https://hellorfimg.zcool.cn/large/2437059527.jpg",
+        "https://res.cqnews.net/contentcloud/1/REPRINT/DEFAULT/PICTURE/2024/6/12/2712af869d1941519bde373972276dce_wh1024x683.png",
+        "https://hellorfimg.zcool.cn/large/1233741550.jpg"
+      ]
+    },
+    {
+      "name": "GoogleImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 220,
+      "n_downloaded": 8,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/GoogleImageClient/00000004.jpeg",
+        "daily_test_results/GoogleImageClient/00000008.jpeg",
+        "daily_test_results/GoogleImageClient/00000005.jpeg",
+        "daily_test_results/GoogleImageClient/00000001.jpeg",
+        "daily_test_results/GoogleImageClient/00000006.jpeg",
+        "daily_test_results/GoogleImageClient/00000002.jpeg",
+        "daily_test_results/GoogleImageClient/00000007.jpeg",
+        "daily_test_results/GoogleImageClient/00000003.jpeg"
+      ],
+      "search_samples": [
+        "https://images.indianexpress.com/2024/12/9_315c9c.png",
+        "https://img.buzzfeed.com/buzzfeed-static/static/2023-10/5/20/asset/e5aedefdeecb/sub-buzz-1322-1696537165-2.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDsOHb-Dz0yC4OGyO1w4WeCAIfuhNI8tzB0Q&s"
+      ]
+    },
+    {
+      "name": "I360ImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 59,
+      "n_downloaded": 9,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/I360ImageClient/00000004.jpeg",
+        "daily_test_results/I360ImageClient/00000008.jpeg",
+        "daily_test_results/I360ImageClient/00000005.jpeg",
+        "daily_test_results/I360ImageClient/00000001.jpeg",
+        "daily_test_results/I360ImageClient/00000006.jpeg",
+        "daily_test_results/I360ImageClient/00000002.jpeg",
+        "daily_test_results/I360ImageClient/00000007.jpeg",
+        "daily_test_results/I360ImageClient/00000003.jpeg",
+        "daily_test_results/I360ImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://images-new-cdn.123rf.com.cn/450wm/reginast777/reginast7771601/reginast777160100034.jpg",
+        "https://preview.qiantucdn.com/freepik/free-vector/6512373e5b0fc.jpg!qt_w320",
+        "https://bpic.wotucdn.com/21/28/55/541d11a0980bdaf641e54eed851d2473.jpg!/fw/275/quality/91/unsharp/true/compress/true/canvas/275x478a0a0"
+      ]
+    },
+    {
+      "name": "PixabayImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 20,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/PixabayImageClient/00000004.png",
+        "daily_test_results/PixabayImageClient/00000007.png",
+        "daily_test_results/PixabayImageClient/00000008.jpeg",
+        "daily_test_results/PixabayImageClient/00000006.png",
+        "daily_test_results/PixabayImageClient/00000001.jpeg",
+        "daily_test_results/PixabayImageClient/00000002.jpeg",
+        "daily_test_results/PixabayImageClient/00000009.jpeg",
+        "daily_test_results/PixabayImageClient/00000005.png",
+        "daily_test_results/PixabayImageClient/00000003.jpeg",
+        "daily_test_results/PixabayImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://pixabay.com/get/g35ace819e84c1e1642d92e283fbc7c2c50ebc1d562696f1d50a032bea43e98f0208f23fbbb2b8bab09064297e7214f03f6ecb75937a04fea28680c78ff0902df_1280.jpg",
+        "https://pixabay.com/get/gec6406118a4624639ff4bd88f2b3939067ba9f56263a715f1d43fda1a4dc27c27728c602187a5e298cefa8ca95c6b3d13595e9fe7fbd777a448f36d54d15886a_1280.jpg",
+        "https://pixabay.com/get/gea56ca752dd4923d832019d8f23e696cfdf074b87a5689ff8a9474dd81df7c46aae29ae5c5b7ebf17a28052f70294f9adae801291ed27dc9b0e22c6c018cd210_1280.jpg"
+      ]
+    },
+    {
+      "name": "YandexImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 42,
+      "n_downloaded": 9,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/YandexImageClient/00000004.jpeg",
+        "daily_test_results/YandexImageClient/00000005.jpeg",
+        "daily_test_results/YandexImageClient/00000001.jpeg",
+        "daily_test_results/YandexImageClient/00000006.jpeg",
+        "daily_test_results/YandexImageClient/00000002.jpeg",
+        "daily_test_results/YandexImageClient/00000009.jpeg",
+        "daily_test_results/YandexImageClient/00000007.jpeg",
+        "daily_test_results/YandexImageClient/00000003.jpeg",
+        "daily_test_results/YandexImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://i.pinimg.com/originals/cb/d6/91/cbd69180680e78d58f1f4cf79ddaac18.jpg",
+        "https://i.ytimg.com/vi/qg55nMKbYYc/maxresdefault.jpg",
+        "https://i.pinimg.com/736x/3f/ef/41/3fef41042cd35ebabaf262180a90596d.jpg"
+      ]
+    },
+    {
+      "name": "DuckduckgoImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 30,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/DuckduckgoImageClient/00000004.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000008.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000005.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000001.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000006.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000002.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000009.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000007.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000003.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://factanimal.com/wp-content/uploads/2023/03/cute-red-panda.jpg",
+        "https://wallpaperaccess.com/full/536212.jpg",
+        "https://wallpaperaccess.com/full/536225.jpg"
+      ]
+    },
+    {
+      "name": "SogouImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 48,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/SogouImageClient/00000004.jpeg",
+        "daily_test_results/SogouImageClient/00000008.jpeg",
+        "daily_test_results/SogouImageClient/00000005.jpeg",
+        "daily_test_results/SogouImageClient/00000001.jpeg",
+        "daily_test_results/SogouImageClient/00000006.jpeg",
+        "daily_test_results/SogouImageClient/00000002.jpeg",
+        "daily_test_results/SogouImageClient/00000009.jpeg",
+        "daily_test_results/SogouImageClient/00000007.jpeg",
+        "daily_test_results/SogouImageClient/00000003.jpeg",
+        "daily_test_results/SogouImageClient/00000010.jpeg"
+      ],
+      "search_samples": [
+        "https://www.kfzimg.com/sw/kfzimg/1867/016e879676f47ed9d2_n.jpg",
+        "http://imgs.focus.cn/upload/bd/6843/b_68428806.jpg",
+        "http://cdnimg103.lizhi.fm/audio_cover/2016/04/09/27712991938495879_320x320.jpg"
+      ]
+    }
+  ]
+}
