@@ -44,7 +44,7 @@ class BaseImageClient():
         self._initsession()
         # proxied_session_client
         self.proxied_session_client = freeproxy.ProxiedSessionClient(
-            proxy_sources=['KuaidailiProxiedSession', 'IP3366ProxiedSession', 'QiyunipProxiedSession', 'ProxyhubProxiedSession', 'ProxydbProxiedSession'] if proxy_sources is None else proxy_sources, 
+            proxy_sources=['ProxiflyProxiedSession', 'KuaidailiProxiedSession', 'GeonodeProxiedSession'] if proxy_sources is None else proxy_sources, 
             disable_print=True
         ) if auto_set_proxies else None
     '''_initsession'''
@@ -101,7 +101,7 @@ class BaseImageClient():
         return image_infos
     '''search'''
     @usesearchheaderscookies
-    def search(self, keyword, search_limits=1000, num_threadings=5, filters: dict = None, request_overrides: dict = None):
+    def search(self, keyword: str, search_limits: int = 1000, num_threadings: int = 5, filters: dict = None, request_overrides: dict = None):
         # init
         request_overrides = request_overrides or {}
         # logging
@@ -167,7 +167,7 @@ class BaseImageClient():
         return downloaded_image_infos
     '''download'''
     @usedownloadheaderscookies
-    def download(self, image_infos, num_threadings=5, request_overrides: dict = None):
+    def download(self, image_infos: list, num_threadings: int = 5, request_overrides: dict = None):
         # init
         request_overrides = request_overrides or {}
         # logging
