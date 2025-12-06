@@ -59,15 +59,11 @@
 
 # 🆕 What's New
 
+- 2025-12-07: Released pyimagedl v0.2.3 — supports searching and downloading via the Yahoo image search engine, with partial tuning of the default arguments.
 - 2025-11-19: Released pyimagedl v0.2.2 — fix potential in-place modified bugs in HTTP requests.
 - 2025-11-16: Released pyimagedl v0.2.1 — fixed some minor bugs in duckduckgo and BaseImageClient.
 - 2025-11-16: Released pyimagedl v0.2.0 — upgrade ImageClient and fixed some minor bugs.
 - 2025-11-10: Released pyimagedl v0.1.8 — fix logging and requirements.
-- 2025-10-22: Released pyimagedl v0.1.7 — refactor codes for google and DuckDuckGo, fix base module requests bugs, and add sogou image search.
-- 2025-10-22: Released pyimagedl v0.1.6 — fix serpapisearch bugs, more robust code structure, add DuckDuckGo image search.
-- 2025-10-21: Released pyimagedl v0.1.5 — fix maintain session bugs, support pixabay and yandex image search.
-- 2025-10-20: Released pyimagedl v0.1.4 — add a deduplication feature and support 360 image search.
-- 2025-10-19: Released pyimagedl v0.1.3 — code cleanup, deprecated/invalid functions removed, new functions added.
 
 
 # 📘 Introduction
@@ -87,6 +83,7 @@ Imagedl lets you search for and download images from specific websites. If you f
 |  YandexImageClient             |  Yandex图片        |   ✓                |  ✓                   |    [yandex.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yandex.py)              |
 |  DuckduckgoImageClient         |  DuckDuckGo图片    |   ✓                |  ✓                   |    [duckduckgo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/duckduckgo.py)      |
 |  SogouImageClient              |  搜狗图片          |   ✓                |  ✓                   |    [sogou.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/sogou.py)                |
+|  YahooImageClient              |  雅虎图片          |   ✓                |  ✓                   |    [yahoo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yahoo.py)                |
 
 
 # 📦 Install
@@ -107,7 +104,7 @@ python setup.py install
 
 # ⚡ Quick Start
 
-After a successful installation, you can run the snippet below,
+After installing imagedl, you can use the following few lines of code to quickly get started with it,
 
 ```python
 from imagedl import imagedl
@@ -116,15 +113,43 @@ image_client = imagedl.ImageClient(image_source='BaiduImageClient')
 image_client.startcmdui()
 ```
 
-Or just run `imagedl` (maybe `imagedl --help` to show usage information) from the terminal.
+where `image_source` is used to specify the image search and download engine.
+Of course, you can equivalently enter `imagedl -i "BaiduImageClient"` in the terminal to execute the above code.
+`imagedl --help` displays the basic usage of the command-line tool.
 
-For class `ImageClient`, the acceptable arguments include,
+```bash
+Usage: imagedl [OPTIONS]
 
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient']`.
+Options:
+  --version                       Show the version and exit.
+  -k, --keyword TEXT              The keywords for the image search. If left
+                                  empty, an interactive terminal will open
+                                  automatically.
+  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|i360imageclient|pixabayimageclient|yandeximageclient|duckduckgoimageclient|sogouimageclient|yahooimageclient]
+                                  The image search and download source.
+                                  [default: BaiduImageClient]
+  -s, --search-limits, --search_limits INTEGER RANGE
+                                  Scale of image downloads.  [default: 1000;
+                                  1<=x<=100000000.0]
+  -n, --num-threadings, --num_threadings INTEGER RANGE
+                                  Number of threads used.  [default: 5;
+                                  1<=x<=256]
+  -c, --init-image-client-cfg, --init_image_client_cfg TEXT
+                                  Client config such as `work_dir` as a JSON
+                                  string.
+  -r, --request-overrides, --request_overrides TEXT
+                                  Requests.get (or Requests.post) kwargs such as `headers` and
+                                  `proxies` as a JSON string.
+  --help                          Show this message and exit.
+```
+
+For class `imagedl.ImageClient`, the acceptable arguments include,
+
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient']`.
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
-- `request_overrides` (`dict`, default: `{}`): Requests.get (or Requests.post) kwargs such as `{'headers': {'User-Agent': xxx}, 'proxies': {}}`.
+- `request_overrides` (`dict`, default: `{}`): `requests.get` (or `requests.post`) kwargs such as `{'headers': {'User-Agent': xxx}, 'proxies': {}}`.
 
 The demonstration is as follows,
 
@@ -143,7 +168,7 @@ image_infos = image_client.search('cut animals', search_limits_overrides=10, num
 print(image_infos)
 ```
 
-In the code above, `search_limits_overrides` overrides the `search_limits` parameter set when initializing `ImageClient`, and `num_threadings_overrides` works in the same way.
+In the code above, `search_limits_overrides` overrides the `search_limits` argument set when initializing `imagedl.ImageClient`, and `num_threadings_overrides` works in the same way.
 The output of this code looks like,
 
 ```python
@@ -172,7 +197,7 @@ The output of this code looks like,
 ]
 ```
 
-Then you can also call the image downloading function to download the images found by the search. The code is as follows:
+Then you can also call the image downloading function to download the images found by the search. The code is as follows,
 
 ```python
 from imagedl import imagedl
@@ -180,6 +205,52 @@ from imagedl import imagedl
 image_client = imagedl.ImageClient(image_source='DuckduckgoImageClient', search_limits=1000, num_threadings=5)
 image_infos = image_client.search('cut animals', search_limits_overrides=10, num_threadings_overrides=1)
 image_client.download(image_infos=image_infos)
+```
+
+If you prefer not to use the unified interface, you can also import a specific image search engine directly, as in the following code,
+
+```python
+from imagedl.modules.sources import (
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, DuckduckgoImageClient
+)
+
+
+# bing tests
+client = BingImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# 360 tests
+client = I360ImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# baidu tests
+client = BaiduImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# sogou tests
+client = SogouImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# google tests
+client = GoogleImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# yandex tests
+client = YandexImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# pixabay tests
+client = PixabayImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# duckduckgo tests
+client = DuckduckgoImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# yahoo tests
+client = YahooImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
 ```
 
 

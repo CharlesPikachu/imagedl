@@ -113,7 +113,7 @@ class ImageClient():
     '-c', '--init-image-client-cfg', '--init_image_client_cfg', default=None, help='Client config such as `work_dir` as a JSON string.', type=str, show_default=True,
 )
 @click.option(
-    '-r', '--request-overrides', '--request_overrides', default=None, help='Requests.get kwargs such as `headers` and `proxies` as a JSON string.', type=str, show_default=True,
+    '-r', '--request-overrides', '--request_overrides', default=None, help='Requests.get (or Requests.post) kwargs such as `headers` and `proxies` as a JSON string.', type=str, show_default=True,
 )
 def ImageClientCMD(keyword, image_source, search_limits, num_threadings, init_image_client_cfg, request_overrides):
     # load json string

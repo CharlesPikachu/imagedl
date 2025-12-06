@@ -1,6 +1,5 @@
 # Imagedl APIs
 
-
 ## `imagedl.imagedl.ImageClient`
 
 `ImageClient` is a high-level interface for searching and downloading images using different backends (*e.g.*, `BaiduImageClient`, `BingImageClient` and `GoogleImageClient`) registered in `ImageClientBuilder.REGISTERED_MODULES`.
@@ -133,6 +132,7 @@ Current implementations built on top of `BaseImageClient` include:
 - `imagedl.imagedl.modules.sources.YandexImageClient`
 - `imagedl.imagedl.modules.sources.DuckduckgoImageClient`
 - `imagedl.imagedl.modules.sources.SogouImageClient`
+- `imagedl.imagedl.modules.sources.YahooImageClient`
 
 In most cases, users do **not** instantiate `BaseImageClient` directly. 
 Instead, they use high-level wrappers such as `BaiduImageClient`. 
@@ -159,7 +159,7 @@ Arguments supported when initializing this class include:
     - image files: `00000001.jpg`, `00000002.png`, ...
 
 - **proxy_sources** (`list` or `None`, default: `None`): List of proxy provider backends for `freeproxy.ProxiedSessionClient`. If `None`, a default list is used:
-  - `["KuaidailiProxiedSession", "IP3366ProxiedSession", "QiyunipProxiedSession", "ProxyhubProxiedSession", "ProxydbProxiedSession"]`
+  - `['ProxiflyProxiedSession', 'KuaidailiProxiedSession', 'GeonodeProxiedSession']`
 
 #### `BaseImageClient.search`
 
