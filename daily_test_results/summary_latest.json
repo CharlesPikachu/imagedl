@@ -1,6 +1,6 @@
 {
-  "date": "2025-12-09",
-  "timestamp_utc": "2025-12-09T02:48:19.979928+00:00",
+  "date": "2025-12-10",
+  "timestamp_utc": "2025-12-10T02:52:06.298564+00:00",
   "query": "Cute Animals",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,25 +10,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 60,
+      "n_results": 12,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/BingImageClient/00000004.jpeg",
-        "daily_test_results/BingImageClient/00000007.png",
         "daily_test_results/BingImageClient/00000008.jpeg",
+        "daily_test_results/BingImageClient/00000010.png",
         "daily_test_results/BingImageClient/00000005.jpeg",
         "daily_test_results/BingImageClient/00000001.jpeg",
         "daily_test_results/BingImageClient/00000006.jpeg",
         "daily_test_results/BingImageClient/00000002.jpeg",
         "daily_test_results/BingImageClient/00000009.jpeg",
-        "daily_test_results/BingImageClient/00000003.jpeg",
-        "daily_test_results/BingImageClient/00000010.jpeg"
+        "daily_test_results/BingImageClient/00000007.jpeg",
+        "daily_test_results/BingImageClient/00000003.jpeg"
       ],
       "search_samples": [
-        "https://factanimal.com/wp-content/uploads/2023/03/cute-red-panda.jpg",
-        "https://www.rd.com/wp-content/uploads/2021/04/GettyImages-1145794687.jpg",
-        "https://i2.wp.com/earthnworld.com/wp-content/uploads/2017/07/Red-Panda.jpg?ssl=1"
+        "http://www.pixelstalk.net/wp-content/uploads/2016/03/Cute-animal-wallpapers-hd-desktop.jpg",
+        "https://wallpaperaccess.com/full/472834.jpg",
+        "http://getwallpapers.com/wallpaper/full/4/a/5/947707-cute-baby-animals-wallpapers-1920x1080-for-samsung-galaxy.jpg"
       ]
     },
     {
@@ -57,24 +57,23 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 217,
-      "n_downloaded": 9,
+      "n_results": 216,
+      "n_downloaded": 8,
       "error": null,
       "downloaded_images": [
         "daily_test_results/GoogleImageClient/00000004.jpeg",
         "daily_test_results/GoogleImageClient/00000008.jpeg",
-        "daily_test_results/GoogleImageClient/00000001.jpeg",
+        "daily_test_results/GoogleImageClient/00000005.jpeg",
         "daily_test_results/GoogleImageClient/00000006.jpeg",
         "daily_test_results/GoogleImageClient/00000002.jpeg",
         "daily_test_results/GoogleImageClient/00000009.jpeg",
         "daily_test_results/GoogleImageClient/00000007.jpeg",
-        "daily_test_results/GoogleImageClient/00000003.jpeg",
         "daily_test_results/GoogleImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR1RkhNvtPE33T6r8B7Vmq3C_yKiY0bhC3wA&s",
-        "https://factanimal.com/wp-content/uploads/2023/03/cute-red-panda.jpg",
-        "https://static.toiimg.com/thumb/115377718/115377718.jpg?height=746&width=420&resizemode=76&imgsize=55208"
+        "https://c02.purpledshub.com/uploads/sites/62/2021/08/Polar-Bear-D7443_final-030b4a3.jpg?webp=1&w=1200",
+        "https://paradepets.com/.image/w_3840,q_auto:good,c_limit/MTkxMzY1Nzg4MTM5MjAyMTQ2/Quokka%2520on%2520Rottnest%2520Island%2520-%2520Western%2520Australia.jpg?arena_f_auto",
+        "https://www.gettyimages.com/detail/1657074552?utm_medium=organic&utm_source=google&utm_campaign=iptcurl"
       ]
     },
     {
@@ -112,20 +111,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/PixabayImageClient/00000004.png",
-        "daily_test_results/PixabayImageClient/00000007.png",
-        "daily_test_results/PixabayImageClient/00000008.jpeg",
         "daily_test_results/PixabayImageClient/00000006.png",
+        "daily_test_results/PixabayImageClient/00000008.png",
         "daily_test_results/PixabayImageClient/00000001.jpeg",
         "daily_test_results/PixabayImageClient/00000002.jpeg",
         "daily_test_results/PixabayImageClient/00000009.jpeg",
         "daily_test_results/PixabayImageClient/00000005.png",
+        "daily_test_results/PixabayImageClient/00000007.jpeg",
         "daily_test_results/PixabayImageClient/00000003.jpeg",
         "daily_test_results/PixabayImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g488f179802ba1bdb5f3f93dd699d1bf36d8cb95d758cfe02f5346518df77346114a1e4ef719a7d2e8505ab2dc164a7e64bfd090ce13c94d9415b596aec1c6af5_1280.jpg",
-        "https://pixabay.com/get/g142bfbdb3f6b12b010de76f3df63a14d824dab242608fe2054b56a67af45256e310258b4344673f01edab209f9a333de3339826ae3b6979bb05df88d2d311e14_1280.jpg",
-        "https://pixabay.com/get/g9749bb3b214898756fd3025e8c8b9694faefe98d5c8e84b8e6e94327a05b4f44ce1f300247e92f3b44a887d51a40375157c2bf7ebdac98a8d983709b8cc273be_1280.jpg"
+        "https://pixabay.com/get/ge29fdfd0ff8a832be6e93b2a4c986754a91c2326d44a4f7b582d7f65c20807c4934216b1c01a9b46c3aafde9b58e1c781a2a9c5615fae866d370a8b19f644f30_1280.jpg",
+        "https://pixabay.com/get/gc49f3d286a0068d3f5e08ef272218d61680e57b7a28888a6be2423672043b9d8487939ecb1a12da78e0b18686b4b3b1dc097128fe494bfe211e9db5166233291_1280.jpg",
+        "https://pixabay.com/get/gce606beb4afb61eb7a82fe9f4ce61db2e1e6ee9be9f0556b1fbb81e77c1120bf3fd317808605d412e2bf32a8de07b0b9757de1a4d61907a74f48afe06f38b54e_1280.jpg"
       ]
     },
     {
@@ -133,25 +132,23 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 44,
-      "n_downloaded": 10,
+      "n_results": 46,
+      "n_downloaded": 8,
       "error": null,
       "downloaded_images": [
         "daily_test_results/YandexImageClient/00000004.jpeg",
         "daily_test_results/YandexImageClient/00000008.jpeg",
-        "daily_test_results/YandexImageClient/00000003.png",
-        "daily_test_results/YandexImageClient/00000002.png",
         "daily_test_results/YandexImageClient/00000005.jpeg",
         "daily_test_results/YandexImageClient/00000001.jpeg",
         "daily_test_results/YandexImageClient/00000006.jpeg",
-        "daily_test_results/YandexImageClient/00000009.jpeg",
-        "daily_test_results/YandexImageClient/00000007.jpeg",
+        "daily_test_results/YandexImageClient/00000009.png",
+        "daily_test_results/YandexImageClient/00000003.jpeg",
         "daily_test_results/YandexImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://i.ytimg.com/vi/e-iPGY5CpVw/maxresdefault.jpg",
-        "https://i.pinimg.com/originals/bb/4c/4b/bb4c4bd492b6a95405350fbb418f4d5d.png",
-        "https://i.pinimg.com/originals/7d/59/ee/7d59ee3f348e5245caa68926939f236e.png"
+        "https://i.pinimg.com/736x/3f/ef/41/3fef41042cd35ebabaf262180a90596d.jpg",
+        "https://i.okcdn.ru/videoPreview?id=8153330682519&type=39&idx=0&tkn=4mtIYJfjZd5Mg8iVQ2eLPXlDq3k",
+        "https://i.pinimg.com/736x/7d/59/ee/7d59ee3f348e5245caa68926939f236e.jpg"
       ]
     },
     {
