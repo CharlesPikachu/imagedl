@@ -21,7 +21,7 @@ Options:
   -k, --keyword TEXT              The keywords for the image search. If left
                                   empty, an interactive terminal will open
                                   automatically.
-  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|i360imageclient|pixabayimageclient|yandeximageclient|duckduckgoimageclient|sogouimageclient|yahooimageclient]
+  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|i360imageclient|pixabayimageclient|yandeximageclient|duckduckgoimageclient|sogouimageclient|yahooimageclient|unsplashimageclient]
                                   The image search and download source.
                                   [default: BaiduImageClient]
   -s, --search-limits, --search_limits INTEGER RANGE
@@ -34,14 +34,14 @@ Options:
                                   Client config such as `work_dir` as a JSON
                                   string.
   -r, --request-overrides, --request_overrides TEXT
-                                  Requests.get (or Requests.post) kwargs such as `headers` and
-                                  `proxies` as a JSON string.
+                                  Requests.get (or Requests.post) kwargs such
+                                  as `headers` and `proxies` as a JSON string.
   --help                          Show this message and exit.
 ```
 
 For class `imagedl.ImageClient`, the acceptable arguments include,
 
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient']`.
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient']`.
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
@@ -107,7 +107,7 @@ If you prefer not to use the unified interface, you can also import a specific i
 
 ```python
 from imagedl.modules.sources import (
-    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, DuckduckgoImageClient
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, DuckduckgoImageClient, UnsplashImageClient
 )
 
 
@@ -145,6 +145,10 @@ image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # yahoo tests
 client = YahooImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# unsplash tests
+client = UnsplashImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ```

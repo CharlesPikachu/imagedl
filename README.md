@@ -140,8 +140,8 @@ Options:
                                   Client config such as `work_dir` as a JSON
                                   string.
   -r, --request-overrides, --request_overrides TEXT
-                                  Requests.get (or Requests.post) kwargs such as `headers` and
-                                  `proxies` as a JSON string.
+                                  Requests.get (or Requests.post) kwargs such
+                                  as `headers` and `proxies` as a JSON string.
   --help                          Show this message and exit.
 ```
 
