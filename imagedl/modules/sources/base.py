@@ -154,7 +154,7 @@ class BaseImageClient():
             with open(file_path, 'wb') as fp:
                 fp.write(resp.content)
             ext = imghdr.what(file_path)
-            if ext in ['jpg', 'jpeg', 'png', 'bmp', 'gif']:
+            if ext in ["rgb", "gif", "pbm", "pgm", "ppm", "tiff", "rast", "xbm", "jpeg", "jpg", "bmp", "png", "webp", "exr",]:
                 file_path_with_ext = f'{file_path}.{ext}'
                 assert (not os.path.exists(file_path_with_ext))
                 shutil.move(file_path, file_path_with_ext)

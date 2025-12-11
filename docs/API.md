@@ -133,6 +133,7 @@ Current implementations built on top of `BaseImageClient` include:
 - `imagedl.imagedl.modules.sources.DuckduckgoImageClient`
 - `imagedl.imagedl.modules.sources.SogouImageClient`
 - `imagedl.imagedl.modules.sources.YahooImageClient`
+- `imagedl.imagedl.modules.sources.UnsplashImageClient`
 
 In most cases, users do **not** instantiate `BaseImageClient` directly. 
 Instead, they use high-level wrappers such as `BaiduImageClient`. 

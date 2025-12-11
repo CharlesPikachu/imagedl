@@ -9,6 +9,7 @@ from .google import GoogleImageClient
 from ..utils import BaseModuleBuilder
 from .yandex import YandexImageClient
 from .pixabay import PixabayImageClient
+from .unsplash import UnsplashImageClient
 from .duckduckgo import DuckduckgoImageClient
 
 
@@ -18,6 +19,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'BingImageClient': BingImageClient, 'BaiduImageClient': BaiduImageClient, 'GoogleImageClient': GoogleImageClient, 
         'I360ImageClient': I360ImageClient, 'PixabayImageClient': PixabayImageClient, 'YandexImageClient': YandexImageClient,
         'DuckduckgoImageClient': DuckduckgoImageClient, 'SogouImageClient': SogouImageClient, 'YahooImageClient': YahooImageClient,
+        'UnsplashImageClient': UnsplashImageClient,
     }
 
 

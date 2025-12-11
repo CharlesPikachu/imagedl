@@ -1,5 +1,7 @@
 # Release Log
 
+- 2025-12-11: Released pyimagedl v0.2.4 — supports searching for and downloading images from Unsplash, along with some minor improvements.
+
 - 2025-12-07: Released pyimagedl v0.2.3 — supports searching and downloading via the Yahoo image search engine, with partial tuning of the default arguments.
 
 - 2025-11-19: Released pyimagedl v0.2.2 — fix potential in-place modified bugs in HTTP requests.
