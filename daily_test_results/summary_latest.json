@@ -1,6 +1,6 @@
 {
-  "date": "2025-12-11",
-  "timestamp_utc": "2025-12-11T02:54:06.245341+00:00",
+  "date": "2025-12-12",
+  "timestamp_utc": "2025-12-12T02:52:30.020557+00:00",
   "query": "Cute Animals",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -11,23 +11,22 @@
       "download_ok": true,
       "ok": true,
       "n_results": 35,
-      "n_downloaded": 9,
+      "n_downloaded": 8,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/BingImageClient/00000008.jpeg",
-        "daily_test_results/BingImageClient/00000003.png",
+        "daily_test_results/BingImageClient/00000004.jpeg",
+        "daily_test_results/BingImageClient/00000008.webp",
         "daily_test_results/BingImageClient/00000005.jpeg",
         "daily_test_results/BingImageClient/00000001.jpeg",
         "daily_test_results/BingImageClient/00000006.jpeg",
         "daily_test_results/BingImageClient/00000002.jpeg",
         "daily_test_results/BingImageClient/00000009.jpeg",
-        "daily_test_results/BingImageClient/00000007.jpeg",
         "daily_test_results/BingImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "http://www.pixelstalk.net/wp-content/uploads/2016/03/Cute-animal-wallpapers-hd-desktop.jpg",
-        "https://wallpaperaccess.com/full/472834.jpg",
-        "https://i.pinimg.com/originals/6d/c0/a5/6dc0a5a69971c687f0c965c6fccde346.png"
+        "http://www.hickerphoto.com/images/1024/pictures-f76t7426.jpg",
+        "http://www.technocrazed.com/wp-content/uploads/2013/10/Cute-baby-animals-50.jpg",
+        "https://preview.redd.it/this-cute-red-panda-v0-0ga0ssyus6tc1.jpeg?auto=webp&s=7504173c4251c99abaa5b1f66856a1a811660067"
       ]
     },
     {
@@ -36,14 +35,15 @@
       "download_ok": true,
       "ok": true,
       "n_results": 30,
-      "n_downloaded": 5,
+      "n_downloaded": 6,
       "error": null,
       "downloaded_images": [
         "daily_test_results/BaiduImageClient/00000008.jpeg",
         "daily_test_results/BaiduImageClient/00000006.jpeg",
         "daily_test_results/BaiduImageClient/00000002.jpeg",
         "daily_test_results/BaiduImageClient/00000009.jpeg",
-        "daily_test_results/BaiduImageClient/00000003.jpeg"
+        "daily_test_results/BaiduImageClient/00000003.jpeg",
+        "daily_test_results/BaiduImageClient/00000005.webp"
       ],
       "search_samples": [
         "https://hellorfimg.zcool.cn/large/2437059527.jpg",
@@ -56,24 +56,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 218,
-      "n_downloaded": 9,
+      "n_results": 216,
+      "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/GoogleImageClient/00000004.jpeg",
+        "daily_test_results/GoogleImageClient/00000008.jpeg",
+        "daily_test_results/GoogleImageClient/00000003.png",
         "daily_test_results/GoogleImageClient/00000005.jpeg",
         "daily_test_results/GoogleImageClient/00000001.jpeg",
         "daily_test_results/GoogleImageClient/00000006.jpeg",
         "daily_test_results/GoogleImageClient/00000002.jpeg",
         "daily_test_results/GoogleImageClient/00000009.jpeg",
         "daily_test_results/GoogleImageClient/00000007.jpeg",
-        "daily_test_results/GoogleImageClient/00000003.jpeg",
         "daily_test_results/GoogleImageClient/00000010.jpeg"
       ],
       "search_samples": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEaQtf9D5n0h6Pc5D9Ag49h7w7-X4Iqcn6tg&s",
-        "https://i.ytimg.com/vi/NGC8IS4gjpM/maxresdefault.jpg",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTivFdcp1myXUy_9bpwnSve85VEbf0jmzenaQ&s"
+        "https://www.treehugger.com/thmb/y0lhfhyswEnZIHWdmQXJ-_2d1N4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/backlit-cheetah-cubs-in-ndutu-conservation-area--tanzania--east-africa-1203982703-fb64f9e943714215b031adc2f8481d60.jpg",
+        "https://ssl.gstatic.com/gb/images/bar/al-icon.png"
       ]
     },
     {
@@ -81,8 +82,8 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 59,
-      "n_downloaded": 9,
+      "n_results": 60,
+      "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/I360ImageClient/00000004.jpeg",
@@ -91,14 +92,15 @@
         "daily_test_results/I360ImageClient/00000001.jpeg",
         "daily_test_results/I360ImageClient/00000006.jpeg",
         "daily_test_results/I360ImageClient/00000002.jpeg",
+        "daily_test_results/I360ImageClient/00000009.jpeg",
         "daily_test_results/I360ImageClient/00000007.jpeg",
         "daily_test_results/I360ImageClient/00000003.jpeg",
         "daily_test_results/I360ImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://images-new-cdn.123rf.com.cn/450wm/reginast777/reginast7771601/reginast777160100034.jpg",
-        "https://preview.qiantucdn.com/freepik/free-vector/6512373e5b0fc.jpg!qt_w320",
-        "https://bpic.wotucdn.com/21/28/55/541d11a0980bdaf641e54eed851d2473.jpg!/fw/275/quality/91/unsharp/true/compress/true/canvas/275x478a0a0"
+        "https://icweiliimg1.pstatp.com/weili/bl/521764507105362029.jpg",
+        "https://icweiliimg1.pstatp.com/weili/bl/491495544698175563.jpg",
+        "https://imagecdn.veestock.com/233444156535.jpg?x-image-process=style/360_special"
       ]
     },
     {
@@ -111,20 +113,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/PixabayImageClient/00000004.png",
+        "daily_test_results/PixabayImageClient/00000007.png",
+        "daily_test_results/PixabayImageClient/00000008.jpeg",
         "daily_test_results/PixabayImageClient/00000006.png",
-        "daily_test_results/PixabayImageClient/00000008.png",
         "daily_test_results/PixabayImageClient/00000001.jpeg",
         "daily_test_results/PixabayImageClient/00000002.jpeg",
         "daily_test_results/PixabayImageClient/00000009.jpeg",
         "daily_test_results/PixabayImageClient/00000005.png",
-        "daily_test_results/PixabayImageClient/00000007.jpeg",
         "daily_test_results/PixabayImageClient/00000003.jpeg",
         "daily_test_results/PixabayImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/gbd332eb4d1f7668efb354b2f68ff7a69f5bcd7a1778b45163ff2d1e2a2c88d6dd89b9263ae570ed3da644af9b07604ae2ab8ff4986dee6acec3c23768bf2b7d8_1280.jpg",
-        "https://pixabay.com/get/gc56d2656f60430c0bd315d98f0929c22599ba47953b6e821b804a0f28730213c27bc78da31fdbaf74ac3b9e92eae922d21ed3e90e61764d46039dfb3f54156f6_1280.jpg",
-        "https://pixabay.com/get/g71c3ccdd99b395ab7e32dc6d9ca3aefe2a868f8e6be7372f70daa2f05f5008e4767f2131c50b3505f70f23776af0266e10b2dbf064767627426616279f83ae78_1280.jpg"
+        "https://pixabay.com/get/gb00df3e5dd0cc0d639222c20bdc109cecc82af79af10e4f4d534f70de4a4eecf634ef3e3e13bd2743d614f62cd711616a9501159c8f3ff67ef69dc2d2b6be31c_1280.jpg",
+        "https://pixabay.com/get/g89c47269329680ff183d485f675bdfb28f1a870c7b51c8f6743efdf32117cac0d8d8494f220de95b65a8c991d246ddc119c6e6dc080a61deb3bbc51c01b909e4_1280.jpg",
+        "https://pixabay.com/get/g49a77bd2eaf4d7e2801bc81d243eae1221ba4476d6054b8a9cd28a56db7bbd8d7d35af4c8ac61eaf569822d6937702bce11845d4f73daf17d7d9c2f808647f61_1280.jpg"
       ]
     },
     {
@@ -132,24 +134,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 46,
-      "n_downloaded": 9,
+      "n_results": 45,
+      "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/YandexImageClient/00000004.jpeg",
-        "daily_test_results/YandexImageClient/00000010.png",
+        "daily_test_results/YandexImageClient/00000008.jpeg",
+        "daily_test_results/YandexImageClient/00000006.png",
         "daily_test_results/YandexImageClient/00000005.jpeg",
-        "daily_test_results/YandexImageClient/00000008.png",
         "daily_test_results/YandexImageClient/00000001.jpeg",
-        "daily_test_results/YandexImageClient/00000006.jpeg",
+        "daily_test_results/YandexImageClient/00000002.jpeg",
         "daily_test_results/YandexImageClient/00000009.jpeg",
         "daily_test_results/YandexImageClient/00000007.jpeg",
-        "daily_test_results/YandexImageClient/00000003.jpeg"
+        "daily_test_results/YandexImageClient/00000003.jpeg",
+        "daily_test_results/YandexImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://i.pinimg.com/474x/19/8c/e5/198ce57ad19f06c1946ce1ddb7c2cbed.jpg?nii=t",
-        "https://i.pinimg.com/videos/thumbnails/originals/67/2a/98/672a9863e8cb980c2959d59c672eeb1a.0000000.jpg",
-        "https://pbs.twimg.com/media/Grlnm5IW8AAGfrI.jpg"
+        "https://i.pinimg.com/originals/cb/3c/88/cb3c881cfb47f936f3aabde3f7779800.jpg",
+        "https://pbs.twimg.com/media/Grlnm5IW8AAGfrI.jpg",
+        "https://i.pinimg.com/474x/19/8c/e5/198ce57ad19f06c1946ce1ddb7c2cbed.jpg?nii=t"
       ]
     },
     {
@@ -229,6 +232,17 @@
         "https://s.yimg.com/fz/api/res/1.2/Z4D3Lyc2nNEIUNIFZV5jWg--~C/YXBwaWQ9c3JjaGRkO2ZpPWZpbGw7aD05Njt3PTk2/https://tse2.mm.bing.net/th?q=Cute+Animated+Animals&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=strict&t=1",
         "https://s.yimg.com/fz/api/res/1.2/jT0WvGKkNq6c.0Ullk1.oA--~C/YXBwaWQ9c3JjaGRkO2ZpPWZpbGw7aD05Njt3PTk2/https://tse4.mm.bing.net/th?q=Cute+Animals+Fox&pid=Api&mkt=en-US&cc=US&setlang=en&adlt=strict&t=1"
       ]
+    },
+    {
+      "name": "UnsplashImageClient",
+      "search_ok": false,
+      "download_ok": false,
+      "ok": false,
+      "n_results": 0,
+      "n_downloaded": 0,
+      "error": null,
+      "downloaded_images": [],
+      "search_samples": []
     }
   ]
 }
