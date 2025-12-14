@@ -1,6 +1,6 @@
 {
-  "date": "2025-12-13",
-  "timestamp_utc": "2025-12-13T02:44:38.581486+00:00",
+  "date": "2025-12-14",
+  "timestamp_utc": "2025-12-14T02:58:55.653262+00:00",
   "query": "Cute Animals",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,25 +10,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 12,
+      "n_results": 35,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/BingImageClient/00000004.jpeg",
         "daily_test_results/BingImageClient/00000008.jpeg",
+        "daily_test_results/BingImageClient/00000003.png",
         "daily_test_results/BingImageClient/00000005.jpeg",
         "daily_test_results/BingImageClient/00000001.jpeg",
-        "daily_test_results/BingImageClient/00000006.jpeg",
         "daily_test_results/BingImageClient/00000002.jpeg",
-        "daily_test_results/BingImageClient/00000009.webp",
+        "daily_test_results/BingImageClient/00000009.jpeg",
+        "daily_test_results/BingImageClient/00000006.webp",
         "daily_test_results/BingImageClient/00000007.jpeg",
-        "daily_test_results/BingImageClient/00000003.jpeg",
         "daily_test_results/BingImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://images1.wionews.com/images/wion/900x1600/2023/3/20/1679293106992_redpanda.jpg",
-        "https://factanimal.com/wp-content/uploads/2023/03/cute-red-panda.jpg",
-        "https://i2.wp.com/earthnworld.com/wp-content/uploads/2017/07/Red-Panda.jpg?ssl=1"
+        "http://www.pixelstalk.net/wp-content/uploads/2016/03/Cute-animal-wallpapers-hd-desktop.jpg",
+        "https://wallpaperaccess.com/full/472834.jpg",
+        "https://i.pinimg.com/originals/6d/c0/a5/6dc0a5a69971c687f0c965c6fccde346.png"
       ]
     },
     {
@@ -58,25 +58,24 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 217,
-      "n_downloaded": 10,
+      "n_results": 219,
+      "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
         "daily_test_results/GoogleImageClient/00000004.jpeg",
-        "daily_test_results/GoogleImageClient/00000008.jpeg",
-        "daily_test_results/GoogleImageClient/00000002.webp",
-        "daily_test_results/GoogleImageClient/00000005.jpeg",
+        "daily_test_results/GoogleImageClient/00000010.webp",
+        "daily_test_results/GoogleImageClient/00000003.png",
         "daily_test_results/GoogleImageClient/00000001.jpeg",
         "daily_test_results/GoogleImageClient/00000006.jpeg",
+        "daily_test_results/GoogleImageClient/00000002.jpeg",
         "daily_test_results/GoogleImageClient/00000009.jpeg",
         "daily_test_results/GoogleImageClient/00000007.jpeg",
-        "daily_test_results/GoogleImageClient/00000003.jpeg",
-        "daily_test_results/GoogleImageClient/00000010.jpeg"
+        "daily_test_results/GoogleImageClient/00000005.webp"
       ],
       "search_samples": [
-        "https://www.wideopenspaces.com/wp-content/uploads/sites/3/2025/05/cutest-animals-in-the-world-.jpg?fit=1056%2C558",
-        "https://cdn.thegreatprojects.com/thegreatprojects/uploads/43965b5fa1ae51283b083e1065d4cf55.jpg?format=jpg&width=&height=",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9jm-KwsLi7t0C6DobOyq-s89Yq96LgL7kqg&s"
+        "https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/txwgyofrqqgo0jxud41i.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgeGiaIAJjFvLEkaQXLl6beRyfSSExqfWCkw&s",
+        "https://ssl.gstatic.com/gb/images/bar/al-icon.png"
       ]
     },
     {
@@ -126,9 +125,9 @@
         "daily_test_results/PixabayImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g012601218ec0e873e0394591c519d702274682d396969d5fc7587953f711041f7bf586f300ca7f43b2841fc433af3dc8961ef9bff6c99494f3f1404a262f98ad_1280.jpg",
-        "https://pixabay.com/get/g8f3690d4bc6c74c6674822f8a1f245ec3ea236b363b0dc5478cf121be922f7f710d58ac7c6d9fd89f5986bfed8c86f860235cd4ea64eec909d6b1b3ac46d1bbe_1280.jpg",
-        "https://pixabay.com/get/g37a4b1072b1f2ac6f36dbf6879ba2bb5febc1bced49973952157d75bfbb16074f483a869f1a385851f66f97513d601e2c41a4dcaabd56b9b0a7b66fea427db6b_1280.jpg"
+        "https://pixabay.com/get/g0f9e3763bb3ec6b6b9ed91e8245be62af92d34a6fb15a8e194966922077ffd04e37a3d34638b1f5222477a344bc2ab01750711c5ef0ca90ce44eed28a58f848f_1280.jpg",
+        "https://pixabay.com/get/g8cc8a2f70b7fd746e40ac4c8c368c5830e273b867985527c6cb1fc3aeb807c8db260b138dd9340f7a034239bbd84828d81f6d9d98f93a22c153f02282fbe282b_1280.jpg",
+        "https://pixabay.com/get/g85b384f8febb62c107d7648027d88fd11a9eaf31caa76703935e7b32070fd949aa47990bd135d5c889b0a948acba7a6ff226afc2ed719c7d41fa9028b9875900_1280.jpg"
       ]
     },
     {
@@ -136,25 +135,24 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 49,
-      "n_downloaded": 10,
+      "n_results": 50,
+      "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/YandexImageClient/00000004.jpeg",
-        "daily_test_results/YandexImageClient/00000007.png",
         "daily_test_results/YandexImageClient/00000008.jpeg",
-        "daily_test_results/YandexImageClient/00000003.png",
         "daily_test_results/YandexImageClient/00000005.jpeg",
         "daily_test_results/YandexImageClient/00000001.jpeg",
         "daily_test_results/YandexImageClient/00000006.jpeg",
         "daily_test_results/YandexImageClient/00000002.jpeg",
         "daily_test_results/YandexImageClient/00000009.jpeg",
+        "daily_test_results/YandexImageClient/00000007.jpeg",
+        "daily_test_results/YandexImageClient/00000003.jpeg",
         "daily_test_results/YandexImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://i.ytimg.com/vi/nPNq0DKcUBw/oardefault.jpg?sqp=-oaymwEkCJsDENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&amp;rs=AOn4CLDkrwLozPRNBoy8bGeetSyZzVytjQ",
-        "https://i.pinimg.com/736x/23/30/eb/2330eb8aaad635e072bf4ca989317a5f.jpg",
-        "https://i.pinimg.com/originals/7d/59/ee/7d59ee3f348e5245caa68926939f236e.png"
+        "https://i.pinimg.com/originals/bc/ab/dc/bcabdc8f5a2c07629b9825f6aa3254a7.jpg",
+        "https://i.pinimg.com/736x/83/a0/7a/83a07a6de8d5044d13eb58429af5011c.jpg",
+        "https://i.pinimg.com/originals/e6/28/9b/e6289b8f7e0123a66f020d358bf33c77.jpg"
       ]
     },
     {
