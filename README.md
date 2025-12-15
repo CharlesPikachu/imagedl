@@ -56,6 +56,10 @@
   </a>
 </p>
 
+<p align="center">
+  <strong>欢迎关注微信公众号了解更多：Charles的皮卡丘</strong>
+</p>
+
 
 # 🆕 What's New
 
