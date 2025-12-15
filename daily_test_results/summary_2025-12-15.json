@@ -1,6 +1,6 @@
 {
   "date": "2025-12-15",
-  "timestamp_utc": "2025-12-15T00:41:44.389013+00:00",
+  "timestamp_utc": "2025-12-15T02:59:00.295470+00:00",
   "query": "Cute Animals",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,7 +10,7 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 12,
+      "n_results": 35,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
@@ -26,9 +26,9 @@
         "daily_test_results/BingImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://i2.wp.com/earthnworld.com/wp-content/uploads/2017/07/Red-Panda.jpg?ssl=1",
         "https://factanimal.com/wp-content/uploads/2023/03/cute-red-panda.jpg",
-        "https://i.pinimg.com/originals/a6/94/c2/a694c2f6dac7497974c391c7ecb0e337.jpg"
+        "https://www.rd.com/wp-content/uploads/2021/04/GettyImages-1145794687.jpg",
+        "https://i2.wp.com/earthnworld.com/wp-content/uploads/2017/07/Red-Panda.jpg?ssl=1"
       ]
     },
     {
@@ -58,24 +58,24 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 221,
+      "n_results": 219,
       "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
         "daily_test_results/GoogleImageClient/00000004.jpeg",
         "daily_test_results/GoogleImageClient/00000008.jpeg",
-        "daily_test_results/GoogleImageClient/00000005.jpeg",
         "daily_test_results/GoogleImageClient/00000001.jpeg",
         "daily_test_results/GoogleImageClient/00000006.jpeg",
         "daily_test_results/GoogleImageClient/00000002.jpeg",
         "daily_test_results/GoogleImageClient/00000009.jpeg",
         "daily_test_results/GoogleImageClient/00000007.jpeg",
+        "daily_test_results/GoogleImageClient/00000003.jpeg",
         "daily_test_results/GoogleImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQK3roBgwC-sBe9TErf4NuJjvS9Zqlp-NFKQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3j2bzZcNlPR4XR9Rq-SNGZy2ypd-IKfd9Xg&s",
-        "https://www.gstatic.com/og/_/js/k=og.asy.en_US.z3G1iSFNfog.2019.O/rt=j/m=_ac,_awd,ada,lldp,qads/exm=/d=1/ed=1/rs=AA2YrTs9hEs5hp3MJf1CfNKYxIzLM1VZ8g"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQMXAtI2Raus4gxA_W83SwiG9cX9p3cSRR6g&s",
+        "https://puresa.com.au/wp-content/uploads/2018/01/Kangaroo-cute.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9HdEf5GGxrkeovlHbsQ0mGTncC-nMQvgPkg&s"
       ]
     },
     {
@@ -114,20 +114,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/PixabayImageClient/00000004.png",
+        "daily_test_results/PixabayImageClient/00000007.png",
+        "daily_test_results/PixabayImageClient/00000008.jpeg",
         "daily_test_results/PixabayImageClient/00000006.png",
-        "daily_test_results/PixabayImageClient/00000008.png",
         "daily_test_results/PixabayImageClient/00000001.jpeg",
         "daily_test_results/PixabayImageClient/00000002.jpeg",
         "daily_test_results/PixabayImageClient/00000009.jpeg",
         "daily_test_results/PixabayImageClient/00000005.png",
-        "daily_test_results/PixabayImageClient/00000007.jpeg",
         "daily_test_results/PixabayImageClient/00000003.jpeg",
         "daily_test_results/PixabayImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g891716bff16b5d9dee062ad7f5dd21cde67902447820e0b1a621964dbdb4950238c236703d409fded91ed2e4e05aa882a5c16b051bba62f590e8e4e52eb569bc_1280.jpg",
-        "https://pixabay.com/get/gee0d1dbaa7dc135674821e6f0981fee17aa629cacae439e71d1102388c8c8480f28a9a32d0e3d50a7fcf951b00fd10a6b12c337461786166eb2746e673e4e5e6_1280.jpg",
-        "https://pixabay.com/get/gf8b63f7e52b24bc2176273c71c86bc993b1ed536c86323bece70b18643272cc35f7865580345c3f952ef07cfb81ebb1e87094c5e60cb8095ace417a0c6e330d1_1280.jpg"
+        "https://pixabay.com/get/g655e61fcbb2e3b0318f723fecf2057bcd6703586fda27504de9823430ee311b4369cda0b08bcb9439b87cd4fbccdb315dd0d4f222d3afd911a0a0705d972f1bc_1280.jpg",
+        "https://pixabay.com/get/ged5bfa998615a1baf5f1874a9128b856b5937a2530bf40e20e5e7475202ad6267481007da8df0807f15229a1a1e01c856b8159bcaa1cf16d440a32046ef35836_1280.jpg",
+        "https://pixabay.com/get/g8d81651d95683f4c17d4eb8d7f1357deb03ef0e81d9c1da0a4598e6636747bea02471a9851db2750053da79ee882919762f03ea18c2c1829f1f364a1e966738c_1280.jpg"
       ]
     },
     {
@@ -135,25 +135,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 47,
+      "n_results": 49,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/YandexImageClient/00000004.png",
+        "daily_test_results/YandexImageClient/00000004.jpeg",
         "daily_test_results/YandexImageClient/00000008.jpeg",
+        "daily_test_results/YandexImageClient/00000003.png",
         "daily_test_results/YandexImageClient/00000002.png",
         "daily_test_results/YandexImageClient/00000005.jpeg",
         "daily_test_results/YandexImageClient/00000001.jpeg",
         "daily_test_results/YandexImageClient/00000006.jpeg",
         "daily_test_results/YandexImageClient/00000009.jpeg",
         "daily_test_results/YandexImageClient/00000007.jpeg",
-        "daily_test_results/YandexImageClient/00000003.jpeg",
         "daily_test_results/YandexImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://i.pinimg.com/474x/c5/3e/3b/c53e3b847b587276b0cbd2b35db5599a.jpg?nii=t",
+        "https://yt3.googleusercontent.com/U0Ab5RMnY-MhbklWkPTqq8SqQ47fyZPNGuJ1nUioUG-2F2YFZoiWLgHD-RtAOI-gBhpvBm_C=s900-c-k-c0x00ffffff-no-rj",
         "https://i.pinimg.com/originals/99/36/f2/9936f27871200fa99341cf3df428bb6b.png",
-        "https://i.pinimg.com/originals/70/a4/ff/70a4ff83cfc5d9938a088d9c10a4639b.jpg"
+        "https://i.pinimg.com/originals/9d/ac/dd/9dacddf1712f4acd6ae2752f1d126880.png"
       ]
     },
     {
