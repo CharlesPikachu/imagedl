@@ -1,6 +1,6 @@
 {
-  "date": "2025-12-15",
-  "timestamp_utc": "2025-12-15T02:59:00.295470+00:00",
+  "date": "2025-12-16",
+  "timestamp_utc": "2025-12-16T02:53:24.479842+00:00",
   "query": "Cute Animals",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,7 +10,7 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 35,
+      "n_results": 60,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
@@ -63,19 +63,19 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/GoogleImageClient/00000004.jpeg",
-        "daily_test_results/GoogleImageClient/00000008.jpeg",
+        "daily_test_results/GoogleImageClient/00000008.webp",
+        "daily_test_results/GoogleImageClient/00000005.jpeg",
         "daily_test_results/GoogleImageClient/00000001.jpeg",
         "daily_test_results/GoogleImageClient/00000006.jpeg",
         "daily_test_results/GoogleImageClient/00000002.jpeg",
         "daily_test_results/GoogleImageClient/00000009.jpeg",
-        "daily_test_results/GoogleImageClient/00000007.jpeg",
         "daily_test_results/GoogleImageClient/00000003.jpeg",
         "daily_test_results/GoogleImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQMXAtI2Raus4gxA_W83SwiG9cX9p3cSRR6g&s",
-        "https://puresa.com.au/wp-content/uploads/2018/01/Kangaroo-cute.jpg",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9HdEf5GGxrkeovlHbsQ0mGTncC-nMQvgPkg&s"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST7eSD0LEazm9mR-N8VKeGp1MHA_HFITHl8g&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeIkZ4BLQ_t26NKEVFZukM5CflghMVcpNX2w&s",
+        "https://media.cnn.com/api/v1/images/stellar/prod/130819155303-cutest-animal-16-meerkat.jpg?q=w_1110,c_fill"
       ]
     },
     {
@@ -114,20 +114,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/PixabayImageClient/00000004.png",
-        "daily_test_results/PixabayImageClient/00000007.png",
-        "daily_test_results/PixabayImageClient/00000008.jpeg",
         "daily_test_results/PixabayImageClient/00000006.png",
+        "daily_test_results/PixabayImageClient/00000008.png",
         "daily_test_results/PixabayImageClient/00000001.jpeg",
         "daily_test_results/PixabayImageClient/00000002.jpeg",
         "daily_test_results/PixabayImageClient/00000009.jpeg",
         "daily_test_results/PixabayImageClient/00000005.png",
+        "daily_test_results/PixabayImageClient/00000007.jpeg",
         "daily_test_results/PixabayImageClient/00000003.jpeg",
         "daily_test_results/PixabayImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g655e61fcbb2e3b0318f723fecf2057bcd6703586fda27504de9823430ee311b4369cda0b08bcb9439b87cd4fbccdb315dd0d4f222d3afd911a0a0705d972f1bc_1280.jpg",
-        "https://pixabay.com/get/ged5bfa998615a1baf5f1874a9128b856b5937a2530bf40e20e5e7475202ad6267481007da8df0807f15229a1a1e01c856b8159bcaa1cf16d440a32046ef35836_1280.jpg",
-        "https://pixabay.com/get/g8d81651d95683f4c17d4eb8d7f1357deb03ef0e81d9c1da0a4598e6636747bea02471a9851db2750053da79ee882919762f03ea18c2c1829f1f364a1e966738c_1280.jpg"
+        "https://pixabay.com/get/gb8ff3f4c7a2d736b529f96bd4a17c5f560a47d102a5a34864e27aa2096234d4c1e7c40d894927e2221129aeca30ca5e92105db28592053bf280bdfb67a3a189b_1280.jpg",
+        "https://pixabay.com/get/gfc282b51e3d9ba8746f002bd4413de2872898481d8899573693394b68b44dea9105e3f462914e4c0b1dbbffc4fd58215a4f1b993c6203eb7806fdd42bc7028f0_1280.jpg",
+        "https://pixabay.com/get/g61cea41ca9e6b4de5ace8ab8fa19f47c9347f341bbb612177f67536e99eab8cc0e193b8eb1c398c33d893d0a39e08524bf090890aa33e5a60f1bd2f77a6bdad6_1280.jpg"
       ]
     },
     {
@@ -135,25 +135,24 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 49,
-      "n_downloaded": 10,
+      "n_results": 48,
+      "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
         "daily_test_results/YandexImageClient/00000004.jpeg",
         "daily_test_results/YandexImageClient/00000008.jpeg",
-        "daily_test_results/YandexImageClient/00000003.png",
-        "daily_test_results/YandexImageClient/00000002.png",
         "daily_test_results/YandexImageClient/00000005.jpeg",
         "daily_test_results/YandexImageClient/00000001.jpeg",
         "daily_test_results/YandexImageClient/00000006.jpeg",
-        "daily_test_results/YandexImageClient/00000009.jpeg",
+        "daily_test_results/YandexImageClient/00000002.jpeg",
+        "daily_test_results/YandexImageClient/00000009.png",
         "daily_test_results/YandexImageClient/00000007.jpeg",
         "daily_test_results/YandexImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://yt3.googleusercontent.com/U0Ab5RMnY-MhbklWkPTqq8SqQ47fyZPNGuJ1nUioUG-2F2YFZoiWLgHD-RtAOI-gBhpvBm_C=s900-c-k-c0x00ffffff-no-rj",
-        "https://i.pinimg.com/originals/99/36/f2/9936f27871200fa99341cf3df428bb6b.png",
-        "https://i.pinimg.com/originals/9d/ac/dd/9dacddf1712f4acd6ae2752f1d126880.png"
+        "https://i.pinimg.com/736x/70/a4/ff/70a4ff83cfc5d9938a088d9c10a4639b.jpg",
+        "https://i.pinimg.com/736x/62/d8/43/62d843a150d1bf6dc646772b2bdda546.jpg",
+        "https://i.pinimg.com/236x/e6/ef/cb/e6efcb52223769ef1f611ef08a7eeb7f.jpg?nii=t"
       ]
     },
     {
