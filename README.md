@@ -290,7 +290,7 @@ client.download(image_infos, num_threadings=1)
 If you use this project in your research, please cite the repository.
 
 ```
-@misc{freeproxy2022,
+@misc{imagedl2022,
     author = {Zhenchao Jin},
     title = {Imagedl: Search and download images from specific websites},
     year = {2022},
