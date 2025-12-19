@@ -1,6 +1,6 @@
 {
-  "date": "2025-12-18",
-  "timestamp_utc": "2025-12-18T09:16:37.410477+00:00",
+  "date": "2025-12-19",
+  "timestamp_utc": "2025-12-19T02:53:01.956666+00:00",
   "query": "Cute Animals",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,16 +10,17 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 12,
-      "n_downloaded": 9,
+      "n_results": 35,
+      "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/BingImageClient/00000004.jpeg",
-        "daily_test_results/BingImageClient/00000008.jpeg",
-        "daily_test_results/BingImageClient/00000006.png",
         "daily_test_results/BingImageClient/00000005.jpeg",
+        "daily_test_results/BingImageClient/00000008.png",
         "daily_test_results/BingImageClient/00000001.jpeg",
+        "daily_test_results/BingImageClient/00000006.jpeg",
         "daily_test_results/BingImageClient/00000002.jpeg",
+        "daily_test_results/BingImageClient/00000009.jpeg",
         "daily_test_results/BingImageClient/00000007.jpeg",
         "daily_test_results/BingImageClient/00000003.jpeg",
         "daily_test_results/BingImageClient/00000010.jpeg"
@@ -57,24 +58,24 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 221,
+      "n_results": 222,
       "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
         "daily_test_results/GoogleImageClient/00000004.jpeg",
-        "daily_test_results/GoogleImageClient/00000010.webp",
         "daily_test_results/GoogleImageClient/00000008.jpeg",
         "daily_test_results/GoogleImageClient/00000005.jpeg",
         "daily_test_results/GoogleImageClient/00000006.jpeg",
         "daily_test_results/GoogleImageClient/00000002.jpeg",
         "daily_test_results/GoogleImageClient/00000009.jpeg",
-        "daily_test_results/GoogleImageClient/00000007.jpeg",
-        "daily_test_results/GoogleImageClient/00000003.jpeg"
+        "daily_test_results/GoogleImageClient/00000003.jpeg",
+        "daily_test_results/GoogleImageClient/00000010.jpeg",
+        "daily_test_results/GoogleImageClient/00000001.webp"
       ],
       "search_samples": [
-        "https://www.gstatic.com/og/_/ss/k=og.asy.68IT_F-NK08.L.W.O/m=ll_tdm,adcgm3,ll_fw/excm=/d=1/ed=1/ct=zgms/rs=AA2YrTuB9pNk5GDNCjpS0-TPiTc9nq0jFg",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN5020X08CBy6fggjBlRWQddBmSRt4h4dytQ&s",
-        "https://parade.com/.image/w_3840,q_auto:good,c_limit/MTkwNTc4ODA5NzQwNjAwNDQ1/fennec-fox.jpg?arena_f_auto"
+        "https://c02.purpledshub.com/uploads/sites/41/2024/05/fennec-fox-Vulpes-zerda.jpg?webp=1&w=1200",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREBzaxP3ictD-a7udra2ii7K0gk2_vm6k4Pw&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6tqRKla-zthcz9yTFOO6eWROK6h38BFNb0g&s"
       ]
     },
     {
@@ -113,20 +114,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/PixabayImageClient/00000004.png",
-        "daily_test_results/PixabayImageClient/00000006.png",
+        "daily_test_results/PixabayImageClient/00000007.png",
         "daily_test_results/PixabayImageClient/00000008.png",
         "daily_test_results/PixabayImageClient/00000001.jpeg",
+        "daily_test_results/PixabayImageClient/00000006.jpeg",
         "daily_test_results/PixabayImageClient/00000002.jpeg",
         "daily_test_results/PixabayImageClient/00000009.jpeg",
         "daily_test_results/PixabayImageClient/00000005.png",
-        "daily_test_results/PixabayImageClient/00000007.jpeg",
         "daily_test_results/PixabayImageClient/00000003.jpeg",
         "daily_test_results/PixabayImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g1c6d3514087a733c8ffdf57705e152f9f1f0cb32c191e52d17a453813b1199122d2e3c926a66dbe8ba6602cf493f4bb95bb6fc611090f387c0629eadaca1378a_1280.jpg",
-        "https://pixabay.com/get/gd7b96d5f6b1b593633547d1c163114a747558a469fbe0d5db79b113e7514ea8db5638e8d416bc143de06554c07250f9f9776b16cfd0336b1bf5dc2cd7cdb6bb5_1280.jpg",
-        "https://pixabay.com/get/gfbe44f81b0aefe5954ba35fe8424006f4e0b4377305abf1e2c53cc4fa9a0b6511d255f9e4eebf9f8ac9ca8f14459e929b5aa80792f7ac632c9c2844b719da2eb_1280.jpg"
+        "https://pixabay.com/get/g07c1144a8e5994ef7aa04acadb16092bf3c025876b3a77dd356104222459d4464068cab97407846f99e2596abdc16aeb631955757eeacbd3305f674cdb5a9d1f_1280.jpg",
+        "https://pixabay.com/get/g43f04b74aeecaa57c807a09d8f9688a5ec6dd98ee045b59dfa3b31a5aebfc02f9fea6f49415e0ca71793c798c0b9ecece52ca0a8092771ce90673d57538288a8_1280.jpg",
+        "https://pixabay.com/get/gfea79db35c631e8d3df62e7bd41221fff0332b83716c19516fa8cb1ded69d1421e075caf0e1b1ee837d9bf3401cd62eba5185063c00cec3747fae8e4356b0dd9_1280.jpg"
       ]
     },
     {
@@ -134,25 +135,23 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 50,
-      "n_downloaded": 10,
+      "n_results": 44,
+      "n_downloaded": 8,
       "error": null,
       "downloaded_images": [
         "daily_test_results/YandexImageClient/00000004.jpeg",
         "daily_test_results/YandexImageClient/00000008.jpeg",
-        "daily_test_results/YandexImageClient/00000003.png",
-        "daily_test_results/YandexImageClient/00000010.png",
-        "daily_test_results/YandexImageClient/00000002.png",
         "daily_test_results/YandexImageClient/00000005.jpeg",
         "daily_test_results/YandexImageClient/00000001.jpeg",
         "daily_test_results/YandexImageClient/00000006.jpeg",
-        "daily_test_results/YandexImageClient/00000009.jpeg",
-        "daily_test_results/YandexImageClient/00000007.jpeg"
+        "daily_test_results/YandexImageClient/00000002.jpeg",
+        "daily_test_results/YandexImageClient/00000007.jpeg",
+        "daily_test_results/YandexImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://avatars.yandex.net/get-music-content/15018579/90b60c1b.a.36679394-1/m1000x1000",
-        "https://i.pinimg.com/originals/ba/bb/28/babb28507f1dfbbfc443b4def61e8cf8.png",
-        "https://i.pinimg.com/originals/a8/47/f9/a847f9a4a8aa07f838ae7d25fced9f7f.png"
+        "https://i.pinimg.com/474x/cb/3c/88/cb3c881cfb47f936f3aabde3f7779800.jpg?nii=t",
+        "https://i.ytimg.com/vi/OAq0Yoy59yY/hqdefault.jpg",
+        "https://s1.dmcdn.net/v/UaDMe1ZnaRoq9mtPW/x1080"
       ]
     },
     {
@@ -212,7 +211,7 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 60,
+      "n_results": 85,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
