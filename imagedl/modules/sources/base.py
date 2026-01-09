@@ -15,7 +15,6 @@ import requests
 import threading
 import json_repair
 from datetime import datetime
-from freeproxy import freeproxy
 from fake_useragent import UserAgent
 from alive_progress import alive_bar
 from pathvalidate import sanitize_filepath
@@ -26,7 +25,7 @@ from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir
 class BaseImageClient():
     source = 'BaseImageClient'
     def __init__(self, auto_set_proxies: bool = False, random_update_ua: bool = False, max_retries: int = 5, maintain_session: bool = False, 
-                 logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_outputs', proxy_sources: list = None):
+                 logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_outputs', freeproxy_settings: dict = None):
         # set up work dir
         touchdir(work_dir)
         # set attributes
@@ -37,16 +36,19 @@ class BaseImageClient():
         self.random_update_ua = random_update_ua
         self.maintain_session = maintain_session
         self.auto_set_proxies = auto_set_proxies
+        self.freeproxy_settings = freeproxy_settings or {}
         # init requests.Session
         self.default_search_headers = {'User-Agent': UserAgent().random}
         self.default_download_headers = {'User-Agent': UserAgent().random}
         self.default_headers = self.default_search_headers
         self._initsession()
         # proxied_session_client
-        self.proxied_session_client = freeproxy.ProxiedSessionClient(
-            proxy_sources=['ProxiflyProxiedSession', 'KuaidailiProxiedSession', 'GeonodeProxiedSession'] if proxy_sources is None else proxy_sources, 
-            disable_print=True
-        ) if auto_set_proxies else None
+        self.proxied_session_client = None
+        if auto_set_proxies:
+            from freeproxy import freeproxy
+            default_freeproxy_settings = dict(disable_print=True, proxy_sources=['ProxiflyProxiedSession'], max_tries=20, init_proxied_session_cfg={})
+            default_freeproxy_settings.update(self.freeproxy_settings)
+            self.proxied_session_client = freeproxy.ProxiedSessionClient(**default_freeproxy_settings)
     '''_initsession'''
     def _initsession(self):
         self.session = requests.Session()
@@ -205,12 +207,13 @@ class BaseImageClient():
                     self.session.proxies = {}
             else:
                 self.session.proxies = {}
+            proxies = kwargs.pop('proxies', None) or self.session.proxies
             try:
-                resp = self.session.get(url, **kwargs)
+                resp = self.session.get(url, proxies=proxies, **kwargs)
+                resp.raise_for_status()
             except Exception as err:
                 self.logger_handle.error(f'{self.source}.get >>> {url} (Error: {err})', disable_print=self.disable_print)
                 continue
-            if resp.status_code != 200: continue
             return resp
         return resp
     '''post'''
@@ -228,12 +231,13 @@ class BaseImageClient():
                     self.session.proxies = {}
             else:
                 self.session.proxies = {}
+            proxies = kwargs.pop('proxies', None) or self.session.proxies
             try:
-                resp = self.session.post(url, **kwargs)
+                resp = self.session.post(url, proxies=proxies, **kwargs)
+                resp.raise_for_status()
             except Exception as err:
                 self.logger_handle.error(f'{self.source}.post >>> {url} (Error: {err})', disable_print=self.disable_print)
                 continue
-            if resp.status_code != 200: continue
             return resp
         return resp
     '''_savetopkl'''

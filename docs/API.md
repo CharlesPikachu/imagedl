@@ -18,7 +18,7 @@ Arguments supported when initializing this class include:
 	"max_retries": 5,
 	"maintain_session": False,
 	"disable_print": False,
-	"proxy_sources": None,
+	"freeproxy_settings": None,
   }
   ```
 
@@ -126,21 +126,21 @@ Current implementations built on top of `BaseImageClient` include:
 
 - `imagedl.imagedl.modules.sources.BaiduImageClient`
 - `imagedl.imagedl.modules.sources.BingImageClient`
+- `imagedl.imagedl.modules.sources.DuckduckgoImageClient`
 - `imagedl.imagedl.modules.sources.GoogleImageClient`
 - `imagedl.imagedl.modules.sources.I360ImageClient`
 - `imagedl.imagedl.modules.sources.PixabayImageClient`
-- `imagedl.imagedl.modules.sources.YandexImageClient`
-- `imagedl.imagedl.modules.sources.DuckduckgoImageClient`
 - `imagedl.imagedl.modules.sources.SogouImageClient`
-- `imagedl.imagedl.modules.sources.YahooImageClient`
 - `imagedl.imagedl.modules.sources.UnsplashImageClient`
+- `imagedl.imagedl.modules.sources.YandexImageClient`
+- `imagedl.imagedl.modules.sources.YahooImageClient`
 
 In most cases, users do **not** instantiate `BaseImageClient` directly. 
 Instead, they use high-level wrappers such as `BaiduImageClient`. 
 However, the external **API surface** of all clients is the same as `BaseImageClient` (`search` + `download`).
 Arguments supported when initializing this class include:
 
-- **auto_set_proxies** (`bool`, default: `False`): If `True`, automatically configures HTTP proxies via `freeproxy.ProxiedSessionClient`. Each request will try to use a randomly selected proxy from `proxy_sources`.
+- **auto_set_proxies** (`bool`, default: `False`): If `True`, randomly assign a free proxy fetched by `freeproxy.ProxiedSessionClient` (details refer to [FreeProxy](https://github.com/CharlesPikachu/freeproxy)) for each request.
 
 - **random_update_ua** (`bool`, default: `False`): If `True`, randomly updates the `User-Agent` header before each request (using `fake_useragent.UserAgent().random`), providing additional variability.
 
@@ -159,8 +159,7 @@ Arguments supported when initializing this class include:
     - `download_results.pkl`
     - image files: `00000001.jpg`, `00000002.png`, ...
 
-- **proxy_sources** (`list` or `None`, default: `None`): List of proxy provider backends for `freeproxy.ProxiedSessionClient`. If `None`, a default list is used:
-  - `['ProxiflyProxiedSession', 'KuaidailiProxiedSession', 'GeonodeProxiedSession']`
+- **freeproxy_settings** (`dict` or `None`, default: `None`): Arguments passed when instantiating `freeproxy.ProxiedSessionClient`. If `None`, defaults to `dict(disable_print=True, proxy_sources=['ProxiflyProxiedSession'], max_tries=20, init_proxied_session_cfg={})` when `auto_set_proxies=True`.
 
 #### `BaseImageClient.search`
 

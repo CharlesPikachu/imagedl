@@ -66,9 +66,6 @@
 - 2025-12-11: Released pyimagedl v0.2.4 — supports searching for and downloading images from Unsplash, along with some minor improvements.
 - 2025-12-07: Released pyimagedl v0.2.3 — supports searching and downloading via the Yahoo image search engine, with partial tuning of the default arguments.
 - 2025-11-19: Released pyimagedl v0.2.2 — fix potential in-place modified bugs in HTTP requests.
-- 2025-11-16: Released pyimagedl v0.2.1 — fixed some minor bugs in duckduckgo and BaseImageClient.
-- 2025-11-16: Released pyimagedl v0.2.0 — upgrade ImageClient and fixed some minor bugs.
-- 2025-11-10: Released pyimagedl v0.1.8 — fix logging and requirements.
 
 
 # 📘 Introduction
@@ -80,16 +77,16 @@ Imagedl lets you search for and download images from specific websites. If you f
 
 |  ImageClient (EN)              |  ImageClient (CN)  |   Search           |  Download            |    Code Snippet                                                                                                    |
 |  :----:                        |  :----:            |   :----:           |  :----:              |    :----:                                                                                                          |
-|  BaiduImageClient              |  百度图片          |   ✓                |  ✓                   |    [baidu.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/baidu.py)                |
-|  BingImageClient               |  必应图片          |   ✓                |  ✓                   |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)                  |
-|  GoogleImageClient             |  谷歌图片          |   ✓                |  ✓                   |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)              |
-|  I360ImageClient               |  360图片           |   ✓                |  ✓                   |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)                  |
-|  PixabayImageClient            |  Pixabay图片       |   ✓                |  ✓                   |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)            |
-|  YandexImageClient             |  Yandex图片        |   ✓                |  ✓                   |    [yandex.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yandex.py)              |
-|  DuckduckgoImageClient         |  DuckDuckGo图片    |   ✓                |  ✓                   |    [duckduckgo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/duckduckgo.py)      |
-|  SogouImageClient              |  搜狗图片          |   ✓                |  ✓                   |    [sogou.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/sogou.py)                |
-|  YahooImageClient              |  雅虎图片          |   ✓                |  ✓                   |    [yahoo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yahoo.py)                |
-|  UnsplashImageClient           |  Unsplash图片      |   ✓                |  ✓                   |    [unsplash.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/unsplash.py)          |
+|  BaiduImageClient              |  百度图片          |   ✔️               |  ✔️                  |    [baidu.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/baidu.py)                |
+|  BingImageClient               |  必应图片          |   ✔️               |  ✔️                  |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)                  |
+|  DuckduckgoImageClient         |  DuckDuckGo图片    |   ✔️               |  ✔️                  |    [duckduckgo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/duckduckgo.py)      |
+|  GoogleImageClient             |  谷歌图片          |   ✔️               |  ✔️                  |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)              |
+|  I360ImageClient               |  360图片           |   ✔️               |  ✔️                  |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)                  |
+|  PixabayImageClient            |  Pixabay图片       |   ✔️               |  ✔️                  |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)            |
+|  SogouImageClient              |  搜狗图片          |   ✔️               |  ✔️                  |    [sogou.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/sogou.py)                |
+|  UnsplashImageClient           |  Unsplash图片      |   ✔️               |  ✔️                  |    [unsplash.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/unsplash.py)          |
+|  YandexImageClient             |  Yandex图片        |   ✔️               |  ✔️                  |    [yandex.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yandex.py)              |
+|  YahooImageClient              |  雅虎图片          |   ✔️               |  ✔️                  |    [yahoo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yahoo.py)                |
 
 
 # 📦 Install
