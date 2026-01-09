@@ -1,5 +1,7 @@
 # Release Log
 
+- 2026-01-10: Released pyimagedl v0.3.0 — supports image search and downloading for Safebooru, Gelbooru, and Danbooru, with some argument changes and code optimizations.
+
 - 2025-12-11: Released pyimagedl v0.2.4 — supports searching for and downloading images from Unsplash, along with some minor improvements.
 
 - 2025-12-07: Released pyimagedl v0.2.3 — supports searching and downloading via the Yahoo image search engine, with partial tuning of the default arguments.

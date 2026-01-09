@@ -38,8 +38,8 @@ class BaseImageClient():
         self.auto_set_proxies = auto_set_proxies
         self.freeproxy_settings = freeproxy_settings or {}
         # init requests.Session
-        self.default_search_headers = {'User-Agent': UserAgent().random}
-        self.default_download_headers = {'User-Agent': UserAgent().random}
+        self.default_search_headers = {'User-Agent': UserAgent().chrome}
+        self.default_download_headers = {'User-Agent': UserAgent().chrome}
         self.default_headers = self.default_search_headers
         self._initsession()
         # proxied_session_client
@@ -149,14 +149,11 @@ class BaseImageClient():
             for image_candidate_url in image_candidate_urls:
                 resp = self.get(image_candidate_url, **request_overrides)
                 if resp is not None and resp.status_code == 200: break
-            if resp is None or resp.status_code != 200:
-                bar()
-                continue
+            if resp is None or resp.status_code != 200: bar(); continue
             assert (not os.path.exists(file_path))
-            with open(file_path, 'wb') as fp:
-                fp.write(resp.content)
+            with open(file_path, 'wb') as fp: fp.write(resp.content)
             ext = imghdr.what(file_path)
-            if ext in ["rgb", "gif", "pbm", "pgm", "ppm", "tiff", "rast", "xbm", "jpeg", "jpg", "bmp", "png", "webp", "exr",]:
+            if ext in ["rgb", "gif", "pbm", "pgm", "ppm", "tiff", "rast", "xbm", "jpeg", "jpg", "bmp", "png", "webp", "exr"]:
                 file_path_with_ext = f'{file_path}.{ext}'
                 assert (not os.path.exists(file_path_with_ext))
                 shutil.move(file_path, file_path_with_ext)
@@ -243,5 +240,4 @@ class BaseImageClient():
     '''_savetopkl'''
     def _savetopkl(self, data, file_path, auto_sanitize=True):
         if auto_sanitize: file_path = sanitize_filepath(file_path)
-        with open(file_path, 'wb') as fp:
-            pickle.dump(data, fp)
+        with open(file_path, 'wb') as fp: pickle.dump(data, fp)
