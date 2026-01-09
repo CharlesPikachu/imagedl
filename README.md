@@ -217,7 +217,6 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, DuckduckgoImageClient, UnsplashImageClient
 )
 
-
 # bing tests
 client = BingImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
