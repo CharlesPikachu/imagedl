@@ -5,6 +5,7 @@ from .i360 import I360ImageClient
 from .baidu import BaiduImageClient
 from .sogou import SogouImageClient
 from .yahoo import YahooImageClient
+from .pexels import PexelsImageClient
 from .google import GoogleImageClient
 from ..utils import BaseModuleBuilder
 from .yandex import YandexImageClient
@@ -19,11 +20,10 @@ from .duckduckgo import DuckduckgoImageClient
 '''ImageClientBuilder'''
 class ImageClientBuilder(BaseModuleBuilder):
     REGISTERED_MODULES = {
-        'BingImageClient': BingImageClient, 'BaiduImageClient': BaiduImageClient, 'GoogleImageClient': GoogleImageClient, 
-        'I360ImageClient': I360ImageClient, 'PixabayImageClient': PixabayImageClient, 'YandexImageClient': YandexImageClient,
-        'DuckduckgoImageClient': DuckduckgoImageClient, 'SogouImageClient': SogouImageClient, 'YahooImageClient': YahooImageClient,
-        'UnsplashImageClient': UnsplashImageClient, 'SafebooruImageClient': SafebooruImageClient, 'DanbooruImageClient': DanbooruImageClient,
-        'GelbooruImageClient': GelbooruImageClient,
+        'BingImageClient': BingImageClient, 'BaiduImageClient': BaiduImageClient, 'GoogleImageClient': GoogleImageClient, 'I360ImageClient': I360ImageClient, 
+        'PixabayImageClient': PixabayImageClient, 'YandexImageClient': YandexImageClient, 'DuckduckgoImageClient': DuckduckgoImageClient, 'SogouImageClient': SogouImageClient, 
+        'YahooImageClient': YahooImageClient, 'UnsplashImageClient': UnsplashImageClient, 'SafebooruImageClient': SafebooruImageClient, 'DanbooruImageClient': DanbooruImageClient,
+        'GelbooruImageClient': GelbooruImageClient, 'PexelsImageClient': PexelsImageClient,
     }
 
 

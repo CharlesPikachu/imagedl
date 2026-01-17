@@ -132,6 +132,7 @@ Current implementations built on top of `BaseImageClient` include:
 - `imagedl.imagedl.modules.sources.GelbooruImageClient`
 - `imagedl.imagedl.modules.sources.I360ImageClient`
 - `imagedl.imagedl.modules.sources.PixabayImageClient`
+- `imagedl.imagedl.modules.sources.PexelsImageClient`
 - `imagedl.imagedl.modules.sources.SogouImageClient`
 - `imagedl.imagedl.modules.sources.SafebooruImageClient`
 - `imagedl.imagedl.modules.sources.UnsplashImageClient`

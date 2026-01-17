@@ -63,10 +63,8 @@
 
 # 🆕 What's New
 
+- 2026-01-18: Released pyimagedl v0.3.1 — resolved download issues related to specific search rules and implemented support for pexels.com.
 - 2026-01-10: Released pyimagedl v0.3.0 — supports image search and downloading for Safebooru, Gelbooru, and Danbooru, with some argument changes and code optimizations.
-- 2025-12-11: Released pyimagedl v0.2.4 — supports searching for and downloading images from Unsplash, along with some minor improvements.
-- 2025-12-07: Released pyimagedl v0.2.3 — supports searching and downloading via the Yahoo image search engine, with partial tuning of the default arguments.
-- 2025-11-19: Released pyimagedl v0.2.2 — fix potential in-place modified bugs in HTTP requests.
 
 
 # 📘 Introduction
@@ -85,7 +83,8 @@ Imagedl lets you search for and download images from specific websites. If you f
 |  GoogleImageClient             |  谷歌图片          |   ✔️               |  ✔️                  |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)              |
 |  GelbooruImageClient           |  Gelbooru动漫图片  |   ✔️               |  ✔️                  |    [gelbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gelbooru.py)          |
 |  I360ImageClient               |  360图片           |   ✔️               |  ✔️                  |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)                  |
-|  PixabayImageClient            |  Pixabay图片       |   ✔️               |  ✔️                  |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)            |
+|  PixabayImageClient            |  Pixabay高清图片   |   ✔️               |  ✔️                  |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)            |
+|  PexelsImageClient             |  Pexels高清图片    |   ✔️               |  ✔️                  |    [pexels.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pexels.py)              |
 |  SogouImageClient              |  搜狗图片          |   ✔️               |  ✔️                  |    [sogou.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/sogou.py)                |
 |  SafebooruImageClient          |  Safebooru动漫图片 |   ✔️               |  ✔️                  |    [safebooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/safebooru.py)        |
 |  UnsplashImageClient           |  Unsplash图片      |   ✔️               |  ✔️                  |    [unsplash.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/unsplash.py)          |
@@ -132,7 +131,7 @@ Options:
   -k, --keyword TEXT              The keywords for the image search. If left
                                   empty, an interactive terminal will open
                                   automatically.
-  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|i360imageclient|pixabayimageclient|yandeximageclient|duckduckgoimageclient|sogouimageclient|yahooimageclient|unsplashimageclient|danbooruimageclient|safebooruimageclient|gelbooruimageclient]
+  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|i360imageclient|pixabayimageclient|yandeximageclient|duckduckgoimageclient|sogouimageclient|yahooimageclient|unsplashimageclient|danbooruimageclient|safebooruimageclient|gelbooruimageclient|pexelsimageclient]
                                   The image search and download source.
                                   [default: BaiduImageClient]
   -s, --search-limits, --search_limits INTEGER RANGE
@@ -152,7 +151,7 @@ Options:
 
 For class `imagedl.ImageClient`, the acceptable arguments include,
 
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient']`.
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient', 'PexelsImageClient']`.
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
@@ -219,7 +218,7 @@ If you prefer not to use the unified interface, you can also import a specific i
 ```python
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, 
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient
 )
 
 # bing tests
@@ -273,6 +272,10 @@ client.download(image_infos, num_threadings=1)
 # danbooru tests
 client = DanbooruImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# pexels tests
+client = PexelsImageClient()
+image_infos = client.search('animals', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ```
 
