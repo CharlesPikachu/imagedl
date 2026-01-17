@@ -72,7 +72,7 @@ class BaseImageClient():
     '''_appenduniquefilepathforimages'''
     def _appenduniquefilepathforimages(self, keyword: str, image_infos: list):
         time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        work_dir = os.path.join(self.work_dir, self.source, f'{time_stamp} {keyword.replace(" ", "")}')
+        work_dir = sanitize_filepath(os.path.join(self.work_dir, self.source, f'{time_stamp} {keyword.replace(" ", "")}'))
         touchdir(work_dir)
         for idx, image_info in enumerate(image_infos):
             image_info['work_dir'] = work_dir
