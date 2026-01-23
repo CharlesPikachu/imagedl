@@ -1,6 +1,6 @@
 {
   "date": "2026-01-23",
-  "timestamp_utc": "2026-01-23T11:56:18.599148+00:00",
+  "timestamp_utc": "2026-01-23T15:19:58.142083+00:00",
   "query": "Pikachu, JK, Cute Animals",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,25 +10,24 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 35,
-      "n_downloaded": 10,
+      "n_results": 33,
+      "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
         "daily_test_results/BingImageClient/00000004.jpeg",
-        "daily_test_results/BingImageClient/00000007.png",
         "daily_test_results/BingImageClient/00000008.webp",
-        "daily_test_results/BingImageClient/00000006.png",
         "daily_test_results/BingImageClient/00000005.jpeg",
-        "daily_test_results/BingImageClient/00000001.jpeg",
         "daily_test_results/BingImageClient/00000002.jpeg",
         "daily_test_results/BingImageClient/00000009.webp",
+        "daily_test_results/BingImageClient/00000006.webp",
         "daily_test_results/BingImageClient/00000003.jpeg",
-        "daily_test_results/BingImageClient/00000010.jpeg"
+        "daily_test_results/BingImageClient/00000007.webp",
+        "daily_test_results/BingImageClient/00000001.webp"
       ],
       "search_samples": [
-        "https://static1.cbrimages.com/wordpress/wp-content/uploads/2024/02/captain-pikachu-pokemon-go.jpg",
-        "https://files.cults3d.com/uploaders/27028740/illustration-file/4086f140-16d5-42ac-ab23-46378a5e8816/Pikachu_Sleeping.jpg",
-        "https://data.topquizz.com/distant/quizz/big/3/9/8/5/265893_08f364e922.jpg"
+        "https://pokemonatoz.com/wp-content/uploads/2022/08/pikachu01.webp",
+        "https://img.pokemondb.net/artwork/large/pikachu-johto-cap.jpg",
+        "https://img.pokemondb.net/artwork/large/pikachu-sinnoh-cap.jpg"
       ]
     },
     {
@@ -58,24 +57,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 213,
-      "n_downloaded": 9,
+      "n_results": 214,
+      "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/GoogleImageClient/00000004.jpeg",
-        "daily_test_results/GoogleImageClient/00000010.webp",
         "daily_test_results/GoogleImageClient/00000008.jpeg",
-        "daily_test_results/GoogleImageClient/00000003.png",
-        "daily_test_results/GoogleImageClient/00000005.jpeg",
+        "daily_test_results/GoogleImageClient/00000001.jpeg",
         "daily_test_results/GoogleImageClient/00000006.jpeg",
         "daily_test_results/GoogleImageClient/00000002.jpeg",
-        "daily_test_results/GoogleImageClient/00000009.png",
-        "daily_test_results/GoogleImageClient/00000007.jpeg"
+        "daily_test_results/GoogleImageClient/00000009.jpeg",
+        "daily_test_results/GoogleImageClient/00000005.png",
+        "daily_test_results/GoogleImageClient/00000007.jpeg",
+        "daily_test_results/GoogleImageClient/00000003.jpeg",
+        "daily_test_results/GoogleImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://www.gstatic.com/og/_/ss/k=og.asy.68IT_F-NK08.L.W.O/m=ll_tdm,adcgm3,ll_fw/excm=/d=1/ed=1/ct=zgms/rs=AA2YrTuB9pNk5GDNCjpS0-TPiTc9nq0jFg",
-        "https://i.etsystatic.com/50571582/r/il/cec4bf/5976531310/il_570xN.5976531310_klid.jpg",
-        "https://postersbase.com/cdn/shop/files/2-Posters-POKEMON-SACHA-AND-PIKACHU-Posters-Base.png?v=1727894466&width=1200"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ9M5CBOBIZbeU0mVB1Zw01ERc8dDFSvCTCg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSalJTbFFpH7SUiv_7qYMF2sNr82VJsVvtKLQ&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKKlqTEWkJ55RyA_GSPsmbxepNfqXOIYt4Xg&s"
       ]
     },
     {
@@ -125,9 +125,9 @@
         "daily_test_results/PixabayImageClient/00000010.jpeg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/ge7427bb54a9b823a03f13e7907f9d6296c4a2a8985b7810c73e439d18b52ef933df2df9a4bc19adf1f8a6d198012bf1b7be91d601aa32c6d5de0a0a90c925360_1280.jpg",
-        "https://pixabay.com/get/g6f08458f0eb451fc50dfe771b8b11d36a5e5a546715a1e5a28fdda0e5365131e7f705a20abed0da7cfc9e7fd011f4bc94039ea7db8245e05d9b651b8b9e91128_1280.jpg",
-        "https://pixabay.com/get/g23389e9d0dd91cca6af96306313ef0d200f64e5231a091c5e1d751d929cbaa85487b105860e10e18737d387e2b82a3f1db2a3e1271972f35ed8c7901eb2a6429_1280.png"
+        "https://pixabay.com/get/g10a18accad0a4eacf53667a240f93525d4c2fd414a339e9a695ca93dfaf383a2d15f41d96ba92d5e0c183dfd14039eecab4738fcc880601398db1dc173e40b74_1280.jpg",
+        "https://pixabay.com/get/g02b6d26c455cb273e35be028807c0d475923e3e3dd5b8958919c717f997c1dd7cd2f96cc278b35cd20188a4ab4c775102f191187df809c1059019428b0125d2c_1280.jpg",
+        "https://pixabay.com/get/g6f7751dcc2c940fa6092bc0b81116ff2a1624097eb2ea86fe100a4d82cb88d9821427f86284d2dff2ec6c98a043f3baf9450f872d4503ca9b06644f22c6123d1_1280.png"
       ]
     },
     {
@@ -136,24 +136,21 @@
       "download_ok": true,
       "ok": true,
       "n_results": 50,
-      "n_downloaded": 10,
+      "n_downloaded": 7,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/YandexImageClient/00000004.jpeg",
         "daily_test_results/YandexImageClient/00000010.webp",
-        "daily_test_results/YandexImageClient/00000002.webp",
-        "daily_test_results/YandexImageClient/00000005.jpeg",
-        "daily_test_results/YandexImageClient/00000008.png",
-        "daily_test_results/YandexImageClient/00000006.jpeg",
+        "daily_test_results/YandexImageClient/00000008.webp",
+        "daily_test_results/YandexImageClient/00000002.jpeg",
         "daily_test_results/YandexImageClient/00000009.jpeg",
+        "daily_test_results/YandexImageClient/00000006.webp",
         "daily_test_results/YandexImageClient/00000007.jpeg",
-        "daily_test_results/YandexImageClient/00000003.jpeg",
-        "daily_test_results/YandexImageClient/00000001.webp"
+        "daily_test_results/YandexImageClient/00000003.jpeg"
       ],
       "search_samples": [
-        "https://static.wikia.nocookie.net/p__/images/4/4b/Detective_Pikachu_Returns_-_Detective_Pikachu.png/revision/latest?cb=20230808153523&path-prefix=protagonist",
-        "https://static.wikia.nocookie.net/pokemon/images/3/37/Pikachutwo.png/revision/latest?cb=20160103012537",
-        "https://i.pinimg.com/474x/36/73/8a/36738a4e4c889597b5fd74f54495d771.jpg?nii=t"
+        "https://i.pinimg.com/474x/30/89/12/308912e1d6ce46098f135c4ede0f37c3.jpg?nii=t",
+        "https://i.ytimg.com/vi/AFDPDGHLH58/hqdefault.jpg",
+        "https://i.ytimg.com/vi/y4M01HRJG_w/maxres2.jpg?sqp=-oaymwEoCIAKENAF8quKqQMcGADwAQH4Ab4EgALQBYoCDAgAEAEYciBeKBEwDw==&amp;rs=AOn4CLDwzy3nOzAKlrOLinBZBWCtlJECbg"
       ]
     },
     {
@@ -212,7 +209,7 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 84,
+      "n_results": 85,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
@@ -296,19 +293,19 @@
       "downloaded_images": [
         "daily_test_results/DanbooruImageClient/00000004.jpeg",
         "daily_test_results/DanbooruImageClient/00000008.jpeg",
+        "daily_test_results/DanbooruImageClient/00000010.png",
         "daily_test_results/DanbooruImageClient/00000005.jpeg",
         "daily_test_results/DanbooruImageClient/00000001.jpeg",
         "daily_test_results/DanbooruImageClient/00000006.jpeg",
         "daily_test_results/DanbooruImageClient/00000002.jpeg",
-        "daily_test_results/DanbooruImageClient/00000009.png",
+        "daily_test_results/DanbooruImageClient/00000009.jpeg",
         "daily_test_results/DanbooruImageClient/00000007.jpeg",
-        "daily_test_results/DanbooruImageClient/00000003.jpeg",
-        "daily_test_results/DanbooruImageClient/00000010.jpeg"
+        "daily_test_results/DanbooruImageClient/00000003.jpeg"
       ],
       "search_samples": [
         "https://cdn.donmai.us/original/f0/6e/f06e24a11c5fa7a07f88635999b4d6b6.jpg",
-        "https://cdn.donmai.us/original/59/a8/59a84bbf9ad475a22e3b212badd5f7a4.jpg",
-        "https://cdn.donmai.us/original/c3/fa/c3fa4a412e696b7870d7a151e288899a.jpg"
+        "https://cdn.donmai.us/original/31/ab/31ab5ff8a412399aa434b3be1297a55e.jpg",
+        "https://cdn.donmai.us/original/59/a8/59a84bbf9ad475a22e3b212badd5f7a4.jpg"
       ]
     },
     {
@@ -369,23 +366,24 @@
       "download_ok": true,
       "ok": true,
       "n_results": 10,
-      "n_downloaded": 9,
+      "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/DimTownImageClient/2026-01-23-19-49-54 Pikachu\\00000009.webp",
-        "daily_test_results/DimTownImageClient/2026-01-23-19-49-54 Pikachu\\00000003.jpeg",
-        "daily_test_results/DimTownImageClient/2026-01-23-19-49-54 Pikachu\\00000005.jpeg",
-        "daily_test_results/DimTownImageClient/2026-01-23-19-49-54 Pikachu\\00000001.jpeg",
-        "daily_test_results/DimTownImageClient/2026-01-23-19-49-54 Pikachu\\00000002.jpeg",
-        "daily_test_results/DimTownImageClient/2026-01-23-19-49-54 Pikachu\\00000006.jpeg",
-        "daily_test_results/DimTownImageClient/2026-01-23-19-49-54 Pikachu\\00000004.png",
-        "daily_test_results/DimTownImageClient/2026-01-23-19-49-54 Pikachu\\00000010.png",
-        "daily_test_results/DimTownImageClient/2026-01-23-19-49-54 Pikachu\\00000007.png"
+        "daily_test_results/DimTownImageClient/00000010.webp",
+        "daily_test_results/DimTownImageClient/00000008.webp",
+        "daily_test_results/DimTownImageClient/00000002.webp",
+        "daily_test_results/DimTownImageClient/00000009.webp",
+        "daily_test_results/DimTownImageClient/00000006.webp",
+        "daily_test_results/DimTownImageClient/00000003.webp",
+        "daily_test_results/DimTownImageClient/00000004.webp",
+        "daily_test_results/DimTownImageClient/00000007.webp",
+        "daily_test_results/DimTownImageClient/00000001.webp",
+        "daily_test_results/DimTownImageClient/00000005.webp"
       ],
       "search_samples": [
-        "https://img.pokemondb.net/artwork/large/pikachu-lets-go.jpg",
-        "https://img.pokemondb.net/artwork/large/pikachu.jpg",
-        "http://www.pixelstalk.net/wp-content/uploads/2016/03/Free-download-Pikachu-wallpaper-HD.jpg"
+        "https://cc-img.townimg.com/uploads/2025/12/20251210174407952.webp",
+        "https://cc-img.townimg.com/uploads/2025/12/20251210174414563.webp",
+        "https://cc-img.townimg.com/uploads/2025/12/20251210174419749.webp"
       ]
     }
   ]
