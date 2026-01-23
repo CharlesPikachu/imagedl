@@ -58,7 +58,7 @@ class DimTownImageClient(BaseImageClient):
         request_overrides, search_urls, page_size = request_overrides or {}, [], 25
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
             try: resp = self.get(f'https://dimtown.com/page/{pn+1}?s={keyword}', **request_overrides); resp.raise_for_status()
-            except: continue
+            except: break
             soup, post_urls, seen = BeautifulSoup(resp.text, "html.parser"), [], set()
             for a in soup.select('ul#index_ajax_list a[target="_blank"][href]'):
                 url = a["href"].strip()
