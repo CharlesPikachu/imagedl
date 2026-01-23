@@ -19,20 +19,6 @@ class YahooImageClient(BaseImageClient):
     def __init__(self, **kwargs):
         super(YahooImageClient, self).__init__(**kwargs)
         self.default_search_headers = {
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-            "cache-control": "max-age=0",
-            "cookie": "GUC=AQEBCAFpK8ZpV0Ie7wSF&s=AQAAAAfiqwF_&g=aSp9bA; A1=d=AQABBDJQFWcCEMJwcR6f1oZWsTrFgsJ3yAkFEgEBCAHGK2lXadwr0iMA_eMDAAcIMlAVZ8J3yAk&S=AQAAAtxogq22gSrqBlASwUXzjM4; A3=d=AQABBDJQFWcCEMJwcR6f1oZWsTrFgsJ3yAkFEgEBCAHGK2lXadwr0iMA_eMDAAcIMlAVZ8J3yAk&S=AQAAAtxogq22gSrqBlASwUXzjM4; _ga=GA1.1.376091485.1764392311; axids=gam=y-gi4XaFlE2uIWDoRuMGBc84_CgmhvPV1W~A&dv360=eS1tMUJXZzI5RTJ1RW1hUXJrd3U4UWs0aC5MLmJsN2dQZX5B&ydsp=y-dzApDz5E2uLqPwEYzZSwx87F3DHhX2JO~A&tbla=y-YzJ9rXBE2uLHZ_QZLcZnJYpyLcPwzG3S~A; tbla_id=f7e07dff-176b-46ef-932e-9b1441f60525-tuct8b1b787; A1S=d=AQABBDJQFWcCEMJwcR6f1oZWsTrFgsJ3yAkFEgEBCAHGK2lXadwr0iMA_eMDAAcIMlAVZ8J3yAk&S=AQAAAtxogq22gSrqBlASwUXzjM4; cmp=t=1765034846&j=0&u=1---; gpp=DBAA; gpp_sid=-1; lkl=v=2&w=sFLKrWIPBmyF6MJjiEqG5ck2f.RU_PA6xW7o; ymuid=v=13B3697304196A5800087C6F05186BDB&ts=1765034898; _ga_B40QGCQW3G=GS2.1.s1765034845$o2$g1$t1765034909$j60$l0$h0; _ga_40HG6NTJFD=GS2.1.s1765043333$o3$g1$t1765045062$j47$l0$h0; yisn=lrs=1&=undefined&h=48&d=1521x346&dwh=1521x268",
-            "priority": "u=0, i",
-            "sec-ch-ua": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "document",
-            "sec-fetch-mode": "navigate",
-            "sec-fetch-site": "none",
-            "sec-fetch-user": "?1",
-            "upgrade-insecure-requests": "1",
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
         }
         self.default_headers = self.default_search_headers
