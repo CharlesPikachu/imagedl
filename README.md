@@ -63,6 +63,7 @@
 
 # 🆕 What's New
 
+- 2026-01-23: Released pyimagedl v0.3.2 — Fix the Yahoo Image Search bug, and add image search and downloading for the DimTown site.
 - 2026-01-18: Released pyimagedl v0.3.1 — resolved download issues related to specific search rules and implemented support for pexels.com.
 - 2026-01-10: Released pyimagedl v0.3.0 — supports image search and downloading for Safebooru, Gelbooru, and Danbooru, with some argument changes and code optimizations.
 
@@ -80,6 +81,7 @@ Imagedl lets you search for and download images from specific websites. If you f
 |  BingImageClient               |  必应图片          |   ✔️               |  ✔️                  |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)                  |
 |  DuckduckgoImageClient         |  DuckDuckGo图片    |   ✔️               |  ✔️                  |    [duckduckgo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/duckduckgo.py)      |
 |  DanbooruImageClient           |  Danbooru动漫图片  |   ✔️               |  ✔️                  |    [danbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/danbooru.py)          |
+|  DimTownImageClient            |  次元小镇          |   ✔️               |  ✔️                  |    [dimtown.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/dimtown.py)            |
 |  GoogleImageClient             |  谷歌图片          |   ✔️               |  ✔️                  |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)              |
 |  GelbooruImageClient           |  Gelbooru动漫图片  |   ✔️               |  ✔️                  |    [gelbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gelbooru.py)          |
 |  I360ImageClient               |  360图片           |   ✔️               |  ✔️                  |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)                  |
@@ -131,7 +133,7 @@ Options:
   -k, --keyword TEXT              The keywords for the image search. If left
                                   empty, an interactive terminal will open
                                   automatically.
-  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|i360imageclient|pixabayimageclient|yandeximageclient|duckduckgoimageclient|sogouimageclient|yahooimageclient|unsplashimageclient|danbooruimageclient|safebooruimageclient|gelbooruimageclient|pexelsimageclient]
+  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|i360imageclient|pixabayimageclient|yandeximageclient|duckduckgoimageclient|sogouimageclient|yahooimageclient|unsplashimageclient|danbooruimageclient|safebooruimageclient|gelbooruimageclient|pexelsimageclient|dimtownimageclient]
                                   The image search and download source.
                                   [default: BaiduImageClient]
   -s, --search-limits, --search_limits INTEGER RANGE
@@ -151,7 +153,7 @@ Options:
 
 For class `imagedl.ImageClient`, the acceptable arguments include,
 
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient', 'PexelsImageClient']`.
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient', 'PexelsImageClient', 'DimTownImageClient']`.
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
@@ -218,7 +220,7 @@ If you prefer not to use the unified interface, you can also import a specific i
 ```python
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, 
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient
 )
 
 # bing tests
@@ -276,6 +278,10 @@ client.download(image_infos, num_threadings=1)
 # pexels tests
 client = PexelsImageClient()
 image_infos = client.search('animals', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# dimtown tests 
+client = DimTownImageClient()
+image_infos = client.search('美女', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ```
 

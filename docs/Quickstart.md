@@ -106,10 +106,9 @@ image_client.download(image_infos=image_infos)
 If you prefer not to use the unified interface, you can also import a specific image search engine directly, as in the following code,
 
 ```python
-'''
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, 
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient
 )
 
 # bing tests
@@ -167,5 +166,9 @@ client.download(image_infos, num_threadings=1)
 # pexels tests
 client = PexelsImageClient()
 image_infos = client.search('animals', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# dimtown tests 
+client = DimTownImageClient()
+image_infos = client.search('美女', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ```

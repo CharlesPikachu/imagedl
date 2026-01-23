@@ -1,5 +1,7 @@
 # Release Log
 
+- 2026-01-23: Released pyimagedl v0.3.2 — Fix the Yahoo Image Search bug, and add image search and downloading for the DimTown site.
+
 - 2026-01-18: Released pyimagedl v0.3.1 — resolved download issues related to specific search rules and implemented support for pexels.com.
 
 - 2026-01-10: Released pyimagedl v0.3.0 — supports image search and downloading for Safebooru, Gelbooru, and Danbooru, with some argument changes and code optimizations.

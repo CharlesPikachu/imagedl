@@ -41,7 +41,7 @@ class GelbooruImageClient(BaseImageClient):
         self._initsession()
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
-        # parse search result
+        # format search result
         soup = BeautifulSoup(search_result, "html.parser")
         # parse search result
         image_infos, base_url = [], 'https://gelbooru.com/'

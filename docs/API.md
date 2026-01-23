@@ -128,6 +128,7 @@ Current implementations built on top of `BaseImageClient` include:
 - `imagedl.imagedl.modules.sources.BingImageClient`
 - `imagedl.imagedl.modules.sources.DuckduckgoImageClient`
 - `imagedl.imagedl.modules.sources.DanbooruImageClient`
+- `imagedl.imagedl.modules.sources.DimTownImageClient`
 - `imagedl.imagedl.modules.sources.GoogleImageClient`
 - `imagedl.imagedl.modules.sources.GelbooruImageClient`
 - `imagedl.imagedl.modules.sources.I360ImageClient`

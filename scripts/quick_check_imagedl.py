@@ -16,7 +16,7 @@ from imagedl.modules import ImageClientBuilder, BaseImageClient
 
 
 '''settings'''
-QUERY = "Pikachu"
+QUERiES = ["Pikachu", "美女"]
 MAX_SEARCH = 10
 MAX_DL_PER_CLIENT = 10
 RESULTS_ROOT = Path("daily_test_results")
@@ -144,7 +144,7 @@ def main():
     # init summary
     modules_summary = []
     print(f"=== imagedl daily check @ {timestamp} (UTC) ===")
-    print(f"Query: {QUERY}")
+    print(f"Query: {', '.join(QUERiES)}")
     # iter
     for client_name, client_module in ImageClientBuilder.REGISTERED_MODULES.items():
         print(f"\n[Module] {client_name}")
@@ -156,10 +156,12 @@ def main():
         target_dir: Path = base_results_dir / client_name
         # --search checking
         try:
-            if client_name in ['BaiduImageClient', 'DuckduckgoImageClient', 'UnsplashImageClient'] and runningingithubactions():
+            if client_name in {'BaiduImageClient', 'DuckduckgoImageClient', 'UnsplashImageClient'} and runningingithubactions():
                 image_infos = SEARCH_SUPPLEMENT[client_name]
+            elif client_name in {'DimTownImageClient'}:
+                image_infos = client.search(QUERiES[1], search_limits=MAX_SEARCH, num_threadings=2)
             else:
-                image_infos = client.search(QUERY, search_limits=MAX_SEARCH, num_threadings=2)
+                image_infos = client.search(QUERiES[0], search_limits=MAX_SEARCH, num_threadings=2)
             n_results = len(image_infos) if image_infos is not None else 0
             status["n_results"] = n_results
             status["search_ok"] = n_results > 0
@@ -204,7 +206,7 @@ def main():
         modules_summary.append(status)
     # write to 
     payload = {
-        "date": date_str, "timestamp_utc": timestamp, "query": QUERY, "max_search": MAX_SEARCH, "max_download_per_client": MAX_DL_PER_CLIENT, "modules": modules_summary,
+        "date": date_str, "timestamp_utc": timestamp, "query": {', '.join(QUERiES)}, "max_search": MAX_SEARCH, "max_download_per_client": MAX_DL_PER_CLIENT, "modules": modules_summary,
     }
     summary_path = base_results_dir / f"summary_{date_str}.json"
     ensuredir(summary_path.parent)
