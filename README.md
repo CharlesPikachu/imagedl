@@ -281,7 +281,7 @@ image_infos = client.search('animals', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # dimtown tests 
 client = DimTownImageClient()
-image_infos = client.search('美女', search_limits=10, num_threadings=1)
+image_infos = client.search('JK', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ```
 

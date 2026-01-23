@@ -16,7 +16,7 @@ from imagedl.modules import ImageClientBuilder, BaseImageClient
 
 
 '''settings'''
-QUERiES = ["Pikachu", "美女"]
+QUERiES = ["Pikachu", "JK"]
 MAX_SEARCH = 10
 MAX_DL_PER_CLIENT = 10
 RESULTS_ROOT = Path("daily_test_results")
