@@ -16,7 +16,7 @@ from imagedl.modules import ImageClientBuilder, BaseImageClient
 
 
 '''settings'''
-QUERiES = ["Pikachu", "JK"]
+QUERiES = ["Pikachu", "JK", "Cute Animals"]
 MAX_SEARCH = 10
 MAX_DL_PER_CLIENT = 10
 RESULTS_ROOT = Path("daily_test_results")
@@ -107,6 +107,18 @@ SEARCH_SUPPLEMENT = { # It seems that the server used in the GitHub Action canno
         {'candidate_urls': ['https://images.unsplash.com/photo-1502780402662-acc01c084a25?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTl8fEN1dGUlMjBBbmltYWxzfGVufDB8fHx8MTc2NTc1ODM4N3ww&ixlib=rb-4.1.0', 'https://images.unsplash.com/photo-1502780402662-acc01c084a25?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTl8fEN1dGUlMjBBbmltYWxzfGVufDB8fHx8MTc2NTc1ODM4N3ww&ixlib=rb-4.1.0&q=85', 'https://images.unsplash.com/photo-1502780402662-acc01c084a25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTl8fEN1dGUlMjBBbmltYWxzfGVufDB8fHx8MTc2NTc1ODM4N3ww&ixlib=rb-4.1.0&q=80&w=1080', 'https://images.unsplash.com/photo-1502780402662-acc01c084a25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTl8fEN1dGUlMjBBbmltYWxzfGVufDB8fHx8MTc2NTc1ODM4N3ww&ixlib=rb-4.1.0&q=80&w=400', 'https://images.unsplash.com/photo-1502780402662-acc01c084a25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTl8fEN1dGUlMjBBbmltYWxzfGVufDB8fHx8MTc2NTc1ODM4N3ww&ixlib=rb-4.1.0&q=80&w=200', 'https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1502780402662-acc01c084a25'], 'identifier': '2slBHG3HtdA', 'work_dir': 'tmp/UnsplashImageClient/2025-12-15-08-28-25 CuteAnimals', 'file_path': 'tmp/UnsplashImageClient/2025-12-15-08-28-25 CuteAnimals/00000019'}, 
         {'candidate_urls': ['https://images.unsplash.com/photo-1504006833117-8886a355efbf?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MjB8fEN1dGUlMjBBbmltYWxzfGVufDB8fHx8MTc2NTc1ODM4N3ww&ixlib=rb-4.1.0', 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MjB8fEN1dGUlMjBBbmltYWxzfGVufDB8fHx8MTc2NTc1ODM4N3ww&ixlib=rb-4.1.0&q=85', 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MjB8fEN1dGUlMjBBbmltYWxzfGVufDB8fHx8MTc2NTc1ODM4N3ww&ixlib=rb-4.1.0&q=80&w=1080', 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MjB8fEN1dGUlMjBBbmltYWxzfGVufDB8fHx8MTc2NTc1ODM4N3ww&ixlib=rb-4.1.0&q=80&w=400', 'https://images.unsplash.com/photo-1504006833117-8886a355efbf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MjB8fEN1dGUlMjBBbmltYWxzfGVufDB8fHx8MTc2NTc1ODM4N3ww&ixlib=rb-4.1.0&q=80&w=200', 'https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1504006833117-8886a355efbf'], 'identifier': 'bKhETeDV1WM', 'work_dir': 'tmp/UnsplashImageClient/2025-12-15-08-28-25 CuteAnimals', 'file_path': 'tmp/UnsplashImageClient/2025-12-15-08-28-25 CuteAnimals/00000020'}
     ],
+    'DimTownImageClient': [
+        {'candidate_urls': ['https://img.pokemondb.net/artwork/large/pikachu-lets-go.jpg'], 'raw_data': {}, 'identifier': 'https://img.pokemondb.net/artwork/large/pikachu-lets-go.jpg', 'work_dir': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu', 'file_path': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu\\00000001'}, 
+        {'candidate_urls': ['https://img.pokemondb.net/artwork/large/pikachu.jpg'], 'raw_data': {}, 'identifier': 'https://img.pokemondb.net/artwork/large/pikachu.jpg', 'work_dir': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu', 'file_path': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu\\00000002'}, 
+        {'candidate_urls': ['http://www.pixelstalk.net/wp-content/uploads/2016/03/Free-download-Pikachu-wallpaper-HD.jpg'], 'raw_data': {}, 'identifier': 'http://www.pixelstalk.net/wp-content/uploads/2016/03/Free-download-Pikachu-wallpaper-HD.jpg', 'work_dir': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu', 'file_path': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu\\00000003'}, 
+        {'candidate_urls': ['https://i.pinimg.com/originals/89/35/5d/89355d9b2954ed401254c4c52ff5a058.png'], 'raw_data': {}, 'identifier': 'https://i.pinimg.com/originals/89/35/5d/89355d9b2954ed401254c4c52ff5a058.png', 'work_dir': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu', 'file_path': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu\\00000004'}, 
+        {'candidate_urls': ['https://www.chromethemer.com/download/hd-wallpapers/pikachu-3840x2160.jpg'], 'raw_data': {}, 'identifier': 'https://www.chromethemer.com/download/hd-wallpapers/pikachu-3840x2160.jpg', 'work_dir': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu', 'file_path': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu\\00000005'}, 
+        {'candidate_urls': ['http://www.cartonionline.com/wordpress/wp-content/uploads/2022/10/Pikachu.jpg'], 'raw_data': {}, 'identifier': 'http://www.cartonionline.com/wordpress/wp-content/uploads/2022/10/Pikachu.jpg', 'work_dir': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu', 'file_path': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu\\00000006'}, 
+        {'candidate_urls': ['https://i.pinimg.com/originals/be/7d/c5/be7dc5ce53cfa8a81d01d3389d194903.png'], 'raw_data': {}, 'identifier': 'https://i.pinimg.com/originals/be/7d/c5/be7dc5ce53cfa8a81d01d3389d194903.png', 'work_dir': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu', 'file_path': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu\\00000007'}, 
+        {'candidate_urls': ['https://images.hdqwalls.com/download/cute-pikachu-6o-3840x2160.jpg'], 'raw_data': {}, 'identifier': 'https://images.hdqwalls.com/download/cute-pikachu-6o-3840x2160.jpg', 'work_dir': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu', 'file_path': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu\\00000008'}, 
+        {'candidate_urls': ['https://vignette.wikia.nocookie.net/ssbb/images/b/b8/025Pikachu_LG.png/revision/latest?cb=20190520161120&path-prefix=es'], 'raw_data': {}, 'identifier': 'https://vignette.wikia.nocookie.net/ssbb/images/b/b8/025Pikachu_LG.png/revision/latest?cb=20190520161120&path-prefix=es', 'work_dir': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu', 'file_path': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu\\00000009'}, 
+        {'candidate_urls': ['http://wallpapercave.com/wp/pvA2GrC.png'], 'raw_data': {}, 'identifier': 'http://wallpapercave.com/wp/pvA2GrC.png', 'work_dir': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu', 'file_path': 'tmp/BingImageClient/2026-01-23-19-49-54 Pikachu\\00000010'}
+    ],
 }
 
 
@@ -156,12 +168,11 @@ def main():
         target_dir: Path = base_results_dir / client_name
         # --search checking
         try:
-            if client_name in {'BaiduImageClient', 'DuckduckgoImageClient', 'UnsplashImageClient'} and runningingithubactions():
+            if client_name in {'BaiduImageClient', 'DuckduckgoImageClient', 'UnsplashImageClient', 'DimTownImageClient'} and runningingithubactions():
                 image_infos = SEARCH_SUPPLEMENT[client_name]
-            elif client_name in {'DimTownImageClient'}:
-                image_infos = client.search(QUERiES[1], search_limits=MAX_SEARCH, num_threadings=2)
             else:
                 image_infos = client.search(QUERiES[0], search_limits=MAX_SEARCH, num_threadings=2)
+            for image_info in image_infos: image_info['raw_data'] = {}
             n_results = len(image_infos) if image_infos is not None else 0
             status["n_results"] = n_results
             status["search_ok"] = n_results > 0
@@ -206,7 +217,7 @@ def main():
         modules_summary.append(status)
     # write to 
     payload = {
-        "date": date_str, "timestamp_utc": timestamp, "query": {', '.join(QUERiES)}, "max_search": MAX_SEARCH, "max_download_per_client": MAX_DL_PER_CLIENT, "modules": modules_summary,
+        "date": date_str, "timestamp_utc": timestamp, "query": ', '.join(QUERiES), "max_search": MAX_SEARCH, "max_download_per_client": MAX_DL_PER_CLIENT, "modules": modules_summary,
     }
     summary_path = base_results_dir / f"summary_{date_str}.json"
     ensuredir(summary_path.parent)
