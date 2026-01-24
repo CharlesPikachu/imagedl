@@ -7,13 +7,17 @@ WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
 import os
+import re
 import copy
 import pickle
 import shutil
 import imghdr
+import random
 import requests
+import curl_cffi
 import threading
 import json_repair
+from pathlib import Path
 from datetime import datetime
 from fake_useragent import UserAgent
 from alive_progress import alive_bar
@@ -24,8 +28,9 @@ from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir
 '''BaseImageClient'''
 class BaseImageClient():
     source = 'BaseImageClient'
-    def __init__(self, auto_set_proxies: bool = False, random_update_ua: bool = False, max_retries: int = 5, maintain_session: bool = False, 
-                 logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_outputs', freeproxy_settings: dict = None):
+    def __init__(self, auto_set_proxies: bool = False, random_update_ua: bool = False, enable_search_curl_cffi: bool = False, enable_download_curl_cffi: bool = False,
+                 max_retries: int = 5, maintain_session: bool = False, logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_outputs', 
+                 freeproxy_settings: dict = None):
         # set up work dir
         touchdir(work_dir)
         # set attributes
@@ -37,6 +42,10 @@ class BaseImageClient():
         self.maintain_session = maintain_session
         self.auto_set_proxies = auto_set_proxies
         self.freeproxy_settings = freeproxy_settings or {}
+        self.enable_search_curl_cffi = enable_search_curl_cffi
+        self.enable_download_curl_cffi = enable_download_curl_cffi
+        self.enable_curl_cffi = self.enable_search_curl_cffi
+        self.cc_impersonates = self._listccimpersonates() if (enable_search_curl_cffi or enable_download_curl_cffi) else None
         # init requests.Session
         self.default_search_headers = {'User-Agent': UserAgent().chrome}
         self.default_download_headers = {'User-Agent': UserAgent().chrome}
@@ -49,9 +58,15 @@ class BaseImageClient():
             default_freeproxy_settings = dict(disable_print=True, proxy_sources=['ProxiflyProxiedSession'], max_tries=20, init_proxied_session_cfg={})
             default_freeproxy_settings.update(self.freeproxy_settings)
             self.proxied_session_client = freeproxy.ProxiedSessionClient(**default_freeproxy_settings)
+    '''_listccimpersonates'''
+    def _listccimpersonates(self):
+        root = Path(curl_cffi.__file__).resolve().parent
+        exts = {".py", ".so", ".pyd", ".dll", ".dylib"}
+        pat = re.compile(rb"\b(?:chrome|edge|safari|firefox|tor)(?:\d+[a-z_]*|_android|_ios)?\b")
+        return sorted({m.decode("utf-8", "ignore") for p in root.rglob("*") if p.suffix in exts for m in pat.findall(p.read_bytes())})
     '''_initsession'''
     def _initsession(self):
-        self.session = requests.Session()
+        self.session = requests.Session() if not self.enable_curl_cffi else curl_cffi.requests.Session()
         self.session.headers = self.default_headers
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
@@ -191,6 +206,7 @@ class BaseImageClient():
         return downloaded_image_infos
     '''get'''
     def get(self, url, **kwargs):
+        if 'impersonate' not in kwargs and self.enable_curl_cffi: kwargs['impersonate'] = random.choice(self.cc_impersonates)
         resp = None
         for _ in range(self.max_retries):
             if not self.maintain_session:
@@ -215,6 +231,7 @@ class BaseImageClient():
         return resp
     '''post'''
     def post(self, url, **kwargs):
+        if 'impersonate' not in kwargs and self.enable_curl_cffi: kwargs['impersonate'] = random.choice(self.cc_impersonates)
         resp = None
         for _ in range(self.max_retries):
             if not self.maintain_session:

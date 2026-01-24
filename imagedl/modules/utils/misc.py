@@ -15,8 +15,8 @@ def usedownloadheaderscookies(func):
     @functools.wraps(func)
     def wrapper(self, *args, **kwargs):
         self.default_headers = self.default_download_headers
-        if hasattr(self, 'default_download_cookies'):
-            self.default_cookies = self.default_download_cookies
+        if hasattr(self, 'default_download_cookies'): self.default_cookies = self.default_download_cookies
+        if hasattr(self, 'enable_download_curl_cffi'): self.enable_curl_cffi = self.enable_download_curl_cffi
         if hasattr(self, '_initsession'): self._initsession()
         return func(self, *args, **kwargs)
     return wrapper
@@ -27,8 +27,8 @@ def useparseheaderscookies(func):
     @functools.wraps(func)
     def wrapper(self, *args, **kwargs):
         self.default_headers = self.default_parse_headers
-        if hasattr(self, 'default_parse_cookies'):
-            self.default_cookies = self.default_parse_cookies
+        if hasattr(self, 'default_parse_cookies'): self.default_cookies = self.default_parse_cookies
+        if hasattr(self, 'enable_parse_curl_cffi'): self.enable_curl_cffi = self.enable_parse_curl_cffi
         if hasattr(self, '_initsession'): self._initsession()
         return func(self, *args, **kwargs)
     return wrapper
@@ -39,8 +39,8 @@ def usesearchheaderscookies(func):
     @functools.wraps(func)
     def wrapper(self, *args, **kwargs):
         self.default_headers = self.default_search_headers
-        if hasattr(self, 'default_search_cookies'):
-            self.default_cookies = self.default_search_cookies
+        if hasattr(self, 'default_search_cookies'): self.default_cookies = self.default_search_cookies
+        if hasattr(self, 'enable_search_curl_cffi'): self.enable_curl_cffi = self.enable_search_curl_cffi
         if hasattr(self, '_initsession'): self._initsession()
         return func(self, *args, **kwargs)
     return wrapper
@@ -51,10 +51,8 @@ def lowerdictkeys(data: dict):
     if not isinstance(data, dict): return data
     data_new = dict()
     for k, v in data.items():
-        if isinstance(k, str):
-            data_new[k.lower()] = copy.deepcopy(v)
-        else:
-            data_new[k] = copy.deepcopy(v)
+        if isinstance(k, str): data_new[k.lower()] = copy.deepcopy(v)
+        else: data_new[k] = copy.deepcopy(v)
     return data_new
 
 

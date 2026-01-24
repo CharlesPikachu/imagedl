@@ -10,3 +10,4 @@ prettytable
 platformdirs
 pathvalidate
 standard-imghdr
+curl_cffi
