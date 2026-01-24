@@ -13,12 +13,14 @@ Arguments supported when initializing this class include:
     "work_dir": "imagedl_outputs",
     "logger_handle": ImageClient.logger_handle,
     "type": image_source,
-	"auto_set_proxies": False,
-	"random_update_ua": False,
-	"max_retries": 5,
-	"maintain_session": False,
-	"disable_print": False,
-	"freeproxy_settings": None,
+    "auto_set_proxies": False,
+    "random_update_ua": False,
+    "enable_search_curl_cffi": False,
+    "enable_download_curl_cffi": False,
+    "max_retries": 5,
+    "maintain_session": False,
+    "disable_print": False,
+    "freeproxy_settings": None,
   }
   ```
 
@@ -148,6 +150,10 @@ Arguments supported when initializing this class include:
 - **auto_set_proxies** (`bool`, default: `False`): If `True`, randomly assign a free proxy fetched by `freeproxy.ProxiedSessionClient` (details refer to [FreeProxy](https://github.com/CharlesPikachu/freeproxy)) for each request.
 
 - **random_update_ua** (`bool`, default: `False`): If `True`, randomly updates the `User-Agent` header before each request (using `fake_useragent.UserAgent().random`), providing additional variability.
+
+- **enable_search_curl_cffi** (`bool`, default: `False`): If `True`, `curl_cffi.requests.Session` is adopted for each search request.
+
+- **enable_download_curl_cffi** (`bool`, default: `False`): If `True`, `curl_cffi.requests.Session` is adopted for each download request.
 
 - **max_retries** (`int`, default: `5`): Maximum number of retry attempts in `BaseImageClient.get()` / `BaseImageClient.post()` when requests fail or return non-200 HTTP status codes.
 
