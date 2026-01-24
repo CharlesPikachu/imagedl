@@ -135,6 +135,7 @@ Current implementations built on top of `BaseImageClient` include:
 - `imagedl.imagedl.modules.sources.DimTownImageClient`
 - `imagedl.imagedl.modules.sources.GoogleImageClient`
 - `imagedl.imagedl.modules.sources.GelbooruImageClient`
+- `imagedl.imagedl.modules.sources.HuabanImageClient`
 - `imagedl.imagedl.modules.sources.I360ImageClient`
 - `imagedl.imagedl.modules.sources.PixabayImageClient`
 - `imagedl.imagedl.modules.sources.PexelsImageClient`
