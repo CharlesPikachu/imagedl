@@ -8,7 +8,8 @@ WeChat Official Account (微信公众号):
 '''
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, 
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
+    HuabanImageClient
 )
 
 # bing tests
@@ -69,5 +70,9 @@ image_infos = client.search('animals', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # dimtown tests 
 client = DimTownImageClient()
+image_infos = client.search('JK', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# huaban tests 
+client = HuabanImageClient()
 image_infos = client.search('JK', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)

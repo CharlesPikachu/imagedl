@@ -22,7 +22,7 @@ from datetime import datetime
 from fake_useragent import UserAgent
 from alive_progress import alive_bar
 from pathvalidate import sanitize_filepath
-from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir, LoggerHandle, Filter
+from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir, cookies2dict, LoggerHandle, Filter
 
 
 '''BaseImageClient'''
@@ -30,7 +30,7 @@ class BaseImageClient():
     source = 'BaseImageClient'
     def __init__(self, auto_set_proxies: bool = False, random_update_ua: bool = False, enable_search_curl_cffi: bool = False, enable_download_curl_cffi: bool = False,
                  max_retries: int = 5, maintain_session: bool = False, logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_outputs', 
-                 freeproxy_settings: dict = None):
+                 freeproxy_settings: dict = None, default_search_cookies: dict = None, default_download_cookies: dict = None):
         # set up work dir
         touchdir(work_dir)
         # set attributes
@@ -42,6 +42,9 @@ class BaseImageClient():
         self.maintain_session = maintain_session
         self.auto_set_proxies = auto_set_proxies
         self.freeproxy_settings = freeproxy_settings or {}
+        self.default_search_cookies = cookies2dict(default_search_cookies)
+        self.default_download_cookies = cookies2dict(default_download_cookies)
+        self.default_cookies = self.default_search_cookies
         self.enable_search_curl_cffi = enable_search_curl_cffi
         self.enable_download_curl_cffi = enable_download_curl_cffi
         self.enable_curl_cffi = self.enable_search_curl_cffi
@@ -206,6 +209,7 @@ class BaseImageClient():
         return downloaded_image_infos
     '''get'''
     def get(self, url, **kwargs):
+        if 'cookies' not in kwargs: kwargs['cookies'] = self.default_cookies
         if 'impersonate' not in kwargs and self.enable_curl_cffi: kwargs['impersonate'] = random.choice(self.cc_impersonates)
         resp = None
         for _ in range(self.max_retries):
@@ -231,6 +235,7 @@ class BaseImageClient():
         return resp
     '''post'''
     def post(self, url, **kwargs):
+        if 'cookies' not in kwargs: kwargs['cookies'] = self.default_cookies
         if 'impersonate' not in kwargs and self.enable_curl_cffi: kwargs['impersonate'] = random.choice(self.cc_impersonates)
         resp = None
         for _ in range(self.max_retries):

@@ -56,6 +56,34 @@ def lowerdictkeys(data: dict):
     return data_new
 
 
+'''cookies2dict'''
+def cookies2dict(cookies: str | dict = None):
+    if not cookies: cookies = {}
+    if isinstance(cookies, dict): return cookies
+    if isinstance(cookies, str): return dict(item.split("=", 1) for item in cookies.split("; "))
+    raise TypeError(f'cookies type is "{type(cookies)}", expect cookies to "str" or "dict" or "None".')
+
+
+'''cookies2string'''
+def cookies2string(cookies: str | dict = None):
+    if not cookies: cookies = ""
+    if isinstance(cookies, str): return cookies
+    if isinstance(cookies, dict): return "; ".join(f"{k}={v}" for k, v in cookies.items())
+    raise TypeError(f'cookies type is "{type(cookies)}", expect cookies to "str" or "dict" or "None".')
+
+
+'''searchdictbykey'''
+def searchdictbykey(obj, target_key: str):
+    results = []
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            if k == target_key: results.append(v)
+            results.extend(searchdictbykey(v, target_key))
+    elif isinstance(obj, list):
+        for item in obj: results.extend(searchdictbykey(item, target_key))
+    return results
+
+
 '''Filter, refer to https://github.com/hellock/icrawler/blob/master/icrawler/builtin/filter.py'''
 class Filter:
     def __init__(self):

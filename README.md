@@ -63,7 +63,8 @@
 
 # 🆕 What's New
 
-- 2026-01-23: Released pyimagedl v0.3.2 — Fix the Yahoo Image Search bug, and add image search and downloading for the DimTown site.
+- 2026-01-25: Released pyimagedl v0.3.3 — added image search and download support for Huaban site, and introduced curl_cffi and cookies as anti-scraping mitigation strategies.
+- 2026-01-23: Released pyimagedl v0.3.2 — fix the Yahoo Image Search bug, and add image search and downloading for the DimTown site.
 - 2026-01-18: Released pyimagedl v0.3.1 — resolved download issues related to specific search rules and implemented support for pexels.com.
 - 2026-01-10: Released pyimagedl v0.3.0 — supports image search and downloading for Safebooru, Gelbooru, and Danbooru, with some argument changes and code optimizations.
 
@@ -133,7 +134,7 @@ Options:
   -k, --keyword TEXT              The keywords for the image search. If left
                                   empty, an interactive terminal will open
                                   automatically.
-  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|i360imageclient|pixabayimageclient|yandeximageclient|duckduckgoimageclient|sogouimageclient|yahooimageclient|unsplashimageclient|danbooruimageclient|safebooruimageclient|gelbooruimageclient|pexelsimageclient|dimtownimageclient]
+  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|i360imageclient|pixabayimageclient|yandeximageclient|duckduckgoimageclient|sogouimageclient|yahooimageclient|unsplashimageclient|danbooruimageclient|safebooruimageclient|gelbooruimageclient|pexelsimageclient|dimtownimageclient|huabanimageclient]
                                   The image search and download source.
                                   [default: BaiduImageClient]
   -s, --search-limits, --search_limits INTEGER RANGE
@@ -153,7 +154,7 @@ Options:
 
 For class `imagedl.ImageClient`, the acceptable arguments include,
 
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient', 'PexelsImageClient', 'DimTownImageClient']`.
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient', 'PexelsImageClient', 'DimTownImageClient', 'HuabanImageClient']`.
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
@@ -220,7 +221,8 @@ If you prefer not to use the unified interface, you can also import a specific i
 ```python
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, 
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
+    HuabanImageClient
 )
 
 # bing tests
@@ -281,6 +283,10 @@ image_infos = client.search('animals', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # dimtown tests 
 client = DimTownImageClient()
+image_infos = client.search('JK', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# huaban tests 
+client = HuabanImageClient()
 image_infos = client.search('JK', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ```

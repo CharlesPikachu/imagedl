@@ -9,6 +9,7 @@ from .pexels import PexelsImageClient
 from .google import GoogleImageClient
 from ..utils import BaseModuleBuilder
 from .yandex import YandexImageClient
+from .huaban import HuabanImageClient
 from .pixabay import PixabayImageClient
 from .dimtown import DimTownImageClient
 from .danbooru import DanbooruImageClient
@@ -24,7 +25,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'BingImageClient': BingImageClient, 'BaiduImageClient': BaiduImageClient, 'GoogleImageClient': GoogleImageClient, 'I360ImageClient': I360ImageClient, 
         'PixabayImageClient': PixabayImageClient, 'YandexImageClient': YandexImageClient, 'DuckduckgoImageClient': DuckduckgoImageClient, 'SogouImageClient': SogouImageClient, 
         'YahooImageClient': YahooImageClient, 'UnsplashImageClient': UnsplashImageClient, 'SafebooruImageClient': SafebooruImageClient, 'DanbooruImageClient': DanbooruImageClient,
-        'GelbooruImageClient': GelbooruImageClient, 'PexelsImageClient': PexelsImageClient, 'DimTownImageClient': DimTownImageClient,
+        'GelbooruImageClient': GelbooruImageClient, 'PexelsImageClient': PexelsImageClient, 'DimTownImageClient': DimTownImageClient, 'HuabanImageClient': HuabanImageClient,
     }
 
 

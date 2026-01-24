@@ -2,5 +2,5 @@
 from .sources import BaseImageClient, ImageClientBuilder, BuildImageClient
 from .utils import (
     BaseModuleBuilder, LoggerHandle, Filter, printtable, colorize, touchdir, lowerdictkeys, usedownloadheaderscookies, useparseheaderscookies, 
-    usesearchheaderscookies, printfullline
+    usesearchheaderscookies, printfullline, cookies2string, cookies2dict, searchdictbykey
 )

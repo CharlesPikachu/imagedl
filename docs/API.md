@@ -21,6 +21,8 @@ Arguments supported when initializing this class include:
     "maintain_session": False,
     "disable_print": False,
     "freeproxy_settings": None,
+    "default_search_cookies": None,
+    "default_download_cookies": None,
   }
   ```
 
@@ -171,6 +173,10 @@ Arguments supported when initializing this class include:
     - image files: `00000001.jpg`, `00000002.png`, ...
 
 - **freeproxy_settings** (`dict` or `None`, default: `None`): Arguments passed when instantiating `freeproxy.ProxiedSessionClient`. If `None`, defaults to `dict(disable_print=True, proxy_sources=['ProxiflyProxiedSession'], max_tries=20, init_proxied_session_cfg={})` when `auto_set_proxies=True`.
+
+- **default_search_cookies** (`dict` or `None`, default: `None`): Default cookies used for each search request.
+
+- **default_download_cookies** (`dict` or `None`, default: `None`): Default cookies used for each download request.
 
 #### `BaseImageClient.search`
 

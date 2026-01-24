@@ -1,6 +1,8 @@
 # Release Log
 
-- 2026-01-23: Released pyimagedl v0.3.2 — Fix the Yahoo Image Search bug, and add image search and downloading for the DimTown site.
+- 2026-01-25: Released pyimagedl v0.3.3 — added image search and download support for Huaban site, and introduced curl_cffi and cookies as anti-scraping mitigation strategies.
+
+- 2026-01-23: Released pyimagedl v0.3.2 — fix the Yahoo Image Search bug, and add image search and downloading for the DimTown site.
 
 - 2026-01-18: Released pyimagedl v0.3.1 — resolved download issues related to specific search rules and implemented support for pexels.com.
 
