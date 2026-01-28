@@ -14,7 +14,6 @@ import shutil
 import imghdr
 import random
 import requests
-import curl_cffi
 import threading
 import json_repair
 from pathlib import Path
@@ -22,7 +21,7 @@ from datetime import datetime
 from fake_useragent import UserAgent
 from alive_progress import alive_bar
 from pathvalidate import sanitize_filepath
-from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir, cookies2dict, LoggerHandle, Filter
+from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir, cookies2dict, optionalimport, LoggerHandle, Filter
 
 
 '''BaseImageClient'''
@@ -63,12 +62,14 @@ class BaseImageClient():
             self.proxied_session_client = freeproxy.ProxiedSessionClient(**default_freeproxy_settings)
     '''_listccimpersonates'''
     def _listccimpersonates(self):
+        curl_cffi = optionalimport('curl_cffi')
         root = Path(curl_cffi.__file__).resolve().parent
         exts = {".py", ".so", ".pyd", ".dll", ".dylib"}
         pat = re.compile(rb"\b(?:chrome|edge|safari|firefox|tor)(?:\d+[a-z_]*|_android|_ios)?\b")
         return sorted({m.decode("utf-8", "ignore") for p in root.rglob("*") if p.suffix in exts for m in pat.findall(p.read_bytes())})
     '''_initsession'''
     def _initsession(self):
+        curl_cffi = optionalimport('curl_cffi')
         self.session = requests.Session() if not self.enable_curl_cffi else curl_cffi.requests.Session()
         self.session.headers = self.default_headers
     '''_constructsearchurls'''
@@ -102,7 +103,8 @@ class BaseImageClient():
         request_overrides = request_overrides or {}
         while len(search_urls) > 0:
             search_url = search_urls.pop(0)
-            resp = self.get(search_url, **request_overrides)
+            search_inputs, search_url, request_method = (search_url['inputs'], search_url['url'], search_url['method']) if isinstance(search_url, dict) else ({}, search_url, 'get')
+            resp: requests.Response = getattr(self, request_method)(search_url, **search_inputs, **request_overrides)
             if resp is None or resp.status_code != 200:
                 bar()
                 continue

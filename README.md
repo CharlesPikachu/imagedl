@@ -63,10 +63,9 @@
 
 # 🆕 What's New
 
+- 2026-01-28: Released pyimagedl v0.3.4 — added support for searching and downloading images from the Foodiesfeed site, along with some code optimizations.
 - 2026-01-25: Released pyimagedl v0.3.3 — added image search and download support for Huaban site, and introduced curl_cffi and cookies as anti-scraping mitigation strategies.
 - 2026-01-23: Released pyimagedl v0.3.2 — fix the Yahoo Image Search bug, and add image search and downloading for the DimTown site.
-- 2026-01-18: Released pyimagedl v0.3.1 — resolved download issues related to specific search rules and implemented support for pexels.com.
-- 2026-01-10: Released pyimagedl v0.3.0 — supports image search and downloading for Safebooru, Gelbooru, and Danbooru, with some argument changes and code optimizations.
 
 
 # 📘 Introduction
@@ -83,6 +82,7 @@ Imagedl lets you search for and download images from specific websites. If you f
 |  [DuckduckgoImageClient](https://duckduckgo.com/)        |  [DuckDuckGo图片](https://duckduckgo.com/)            |   ✔️               |  ✔️                  |    [duckduckgo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/duckduckgo.py)      |
 |  [DanbooruImageClient](https://danbooru.donmai.us/)      |  [Danbooru动漫图片](https://danbooru.donmai.us/)      |   ✔️               |  ✔️                  |    [danbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/danbooru.py)          |
 |  [DimTownImageClient](https://dimtown.com/home)          |  [次元小镇](https://dimtown.com/home)                 |   ✔️               |  ✔️                  |    [dimtown.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/dimtown.py)            |
+|  [FoodiesfeedImageClient](https://www.foodiesfeed.com/)  |  [Foodiesfeed美食图片](https://www.foodiesfeed.com/)  |   ✔️               |  ✔️                  |    [foodiesfeed.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/foodiesfeed.py)    |
 |  [GoogleImageClient](https://images.google.com/)         |  [谷歌图片](https://images.google.com/)               |   ✔️               |  ✔️                  |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)              |
 |  [GelbooruImageClient](https://gelbooru.com/)            |  [Gelbooru动漫图片](https://gelbooru.com/)            |   ✔️               |  ✔️                  |    [gelbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gelbooru.py)          |
 |  [HuabanImageClient](https://huaban.com/)                |  [花瓣网](https://huaban.com/)                        |   ✔️               |  ✔️                  |    [huaban.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/huaban.py)              |
@@ -135,7 +135,12 @@ Options:
   -k, --keyword TEXT              The keywords for the image search. If left
                                   empty, an interactive terminal will open
                                   automatically.
-  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|i360imageclient|pixabayimageclient|yandeximageclient|duckduckgoimageclient|sogouimageclient|yahooimageclient|unsplashimageclient|danbooruimageclient|safebooruimageclient|gelbooruimageclient|pexelsimageclient|dimtownimageclient|huabanimageclient]
+  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|
+                                  i360imageclient|pixabayimageclient|yandeximageclient|
+                                  duckduckgoimageclient|sogouimageclient|yahooimageclient|
+                                  unsplashimageclient|danbooruimageclient|safebooruimageclient|
+                                  gelbooruimageclient|pexelsimageclient|huabanimageclient|
+                                  foodiesfeedimageclient]
                                   The image search and download source.
                                   [default: BaiduImageClient]
   -s, --search-limits, --search_limits INTEGER RANGE
@@ -155,7 +160,7 @@ Options:
 
 For class `imagedl.ImageClient`, the acceptable arguments include,
 
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient', 'PexelsImageClient', 'DimTownImageClient', 'HuabanImageClient']`.
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient', 'PexelsImageClient', 'DimTownImageClient', 'HuabanImageClient', 'FoodiesfeedImageClient']`.
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
@@ -223,7 +228,7 @@ If you prefer not to use the unified interface, you can also import a specific i
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, 
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient
+    HuabanImageClient, FoodiesfeedImageClient
 )
 
 # bing tests
@@ -289,6 +294,10 @@ client.download(image_infos, num_threadings=1)
 # huaban tests 
 client = HuabanImageClient()
 image_infos = client.search('JK', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# foodiesfeed tests 
+client = FoodiesfeedImageClient()
+image_infos = client.search('pizza', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ```
 

@@ -17,15 +17,17 @@ from .unsplash import UnsplashImageClient
 from .gelbooru import GelbooruImageClient
 from .safebooru import SafebooruImageClient
 from .duckduckgo import DuckduckgoImageClient
+from .foodiesfeed import FoodiesfeedImageClient
 
 
 '''ImageClientBuilder'''
 class ImageClientBuilder(BaseModuleBuilder):
     REGISTERED_MODULES = {
-        'BingImageClient': BingImageClient, 'BaiduImageClient': BaiduImageClient, 'GoogleImageClient': GoogleImageClient, 'I360ImageClient': I360ImageClient, 
+        'BingImageClient': BingImageClient, 'BaiduImageClient': BaiduImageClient, 'GoogleImageClient': GoogleImageClient, 'FoodiesfeedImageClient': FoodiesfeedImageClient, 
         'PixabayImageClient': PixabayImageClient, 'YandexImageClient': YandexImageClient, 'DuckduckgoImageClient': DuckduckgoImageClient, 'SogouImageClient': SogouImageClient, 
         'YahooImageClient': YahooImageClient, 'UnsplashImageClient': UnsplashImageClient, 'SafebooruImageClient': SafebooruImageClient, 'DanbooruImageClient': DanbooruImageClient,
         'GelbooruImageClient': GelbooruImageClient, 'PexelsImageClient': PexelsImageClient, 'DimTownImageClient': DimTownImageClient, 'HuabanImageClient': HuabanImageClient,
+        'I360ImageClient': I360ImageClient, 
     }
 
 

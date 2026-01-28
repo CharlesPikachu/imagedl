@@ -9,7 +9,7 @@ WeChat Official Account (微信公众号):
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, 
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient
+    HuabanImageClient, FoodiesfeedImageClient
 )
 
 # bing tests
@@ -75,4 +75,8 @@ client.download(image_infos, num_threadings=1)
 # huaban tests 
 client = HuabanImageClient()
 image_infos = client.search('JK', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# foodiesfeed tests 
+client = FoodiesfeedImageClient()
+image_infos = client.search('pizza', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
