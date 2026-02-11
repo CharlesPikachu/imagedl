@@ -63,10 +63,8 @@ class DuckduckgoImageClient(BaseImageClient):
         image_infos = []
         for item in search_result.get('results', []):
             candidate_urls = []
-            if ('image' in item) and isinstance(item['image'], str) and item['image'].strip():
-                candidate_urls.append(item['image'])
-            if ('thumbnail' in item) and isinstance(item['thumbnail'], str) and item['thumbnail'].strip():
-                candidate_urls.append(item['thumbnail'])
+            if ('image' in item) and isinstance(item['image'], str) and item['image'].strip(): candidate_urls.append(item['image'])
+            if ('thumbnail' in item) and isinstance(item['thumbnail'], str) and item['thumbnail'].strip(): candidate_urls.append(item['thumbnail'])
             image_info = {
                 'candidate_urls': candidate_urls, 'raw_data': item, 'identifier': item['image_token'], 
             }
@@ -78,8 +76,7 @@ class DuckduckgoImageClient(BaseImageClient):
         request_overrides = request_overrides or {}
         q = urlencode({"q": keyword}, quote_via=quote, safe="")
         resp = self.get(f'{base_url}?{q}', **request_overrides)
-        if resp is None or resp.status_code != 200:
-            raise requests.HTTPError('fail to get "vqd" as the session parameters')
+        if resp is None or resp.status_code != 200: raise requests.HTTPError('fail to get "vqd" as the session parameters')
         m = re.search(r"vqd=([\d-]+)&", resp.text)
         if not m: m = re.search(r"[\"']vqd[\"']\s*:\s*[\"']([\d-]+)[\"']", resp.text)
         if not m: raise requests.HTTPError('fail to get "vqd" as the session parameters')

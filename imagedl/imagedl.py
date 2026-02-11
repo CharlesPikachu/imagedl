@@ -36,9 +36,7 @@ class ImageClient():
         self.logger_handle = LoggerHandle()
         if image_source is None: random.choice(ImageClientBuilder.REGISTERED_MODULES.keys())
         # instance image_client
-        default_image_client_cfg = {
-            'work_dir': 'imagedl_outputs', 'logger_handle': self.logger_handle, 'type': image_source,
-        }
+        default_image_client_cfg = {'work_dir': 'imagedl_outputs', 'logger_handle': self.logger_handle, 'type': image_source}
         default_image_client_cfg.update(init_image_client_cfg or {})
         self.image_client: BaseImageClient = BuildImageClient(module_cfg=default_image_client_cfg)
         # set attributes
@@ -58,23 +56,15 @@ class ImageClient():
             # process user inputs
             user_input = self.processinputs('Please enter keywords for the image search: ')
             # search
-            image_infos = self.image_client.search(
-                keyword=user_input, search_limits=self.search_limits, num_threadings=self.num_threadings, request_overrides=self.request_overrides
-            )
+            image_infos = self.image_client.search(keyword=user_input, search_limits=self.search_limits, num_threadings=self.num_threadings, request_overrides=self.request_overrides)
             # download
             self.image_client.download(image_infos=image_infos, num_threadings=self.num_threadings, request_overrides=self.request_overrides)
     '''search'''
     def search(self, keyword, search_limits_overrides: int = None, num_threadings_overrides: int = None, filters: dict = None):
-        return self.image_client.search(
-            keyword=keyword, search_limits=search_limits_overrides or self.search_limits, 
-            num_threadings=num_threadings_overrides or self.num_threadings, filters=filters,
-            request_overrides=self.request_overrides
-        )
+        return self.image_client.search(keyword=keyword, search_limits=search_limits_overrides or self.search_limits, num_threadings=num_threadings_overrides or self.num_threadings, filters=filters, request_overrides=self.request_overrides)
     '''download'''
     def download(self, image_infos: list, num_threadings_overrides: int = None):
-        return self.image_client.download(
-            image_infos=image_infos, num_threadings=num_threadings_overrides or self.num_threadings, request_overrides=self.request_overrides
-        )
+        return self.image_client.download(image_infos=image_infos, num_threadings=num_threadings_overrides or self.num_threadings, request_overrides=self.request_overrides)
     '''processinputs'''
     def processinputs(self, input_tip='', prefix: str = '\n'):
         # accept user inputs
@@ -117,27 +107,18 @@ class ImageClient():
 )
 def ImageClientCMD(keyword, image_source, search_limits, num_threadings, init_image_client_cfg, request_overrides):
     # load json string
-    def _safe_load(string):
-        if string is not None:
-            result = json_repair.loads(string) or {}
-        else:
-            result = {}
-        return result
-    init_image_client_cfg = _safe_load(init_image_client_cfg)
-    request_overrides = _safe_load(request_overrides)
+    safe_load_func = lambda string: (json_repair.loads(string) or {}) if string is not None else {}
+    init_image_client_cfg = safe_load_func(init_image_client_cfg)
+    request_overrides = safe_load_func(request_overrides)
     # instance image client
-    image_client = ImageClient(
-        image_source=image_source, init_image_client_cfg=init_image_client_cfg, request_overrides=request_overrides, search_limits=search_limits, num_threadings=num_threadings,
-    )
+    image_client = ImageClient(image_source=image_source, init_image_client_cfg=init_image_client_cfg, request_overrides=request_overrides, search_limits=search_limits, num_threadings=num_threadings)
     # switch according to keyword
     if keyword is None:
         image_client.startcmdui()
     else:
         print(image_client)
         # --search
-        image_infos = image_client.image_client.search(
-            keyword=keyword, search_limits=image_client.search_limits, num_threadings=image_client.num_threadings, request_overrides=image_client.request_overrides
-        )
+        image_infos = image_client.image_client.search(keyword=keyword, search_limits=image_client.search_limits, num_threadings=image_client.num_threadings, request_overrides=image_client.request_overrides)
         # --download
         image_client.image_client.download(image_infos=image_infos, num_threadings=image_client.num_threadings, request_overrides=image_client.request_overrides)
 

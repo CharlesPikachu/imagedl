@@ -32,10 +32,8 @@ class BingImageClient(BaseImageClient):
         soup = BeautifulSoup(search_result, 'lxml')
         pattern = re.compile(r'"murl\":\"(.*?)\"')
         for item in soup.find_all('div', class_='imgpt'):
-            try:
-                href_str = html.unescape(item.a["m"])
-            except:
-                continue
+            try: href_str = html.unescape(item.a["m"])
+            except Exception: continue
             match = pattern.search(href_str)
             if not match: continue
             if not match.group(1).strip(): continue

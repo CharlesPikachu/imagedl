@@ -34,16 +34,11 @@ class I360ImageClient(BaseImageClient):
         image_infos = []
         for item in search_result.get('list', []):
             candidate_urls = []
-            if ('img' in item) and isinstance(item['img'], str) and item['img'].strip():
-                candidate_urls.append(item['img'])
-            if ('thumb_bak' in item) and isinstance(item['thumb_bak'], str) and item['thumb_bak'].strip():
-                candidate_urls.append(item['thumb_bak'])
-            if ('thumb' in item) and isinstance(item['thumb'], str) and item['thumb'].strip():
-                candidate_urls.append(item['thumb'])
-            if ('_thumb_bak' in item) and isinstance(item['_thumb_bak'], str) and item['_thumb_bak'].strip():
-                candidate_urls.append(item['_thumb_bak'])
-            if ('_thumb' in item) and isinstance(item['_thumb'], str) and item['_thumb'].strip():
-                candidate_urls.append(item['_thumb'])
+            if ('img' in item) and isinstance(item['img'], str) and item['img'].strip(): candidate_urls.append(item['img'])
+            if ('thumb_bak' in item) and isinstance(item['thumb_bak'], str) and item['thumb_bak'].strip(): candidate_urls.append(item['thumb_bak'])
+            if ('thumb' in item) and isinstance(item['thumb'], str) and item['thumb'].strip(): candidate_urls.append(item['thumb'])
+            if ('_thumb_bak' in item) and isinstance(item['_thumb_bak'], str) and item['_thumb_bak'].strip(): candidate_urls.append(item['_thumb_bak'])
+            if ('_thumb' in item) and isinstance(item['_thumb'], str) and item['_thumb'].strip(): candidate_urls.append(item['_thumb'])
             image_info = {
                 'candidate_urls': candidate_urls, 'raw_data': item, 'identifier': item['id'],
             }

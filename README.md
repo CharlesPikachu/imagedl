@@ -63,9 +63,9 @@
 
 # 🆕 What's New
 
+- 2026-02-12: Released pyimagedl v0.3.6 — added support for searching and downloading images from FreeNatureStock, and optimized other parts of the code.
 - 2026-02-11: Released pyimagedl v0.3.5 — added support for Everypixel image search and download, fixed the broken Foodiesfeed API, and performed general code optimizations
 - 2026-01-28: Released pyimagedl v0.3.4 — added support for searching and downloading images from the Foodiesfeed site, along with some code optimizations.
-- 2026-01-25: Released pyimagedl v0.3.3 — added image search and download support for Huaban site, and introduced curl_cffi and cookies as anti-scraping mitigation strategies.
 
 
 # 📘 Introduction
@@ -75,26 +75,27 @@ Imagedl lets you search for and download images from specific websites. If you f
 
 # 🖼️ Supported Image Client
 
-|  ImageClient (EN)                                        |  ImageClient (CN)                                     |   Search           |  Download            |    Code Snippet                                                                                                    |
-|  :----:                                                  |  :----:                                               |   :----:           |  :----:              |    :----:                                                                                                          |
-|  [BaiduImageClient](https://image.baidu.com/)            |  [百度图片](https://image.baidu.com/)                 |   ✔️               |  ✔️                  |    [baidu.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/baidu.py)                |
-|  [BingImageClient](https://www.bing.com/images)          |  [必应图片](https://www.bing.com/images)              |   ✔️               |  ✔️                  |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)                  |
-|  [DuckduckgoImageClient](https://duckduckgo.com/)        |  [DuckDuckGo图片](https://duckduckgo.com/)            |   ✔️               |  ✔️                  |    [duckduckgo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/duckduckgo.py)      |
-|  [DanbooruImageClient](https://danbooru.donmai.us/)      |  [Danbooru动漫图片](https://danbooru.donmai.us/)      |   ✔️               |  ✔️                  |    [danbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/danbooru.py)          |
-|  [DimTownImageClient](https://dimtown.com/home)          |  [次元小镇](https://dimtown.com/home)                 |   ✔️               |  ✔️                  |    [dimtown.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/dimtown.py)            |
-|  [EverypixelImageClient](https://www.everypixel.com/)    |  [Everypixel](https://www.everypixel.com/)            |   ✔️               |  ✔️                  |    [everypixel.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/everypixel.py)      |
-|  [FoodiesfeedImageClient](https://www.foodiesfeed.com/)  |  [Foodiesfeed美食图片](https://www.foodiesfeed.com/)  |   ✔️               |  ✔️                  |    [foodiesfeed.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/foodiesfeed.py)    |
-|  [GoogleImageClient](https://images.google.com/)         |  [谷歌图片](https://images.google.com/)               |   ✔️               |  ✔️                  |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)              |
-|  [GelbooruImageClient](https://gelbooru.com/)            |  [Gelbooru动漫图片](https://gelbooru.com/)            |   ✔️               |  ✔️                  |    [gelbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gelbooru.py)          |
-|  [HuabanImageClient](https://huaban.com/)                |  [花瓣网](https://huaban.com/)                        |   ✔️               |  ✔️                  |    [huaban.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/huaban.py)              |
-|  [I360ImageClient](https://image.so.com/)                |  [360图片](https://image.so.com/)                     |   ✔️               |  ✔️                  |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)                  |
-|  [PixabayImageClient](https://pixabay.com/zh/photos/)    |  [Pixabay高清图片](https://pixabay.com/zh/photos/)    |   ✔️               |  ✔️                  |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)            |
-|  [PexelsImageClient](https://www.pexels.com/zh-cn/)      |  [Pexels高清图片](https://www.pexels.com/zh-cn/)      |   ✔️               |  ✔️                  |    [pexels.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pexels.py)              |
-|  [SogouImageClient](https://pic.sogou.com/)              |  [搜狗图片](https://pic.sogou.com/)                   |   ✔️               |  ✔️                  |    [sogou.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/sogou.py)                |
-|  [SafebooruImageClient](https://safebooru.org/)          |  [Safebooru动漫图片](https://safebooru.org/)          |   ✔️               |  ✔️                  |    [safebooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/safebooru.py)        |
-|  [UnsplashImageClient](https://unsplash.com/)            |  [Unsplash图片](https://unsplash.com/)                |   ✔️               |  ✔️                  |    [unsplash.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/unsplash.py)          |
-|  [YandexImageClient](https://yandex.com/images/)         |  [Yandex图片](https://yandex.com/images/)             |   ✔️               |  ✔️                  |    [yandex.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yandex.py)              |
-|  [YahooImageClient](https://images.search.yahoo.com/)    |  [雅虎图片](https://images.search.yahoo.com/)         |   ✔️               |  ✔️                  |    [yahoo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yahoo.py)                |
+|  ImageClient (EN)                                            |  ImageClient (CN)                                         |   Search           |  Download            |    Code Snippet                                                                                                            |
+|  :----:                                                      |  :----:                                                   |   :----:           |  :----:              |    :----:                                                                                                                  |
+|  [BaiduImageClient](https://image.baidu.com/)                |  [百度图片](https://image.baidu.com/)                     |   ✔️               |  ✔️                  |    [baidu.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/baidu.py)                        |
+|  [BingImageClient](https://www.bing.com/images)              |  [必应图片](https://www.bing.com/images)                  |   ✔️               |  ✔️                  |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)                          |
+|  [DuckduckgoImageClient](https://duckduckgo.com/)            |  [DuckDuckGo图片](https://duckduckgo.com/)                |   ✔️               |  ✔️                  |    [duckduckgo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/duckduckgo.py)              |
+|  [DanbooruImageClient](https://danbooru.donmai.us/)          |  [Danbooru动漫图片](https://danbooru.donmai.us/)          |   ✔️               |  ✔️                  |    [danbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/danbooru.py)                  |
+|  [DimTownImageClient](https://dimtown.com/home)              |  [次元小镇](https://dimtown.com/home)                     |   ✔️               |  ✔️                  |    [dimtown.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/dimtown.py)                    |
+|  [EverypixelImageClient](https://www.everypixel.com/)        |  [Everypixel](https://www.everypixel.com/)                |   ✔️               |  ✔️                  |    [everypixel.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/everypixel.py)              |
+|  [FoodiesfeedImageClient](https://www.foodiesfeed.com/)      |  [Foodiesfeed美食图片](https://www.foodiesfeed.com/)      |   ✔️               |  ✔️                  |    [foodiesfeed.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/foodiesfeed.py)            |
+|  [FreeNatureStockImageClient](https://freenaturestock.com/)  |  [FreeNatureStock自然图片](https://freenaturestock.com/)  |   ✔️               |  ✔️                  |    [freenaturestock.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/freenaturestock.py)    |
+|  [GoogleImageClient](https://images.google.com/)             |  [谷歌图片](https://images.google.com/)                   |   ✔️               |  ✔️                  |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)                      |
+|  [GelbooruImageClient](https://gelbooru.com/)                |  [Gelbooru动漫图片](https://gelbooru.com/)                |   ✔️               |  ✔️                  |    [gelbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gelbooru.py)                  |
+|  [HuabanImageClient](https://huaban.com/)                    |  [花瓣网](https://huaban.com/)                            |   ✔️               |  ✔️                  |    [huaban.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/huaban.py)                      |
+|  [I360ImageClient](https://image.so.com/)                    |  [360图片](https://image.so.com/)                         |   ✔️               |  ✔️                  |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)                          |
+|  [PixabayImageClient](https://pixabay.com/zh/photos/)        |  [Pixabay高清图片](https://pixabay.com/zh/photos/)        |   ✔️               |  ✔️                  |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)                    |
+|  [PexelsImageClient](https://www.pexels.com/zh-cn/)          |  [Pexels高清图片](https://www.pexels.com/zh-cn/)          |   ✔️               |  ✔️                  |    [pexels.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pexels.py)                      |
+|  [SogouImageClient](https://pic.sogou.com/)                  |  [搜狗图片](https://pic.sogou.com/)                       |   ✔️               |  ✔️                  |    [sogou.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/sogou.py)                        |
+|  [SafebooruImageClient](https://safebooru.org/)              |  [Safebooru动漫图片](https://safebooru.org/)              |   ✔️               |  ✔️                  |    [safebooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/safebooru.py)                |
+|  [UnsplashImageClient](https://unsplash.com/)                |  [Unsplash图片](https://unsplash.com/)                    |   ✔️               |  ✔️                  |    [unsplash.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/unsplash.py)                  |
+|  [YandexImageClient](https://yandex.com/images/)             |  [Yandex图片](https://yandex.com/images/)                 |   ✔️               |  ✔️                  |    [yandex.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yandex.py)                      |
+|  [YahooImageClient](https://images.search.yahoo.com/)        |  [雅虎图片](https://images.search.yahoo.com/)             |   ✔️               |  ✔️                  |    [yahoo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yahoo.py)                        |
 
 
 # 📦 Install
@@ -141,7 +142,7 @@ Options:
                                   duckduckgoimageclient|sogouimageclient|yahooimageclient|
                                   unsplashimageclient|danbooruimageclient|safebooruimageclient|
                                   gelbooruimageclient|pexelsimageclient|huabanimageclient|
-                                  foodiesfeedimageclient|everypixelimageclient]
+                                  foodiesfeedimageclient|everypixelimageclient|freenaturestockimageclient]
                                   The image search and download source.
                                   [default: BaiduImageClient]
   -s, --search-limits, --search_limits INTEGER RANGE
@@ -161,7 +162,7 @@ Options:
 
 For class `imagedl.ImageClient`, the acceptable arguments include,
 
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient', 'PexelsImageClient', 'DimTownImageClient', 'HuabanImageClient', 'FoodiesfeedImageClient', 'EverypixelImageClient']`.
+- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient', 'PexelsImageClient', 'DimTownImageClient', 'HuabanImageClient', 'FoodiesfeedImageClient', 'EverypixelImageClient', 'FreeNatureStockImageClient']`.
 - `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
 - `search_limits` (`int`, default: `1000`): Scale of image downloads.
 - `num_threadings` (`int`, default: `5`): Number of threads used.
@@ -229,7 +230,7 @@ If you prefer not to use the unified interface, you can also import a specific i
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, 
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient
 )
 
 # bing tests
@@ -303,6 +304,10 @@ client.download(image_infos, num_threadings=1)
 # everypixel tests (cookies required)
 client = EverypixelImageClient(default_search_cookies='client_id=e30f48e30aba6693e1302ac195e2e452; session_id=6ce6d099-06a7-404d-a63c-eb3a31e0acb9; userStatus=0; _ga=GA1.1.859071961.1770791608; cookie_popup_shown=1; _ga_7VBKBQ1JV6=GS2.1.s1770792674$o1$g1$t1770794235$j60$l0$h0; cf_clearance=enQ5xgDuEaSfid3kS7wxefIMDpRiHB3Yx4OxHUIqSTU-1770796404-1.2.1.1-ouhuNokK67vPqQ7zJYVq9FF3RG3tyOR_PrVj81VN_S2.NhMug.T_Y5kVzWdiRq0Br0hT0XPzaKIFDjC5WzUg6LR12K1olooapyvrxjCJzWlWGASxMc1Nc7iCBLWSd46oNqacv0cfwlPhw0vsjFaCxs0BXTqTEvRmlNLniamkr8vCv6gziegTOEUsXnL127W_MLqG_Ld17FYcG3XDYHHu1gCI3I7Jm5qTn.3q0mflsmY; _ga_FLYERKMCP5=GS2.1.s1770791608$o1$g1$t1770796826$j57$l0$h0')
 image_infos = client.search('animals', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# freenaturestock tests 
+client = FreeNatureStockImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ```
 

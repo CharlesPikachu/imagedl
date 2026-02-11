@@ -40,16 +40,11 @@ class PixabayImageClient(BaseImageClient):
         image_infos = []
         for item in search_result.get('hits', []):
             candidate_urls = []
-            if ('fullHDURL' in item) and isinstance(item['fullHDURL'], str) and item['fullHDURL'].strip():
-                candidate_urls.append(item['fullHDURL'])
-            if ('imageURL' in item) and isinstance(item['imageURL'], str) and item['imageURL'].strip():
-                candidate_urls.append(item['imageURL'])
-            if ('largeImageURL' in item) and isinstance(item['largeImageURL'], str) and item['largeImageURL'].strip():
-                candidate_urls.append(item['largeImageURL'])
-            if ('webformatURL' in item) and isinstance(item['webformatURL'], str) and item['webformatURL'].strip():
-                candidate_urls.append(item['webformatURL'])
-            if ('previewURL' in item) and isinstance(item['previewURL'], str) and item['previewURL'].strip():
-                candidate_urls.append(item['previewURL'])
+            if ('fullHDURL' in item) and isinstance(item['fullHDURL'], str) and item['fullHDURL'].strip(): candidate_urls.append(item['fullHDURL'])
+            if ('imageURL' in item) and isinstance(item['imageURL'], str) and item['imageURL'].strip(): candidate_urls.append(item['imageURL'])
+            if ('largeImageURL' in item) and isinstance(item['largeImageURL'], str) and item['largeImageURL'].strip(): candidate_urls.append(item['largeImageURL'])
+            if ('webformatURL' in item) and isinstance(item['webformatURL'], str) and item['webformatURL'].strip(): candidate_urls.append(item['webformatURL'])
+            if ('previewURL' in item) and isinstance(item['previewURL'], str) and item['previewURL'].strip(): candidate_urls.append(item['previewURL'])
             image_info = {
                 'candidate_urls': candidate_urls, 'raw_data': item, 'identifier': item['id'],
             }
