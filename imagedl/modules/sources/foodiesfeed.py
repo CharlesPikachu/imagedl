@@ -6,7 +6,6 @@ Author:
 WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
-import re
 import math
 import json_repair
 from .base import BaseImageClient
@@ -32,9 +31,9 @@ class FoodiesfeedImageClient(BaseImageClient):
         search_result: dict = json_repair.loads(search_result)
         # parse search result
         image_infos = []
-        for item in search_result.get('images', []):
+        for item in search_result.get('photos', []):
             if not isinstance(item, dict): continue
-            candidate_urls = [ds['uri'] for ds in item['display_sizes']]
+            candidate_urls = [item.get('master_url'), item.get('webp_url'), item.get('thumbnail_url')]
             candidate_urls = [url for url in candidate_urls if url and str(url).startswith('http')]
             candidate_urls = list(set(candidate_urls))
             if not candidate_urls: continue
@@ -45,21 +44,16 @@ class FoodiesfeedImageClient(BaseImageClient):
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
-        resp = self.get(f'https://www.foodiesfeed.com/?s={keyword}', **request_overrides)
-        resp.raise_for_status()
-        m = re.search(r'data-api-key\s*=\s*["\']([^"\']+)["\']', resp.text)
-        api_key = m.group(1) if m else None
+    def _constructsearchurls(self, keyword, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
         request_overrides = request_overrides or {}
-        base_url = 'https://api.gettyimages.com/v3/search/images/creative?'
-        params = {
-            'embed_content_only': 'false', 'exclude_nudity': 'true', 'fields': 'referral_destinations,preview,detail_set', 'graphical_styles': 'photography', 'include_related_searches': 'true', 
-            'orientations': 'horizontal', 'page': 1, 'page_size': 20, 'phrase': keyword, 'safe_search': 'true', 'sort_order': 'best_match', 'facet_max_count': 300,
-        }
+        base_url = 'https://www.foodiesfeed.com/api/hybrid-photos?'
+        params = {'page': 1, 'limit': 24, 'locale': 'zh', 'sort': 'relevance', 'requireTagMatch': 'false', 'apiLocation': 'hybrid-search', 'localExhausted': 'true', 'istockOffset': 24, 'totalLoaded': 24, 'searchQuery': keyword}
         if filters is not None: params.update(filters)
-        search_urls, page_size = [], int(params['page_size'])
+        search_urls, page_size = [], int(params['limit'])
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
             params['page'] = pn + 1
+            params['istockOffset'] = pn * page_size
+            params['totalLoaded'] = (pn + 1) * page_size
             search_url = base_url + urlencode(params, quote_via=quote)
-            search_urls.append({'url': search_url, 'inputs': {'headers': {'api-key': api_key}}, 'method': 'get'})
+            search_urls.append(search_url)
         return search_urls
