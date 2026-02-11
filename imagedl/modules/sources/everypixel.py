@@ -9,6 +9,7 @@ WeChat Official Account (微信公众号):
 import math
 import json_repair
 from .base import BaseImageClient
+from ..utils import cookies2string
 from urllib.parse import quote, urlencode
 
 
@@ -21,6 +22,7 @@ class EverypixelImageClient(BaseImageClient):
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
             "cookie": "client_id=e30f48e30aba6693e1302ac195e2e452; session_id=6ce6d099-06a7-404d-a63c-eb3a31e0acb9; userStatus=0; _ga=GA1.1.859071961.1770791608; cookie_popup_shown=1; cf_clearance=YOLS0wwbZdTaAcyw1gud7W5Dai11jM4zZ.lIiT_UWj8-1770793518-1.2.1.1-52tzVj3lyOFBKOfv2JmOb1.kFqmCwNcdcl0fqRFa0WfoTz4_eUeroPmwt03VgnzGhzsLNphRsl9H5LQ12GaJa61dSJFm6AVpPg3TBNnp60RoUOYYq0t6Ky9eIjLA5QekZ6pIh.ggJhnoSaYvKAz9Aos_V7P2CEVI7.ojxb6WQT0maP8FpY.47uq1mczV6lq.VHQ2N3T4AF8.vsh4p6X9S0YKnNdfzXj5L42zw.xWrBI; _ga_FLYERKMCP5=GS2.1.s1770791608$o1$g1$t1770793888$j56$l0$h0; _ga_7VBKBQ1JV6=GS2.1.s1770792674$o1$g1$t1770794235$j60$l0$h0",
         }
+        if self.default_cookies: self.default_search_headers['cookie'] = cookies2string(self.default_cookies)
         self.default_download_headers = {
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
         }
