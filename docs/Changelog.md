@@ -1,5 +1,7 @@
 # Release Log
 
+- 2026-02-11: Released pyimagedl v0.3.5 — added support for Everypixel image search and download, fixed the broken Foodiesfeed API, and performed general code optimizations
+
 - 2026-01-28: Released pyimagedl v0.3.4 — added support for searching and downloading images from the Foodiesfeed site, along with some code optimizations.
 
 - 2026-01-25: Released pyimagedl v0.3.3 — added image search and download support for Huaban site, and introduced curl_cffi and cookies as anti-scraping mitigation strategies.

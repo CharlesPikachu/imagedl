@@ -17,6 +17,7 @@ from .unsplash import UnsplashImageClient
 from .gelbooru import GelbooruImageClient
 from .safebooru import SafebooruImageClient
 from .duckduckgo import DuckduckgoImageClient
+from .everypixel import EverypixelImageClient
 from .foodiesfeed import FoodiesfeedImageClient
 
 
@@ -27,7 +28,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'PixabayImageClient': PixabayImageClient, 'YandexImageClient': YandexImageClient, 'DuckduckgoImageClient': DuckduckgoImageClient, 'SogouImageClient': SogouImageClient, 
         'YahooImageClient': YahooImageClient, 'UnsplashImageClient': UnsplashImageClient, 'SafebooruImageClient': SafebooruImageClient, 'DanbooruImageClient': DanbooruImageClient,
         'GelbooruImageClient': GelbooruImageClient, 'PexelsImageClient': PexelsImageClient, 'DimTownImageClient': DimTownImageClient, 'HuabanImageClient': HuabanImageClient,
-        'I360ImageClient': I360ImageClient, 
+        'I360ImageClient': I360ImageClient, 'EverypixelImageClient': EverypixelImageClient,
     }
 
 
