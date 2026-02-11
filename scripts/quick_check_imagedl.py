@@ -231,14 +231,10 @@ def main():
     payload = {
         "date": date_str, "timestamp_utc": timestamp, "query": ', '.join(QUERiES), "max_search": MAX_SEARCH, "max_download_per_client": MAX_DL_PER_CLIENT, "modules": modules_summary,
     }
-    summary_path = base_results_dir / f"summary_{date_str}.json"
-    ensuredir(summary_path.parent)
+    summary_path = base_results_dir / "summary_latest.json"
     with summary_path.open("w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
-    latest_path = base_results_dir / "summary_latest.json"
-    with latest_path.open("w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2)
-    print(f"\nSaved summary to {summary_path} and {latest_path}")
+    print(f"\nSaved summary to {summary_path}")
 
 
 '''init'''
