@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/pypi/v/pyimagedl" alt="PyPI">
   </a>
   <a href="https://github.com/CharlesPikachu/imagedl/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/CharlesPikachu/imagedl.svg" alt="license">
+    <img alt="license" src="https://badgen.net/github/license/CharlesPikachu/imagedl">
   </a>
   <a href="https://pypi.org/project/pyimagedl/">
     <img src="https://static.pepy.tech/badge/pyimagedl" alt="PyPI - Downloads">
