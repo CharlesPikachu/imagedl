@@ -39,9 +39,7 @@ class EverypixelImageClient(BaseImageClient):
         image_infos = []
         for item in search_result:
             if not isinstance(item, dict) or ('url' not in item) or (not str(item.get('url')).startswith('http')): continue
-            image_info = {
-                'candidate_urls': [item.get('url')], 'raw_data': item, 'identifier': item.get('basic_img_id') or item.get('id') or item.get('url'),
-            }
+            image_info = {'candidate_urls': [item.get('url')], 'raw_data': item, 'identifier': item.get('basic_img_id') or item.get('id') or item.get('url')}
             image_infos.append(image_info)
         # return
         return image_infos

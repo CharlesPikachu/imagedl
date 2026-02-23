@@ -58,9 +58,7 @@ class DuckduckgoImageClient(BaseImageClient):
             candidate_urls = []
             if ('image' in item) and isinstance(item['image'], str) and item['image'].strip(): candidate_urls.append(item['image'])
             if ('thumbnail' in item) and isinstance(item['thumbnail'], str) and item['thumbnail'].strip(): candidate_urls.append(item['thumbnail'])
-            image_info = {
-                'candidate_urls': candidate_urls, 'raw_data': item, 'identifier': item['image_token'], 
-            }
+            image_info = {'candidate_urls': candidate_urls, 'raw_data': item, 'identifier': item['image_token']}
             image_infos.append(image_info)
         # return
         return image_infos
