@@ -6,35 +6,24 @@ Author:
 WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
-import re
 import math
+import primp
+import random
 import requests
 import json_repair
 from ..utils import Filter
+from contextlib import suppress
 from .base import BaseImageClient
-from urllib.parse import quote, urlencode
+from urllib.parse import urlencode
+from fake_useragent import UserAgent
 
 
 '''DuckduckgoImageClient'''
 class DuckduckgoImageClient(BaseImageClient):
     source = 'DuckduckgoImageClient'
     def __init__(self, **kwargs):
-        if 'maintain_session' not in kwargs: kwargs['maintain_session'] = True
         super(DuckduckgoImageClient, self).__init__(**kwargs)
-        self.default_search_headers = {
-            "Accept": "*/*",
-            "Accept-Encoding": "gzip, deflate, br, zstd",
-            "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-            "Referer": "https://duckduckgo.com/",
-            "Sec-CH-UA": '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"',
-            "Sec-CH-UA-Mobile": "?0",
-            "Sec-CH-UA-Platform": '"Windows"',
-            "Sec-Fetch-Dest": "empty",
-            "Sec-Fetch-Mode": "cors",
-            "Sec-Fetch-Site": "same-origin",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
-            "Priority": "u=1, i",
-        }
+        self.default_search_headers = {"Accept": "*/*", "Accept-Language": "en-US,en;q=0.5", "Referer": "https://duckduckgo.com/", "Sec-GPC": "1", "Connection": "keep-alive", "Sec-Fetch-Dest": "empty", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Site": "same-origin", "Priority": "u=4"}
         self.default_headers = self.default_search_headers
         self._initsession()
     '''ddgssearch'''
@@ -55,6 +44,10 @@ class DuckduckgoImageClient(BaseImageClient):
         results = DDGS().images(**search_params)
         # return
         return results
+    '''_initsession'''
+    def _initsession(self):
+        self.session = primp.Client(proxy=None, timeout=30, impersonate="random", impersonate_os="random", verify=True)
+        self.session.headers_update(self.default_headers)
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
         # parse json text in safety
@@ -72,22 +65,21 @@ class DuckduckgoImageClient(BaseImageClient):
         # return
         return image_infos
     '''_getvqd'''
-    def _getvqd(self, keyword: str, base_url: str, request_overrides: dict = None):
+    def _getvqd(self, keyword: str, base_url: str = "https://duckduckgo.com", request_overrides: dict = None):
         request_overrides = request_overrides or {}
-        q = urlencode({"q": keyword}, quote_via=quote, safe="")
-        resp = self.get(f'{base_url}?{q}', **request_overrides)
-        if resp is None or resp.status_code != 200: raise requests.HTTPError('fail to get "vqd" as the session parameters')
-        m = re.search(r"vqd=([\d-]+)&", resp.text)
-        if not m: m = re.search(r"[\"']vqd[\"']\s*:\s*[\"']([\d-]+)[\"']", resp.text)
-        if not m: raise requests.HTTPError('fail to get "vqd" as the session parameters')
-        vqd = m.group(1)
-        return vqd
+        resp = self.request(base_url, 'GET', params={"q": keyword}, **request_overrides)
+        resp.raise_for_status()
+        html_bytes = resp.content
+        for c1, c1_len, c2 in ((b'vqd="', 5, b'"'), (b"vqd=", 4, b"&"), (b"vqd='", 5, b"'")):
+            with suppress(ValueError):
+                start = html_bytes.index(c1) + c1_len
+                end = html_bytes.index(c2, start)
+                return html_bytes[start: end].decode()
+        raise requests.HTTPError('fail to get "vqd" as the session parameters')
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
+    def _constructsearchurls(self, keyword, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
         # init
-        request_overrides = request_overrides or {}
-        # base url
-        base_url = 'https://duckduckgo.com/i.js?'
+        request_overrides, base_url = request_overrides or {}, 'https://duckduckgo.com/i.js?'
         # apply filter
         # --regions
         valid_regions = {
@@ -97,31 +89,25 @@ class DuckduckgoImageClient(BaseImageClient):
             "ch-fr": "Switzerland (fr)", "ch-it": "Switzerland (it)", "tw-tzh": "Taiwan", "th-th": "Thailand", "tr-tr": "Turkey", "ua-uk": "Ukraine", "uk-en": "United Kingdom",
             "us-en": "United States", "ue-es": "United States (es)", "ve-es": "Venezuela", "vn-vi": "Vietnam", "wt-wt": "No region",
         }
-        if filters is not None and 'region' in filters:
-            region = filters.pop('region')
-        else:
-            region = "wt-wt"
-        assert region in valid_regions
+        if filters is not None and 'region' in filters: region = filters.pop('region')
+        else: region = "us-en"
+        assert region in valid_regions, 'invalid region argument'
         # --safesearch
         valid_safesearchs = {"on": "1", "moderate": "1", "off": "-1"}
-        if filters is not None and 'safesearch' in filters:
-            safesearch = filters.pop('safesearch')
-        else:
-            safesearch = "moderate"
-        assert safesearch in valid_safesearchs
+        if filters is not None and 'safesearch' in filters: safesearch = filters.pop('safesearch')
+        else: safesearch = "off"
+        assert safesearch in valid_safesearchs, 'invalid safesearch argument'
         # --others
         filter_str = self._getfilter().apply(filters, sep=',')
         # construct params
-        params = {
-            "o": "json", "q": keyword, "l": region, "vqd": self._getvqd(keyword=keyword, base_url='https://duckduckgo.com/', request_overrides=request_overrides),
-            "p": valid_safesearchs[safesearch], "f": filter_str, "s": 0,
-        }
+        params = {"o": "json", "q": keyword, "l": region, "vqd": self._getvqd(keyword=keyword, base_url='https://duckduckgo.com/', request_overrides=request_overrides), "p": valid_safesearchs[safesearch], "ct": "AT", "s": 0}
+        if filter_str: params['f'] = filter_str
         # construct search_urls
         search_urls, page_size = [], 100
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
-            params["s"] = pn * page_size
+            params["s"] = str(pn * page_size)
             search_url = base_url + urlencode(params)
-            search_urls.append(search_url)
+            search_urls.append({'inputs': {'method': 'GET'}, 'url': search_url, 'method': 'request'})
         # return
         return search_urls
     '''_getfilter'''
@@ -159,3 +145,22 @@ class DuckduckgoImageClient(BaseImageClient):
         search_filter.addrule("license", formatlicense, license_choices)
         # return
         return search_filter
+    '''request'''
+    def request(self, url: str, method: str, **kwargs):
+        if 'cookies' not in kwargs: kwargs['cookies'] = self.default_cookies
+        resp = None
+        for _ in range(self.max_retries):
+            if not self.maintain_session:
+                self._initsession()
+                if self.random_update_ua: self.session.headers_update({'User-Agent': UserAgent().random})
+            self._autosetproxies()
+            proxies = kwargs.pop('proxies', None) or getattr(self.session, "proxies")
+            if proxies: self.session.proxy = random.choice(list(proxies.values())) if isinstance(proxies, dict) else proxies
+            try: (resp := self.session.request(method, url, **kwargs)).raise_for_status()
+            except Exception as err: self.logger_handle.error(f'{self.source}.request >>> {url} (Error: {err}; status={getattr(locals().get("resp"), "status_code", None)})', disable_print=self.disable_print); continue
+            return resp
+        return resp
+    '''get'''
+    def get(self, url, **kwargs): return self.request(url, method='GET', **kwargs)
+    '''post'''
+    def post(self, url, **kwargs): return self.request(url, method='POST', **kwargs)

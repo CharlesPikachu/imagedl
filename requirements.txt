@@ -11,3 +11,4 @@ platformdirs
 pathvalidate
 standard-imghdr
 curl_cffi
+primp
