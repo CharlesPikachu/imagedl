@@ -7,10 +7,13 @@ WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
 import math
+import primp
+import random
 from ..utils import Filter
 from bs4 import BeautifulSoup
 from urllib.parse import quote
 from .base import BaseImageClient
+from fake_useragent import UserAgent
 
 
 '''YahooImageClient'''
@@ -18,11 +21,13 @@ class YahooImageClient(BaseImageClient):
     source = 'YahooImageClient'
     def __init__(self, **kwargs):
         super(YahooImageClient, self).__init__(**kwargs)
-        self.default_search_headers = {
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
-        }
+        self.default_search_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"}
         self.default_headers = self.default_search_headers
         self._initsession()
+    '''_initsession'''
+    def _initsession(self):
+        self.session = primp.Client(proxy=None, timeout=30, impersonate="random", impersonate_os="random", verify=True)
+        self.session.headers_update(self.default_headers)
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):
         soup = BeautifulSoup(search_result, "lxml")
@@ -41,15 +46,12 @@ class YahooImageClient(BaseImageClient):
             raw_data = {str(k).lower(): v for k, v in (node.attrs or {}).items()}
             image_infos.append({"candidate_urls": urls, "raw_data": raw_data, "identifier": main_url})
         for img in results_root.find_all("img"):
-            data_src = img.get("data-src")
-            src = img.get("src")
+            data_src, src = img.get("data-src"), img.get("src")
             candidate_urls = []
             if data_src: candidate_urls.append(data_src)
             if src and src != data_src: candidate_urls.append(src)
             if not candidate_urls: continue
-            flag_real = (
-                img.get("data-pos") is not None or any(key in (data_src or "") or key in (src or "") for key in ("sp.yimg.com/ib/th", "mm.bing.net", "yimg.com", "bing.net"))
-            )
+            flag_real = (img.get("data-pos") is not None or any(key in (data_src or "") or key in (src or "") for key in ("sp.yimg.com/ib/th", "mm.bing.net", "yimg.com", "bing.net")))
             if not flag_real: continue
             addimagefromnode(img, candidate_urls)
         for a in results_root.find_all("a", attrs={"data-src": True}):
@@ -112,3 +114,22 @@ class YahooImageClient(BaseImageClient):
         search_filter.addrule("license", formatlicense, list(image_license_map.keys()))
         # return
         return search_filter
+    '''request'''
+    def request(self, url: str, method: str, **kwargs):
+        if 'cookies' not in kwargs: kwargs['cookies'] = self.default_cookies
+        resp = None
+        for _ in range(self.max_retries):
+            if not self.maintain_session:
+                self._initsession()
+                if self.random_update_ua: self.session.headers_update({'User-Agent': UserAgent().random})
+            self._autosetproxies()
+            proxies = kwargs.pop('proxies', None) or getattr(self.session, "proxies")
+            if proxies: self.session.proxy = random.choice(list(proxies.values())) if isinstance(proxies, dict) else proxies
+            try: (resp := self.session.request(method, url, **kwargs)).raise_for_status()
+            except Exception as err: self.logger_handle.error(f'{self.source}.request >>> {url} (Error: {err}; status={getattr(locals().get("resp"), "status_code", None)})', disable_print=self.disable_print); continue
+            return resp
+        return resp
+    '''get'''
+    def get(self, url, **kwargs): return self.request(url, method='GET', **kwargs)
+    '''post'''
+    def post(self, url, **kwargs): return self.request(url, method='POST', **kwargs)

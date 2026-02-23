@@ -63,9 +63,9 @@
 
 # 🆕 What's New
 
+- 2026-02-23: Released pyimagedl v0.3.7 — resolved underlying issues to restore reliable image search and download functionality across multiple supported platforms.
 - 2026-02-12: Released pyimagedl v0.3.6 — added support for searching and downloading images from FreeNatureStock, and optimized other parts of the code.
 - 2026-02-11: Released pyimagedl v0.3.5 — added support for Everypixel image search and download, fixed the broken Foodiesfeed API, and performed general code optimizations
-- 2026-01-28: Released pyimagedl v0.3.4 — added support for searching and downloading images from the Foodiesfeed site, along with some code optimizations.
 
 
 # 📘 Introduction
