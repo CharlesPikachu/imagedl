@@ -73,7 +73,7 @@ class BaseImageClient():
         self.session = requests.Session() if not self.enable_curl_cffi else curl_cffi.requests.Session()
         self.session.headers = self.default_headers
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
+    def _constructsearchurls(self, keyword: str, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
         raise NotImplementedError('not to be implemented')
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str):

@@ -39,7 +39,7 @@ class DimTownImageClient(BaseImageClient):
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword: str, search_limits=1000, filters: dict = None, request_overrides: dict = None):
+    def _constructsearchurls(self, keyword: str, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
         request_overrides, search_urls, page_size = request_overrides or {}, [], 25
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
             try: resp = self.get(f'https://dimtown.com/page/{pn+1}?s={keyword}', **request_overrides); resp.raise_for_status()
