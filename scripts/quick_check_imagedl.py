@@ -20,7 +20,8 @@ QUERiES = ["Pikachu", "JK", "Cute Animals", "Mountains"]
 MAX_SEARCH = 10
 MAX_DL_PER_CLIENT = 10
 RESULTS_ROOT = Path("daily_test_results")
-SEARCH_SUPPLEMENT = { # It seems that the server used in the GitHub Action cannot access Baidu or DuckDuckGo search APIs, so we will skip the check and use SEARCH_SUPPLEMENT.
+IMAGE_EXTENSIONS = (".rgb", ".gif", ".pbm", ".pgm", ".ppm", ".tif", ".tiff", ".rast", ".xbm", ".jpeg", ".jpg", ".bmp", ".png", ".webp", ".exr")
+SEARCH_SUPPLEMENT = { # It seems that the server used in the GitHub Action cannot access some search APIs, so we will skip the check and use SEARCH_SUPPLEMENT.
     'BaiduImageClient': [
         {'candidate_urls': ['https://hellorfimg.zcool.cn/large/2437059527.jpg', 'https://img1.baidu.com/it/u=2136025053,3600010570&fm=253&fmt=auto&app=138&f=JPEG?w=684&h=500', 'https:\\/\\/hellorfimg.zcool.cn\\/large\\/2437059527.jpg', 'https://img1.baidu.com/it/u=2136025053,3600010570&fm=253&fmt=auto&app=138&f=JPEG?w=684&h=500', 'https://img1.baidu.com/it/u=2136025053,3600010570&fm=253&fmt=auto&app=138&f=JPEG?w=684&h=500'], 'identifier': 'https://hellorfimg.zcool.cn/large/2437059527.jpg', 'work_dir': 'tmp/BaiduImageClient/2025-11-17-01-21-12 CuteAnimals', 'file_path': 'tmp/BaiduImageClient/2025-11-17-01-21-12 CuteAnimals/00000001'}, 
         {'candidate_urls': ['https://res.cqnews.net/contentcloud/1/REPRINT/DEFAULT/PICTURE/2024/6/12/2712af869d1941519bde373972276dce_wh1024x683.png', 'https://img0.baidu.com/it/u=3264526225,4087639899&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500', 'https:\\/\\/res.cqnews.net\\/contentcloud\\/1\\/REPRINT\\/DEFAULT\\/PICTURE\\/2024\\/6\\/12\\/2712af869d1941519bde373972276dce_wh1024x683.png', 'https://img0.baidu.com/it/u=3264526225,4087639899&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500', 'https://img0.baidu.com/it/u=3264526225,4087639899&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500'], 'identifier': 'https://res.cqnews.net/contentcloud/1/REPRINT/DEFAULT/PICTURE/2024/6/12/2712af869d1941519bde373972276dce_wh1024x683.png', 'work_dir': 'tmp/BaiduImageClient/2025-11-17-01-21-12 CuteAnimals', 'file_path': 'tmp/BaiduImageClient/2025-11-17-01-21-12 CuteAnimals/00000002'}, 
@@ -223,7 +224,7 @@ def main():
         try:
             subset = image_infos[:MAX_DL_PER_CLIENT]
             client.download(subset, num_threadings=1)
-            n_downloaded = len([os.path.join(r, f) for r, _, fs in os.walk(tmp_dir) for f in fs if f.lower().endswith(('.jpg','.jpeg','.png','.gif','.bmp','.tif','.tiff','.webp'))])
+            n_downloaded = len([os.path.join(r, f) for r, _, fs in os.walk(tmp_dir) for f in fs if f.lower().endswith(IMAGE_EXTENSIONS)])
             status["n_downloaded"] = n_downloaded
             status["download_ok"] = status["n_downloaded"] > 0
             print(f"  Downloaded images: {n_downloaded} (Success)" if status["download_ok"] else f"  Downloaded images: {n_downloaded} (NULL)")
@@ -240,7 +241,7 @@ def main():
             continue
         # --moving to target_dir
         shutil.rmtree(target_dir, ignore_errors=True); os.makedirs(target_dir)
-        [shutil.move(os.path.join(r, f), target_dir) for r, _, fs in os.walk(tmp_dir) for f in fs if f.lower().endswith(('.jpg','.jpeg','.png','.gif','.bmp','.tif','.tiff','.webp'))]
+        [shutil.move(os.path.join(r, f), target_dir) for r, _, fs in os.walk(tmp_dir) for f in fs if f.lower().endswith(IMAGE_EXTENSIONS)]
         shutil.rmtree(tmp_dir, ignore_errors=True)
         status["downloaded_images"] = [str(p.as_posix()) for p in target_dir.glob("*")]
         # --summary

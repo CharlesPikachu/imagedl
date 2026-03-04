@@ -18,12 +18,10 @@ class PexelsImageClient(BaseImageClient):
     def __init__(self, **kwargs):
         super(PexelsImageClient, self).__init__(**kwargs)
         self.default_search_headers = {
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
-            "secret-key": "H2jk9uKnhRmL6WPwh89zBezWvr"
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36", "secret-key": "H2jk9uKnhRmL6WPwh89zBezWvr"
         }
         self.default_download_headers = {
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
-            "secret-key": "H2jk9uKnhRmL6WPwh89zBezWvr"
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36", "secret-key": "H2jk9uKnhRmL6WPwh89zBezWvr"
         }
         self.default_headers = self.default_search_headers
         self._initsession()

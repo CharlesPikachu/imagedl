@@ -155,7 +155,7 @@ class BaseImageClient():
                 except Exception: continue
             if (resp is None) or (resp.status_code not in {200}) or os.path.exists(file_path): bar(); continue
             with open(file_path, 'wb') as fp: fp.write(resp.content)
-            if (ext := imghdr.what(file_path)) in {"rgb", "gif", "pbm", "pgm", "ppm", "tiff", "rast", "xbm", "jpeg", "jpg", "bmp", "png", "webp", "exr"}:
+            if (ext := imghdr.what(file_path)) in {"rgb", "gif", "pbm", "pgm", "ppm", "tif", "tiff", "rast", "xbm", "jpeg", "jpg", "bmp", "png", "webp", "exr"}:
                 shutil.move(file_path, f'{file_path}.{ext}')
                 downloaded_image_info = copy.deepcopy(image_info); downloaded_image_info['file_path'] = f'{file_path}.{ext}'; downloaded_image_infos.append(downloaded_image_info)
             else:
