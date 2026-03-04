@@ -6,8 +6,26 @@ Author:
 WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
+import re
 import copy
 import functools
+from urllib.parse import urlsplit, unquote
+
+
+'''extfromimageurlpath'''
+def extfromimageurlpath(url: str, image_exts: tuple | list) -> str | None:
+    ext_cre = re.compile(r"\.(" + "|".join(image_exts) + r")(?=$|[^\w])", re.IGNORECASE)
+    if not url: return None
+    u = url.split("#", 1)[0].split("?", 1)[0].strip()
+    try: path = urlsplit(u).path or u
+    except Exception: path = u
+    path = unquote(path).rstrip("/")
+    if not path: return None
+    filename = path.rsplit("/", 1)[-1]
+    matches = list(ext_cre.finditer(filename))
+    if not matches: return None
+    ext = matches[-1].group(1).lower()
+    return "jpg" if ext == "jpeg" else ("tif" if ext == "tiff" else ext)
 
 
 '''usedownloadheaderscookies'''

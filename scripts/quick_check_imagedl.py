@@ -20,7 +20,7 @@ QUERiES = ["Pikachu", "JK", "Cute Animals", "Mountains"]
 MAX_SEARCH = 10
 MAX_DL_PER_CLIENT = 10
 RESULTS_ROOT = Path("daily_test_results")
-IMAGE_EXTENSIONS = (".rgb", ".gif", ".pbm", ".pgm", ".ppm", ".tif", ".tiff", ".rast", ".xbm", ".jpeg", ".jpg", ".bmp", ".png", ".webp", ".exr")
+IMAGE_EXTENSIONS = (".rgb", ".gif", ".pbm", ".pgm", ".ppm", ".tif", ".tiff", ".rast", ".xbm", ".jpeg", ".jpg", ".bmp", ".png", ".webp", ".exr", ".svg", ".avif", ".heic", ".heif")
 SEARCH_SUPPLEMENT = { # It seems that the server used in the GitHub Action cannot access some search APIs, so we will skip the check and use SEARCH_SUPPLEMENT.
     'BaiduImageClient': [
         {'candidate_urls': ['https://hellorfimg.zcool.cn/large/2437059527.jpg', 'https://img1.baidu.com/it/u=2136025053,3600010570&fm=253&fmt=auto&app=138&f=JPEG?w=684&h=500', 'https:\\/\\/hellorfimg.zcool.cn\\/large\\/2437059527.jpg', 'https://img1.baidu.com/it/u=2136025053,3600010570&fm=253&fmt=auto&app=138&f=JPEG?w=684&h=500', 'https://img1.baidu.com/it/u=2136025053,3600010570&fm=253&fmt=auto&app=138&f=JPEG?w=684&h=500'], 'identifier': 'https://hellorfimg.zcool.cn/large/2437059527.jpg', 'work_dir': 'tmp/BaiduImageClient/2025-11-17-01-21-12 CuteAnimals', 'file_path': 'tmp/BaiduImageClient/2025-11-17-01-21-12 CuteAnimals/00000001'}, 

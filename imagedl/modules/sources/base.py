@@ -21,12 +21,13 @@ from datetime import datetime
 from fake_useragent import UserAgent
 from alive_progress import alive_bar
 from pathvalidate import sanitize_filepath
-from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir, cookies2dict, optionalimport, LoggerHandle, Filter
+from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir, cookies2dict, optionalimport, extfromimageurlpath, LoggerHandle, Filter
 
 
 '''BaseImageClient'''
 class BaseImageClient():
     source = 'BaseImageClient'
+    VALID_IMAGE_EXTS = {"rgb", "gif", "pbm", "pgm", "ppm", "tif", "tiff", "rast", "xbm", "jpeg", "jpg", "bmp", "png", "webp", "exr", "svg", "avif", "heic", "heif"}
     def __init__(self, auto_set_proxies: bool = False, random_update_ua: bool = False, enable_search_curl_cffi: bool = False, enable_download_curl_cffi: bool = False,
                  max_retries: int = 5, maintain_session: bool = False, logger_handle: LoggerHandle = None, disable_print: bool = False, work_dir: str = 'imagedl_outputs', 
                  freeproxy_settings: dict = None, default_search_cookies: dict = None, default_download_cookies: dict = None):
@@ -155,7 +156,10 @@ class BaseImageClient():
                 except Exception: continue
             if (resp is None) or (resp.status_code not in {200}) or os.path.exists(file_path): bar(); continue
             with open(file_path, 'wb') as fp: fp.write(resp.content)
-            if (ext := imghdr.what(file_path)) in {"rgb", "gif", "pbm", "pgm", "ppm", "tif", "tiff", "rast", "xbm", "jpeg", "jpg", "bmp", "png", "webp", "exr"}:
+            if (ext := imghdr.what(file_path)) in BaseImageClient.VALID_IMAGE_EXTS:
+                shutil.move(file_path, f'{file_path}.{ext}')
+                downloaded_image_info = copy.deepcopy(image_info); downloaded_image_info['file_path'] = f'{file_path}.{ext}'; downloaded_image_infos.append(downloaded_image_info)
+            elif (ext := extfromimageurlpath(image_candidate_url, tuple(BaseImageClient.VALID_IMAGE_EXTS))) in BaseImageClient.VALID_IMAGE_EXTS:
                 shutil.move(file_path, f'{file_path}.{ext}')
                 downloaded_image_info = copy.deepcopy(image_info); downloaded_image_info['file_path'] = f'{file_path}.{ext}'; downloaded_image_infos.append(downloaded_image_info)
             else:
@@ -196,7 +200,7 @@ class BaseImageClient():
     def get(self, url, **kwargs):
         if 'cookies' not in kwargs: kwargs['cookies'] = self.default_cookies
         if 'impersonate' not in kwargs and self.enable_curl_cffi: kwargs['impersonate'] = random.choice(self.cc_impersonates)
-        resp = None
+        resp, cloudscraper = None, optionalimport('cloudscraper')
         for _ in range(self.max_retries):
             if not self.maintain_session:
                 self._initsession()
@@ -204,6 +208,8 @@ class BaseImageClient():
             self._autosetproxies()
             proxies = kwargs.pop('proxies', None) or self.session.proxies
             try: (resp := self.session.get(url, proxies=proxies, **kwargs)).raise_for_status()
+            except Exception as err: self.logger_handle.error(f'{self.source}.get >>> {url} (Error: {err}; status={getattr(locals().get("resp"), "status_code", None)})', disable_print=self.disable_print); pass
+            try: (resp := cloudscraper.create_scraper(sess=self.session).get(url, proxies=proxies, **kwargs)).raise_for_status()
             except Exception as err: self.logger_handle.error(f'{self.source}.get >>> {url} (Error: {err}; status={getattr(locals().get("resp"), "status_code", None)})', disable_print=self.disable_print); continue
             return resp
         return resp
@@ -211,7 +217,7 @@ class BaseImageClient():
     def post(self, url, **kwargs):
         if 'cookies' not in kwargs: kwargs['cookies'] = self.default_cookies
         if 'impersonate' not in kwargs and self.enable_curl_cffi: kwargs['impersonate'] = random.choice(self.cc_impersonates)
-        resp = None
+        resp, cloudscraper = None, optionalimport('cloudscraper')
         for _ in range(self.max_retries):
             if not self.maintain_session:
                 self._initsession()
@@ -219,6 +225,8 @@ class BaseImageClient():
             self._autosetproxies()
             proxies = kwargs.pop('proxies', None) or self.session.proxies
             try: (resp := self.session.post(url, proxies=proxies, **kwargs)).raise_for_status()
+            except Exception as err: self.logger_handle.error(f'{self.source}.post >>> {url} (Error: {err}; status={getattr(locals().get("resp"), "status_code", None)})', disable_print=self.disable_print); pass
+            try: (resp := cloudscraper.create_scraper(sess=self.session).post(url, proxies=proxies, **kwargs)).raise_for_status()
             except Exception as err: self.logger_handle.error(f'{self.source}.post >>> {url} (Error: {err}; status={getattr(locals().get("resp"), "status_code", None)})', disable_print=self.disable_print); continue
             return resp
         return resp
