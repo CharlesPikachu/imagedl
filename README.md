@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="https://imagedl.readthedocs.io/">
-    <img src="https://img.shields.io/badge/docs-latest-blue" alt="docs">
+    <img src="https://img.shields.io/badge/docs-latest-blue" alt="Docs">
   </a>
   <a href="https://pypi.org/project/pyimagedl/">
     <img src="https://img.shields.io/pypi/pyversions/pyimagedl" alt="PyPI - Python Version">
@@ -14,22 +14,25 @@
     <img src="https://img.shields.io/pypi/v/pyimagedl" alt="PyPI">
   </a>
   <a href="https://github.com/CharlesPikachu/imagedl/blob/main/LICENSE">
-    <img alt="license" src="https://badgen.net/github/license/CharlesPikachu/imagedl">
+    <img src="https://badgen.net/github/license/CharlesPikachu/imagedl" alt="License" >
   </a>
   <a href="https://pypi.org/project/pyimagedl/">
-    <img src="https://static.pepy.tech/badge/pyimagedl" alt="PyPI - Downloads">
+    <img src="https://static.pepy.tech/badge/pyimagedl" alt="PyPI - Downloads (total)">
   </a>
   <a href="https://pypi.org/project/pyimagedl/">
-    <img src="https://static.pepy.tech/badge/pyimagedl/month" alt="PyPI - Downloads">
+    <img src="https://static.pepy.tech/badge/pyimagedl/month" alt="PyPI - Downloads (month)">
+  </a>
+  <a href="https://pypi.org/project/pyimagedl/">
+    <img src="https://static.pepy.tech/badge/pyimagedl/week" alt="PyPI - Downloads (week)">
   </a>
   <a href="https://github.com/CharlesPikachu/imagedl/actions/workflows/check-imagedl.yml">
-    <img src="https://github.com/CharlesPikachu/imagedl/actions/workflows/check-imagedl.yml/badge.svg" alt="daily imagedl check">
+    <img src="https://github.com/CharlesPikachu/imagedl/actions/workflows/check-imagedl.yml/badge.svg" alt="Daily Imagedl Check">
   </a>
   <a href="https://github.com/CharlesPikachu/imagedl/issues">
-    <img src="https://isitmaintained.com/badge/resolution/CharlesPikachu/imagedl.svg" alt="issue resolution">
+    <img src="https://isitmaintained.com/badge/resolution/CharlesPikachu/imagedl.svg" alt="Issue Resolution">
   </a>
   <a href="https://github.com/CharlesPikachu/imagedl/issues">
-    <img src="https://isitmaintained.com/badge/open/CharlesPikachu/imagedl.svg" alt="open issues">
+    <img src="https://isitmaintained.com/badge/open/CharlesPikachu/imagedl.svg" alt="Open Issues">
   </a>
 </p>
 
