@@ -5,6 +5,7 @@ from .i360 import I360ImageClient
 from .baidu import BaiduImageClient
 from .sogou import SogouImageClient
 from .yahoo import YahooImageClient
+from .weibo import WeiboImageClient
 from .pexels import PexelsImageClient
 from .google import GoogleImageClient
 from ..utils import BaseModuleBuilder
@@ -25,11 +26,11 @@ from .freenaturestock import FreeNatureStockImageClient
 '''ImageClientBuilder'''
 class ImageClientBuilder(BaseModuleBuilder):
     REGISTERED_MODULES = {
-        'BingImageClient': BingImageClient, 'BaiduImageClient': BaiduImageClient, 'GoogleImageClient': GoogleImageClient, 'FoodiesfeedImageClient': FoodiesfeedImageClient, 
-        'PixabayImageClient': PixabayImageClient, 'YandexImageClient': YandexImageClient, 'DuckduckgoImageClient': DuckduckgoImageClient, 'SogouImageClient': SogouImageClient, 
-        'YahooImageClient': YahooImageClient, 'UnsplashImageClient': UnsplashImageClient, 'SafebooruImageClient': SafebooruImageClient, 'DanbooruImageClient': DanbooruImageClient,
-        'GelbooruImageClient': GelbooruImageClient, 'PexelsImageClient': PexelsImageClient, 'DimTownImageClient': DimTownImageClient, 'HuabanImageClient': HuabanImageClient,
-        'I360ImageClient': I360ImageClient, 'EverypixelImageClient': EverypixelImageClient, 'FreeNatureStockImageClient': FreeNatureStockImageClient,
+        'BingImageClient': BingImageClient, 'FoodiesfeedImageClient': FoodiesfeedImageClient, 'DanbooruImageClient': DanbooruImageClient, 'HuabanImageClient': HuabanImageClient,
+        'BaiduImageClient': BaiduImageClient, 'DuckduckgoImageClient': DuckduckgoImageClient, 'UnsplashImageClient': UnsplashImageClient, 'WeiboImageClient': WeiboImageClient, 
+        'I360ImageClient': I360ImageClient, 'FreeNatureStockImageClient': FreeNatureStockImageClient, 'SogouImageClient': SogouImageClient, 'YandexImageClient': YandexImageClient,
+        'EverypixelImageClient': EverypixelImageClient, 'GoogleImageClient': GoogleImageClient, 'SafebooruImageClient': SafebooruImageClient, 'YahooImageClient': YahooImageClient,
+        'GelbooruImageClient': GelbooruImageClient, 'PexelsImageClient': PexelsImageClient, 'PixabayImageClient': PixabayImageClient, 'DimTownImageClient': DimTownImageClient, 
     }
 
 
