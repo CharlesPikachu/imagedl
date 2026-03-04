@@ -34,13 +34,7 @@ class YahooImageClient(BaseImageClient):
         image_infos = []
         results_root = (soup.find("div", id="sres") or soup.find("div", id="results") or soup.find("div", {"class": "results"}) or soup)
         def addimagefromnode(node, url_list):
-            urls = []
-            for u in url_list:
-                if not isinstance(u, str): continue
-                u = u.strip()
-                if not u: continue
-                if u.startswith("data:"): continue
-                urls.append(u)
+            urls = [s for s in (u.strip() for u in url_list if isinstance(u, str)) if s and not s.startswith("data:")]
             if not urls: return
             main_url = urls[0]
             raw_data = {str(k).lower(): v for k, v in (node.attrs or {}).items()}
@@ -122,8 +116,7 @@ class YahooImageClient(BaseImageClient):
             if not self.maintain_session:
                 self._initsession()
                 if self.random_update_ua: self.session.headers_update({'User-Agent': UserAgent().random})
-            self._autosetproxies()
-            proxies = kwargs.pop('proxies', None) or getattr(self.session, "proxies")
+            proxies = kwargs.pop('proxies', None) or self._autosetproxies()
             if proxies: self.session.proxy = random.choice(list(proxies.values())) if isinstance(proxies, dict) else proxies
             try: (resp := self.session.request(method, url, **kwargs)).raise_for_status()
             except Exception as err: self.logger_handle.error(f'{self.source}.request >>> {url} (Error: {err}; status={getattr(locals().get("resp"), "status_code", None)})', disable_print=self.disable_print); continue

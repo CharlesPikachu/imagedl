@@ -151,8 +151,7 @@ class DuckduckgoImageClient(BaseImageClient):
             if not self.maintain_session:
                 self._initsession()
                 if self.random_update_ua: self.session.headers_update({'User-Agent': UserAgent().random})
-            self._autosetproxies()
-            proxies = kwargs.pop('proxies', None) or getattr(self.session, "proxies")
+            proxies = kwargs.pop('proxies', None) or self._autosetproxies()
             if proxies: self.session.proxy = random.choice(list(proxies.values())) if isinstance(proxies, dict) else proxies
             try: (resp := self.session.request(method, url, **kwargs)).raise_for_status()
             except Exception as err: self.logger_handle.error(f'{self.source}.request >>> {url} (Error: {err}; status={getattr(locals().get("resp"), "status_code", None)})', disable_print=self.disable_print); continue
