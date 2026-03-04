@@ -135,6 +135,7 @@ Current implementations built on top of `BaseImageClient` include:
 - `imagedl.imagedl.modules.sources.DimTownImageClient`
 - `imagedl.imagedl.modules.sources.EverypixelImageClient`
 - `imagedl.imagedl.modules.sources.FoodiesfeedImageClient`
+- `imagedl.imagedl.modules.sources.FreeNatureStockImageClient`
 - `imagedl.imagedl.modules.sources.GoogleImageClient`
 - `imagedl.imagedl.modules.sources.GelbooruImageClient`
 - `imagedl.imagedl.modules.sources.HuabanImageClient`
@@ -144,6 +145,7 @@ Current implementations built on top of `BaseImageClient` include:
 - `imagedl.imagedl.modules.sources.SogouImageClient`
 - `imagedl.imagedl.modules.sources.SafebooruImageClient`
 - `imagedl.imagedl.modules.sources.UnsplashImageClient`
+- `imagedl.imagedl.modules.sources.WeiboImageClient`
 - `imagedl.imagedl.modules.sources.YandexImageClient`
 - `imagedl.imagedl.modules.sources.YahooImageClient`
 
