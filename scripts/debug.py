@@ -1,4 +1,4 @@
-from modules.sources import DuckduckgoImageClient
+from imagedl.modules.sources import DuckduckgoImageClient
 
 client = DuckduckgoImageClient(work_dir='tmp')
 # image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
