@@ -22,6 +22,9 @@
   <a href="https://pypi.org/project/pyimagedl/">
     <img src="https://static.pepy.tech/badge/pyimagedl/month" alt="PyPI - Downloads">
   </a>
+  <a href="https://github.com/CharlesPikachu/imagedl/actions/workflows/check-imagedl.yml">
+    <img src="https://github.com/CharlesPikachu/imagedl/actions/workflows/check-imagedl.yml/badge.svg" alt="daily imagedl check">
+  </a>
   <a href="https://github.com/CharlesPikachu/imagedl/issues">
     <img src="https://isitmaintained.com/badge/resolution/CharlesPikachu/imagedl.svg" alt="issue resolution">
   </a>
