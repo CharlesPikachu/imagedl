@@ -1,6 +1,6 @@
 {
   "date": "2026-03-09",
-  "timestamp_utc": "2026-03-09T06:57:56.342268+00:00",
+  "timestamp_utc": "2026-03-09T10:30:33.007665+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,25 +10,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 34,
+      "n_results": 35,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/BingImageClient/00000009.webp",
+        "daily_test_results/BingImageClient/00000007.jpeg",
+        "daily_test_results/BingImageClient/00000005.jpeg",
         "daily_test_results/BingImageClient/00000002.jpeg",
         "daily_test_results/BingImageClient/00000003.jpeg",
         "daily_test_results/BingImageClient/00000006.jpeg",
         "daily_test_results/BingImageClient/00000004.jpeg",
-        "daily_test_results/BingImageClient/00000008.webp",
-        "daily_test_results/BingImageClient/00000005.webp",
-        "daily_test_results/BingImageClient/00000001.webp",
-        "daily_test_results/BingImageClient/00000007.webp",
-        "daily_test_results/BingImageClient/00000010.png"
+        "daily_test_results/BingImageClient/00000009.png",
+        "daily_test_results/BingImageClient/00000010.jpg",
+        "daily_test_results/BingImageClient/00000008.jpeg",
+        "daily_test_results/BingImageClient/00000001.jpeg"
       ],
       "search_samples": [
-        "https://pokemonatoz.com/wp-content/uploads/2022/08/pikachu01.webp",
-        "https://img.pokemondb.net/artwork/large/pikachu-johto-cap.jpg",
-        "https://img.pokemondb.net/artwork/large/pikachu-sinnoh-cap.jpg"
+        "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/03/10-Electric-Type-Pokemon-That-Are-Basically-Generators.jpg",
+        "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2020/06/Unanswered-Questions-About-Electric-Types-Featured.jpg",
+        "https://www.einerd.com/wp-content/uploads/2020/02/pokemon-pikachu-gigantamax-e1582210959859.jpg"
       ]
     },
     {
@@ -102,9 +102,9 @@
         "daily_test_results/HuabanImageClient/00000010.png"
       ],
       "search_samples": [
-        "https://gd-hbimg-edge.huaban.com/e6ca8d786474fe18f819ca7785f8736cad4d8c6a154fb-klZ4Jd?auth_key=1773043200-944e47443ead4da38779e3bef2cb4c3a-0-aa51987312d4afb844df06f5137ebae7",
-        "https://gd-hbimg-edge.huaban.com/da5a9ce41b18f8baa0e6c71eca93b92bfe479f201c9250-almBTd?auth_key=1773043200-944e47443ead4da38779e3bef2cb4c3a-0-24ddcad6aeefd9bf47d9f2f1b77990d3",
-        "https://gd-hbimg-edge.huaban.com/710fc985310a94a91e3f3e17f17803d979282f74fac04-7UB8fe?auth_key=1773043200-944e47443ead4da38779e3bef2cb4c3a-0-eb22813f88cf8f8da0eed247474e5f56"
+        "https://gd-hbimg-edge.huaban.com/e6ca8d786474fe18f819ca7785f8736cad4d8c6a154fb-klZ4Jd?auth_key=1773057600-3157fa2b2d60484d9e2b6a8979dab45c-0-5ce976c4cc559b73ae068e5e158ffd3d",
+        "https://gd-hbimg-edge.huaban.com/da5a9ce41b18f8baa0e6c71eca93b92bfe479f201c9250-almBTd?auth_key=1773057600-3157fa2b2d60484d9e2b6a8979dab45c-0-d20f463a3be88379153b85f565f506aa",
+        "https://gd-hbimg-edge.huaban.com/710fc985310a94a91e3f3e17f17803d979282f74fac04-7UB8fe?auth_key=1773057600-3157fa2b2d60484d9e2b6a8979dab45c-0-365e4b5bdb0926306831b4296079a463"
       ]
     },
     {
@@ -138,20 +138,20 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 43,
+      "n_results": 85,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/DuckduckgoImageClient/00000003.jpg",
-        "daily_test_results/DuckduckgoImageClient/00000009.jpg",
         "daily_test_results/DuckduckgoImageClient/00000002.jpg",
-        "daily_test_results/DuckduckgoImageClient/00000010.jpeg",
-        "daily_test_results/DuckduckgoImageClient/00000004.png",
-        "daily_test_results/DuckduckgoImageClient/00000005.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000005.png",
+        "daily_test_results/DuckduckgoImageClient/00000004.jpeg",
         "daily_test_results/DuckduckgoImageClient/00000006.png",
+        "daily_test_results/DuckduckgoImageClient/00000010.jpg",
         "daily_test_results/DuckduckgoImageClient/00000007.webp",
         "daily_test_results/DuckduckgoImageClient/00000008.jpeg",
-        "daily_test_results/DuckduckgoImageClient/00000001.jpeg"
+        "daily_test_results/DuckduckgoImageClient/00000001.jpeg",
+        "daily_test_results/DuckduckgoImageClient/00000009.jpeg"
       ],
       "search_samples": [
         "https://img.pokemondb.net/artwork/large/pikachu.jpg",
@@ -216,7 +216,7 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 52,
+      "n_results": 54,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
@@ -294,25 +294,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 52,
+      "n_results": 51,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/YandexImageClient/00000010.jpeg",
+        "daily_test_results/YandexImageClient/00000010.webp",
+        "daily_test_results/YandexImageClient/00000002.webp",
         "daily_test_results/YandexImageClient/00000009.webp",
         "daily_test_results/YandexImageClient/00000005.jpeg",
-        "daily_test_results/YandexImageClient/00000003.jpeg",
         "daily_test_results/YandexImageClient/00000006.jpeg",
-        "daily_test_results/YandexImageClient/00000002.png",
-        "daily_test_results/YandexImageClient/00000008.webp",
+        "daily_test_results/YandexImageClient/00000007.png",
         "daily_test_results/YandexImageClient/00000004.webp",
-        "daily_test_results/YandexImageClient/00000007.webp",
+        "daily_test_results/YandexImageClient/00000003.png",
+        "daily_test_results/YandexImageClient/00000008.jpeg",
         "daily_test_results/YandexImageClient/00000001.jpeg"
       ],
       "search_samples": [
-        "https://i.ytimg.com/vi/uJcOjOwV9Zk/hqdefault.jpg",
-        "https://archives.bulbagarden.net/media/upload/d/d2/Ash_Pikachu_Agility.png",
-        "https://i.pinimg.com/474x/6f/ae/38/6fae38f581afb4b4c18eb7ef671f87b0.jpg?nii=t"
+        "http://i.ytimg.com/vi/Yw_14S_pec8/hqdefault.jpg",
+        "https://static.wikia.nocookie.net/pokemon/images/3/3a/Male_trainer_Pikachu.png/revision/latest/scale-to-width-down/1200?cb=20190628063703",
+        "https://static.tvtropes.org/pmwiki/pub/images/detective_pikachu_film_render.png"
       ]
     },
     {
@@ -346,25 +346,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 210,
+      "n_results": 207,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/GoogleImageClient/00000007.jpeg",
         "daily_test_results/GoogleImageClient/00000010.jpeg",
+        "daily_test_results/GoogleImageClient/00000006.webp",
+        "daily_test_results/GoogleImageClient/00000005.jpeg",
         "daily_test_results/GoogleImageClient/00000002.jpeg",
         "daily_test_results/GoogleImageClient/00000003.jpeg",
         "daily_test_results/GoogleImageClient/00000008.png",
-        "daily_test_results/GoogleImageClient/00000005.png",
-        "daily_test_results/GoogleImageClient/00000006.jpeg",
         "daily_test_results/GoogleImageClient/00000004.jpeg",
         "daily_test_results/GoogleImageClient/00000001.jpeg",
         "daily_test_results/GoogleImageClient/00000009.jpeg"
       ],
       "search_samples": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL35Hm7JN4R5sl8MHqJwZJtKW9-7vrPM4hLw&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7OvI67fXFBpOp1u2AaHrm1LW7nIvkHK6gJw&s",
-        "https://i.pinimg.com/736x/99/8d/c6/998dc6604f85ec28fa95a11d50d43fd1.jpg"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROFfQIxsPA9KFBTMKBSLRgFz7J00M6be-GoA&s",
+        "https://lh3.googleusercontent.com/6OrUw1iQ8DKTjGZgb_0ssncTZ9ur37jA0Mp8XuCmKN6WTEhn-Fuej6pMlzxzL0ET-BAGP3I9Pgfz8KFJ72KQP-MAxj3RNIux0fiJ98S00VIk=s2400-rj",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9SCkJxTWRMMyv6rbQSPaHzRhjw8kq1qJLMA&s"
       ]
     },
     {
@@ -492,24 +492,28 @@
         "daily_test_results/PixabayImageClient/00000001.jpeg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g9a274869314bfcd6ebee7855e45c2a0beafdf6d7f6d34cd49adb960605daa2cf4f5eba6c84bba0529a7aebc2bf5ca4afdc269721277e340bdf62c33d41bc1b4c_1280.jpg",
-        "https://pixabay.com/get/g39b002d20b12184ee5208d18d31c410fbf348b3ce6133b95186933fd9e0be26ae89191d2ba842d57c72c05120ee86702be1096852e943c17f156b57dbe1b0c94_1280.jpg",
-        "https://pixabay.com/get/g96b72957104b24d103f93a36b233384e666f36a4b8f16c45f2f45e709d5f5dd0f0831e62b1cdfbf1317da790a49cfe8a1baf75bb0617eebbc22d24bd4c2059b3_1280.png"
+        "https://pixabay.com/get/g9ccfb4ef4fc032c71ba9b6908ab0aba52a663ba4bd329c22b6f54730ec081f663624d2052ce8327c4b2b17ed2c50f6716366a0786dce28b9004d40ae2f0dc3cf_1280.jpg",
+        "https://pixabay.com/get/gca9c4a30e94e4ee43c414d7de9a78832480c76e17fb6d54d1b01562d366a2294a968219aa820989b160f7fc31f0cd19b5f8fc0a47217413e6823466a634f3f13_1280.jpg",
+        "https://pixabay.com/get/g2b5d4669e40703abf9cf3a8da7a90ba11426f4c6402fd3960d93d2735a2e38faf2003e3dc5021eddefa251f7a1ca11c8732b15871ebf227de13df5c044eb745d_1280.png"
       ]
     },
     {
       "name": "DimTownImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
+      "download_ok": true,
+      "ok": true,
       "n_results": 3,
-      "n_downloaded": 0,
+      "n_downloaded": 3,
       "error": null,
-      "downloaded_images": [],
+      "downloaded_images": [
+        "daily_test_results/DimTownImageClient/00000002.jpeg",
+        "daily_test_results/DimTownImageClient/00000003.jpeg",
+        "daily_test_results/DimTownImageClient/00000001.jpeg"
+      ],
       "search_samples": [
-        "https://cc-img.townimg.com/uploads/2021/12/20211207013823362.png",
-        "https://cc-img.townimg.com/uploads/2021/12/20211207013829106.jpg",
-        "https://cc-img.townimg.com/uploads/2021/12/20211207013823362-842x1200.png"
+        "https://lz.sinaimg.cn/mw2000/007PFMahgy1i8ga1q2q5ij30u01c942p.jpg",
+        "https://lz.sinaimg.cn/mw2000/007PFMahgy1i8ga1qnwbej30u018y430.jpg",
+        "https://lz.sinaimg.cn/mw2000/007PFMahgy1i8ga1s3kcaj316m0u0ju6.jpg"
       ]
     }
   ]
