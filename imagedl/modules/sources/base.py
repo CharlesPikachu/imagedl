@@ -21,7 +21,7 @@ from datetime import datetime
 from fake_useragent import UserAgent
 from alive_progress import alive_bar
 from pathvalidate import sanitize_filepath
-from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir, cookies2dict, optionalimport, extfromimageurlpath, LoggerHandle, Filter
+from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir, cookies2dict, optionalimport, extfromimageurlpath, optionalimportfrom, LoggerHandle, Filter
 
 
 '''BaseImageClient'''
@@ -55,12 +55,9 @@ class BaseImageClient():
         self.default_headers = self.default_search_headers
         self._initsession()
         # proxied_session_client
-        self.proxied_session_client = None
-        if auto_set_proxies:
-            from freeproxy import freeproxy
-            default_freeproxy_settings = dict(disable_print=True, proxy_sources=['ProxiflyProxiedSession'], max_tries=20, init_proxied_session_cfg={})
-            default_freeproxy_settings.update(self.freeproxy_settings)
-            self.proxied_session_client = freeproxy.ProxiedSessionClient(**default_freeproxy_settings)
+        freeproxy = optionalimportfrom('freeproxy', 'freeproxy')
+        (default_freeproxy_settings := dict(disable_print=True, proxy_sources=['ProxiflyProxiedSession'], max_tries=20, init_proxied_session_cfg={})).update(self.freeproxy_settings)
+        self.proxied_session_client = freeproxy.ProxiedSessionClient(**default_freeproxy_settings) if auto_set_proxies else None
     '''_listccimpersonates'''
     def _listccimpersonates(self):
         curl_cffi = optionalimport('curl_cffi')
