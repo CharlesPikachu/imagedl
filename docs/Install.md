@@ -3,7 +3,7 @@
 #### Environment Requirements
 
 - Operating system: Linux, macOS, or Windows.
-- Python version: Python 3.9+ with requirements in [pyimagedl requirements.txt](https://github.com/CharlesPikachu/imagedl/blob/main/requirements.txt).
+- Python version: Python 3.10+ with requirements in [pyimagedl requirements.txt](https://github.com/CharlesPikachu/imagedl/blob/main/requirements.txt).
 
 #### Installation Instructions
 
