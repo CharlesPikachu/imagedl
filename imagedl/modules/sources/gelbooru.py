@@ -54,7 +54,7 @@ class GelbooruImageClient(BaseImageClient):
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
+    def _constructsearchurls(self, keyword, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
         request_overrides = request_overrides or {}
         base_url = 'https://gelbooru.com/index.php?'
         params = {'page': 'post', 's': 'list', 'tags': keyword, 'pid': 0}
