@@ -1,6 +1,7 @@
 '''initialize'''
 from .io import touchdir
+from .structure import ImageInfo
 from .modulebuilder import BaseModuleBuilder
 from .importutils import optionalimport, optionalimportfrom
 from .logger import LoggerHandle, printtable, colorize, printfullline
-from .misc import lowerdictkeys, usedownloadheaderscookies, useparseheaderscookies, usesearchheaderscookies, cookies2dict, cookies2string, searchdictbykey, extfromimageurlpath, Filter
+from .misc import lowerdictkeys, usedownloadheaderscookies, useparseheaderscookies, usesearchheaderscookies, cookies2dict, cookies2string, searchdictbykey, ImageExtensionUtils, Filter
