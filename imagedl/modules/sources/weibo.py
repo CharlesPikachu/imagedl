@@ -9,6 +9,7 @@ WeChat Official Account (微信公众号):
 import re
 import math
 import json_repair
+from ..utils import ImageInfo
 from urllib.parse import quote
 from .base import BaseImageClient
 
@@ -30,40 +31,34 @@ class WeiboImageClient(BaseImageClient):
         self._initsession()
     '''_upgradeimageurl'''
     def _upgradeimageurl(self, url: str):
-        if not url: return url
-        return self.SINAIMG_RE.sub(r'\1large\2', url)
+        return (WeiboImageClient.SINAIMG_RE.sub(r'\1large\2', url) if url else url)
     '''_extractpicsfromblog'''
-    def _extractpicsfromblog(self, mblog: dict):
-        image_infos = []
+    def _extractpicsfromblog(self, mblog: dict) -> list[ImageInfo]:
+        image_infos: list[ImageInfo] = []
         if not isinstance(mblog, dict): return image_infos
         # strategy 1: pics array (most common in mobile API)
-        pics = mblog.get('pics') or []
-        for pic in pics:
+        for pic in (mblog.get('pics') or []):
             if not isinstance(pic, dict): continue
             large, candidate_urls = pic.get('large'), []
-            if isinstance(large, dict) and str(large.get('url', '')).strip(): candidate_urls.append(str(large['url']).strip())
-            (pic_url := str(pic.get('url', '')).strip()) and candidate_urls.extend([u for u in (self._upgradeimageurl(pic_url), pic_url) if u not in candidate_urls])
+            if isinstance(large, dict) and str(large.get('url', '')).startswith('http'): candidate_urls.append(str(large['url']).strip())
+            (pic_url := str(pic.get('url', '')).strip()).startswith('http') and candidate_urls.extend([u for u in (self._upgradeimageurl(pic_url), pic_url) if u not in candidate_urls])
             if not candidate_urls: continue
-            image_infos.append({'candidate_urls': candidate_urls, 'raw_data': pic, 'identifier': candidate_urls[0]})
+            image_infos.append(ImageInfo(source=self.source, raw_data=pic, candidate_download_urls=candidate_urls, identifier=candidate_urls[0]))
         # strategy 2: fallback to single pic fields (when pics array is absent)
         if not image_infos:
             for key in ('original_pic', 'bmiddle_pic', 'thumbnail_pic'):
-                pic_url = str(mblog.get(key, '')).strip()
-                if pic_url: upgraded = self._upgradeimageurl(pic_url); candidate_urls = ([upgraded, pic_url] if upgraded != pic_url else [pic_url]); image_infos.append({'candidate_urls': candidate_urls, 'raw_data': mblog, 'identifier': candidate_urls[0]}); break
+                if (pic_url := str(mblog.get(key, '')).strip()).startswith('http'): upgraded = self._upgradeimageurl(pic_url); candidate_urls = ([upgraded, pic_url] if upgraded != pic_url else [pic_url]); image_infos.append(ImageInfo(source=self.source, raw_data=mblog, candidate_download_urls=candidate_urls, identifier=candidate_urls[0])); break
         # return
         return image_infos
     '''_parsesearchresult'''
-    def _parsesearchresult(self, search_result: str):
+    def _parsesearchresult(self, search_result: str) -> list[ImageInfo]:
         # parse json text in safety
         search_result: dict = json_repair.loads(search_result)
         # validate response
         if not isinstance(search_result, dict) or search_result.get('ok') != 1: return []
-        data = search_result.get('data', {})
-        if not isinstance(data, dict): return []
-        cards = data.get('cards', [])
-        if not isinstance(cards, list): return []
+        if not isinstance(data := search_result.get('data', {}), dict) or not isinstance(cards := data.get('cards', []), list): return []
         # extract image infos from cards
-        image_infos = []
+        image_infos: list[ImageInfo] = []
         for card in cards:
             if not isinstance(card, dict): continue
             card_type = card.get('card_type')
@@ -72,14 +67,10 @@ class WeiboImageClient(BaseImageClient):
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
-        request_overrides, base_url = request_overrides or {}, 'https://m.weibo.cn/api/container/getIndex'
-        search_type = str(filters.pop('search_type')) if (filters is not None and 'search_type' in filters) else '1'
-        containerid = f"100103type%3D{search_type}%26q%3D{quote(keyword, safe='')}"
+    def _constructsearchurls(self, keyword: str, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
+        request_overrides, base_url, filters = request_overrides or {}, 'https://m.weibo.cn/api/container/getIndex', filters or {}
+        containerid = f"100103type%3D{filters.pop('search_type', '1')}%26q%3D{quote(keyword, safe='')}"
         search_urls, page_size = [], 20
-        num_pages = math.ceil(search_limits * 1.2 / page_size)
-        for pn in range(1, num_pages + 1):
-            if pn == 1: search_url = f'{base_url}?containerid={containerid}&page_type=searchall'
-            else: search_url = f'{base_url}?containerid={containerid}&page_type=searchall&page={pn}'
-            search_urls.append(search_url)
+        for pn in range(1, math.ceil(search_limits * 1.2 / page_size) + 1):
+            search_urls.append((f'{base_url}?containerid={containerid}&page_type=searchall' if pn == 1 else f'{base_url}?containerid={containerid}&page_type=searchall&page={pn}'))
         return search_urls
