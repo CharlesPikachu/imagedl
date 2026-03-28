@@ -43,7 +43,7 @@ class GelbooruImageClient(BaseImageClient):
             if image_url and str(image_url).startswith('http'): candidate_urls.append(image_url)
             thumb_src = (img.get("data-src") or img.get("data-original") or img.get("src"))
             if (thumbnail_url := urljoin(base_url, ihtml.unescape(thumb_src)) if thumb_src else None): candidate_urls.append(thumbnail_url)
-            if not (candidate_urls := list(set(candidate_urls))): continue
+            if not (candidate_urls := list(dict.fromkeys(candidate_urls))): continue
             image_infos.append(ImageInfo(source=self.source, raw_data=str(item), candidate_download_urls=candidate_urls, identifier=a.get('id') or candidate_urls[0]))
         # return
         return image_infos

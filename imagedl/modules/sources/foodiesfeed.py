@@ -31,7 +31,7 @@ class FoodiesfeedImageClient(BaseImageClient):
         for item in (search_result.get('photos', []) or []):
             if not isinstance(item, dict): continue
             candidate_urls = [item.get('master_url'), item.get('webp_url'), item.get('thumbnail_url')]
-            if not (candidate_urls := list(set([url for url in candidate_urls if url and str(url).startswith('http')]))): continue
+            if not (candidate_urls := list(dict.fromkeys([url for url in candidate_urls if url and str(url).startswith('http')]))): continue
             image_infos.append(ImageInfo(source=self.source, raw_data=item, candidate_download_urls=candidate_urls, identifier=item.get('id') or candidate_urls[0]))
         # return
         return image_infos
