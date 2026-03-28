@@ -9,6 +9,7 @@ WeChat Official Account (微信公众号):
 import math
 import time
 import json_repair
+from ..utils import ImageInfo
 from .base import BaseImageClient
 from urllib.parse import quote, urlencode
 
@@ -19,42 +20,32 @@ class SogouImageClient(BaseImageClient):
     def __init__(self, **kwargs):
         super(SogouImageClient, self).__init__(**kwargs)
         self.default_search_headers = {
-            'Accept': 'application/json, text/plain, */*', 'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 'Host': 'pic.sogou.com', 'Sec-Ch-Ua': '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"', 
-            'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors', 'Sec-Fetch-Site': 'same-origin', 'X-Time4p': str(int(time.time() * 1000)),
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 'Host': 'pic.sogou.com', 'Sec-Ch-Ua': '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"', 'Sec-Fetch-Site': 'same-origin', 
+            'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Sec-Fetch-Dest': 'empty', 'Sec-Fetch-Mode': 'cors', 'X-Time4p': str(int(time.time() * 1000)), 'Accept': 'application/json, text/plain, */*', 'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7', 
         }
+        self.default_download_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'}
         self.default_headers = self.default_search_headers
         self._initsession()
     '''_parsesearchresult'''
-    def _parsesearchresult(self, search_result: str):
+    def _parsesearchresult(self, search_result: str) -> list[ImageInfo]:
         # parse json text in safety
         search_result: dict = json_repair.loads(search_result)
         # parse search result
-        image_infos = []
-        for item in search_result.get('data', {}).get('items', []):
-            candidate_urls = []
-            if ('picUrl' in item) and isinstance(item['picUrl'], str) and item['picUrl'].strip():
-                candidate_urls.append(item['picUrl'])
-            if ('oriPicUrl' in item) and isinstance(item['oriPicUrl'], str) and item['oriPicUrl'].strip():
-                candidate_urls.append(item['oriPicUrl'])
-            if ('locImageLink' in item) and isinstance(item['locImageLink'], str) and item['locImageLink'].strip():
-                candidate_urls.append(item['locImageLink'])
-            if ('thumbUrl' in item) and isinstance(item['thumbUrl'], str) and item['thumbUrl'].strip():
-                candidate_urls.append(item['thumbUrl'])
-            image_info = {
-                'candidate_urls': candidate_urls, 'raw_data': item, 'identifier': item['mf_id'] if 'mf_id' in item else candidate_urls[0],
-            }
-            image_infos.append(image_info)
+        image_infos: list[ImageInfo] = []
+        if ('data' not in search_result) or ('items' not in (search_result.get('data') or {})): return image_infos
+        for item in ((search_result.get('data', {}) or {}).get('items', []) or []):
+            if not isinstance(item, dict): continue
+            candidate_urls = [item.get('picUrl'), item.get('oriPicUrl'), item.get('locImageLink'), item.get('thumbUrl')]
+            if not (candidate_urls := [c for c in candidate_urls if c and str(c).startswith('http')]): continue
+            image_infos.append(ImageInfo(source=self.source, raw_data=item, candidate_download_urls=candidate_urls, identifier=item.get('mf_id') or candidate_urls[0]))
         # return
         return image_infos
     '''_constructsearchurls'''
-    def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
-        request_overrides = request_overrides or {}
-        base_url = 'https://pic.sogou.com/napi/pc/searchList?'
-        params = {'mode': '1', 'start': '384', 'xml_len': '48', 'query': keyword, 'channel': 'pc_pic', 'scene': 'pic_result'}
-        if filters is not None: params.update(filters)
+    def _constructsearchurls(self, keyword: str, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
+        request_overrides, filters, base_url = request_overrides or {}, filters or {}, 'https://pic.sogou.com/napi/pc/searchList?'
+        (params := {'mode': '1', 'start': '384', 'xml_len': '48', 'query': keyword, 'channel': 'pc_pic', 'scene': 'pic_result'}).update(filters)
         search_urls, page_size = [], int(params['xml_len'])
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
             params['start'] = str(int(page_size * pn))
-            search_url = base_url + urlencode(params, quote_via=quote)
-            search_urls.append(search_url)
+            search_urls.append(base_url + urlencode(params, quote_via=quote))
         return search_urls
