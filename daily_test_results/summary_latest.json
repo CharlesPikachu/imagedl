@@ -1,6 +1,6 @@
 {
   "date": "2026-03-29",
-  "timestamp_utc": "2026-03-29T02:03:38.098076+00:00",
+  "timestamp_utc": "2026-03-29T02:57:56.346514+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -67,19 +67,19 @@
       "downloaded_images": [
         "daily_test_results/DanbooruImageClient/00000007.jpg",
         "daily_test_results/DanbooruImageClient/00000009.jpg",
-        "daily_test_results/DanbooruImageClient/00000006.jpg",
+        "daily_test_results/DanbooruImageClient/00000003.png",
+        "daily_test_results/DanbooruImageClient/00000006.png",
         "daily_test_results/DanbooruImageClient/00000001.png",
-        "daily_test_results/DanbooruImageClient/00000005.jpg",
-        "daily_test_results/DanbooruImageClient/00000003.jpg",
         "daily_test_results/DanbooruImageClient/00000004.jpg",
+        "daily_test_results/DanbooruImageClient/00000005.png",
         "daily_test_results/DanbooruImageClient/00000008.jpg",
         "daily_test_results/DanbooruImageClient/00000010.jpg",
         "daily_test_results/DanbooruImageClient/00000002.png"
       ],
       "search_samples": [
-        "https://cdn.donmai.us/original/7d/11/7d11c0c895e016bfb9338ffb29741ed8.png",
-        "https://cdn.donmai.us/original/43/8f/438ffd7c3db51d0b5c4e155a59ff8f6f.png",
-        "https://cdn.donmai.us/original/59/ff/59ffdc540cc392e3b0256fbcf7763b46.jpg"
+        "https://cdn.donmai.us/original/3a/2f/3a2f4b1baef660f98ceeabe69f62700a.png",
+        "https://cdn.donmai.us/original/50/ca/50cab24fd392e0b0e45cc7c0dc1e9a09.png",
+        "https://cdn.donmai.us/original/4f/67/4f67cb3d84fabf1ef52959380641604d.png"
       ]
     },
     {
@@ -115,7 +115,7 @@
       "ok": false,
       "n_results": 0,
       "n_downloaded": 0,
-      "error": null,
+      "error": "search_error: AttributeError: 'dict' object has no attribute 'raw_data'",
       "downloaded_images": [],
       "search_samples": []
     },
@@ -125,7 +125,7 @@
       "download_ok": true,
       "ok": true,
       "n_results": 40,
-      "n_downloaded": 10,
+      "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
         "daily_test_results/DuckduckgoImageClient/00000007.jpg",
@@ -136,7 +136,6 @@
         "daily_test_results/DuckduckgoImageClient/00000006.jpg",
         "daily_test_results/DuckduckgoImageClient/00000003.jpg",
         "daily_test_results/DuckduckgoImageClient/00000005.webp",
-        "daily_test_results/DuckduckgoImageClient/00000008.jpg",
         "daily_test_results/DuckduckgoImageClient/00000010.jpg"
       ],
       "search_samples": [
@@ -152,7 +151,7 @@
       "ok": false,
       "n_results": 0,
       "n_downloaded": 0,
-      "error": null,
+      "error": "search_error: AttributeError: 'dict' object has no attribute 'raw_data'",
       "downloaded_images": [],
       "search_samples": []
     },
@@ -270,20 +269,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/YandexImageClient/00000007.jpg",
-        "daily_test_results/YandexImageClient/00000001.jpg",
+        "daily_test_results/YandexImageClient/00000009.jpg",
+        "daily_test_results/YandexImageClient/00000003.webp",
+        "daily_test_results/YandexImageClient/00000002.jpg",
         "daily_test_results/YandexImageClient/00000006.jpg",
         "daily_test_results/YandexImageClient/00000005.jpg",
-        "daily_test_results/YandexImageClient/00000003.jpg",
         "daily_test_results/YandexImageClient/00000004.jpg",
-        "daily_test_results/YandexImageClient/00000002.webp",
         "daily_test_results/YandexImageClient/00000008.jpg",
         "daily_test_results/YandexImageClient/00000010.jpg",
-        "daily_test_results/YandexImageClient/00000009.webp"
+        "daily_test_results/YandexImageClient/00000001.webp"
       ],
       "search_samples": [
+        "https://static.wikia.nocookie.net/bd623b4e-5d2f-40d2-adae-044e85465741/scale-to-width/755",
         "https://i.pinimg.com/736x/41/71/1a/41711ad4391781ab75038408cac64d50.jpg",
-        "https://static.wikia.nocookie.net/fantendo/images/0/0e/Detective_pikachussbu.png/revision/latest?cb=20181206045328",
-        "https://i.ytimg.com/vi/UrCsoRMwO-0/hqdefault.jpg"
+        "https://static.wikia.nocookie.net/fantendo/images/0/0e/Detective_pikachussbu.png/revision/latest?cb=20181206045328"
       ]
     },
     {
@@ -293,20 +292,24 @@
       "ok": false,
       "n_results": 0,
       "n_downloaded": 0,
-      "error": "search_error: RuntimeError: [system] RuntimeError(\"Failed to launch ChromiumPage, env_info={'platform': 'linux', 'machine': 'x86_64', 'is_ci': True, 'is_github_actions': True, 'is_root': False, 'dev_shm_mb': 7994.3671875, 'browser_path': None, 'headless': False}, error=BrowserConnectError()\")\n[download] RuntimeError(\"Failed to launch ChromiumPage, env_info={'platform': 'linux', 'machine': 'x86_64', 'is_ci': True, 'is_github_actions': True, 'is_root': False, 'dev_shm_mb': 7994.3671875, 'browser_path': '/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/imagedl/modules/utils/chrome_bin/linux64/147.0.7727.24/chrome-linux64/chrome', 'headless': False}, error=BrowserConnectError()\")",
+      "error": "search_error: AttributeError: 'dict' object has no attribute 'raw_data'",
       "downloaded_images": [],
       "search_samples": []
     },
     {
       "name": "GoogleImageClient",
-      "search_ok": false,
+      "search_ok": true,
       "download_ok": false,
       "ok": false,
-      "n_results": 0,
+      "n_results": 80,
       "n_downloaded": 0,
       "error": null,
       "downloaded_images": [],
-      "search_samples": []
+      "search_samples": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vE5X0mKUdfyyOc8yrgQJy-aCEHNSuGoigQ&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4aiBggKcJFbfodbOW1CyZbS92TPqf9QU_tTL3TnAeyyjPPZ8L0bFfrZpk&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7gt5GZIwg1LJfYrwzo7_4NIvd1BkNVq5ukOMIUkWyk0BoeBNcNFMF&s=0"
+      ]
     },
     {
       "name": "SafebooruImageClient",
@@ -370,19 +373,19 @@
       "downloaded_images": [
         "daily_test_results/GelbooruImageClient/00000007.jpg",
         "daily_test_results/GelbooruImageClient/00000009.jpg",
-        "daily_test_results/GelbooruImageClient/00000002.jpg",
+        "daily_test_results/GelbooruImageClient/00000001.jpg",
         "daily_test_results/GelbooruImageClient/00000006.jpg",
-        "daily_test_results/GelbooruImageClient/00000001.png",
         "daily_test_results/GelbooruImageClient/00000005.jpg",
         "daily_test_results/GelbooruImageClient/00000003.jpg",
         "daily_test_results/GelbooruImageClient/00000004.jpg",
         "daily_test_results/GelbooruImageClient/00000008.jpg",
-        "daily_test_results/GelbooruImageClient/00000010.jpg"
+        "daily_test_results/GelbooruImageClient/00000010.jpg",
+        "daily_test_results/GelbooruImageClient/00000002.png"
       ],
       "search_samples": [
-        "https://gelbooru.com//images/7d/11/7d11c0c895e016bfb9338ffb29741ed8.png",
-        "https://img2.gelbooru.com//samples/19/d9/sample_19d9e67bfe4024e7f1f4c93f7262f679.jpg",
-        "https://img2.gelbooru.com//images/59/ff/59ffdc540cc392e3b0256fbcf7763b46.jpg"
+        "https://gelbooru.com//samples/4f/67/sample_4f67cb3d84fabf1ef52959380641604d.jpg",
+        "https://img2.gelbooru.com//images/7d/11/7d11c0c895e016bfb9338ffb29741ed8.png",
+        "https://img2.gelbooru.com//samples/19/d9/sample_19d9e67bfe4024e7f1f4c93f7262f679.jpg"
       ]
     },
     {
@@ -408,7 +411,7 @@
       "search_samples": [
         "https://images.pexels.com/photos/36495537/pexels-photo-36495537.jpeg?cs=srgb&dl=pexels-hakim-level-1458090143-36495537.jpg&fm=jpg",
         "https://images.pexels.com/photos/33971762/pexels-photo-33971762.jpeg?cs=srgb&dl=pexels-aibek-skakov-418917601-33971762.jpg&fm=jpg",
-        "https://images.pexels.com/photos/33984198/pexels-photo-33984198.jpeg?cs=srgb&dl=pexels-aibek-skakov-418917601-33984198.jpg&fm=jpg"
+        "https://images.pexels.com/photos/18403858/pexels-photo-18403858.jpeg?cs=srgb&dl=pexels-miami302-18403858.jpg&fm=jpg"
       ]
     },
     {
@@ -421,20 +424,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/PixabayImageClient/00000008.png",
+        "daily_test_results/PixabayImageClient/00000009.jpg",
         "daily_test_results/PixabayImageClient/00000003.png",
         "daily_test_results/PixabayImageClient/00000001.jpg",
         "daily_test_results/PixabayImageClient/00000002.jpg",
         "daily_test_results/PixabayImageClient/00000006.png",
+        "daily_test_results/PixabayImageClient/00000010.png",
         "daily_test_results/PixabayImageClient/00000005.jpg",
-        "daily_test_results/PixabayImageClient/00000009.png",
         "daily_test_results/PixabayImageClient/00000007.png",
-        "daily_test_results/PixabayImageClient/00000004.png",
-        "daily_test_results/PixabayImageClient/00000010.jpg"
+        "daily_test_results/PixabayImageClient/00000004.png"
       ],
       "search_samples": [
-        "https://pixabay.com/get/gda1aff64682ed4b8775b7a6a5790e4527e38ce8912c1cbeffe8542f6444f95bef29eaf36ccecd39828bfe3b0098f4db4f717515406e5f6c0b052269f45ce9dc9_1280.jpg",
-        "https://pixabay.com/get/g6c038eda9cefb07f5b2761e17bf70861898a1b184cdfa139a6c0276621e0c42c1a6214511000e3306ab6e7b166777909df7f4323de514708e59fff1c21e27ad6_1280.jpg",
-        "https://pixabay.com/get/g68bddb4eb2a75f2db2fcc57c381494bf792c2626ab414140588e0f36dadca287559f632b7011fe1b37cfcd606f04caf32687ef50fc7dddb43cee3839f365a94e_1280.png"
+        "https://pixabay.com/get/g1d1167c73c0f2722165d7e0566259eaabffdfb895338b1fb7c211af879e06a0bf2e83b1234f58889db97fa05d9c320386db92211c79595d288e14e6c50db3180_1280.jpg",
+        "https://pixabay.com/get/ge019d0fa326f8183f94193007229d448b877e50e243e0c6a01a9513f4afe4db05a033c180015c2e57e1dd225c1f8116e5f60c81e28d6c6ea531f23a54f92ffb5_1280.jpg",
+        "https://pixabay.com/get/g1e680be0f420058829c41a0e7c20ea003e65e7d3db96aa71be11561715623e953570136932860c8aaf6b7dce97972d0e418de38e70e64c40643b104eaa1432dd_1280.png"
       ]
     },
     {
