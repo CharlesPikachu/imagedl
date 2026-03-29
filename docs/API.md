@@ -33,6 +33,7 @@ ImageClient(
 Arguments:
 
 - **`image_sources`**
+
   Image sources to enable.
   - Type: `list | str`
   - Default: `"BaiduImageClient"`
@@ -51,6 +52,7 @@ Arguments:
   - Initialization fails if no valid source remains.
 
 - **`init_image_clients_cfg`**
+
   Per-source initialization config.
   - Type: `dict`
   
@@ -75,7 +77,8 @@ Arguments:
   Note:  
   - In practice, pass a per-source config dict.
 
-- **`clients_threadings`**  
+- **`clients_threadings`**
+
   Per-source thread count used by both search and download.
   - Type: `dict`
   - Default for missing sources: `5`
@@ -88,7 +91,8 @@ Arguments:
   }
   ```  
 
-- **`requests_overrides`**  
+- **`requests_overrides`**
+
   Per-source request arguments forwarded to the underlying HTTP requests.
   - Type: `dict`
   - Default for missing sources: `{}`
@@ -108,6 +112,7 @@ Arguments:
   ```
 
 - **`search_filters`**
+
   Per-source search filters.
   - Type: `dict`
   - Default for missing sources: `{}`
@@ -135,6 +140,7 @@ ImageClient.search(keyword, search_limits_per_source: int | dict = 1000) -> dict
 Arguments:
 
 - **`keyword`**
+
   Search keyword.
   
   Example:
@@ -143,6 +149,7 @@ Arguments:
   ```  
 
 - **`search_limits_per_source`**
+
   Maximum number of results to request from each source.
   
   You can pass either:
@@ -224,6 +231,7 @@ ImageClient.download(image_infos: list[ImageInfo] | dict[str, list[ImageInfo]]) 
 Arguments:
 
 - **`image_infos`**
+
   Can be either:
   - a dictionary returned by `ImageClient.search()`, or
   - a flat list of `ImageInfo`
@@ -334,25 +342,32 @@ BaseImageClient(
 
 Arguments:
 
-- **`work_dir`**  
+- **`work_dir`**
+
   Root output directory.
 
-- **`max_retries`**  
+- **`max_retries`**
+
   Maximum retry count for HTTP requests.
 
-- **`auto_set_proxies`**  
+- **`auto_set_proxies`**
+
   Whether to automatically fetch and use proxies.
 
-- **`random_update_ua`**  
+- **`random_update_ua`**
+
   Whether to randomize the User-Agent between requests.
 
 - **`maintain_session`**
+
   Whether to keep a persistent session.
 
-- **`default_search_cookies`**  
+- **`default_search_cookies`**
+
   Default cookies used for searching.
 
-- **`default_download_cookies`**  
+- **`default_download_cookies`**
+
   Default cookies used for downloading.
 
 #### `BaseImageClient.search()`
@@ -426,12 +441,14 @@ The project also provides a command-line entry.
 
 - Basic command is `imagedl`. If no keyword is provided, interactive mode is opened.
 
-- Search directly from CLI:  
+- Search directly from CLI:
+
   ```bash
   imagedl -k "cute cat"
   ```
 
-- Multi-source Example:  
+- Multi-source Example:
+
   ```bash
   imagedl -k "mountain lake" \
     -s "BaiduImageClient,BingImageClient" \
@@ -442,7 +459,8 @@ The project also provides a command-line entry.
     -l 20
   ```
 
-- CLI Options:  
+- CLI Options:
+
   - `-k`, `--keyword`: search keyword
   - `-s`, `--image-sources`: comma-separated source names
   - `-c`, `--init-image-clients-cfg`: JSON string for per-source initialization config
@@ -451,7 +469,8 @@ The project also provides a command-line entry.
   - `-f`, `--search-filters`: JSON string for per-source filters
   - `-l`, `--search-limits-per-source`: max number of results per source
 
-- Usage Notes:  
+- Usage Notes:
+ 
   - Pass a dictionary for `init_image_clients_cfg`.
   - `search()` returns a dict grouped by source.
   - `download()` accepts either that dict or a flat list.
