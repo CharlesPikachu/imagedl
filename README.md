@@ -131,7 +131,7 @@ So if you notice that the program is downloading a browser, there is no need to 
 
 #### The simplest working example
 
-Start with one source and a small search limit. This is the easiest way to confirm that your environment is set up correctly.
+Start with one source like "BaiduImageClient" and "BingImageClient" and a small search limit. This is the easiest way to confirm that your environment is set up correctly.
 
 ~~~python
 import random
@@ -152,9 +152,7 @@ In the current API, `search()` returns a dictionary whose keys are source names 
 - the original dictionary returned by `search()`
 - a flat list of `ImageInfo` objects
 
-So the normal workflow is now simply: 
-
-*search -> download*
+So the normal workflow is now simply: *search -> download*
 
 #### CLI options
 
@@ -232,7 +230,7 @@ The most important arguments are:
 - `search_filters`: per-source filter settings
 - `search_limits_per_source`: the number of images to search for each source when calling `search()`
 
-Internally, each source is initialized with defaults such as `work_dir="imagedl_outputs"`, `max_retries=5`, `maintain_session=False`, `auto_set_proxies=False`, `random_update_ua=False`, and disabled curl-cffi options unless you override them.
+Internally, each source is initialized with defaults such as `work_dir="imagedl_outputs"`, `max_retries=5`, `maintain_session=False`, `auto_set_proxies=False`, `random_update_ua=False`, `logger_handle=LoggerHandle()` and disabled curl-cffi options unless you override them.
 
 #### Save images to a custom folder
 
@@ -260,6 +258,7 @@ This is the recommended way to control where your files are saved.
 #### Search from multiple sources
 
 You can search several sources at once. In that case, it is usually best to configure thread count and output directory per source.
+Here is a simple example:
 
 ~~~python
 from imagedl import imagedl
