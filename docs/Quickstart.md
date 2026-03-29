@@ -15,7 +15,7 @@ search_results = client.search(keyword="cute cats", search_limits_per_source=10)
 downloaded_results = client.download(image_infos=search_results)
 
 print(f"found {sum(len(v) for v in search_results.values())} items")
-print(f"downloaded {sum(len(v) for v in downloaded_results.values())} items")
+print(f"downloaded {len(downloaded_results)} items")
 print('random example >>> ')
 print(random.choice(downloaded_results))
 ~~~
