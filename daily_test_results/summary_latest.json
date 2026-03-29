@@ -1,6 +1,6 @@
 {
-  "date": "2026-03-28",
-  "timestamp_utc": "2026-03-28T03:37:48.391932+00:00",
+  "date": "2026-03-29",
+  "timestamp_utc": "2026-03-29T02:03:38.098076+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -8,165 +8,294 @@
     {
       "name": "BingImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
+      "download_ok": true,
+      "ok": true,
       "n_results": 35,
-      "n_downloaded": 0,
-      "error": "search_error: KeyError: 'candidate_urls'",
-      "downloaded_images": [],
-      "search_samples": []
+      "n_downloaded": 9,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/BingImageClient/00000007.jpg",
+        "daily_test_results/BingImageClient/00000002.jpg",
+        "daily_test_results/BingImageClient/00000006.jpg",
+        "daily_test_results/BingImageClient/00000001.png",
+        "daily_test_results/BingImageClient/00000005.jpg",
+        "daily_test_results/BingImageClient/00000003.jpg",
+        "daily_test_results/BingImageClient/00000008.jpg",
+        "daily_test_results/BingImageClient/00000004.png",
+        "daily_test_results/BingImageClient/00000010.jpg"
+      ],
+      "search_samples": [
+        "https://easydrawingguides.com/wp-content/uploads/2021/12/how-to-draw-a-cute-chibi-pikachu-pokemon-featured-image-1200-859x1024.png",
+        "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2020/06/Unanswered-Questions-About-Electric-Types-Featured.jpg",
+        "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/03/10-Electric-Type-Pokemon-That-Are-Basically-Generators.jpg"
+      ]
     },
     {
       "name": "FoodiesfeedImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 15,
-      "n_downloaded": 0,
-      "error": "download_error: AttributeError: 'dict' object has no attribute 'save_path'",
-      "downloaded_images": [],
+      "download_ok": true,
+      "ok": true,
+      "n_results": 14,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/FoodiesfeedImageClient/00000007.jpg",
+        "daily_test_results/FoodiesfeedImageClient/00000009.jpg",
+        "daily_test_results/FoodiesfeedImageClient/00000001.jpg",
+        "daily_test_results/FoodiesfeedImageClient/00000002.jpg",
+        "daily_test_results/FoodiesfeedImageClient/00000006.jpg",
+        "daily_test_results/FoodiesfeedImageClient/00000005.jpg",
+        "daily_test_results/FoodiesfeedImageClient/00000003.jpg",
+        "daily_test_results/FoodiesfeedImageClient/00000004.jpg",
+        "daily_test_results/FoodiesfeedImageClient/00000008.jpg",
+        "daily_test_results/FoodiesfeedImageClient/00000010.jpg"
+      ],
       "search_samples": [
-        "https://media.istockphoto.com/id/2260825272/photo/pikachu-nudibranch.jpg?b=1&s=612x612&w=0&k=20&c=1johGI8LhnIhhfnsld4vQFIXe6il4oCjX3GAwE9PXO8=",
-        "https://media.istockphoto.com/id/2237954441/photo/pikachu-nudibranch.jpg?b=1&s=612x612&w=0&k=20&c=DvppHdr_SZaFYKsSCkqM7mzh-H2rqRmvABGEvyv84CI=",
+        "https://media.istockphoto.com/id/2260825271/photo/pikachu-nudibranch.jpg?b=1&s=612x612&w=0&k=20&c=657zqvI3rRla10EexveCLWrLXNrmAK7fRWfl-0P5fZA=",
+        "https://media.istockphoto.com/id/2237954495/photo/pikachu-nudibranch.jpg?b=1&s=612x612&w=0&k=20&c=Fyw7lvMYkdNZXOW8i6YEZ6XAyHDPko41lghO9S9A-aw=",
         "https://media.istockphoto.com/id/2237952826/photo/pikachu-nudibranch.jpg?b=1&s=612x612&w=0&k=20&c=01bONGVZNFnKnMAhwo5-rdiFkml0prTF1sUyRXR2oCQ="
       ]
     },
     {
       "name": "DanbooruImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
+      "download_ok": true,
+      "ok": true,
       "n_results": 10,
-      "n_downloaded": 0,
-      "error": "search_error: KeyError: 'candidate_urls'",
-      "downloaded_images": [],
-      "search_samples": []
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/DanbooruImageClient/00000007.jpg",
+        "daily_test_results/DanbooruImageClient/00000009.jpg",
+        "daily_test_results/DanbooruImageClient/00000006.jpg",
+        "daily_test_results/DanbooruImageClient/00000001.png",
+        "daily_test_results/DanbooruImageClient/00000005.jpg",
+        "daily_test_results/DanbooruImageClient/00000003.jpg",
+        "daily_test_results/DanbooruImageClient/00000004.jpg",
+        "daily_test_results/DanbooruImageClient/00000008.jpg",
+        "daily_test_results/DanbooruImageClient/00000010.jpg",
+        "daily_test_results/DanbooruImageClient/00000002.png"
+      ],
+      "search_samples": [
+        "https://cdn.donmai.us/original/7d/11/7d11c0c895e016bfb9338ffb29741ed8.png",
+        "https://cdn.donmai.us/original/43/8f/438ffd7c3db51d0b5c4e155a59ff8f6f.png",
+        "https://cdn.donmai.us/original/59/ff/59ffdc540cc392e3b0256fbcf7763b46.jpg"
+      ]
     },
     {
       "name": "HuabanImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
+      "download_ok": true,
+      "ok": true,
       "n_results": 45,
-      "n_downloaded": 0,
-      "error": "search_error: KeyError: 'candidate_urls'",
-      "downloaded_images": [],
-      "search_samples": []
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/HuabanImageClient/00000008.png",
+        "daily_test_results/HuabanImageClient/00000004.webp",
+        "daily_test_results/HuabanImageClient/00000006.png",
+        "daily_test_results/HuabanImageClient/00000001.png",
+        "daily_test_results/HuabanImageClient/00000010.png",
+        "daily_test_results/HuabanImageClient/00000003.jpg",
+        "daily_test_results/HuabanImageClient/00000009.png",
+        "daily_test_results/HuabanImageClient/00000005.png",
+        "daily_test_results/HuabanImageClient/00000007.png",
+        "daily_test_results/HuabanImageClient/00000002.png"
+      ],
+      "search_samples": [
+        "https://gd-hbimg-edge.huaban.com/9d8ee15c3106750430ab686dd678fed6738e056cb4c0-pqE10Y?auth_key=1774756800-0f055b8872284a4e9e499ad3c7d94ec0-0-9734df6062acf52dbb3beb74b233e153",
+        "https://gd-hbimg-edge.huaban.com/710fc985310a94a91e3f3e17f17803d979282f74fac04-7UB8fe?auth_key=1774756800-0f055b8872284a4e9e499ad3c7d94ec0-0-be67b40717dfe642dd1beabb54982ee9",
+        "https://gd-hbimg-edge.huaban.com/da5a9ce41b18f8baa0e6c71eca93b92bfe479f201c9250-almBTd?auth_key=1774756800-0f055b8872284a4e9e499ad3c7d94ec0-0-9106ec7152127d14b361b217596471d0"
+      ]
     },
     {
       "name": "BaiduImageClient",
-      "search_ok": true,
+      "search_ok": false,
       "download_ok": false,
       "ok": false,
-      "n_results": 30,
+      "n_results": 0,
       "n_downloaded": 0,
-      "error": "download_error: AttributeError: 'dict' object has no attribute 'save_path'",
+      "error": null,
       "downloaded_images": [],
-      "search_samples": [
-        "https://hellorfimg.zcool.cn/large/2437059527.jpg",
-        "https://res.cqnews.net/contentcloud/1/REPRINT/DEFAULT/PICTURE/2024/6/12/2712af869d1941519bde373972276dce_wh1024x683.png",
-        "https://hellorfimg.zcool.cn/large/1233741550.jpg"
-      ]
+      "search_samples": []
     },
     {
       "name": "DuckduckgoImageClient",
       "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 40,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/DuckduckgoImageClient/00000007.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000009.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000004.webp",
+        "daily_test_results/DuckduckgoImageClient/00000001.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000002.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000006.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000003.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000005.webp",
+        "daily_test_results/DuckduckgoImageClient/00000008.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000010.jpg"
+      ],
+      "search_samples": [
+        "https://img.pokemondb.net/artwork/large/pikachu.jpg",
+        "http://www.pixelstalk.net/wp-content/uploads/2016/03/Pokemon-pikachu-hd-wallpaper-background.jpg",
+        "https://wallpapers.com/images/hd/pikachu-4k-leaping-in-air-xtmr33dqibublbkz.jpg"
+      ]
+    },
+    {
+      "name": "UnsplashImageClient",
+      "search_ok": false,
       "download_ok": false,
       "ok": false,
-      "n_results": 48,
+      "n_results": 0,
       "n_downloaded": 0,
-      "error": "search_error: KeyError: 'candidate_urls'",
+      "error": null,
       "downloaded_images": [],
       "search_samples": []
     },
     {
-      "name": "UnsplashImageClient",
-      "search_ok": true,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 20,
-      "n_downloaded": 0,
-      "error": "download_error: AttributeError: 'dict' object has no attribute 'save_path'",
-      "downloaded_images": [],
-      "search_samples": [
-        "https://plus.unsplash.com/premium_photo-1661877112841-0efa68b18527?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8Q3V0ZSUyMEFuaW1hbHN8ZW58MHx8fHwxNzY1NzU4Mzg3fDA&ixlib=rb-4.1.0",
-        "https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8Q3V0ZSUyMEFuaW1hbHN8ZW58MHx8fHwxNzY1NzU4Mzg3fDA&ixlib=rb-4.1.0",
-        "https://images.unsplash.com/photo-1578956919791-af7615c94b90?ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8Q3V0ZSUyMEFuaW1hbHN8ZW58MHx8fHwxNzY1NzU4Mzg3fDA&ixlib=rb-4.1.0"
-      ]
-    },
-    {
       "name": "WeiboImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 12,
-      "n_downloaded": 0,
-      "error": "download_error: AttributeError: 'dict' object has no attribute 'save_path'",
-      "downloaded_images": [],
+      "download_ok": true,
+      "ok": true,
+      "n_results": 69,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/WeiboImageClient/00000007.jpg",
+        "daily_test_results/WeiboImageClient/00000009.jpg",
+        "daily_test_results/WeiboImageClient/00000001.jpg",
+        "daily_test_results/WeiboImageClient/00000002.jpg",
+        "daily_test_results/WeiboImageClient/00000006.jpg",
+        "daily_test_results/WeiboImageClient/00000005.jpg",
+        "daily_test_results/WeiboImageClient/00000003.jpg",
+        "daily_test_results/WeiboImageClient/00000004.jpg",
+        "daily_test_results/WeiboImageClient/00000008.jpg",
+        "daily_test_results/WeiboImageClient/00000010.jpg"
+      ],
       "search_samples": [
-        "https://wx2.sinaimg.cn/mw2000/006pPEeXgy1iapippmde0j316o0qojyj.jpg",
-        "https://wx3.sinaimg.cn/mw2000/006pPEeXgy1iapippknnmj30xc0ir199.jpg",
-        "https://wx2.sinaimg.cn/mw2000/006OLR7Hgy1iaotp9u1c6j30xc0xcdnf.jpg"
+        "https://wx4.sinaimg.cn/mw2000/006SJLVRgy1ib1ney1e34j30u01ste81.jpg",
+        "https://wx2.sinaimg.cn/mw2000/006SJLVRgy1ib1nexm1i2j30m80m8ahb.jpg",
+        "https://wx4.sinaimg.cn/mw2000/006SJLVRgy1ib1nexj48cj30m80m8tfl.jpg"
       ]
     },
     {
       "name": "I360ImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
+      "download_ok": true,
+      "ok": true,
       "n_results": 57,
-      "n_downloaded": 0,
-      "error": "search_error: KeyError: 'candidate_urls'",
-      "downloaded_images": [],
-      "search_samples": []
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/I360ImageClient/00000007.jpg",
+        "daily_test_results/I360ImageClient/00000009.jpg",
+        "daily_test_results/I360ImageClient/00000001.jpg",
+        "daily_test_results/I360ImageClient/00000002.jpg",
+        "daily_test_results/I360ImageClient/00000006.png",
+        "daily_test_results/I360ImageClient/00000010.png",
+        "daily_test_results/I360ImageClient/00000005.jpg",
+        "daily_test_results/I360ImageClient/00000003.jpg",
+        "daily_test_results/I360ImageClient/00000004.jpg",
+        "daily_test_results/I360ImageClient/00000008.jpg"
+      ],
+      "search_samples": [
+        "https://hbimg.huabanimg.com/432fc39f6fee536282a83428617b7c378acae5348224-cfbgNe_fw658",
+        "http://picnew10.photophoto.cn/20160816/pikachu-pikaqiu-22859434_1.jpg",
+        "https://hbimg.huabanimg.com/c2265b014fb1d64dbd237592c6930daed879b13b4c61d-JicptY_fw658"
+      ]
     },
     {
       "name": "FreeNatureStockImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
+      "download_ok": true,
+      "ok": true,
       "n_results": 40,
-      "n_downloaded": 0,
-      "error": "search_error: KeyError: 'candidate_urls'",
-      "downloaded_images": [],
-      "search_samples": []
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/FreeNatureStockImageClient/00000007.jpg",
+        "daily_test_results/FreeNatureStockImageClient/00000009.jpg",
+        "daily_test_results/FreeNatureStockImageClient/00000001.jpg",
+        "daily_test_results/FreeNatureStockImageClient/00000002.jpg",
+        "daily_test_results/FreeNatureStockImageClient/00000006.jpg",
+        "daily_test_results/FreeNatureStockImageClient/00000005.jpg",
+        "daily_test_results/FreeNatureStockImageClient/00000003.jpg",
+        "daily_test_results/FreeNatureStockImageClient/00000004.jpg",
+        "daily_test_results/FreeNatureStockImageClient/00000008.jpg",
+        "daily_test_results/FreeNatureStockImageClient/00000010.jpg"
+      ],
+      "search_samples": [
+        "https://freenaturestock.com/wp-content/uploads/freenaturestock-2300-768x450.jpg",
+        "https://freenaturestock.com/wp-content/uploads/freenaturestock-2274-768x1152.jpg",
+        "https://freenaturestock.com/wp-content/uploads/freenaturestock-2105-768x1152.jpg"
+      ]
     },
     {
       "name": "SogouImageClient",
-      "search_ok": false,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 0,
-      "n_downloaded": 0,
-      "error": "search_error: AttributeError: 'dict' object has no attribute 'identifier'",
-      "downloaded_images": [],
-      "search_samples": []
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 48,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/SogouImageClient/00000007.jpg",
+        "daily_test_results/SogouImageClient/00000009.jpg",
+        "daily_test_results/SogouImageClient/00000001.jpg",
+        "daily_test_results/SogouImageClient/00000002.jpg",
+        "daily_test_results/SogouImageClient/00000006.jpg",
+        "daily_test_results/SogouImageClient/00000005.jpg",
+        "daily_test_results/SogouImageClient/00000003.jpg",
+        "daily_test_results/SogouImageClient/00000004.jpg",
+        "daily_test_results/SogouImageClient/00000008.jpg",
+        "daily_test_results/SogouImageClient/00000010.jpg"
+      ],
+      "search_samples": [
+        "http://imge.kugou.com/stdmusic/20151231/20151231171419566617.jpg",
+        "http://img.zcool.cn/community/01a05e58c27767a801219c77de1f11.jpg@1280w_1l_2o_100sh.jpg",
+        "https://b-ssl.duitang.com/uploads/item/201209/23/20120923095021_8dreA.thumb.700_0.jpeg"
+      ]
     },
     {
       "name": "YandexImageClient",
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 30,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/YandexImageClient/00000007.jpg",
+        "daily_test_results/YandexImageClient/00000001.jpg",
+        "daily_test_results/YandexImageClient/00000006.jpg",
+        "daily_test_results/YandexImageClient/00000005.jpg",
+        "daily_test_results/YandexImageClient/00000003.jpg",
+        "daily_test_results/YandexImageClient/00000004.jpg",
+        "daily_test_results/YandexImageClient/00000002.webp",
+        "daily_test_results/YandexImageClient/00000008.jpg",
+        "daily_test_results/YandexImageClient/00000010.jpg",
+        "daily_test_results/YandexImageClient/00000009.webp"
+      ],
+      "search_samples": [
+        "https://i.pinimg.com/736x/41/71/1a/41711ad4391781ab75038408cac64d50.jpg",
+        "https://static.wikia.nocookie.net/fantendo/images/0/0e/Detective_pikachussbu.png/revision/latest?cb=20181206045328",
+        "https://i.ytimg.com/vi/UrCsoRMwO-0/hqdefault.jpg"
+      ]
+    },
+    {
+      "name": "EverypixelImageClient",
       "search_ok": false,
       "download_ok": false,
       "ok": false,
       "n_results": 0,
       "n_downloaded": 0,
-      "error": "search_error: AttributeError: 'dict' object has no attribute 'identifier'",
+      "error": "search_error: RuntimeError: [system] RuntimeError(\"Failed to launch ChromiumPage, env_info={'platform': 'linux', 'machine': 'x86_64', 'is_ci': True, 'is_github_actions': True, 'is_root': False, 'dev_shm_mb': 7994.3671875, 'browser_path': None, 'headless': False}, error=BrowserConnectError()\")\n[download] RuntimeError(\"Failed to launch ChromiumPage, env_info={'platform': 'linux', 'machine': 'x86_64', 'is_ci': True, 'is_github_actions': True, 'is_root': False, 'dev_shm_mb': 7994.3671875, 'browser_path': '/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/imagedl/modules/utils/chrome_bin/linux64/147.0.7727.24/chrome-linux64/chrome', 'headless': False}, error=BrowserConnectError()\")",
       "downloaded_images": [],
       "search_samples": []
-    },
-    {
-      "name": "EverypixelImageClient",
-      "search_ok": true,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 10,
-      "n_downloaded": 0,
-      "error": "download_error: AttributeError: 'dict' object has no attribute 'save_path'",
-      "downloaded_images": [],
-      "search_samples": [
-        "https://image.everypixel.com/blockchain/preview/0b/78/0b78dfb8f8a94dc68fddba122eb00383.jpg",
-        "https://image.everypixel.com/blockchain/70/94/7094e958-d679-43e3-ab66-4f39625fa81e.jpg",
-        "https://image.everypixel.com/blockchain/e0/57/e057bf9f-6bbb-4bb8-b466-df6d203e771d.jpg"
-      ]
     },
     {
       "name": "GoogleImageClient",
@@ -181,72 +310,148 @@
     },
     {
       "name": "SafebooruImageClient",
-      "search_ok": false,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 0,
-      "n_downloaded": 0,
-      "error": "search_error: AttributeError: 'dict' object has no attribute 'identifier'",
-      "downloaded_images": [],
-      "search_samples": []
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 10,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/SafebooruImageClient/00000007.jpg",
+        "daily_test_results/SafebooruImageClient/00000006.jpg",
+        "daily_test_results/SafebooruImageClient/00000001.png",
+        "daily_test_results/SafebooruImageClient/00000005.jpg",
+        "daily_test_results/SafebooruImageClient/00000003.jpg",
+        "daily_test_results/SafebooruImageClient/00000004.jpg",
+        "daily_test_results/SafebooruImageClient/00000009.png",
+        "daily_test_results/SafebooruImageClient/00000008.jpg",
+        "daily_test_results/SafebooruImageClient/00000010.jpg",
+        "daily_test_results/SafebooruImageClient/00000002.png"
+      ],
+      "search_samples": [
+        "https://safebooru.org/images/4403/f9282ef8a90866d18bab5d0081c29a0e779a5db9.png",
+        "https://safebooru.org/images/4403/415e3c33c1499627e5dbc0ff3c23c09614357507.png",
+        "https://safebooru.org/images/4403/539504ac4330c6947f809d280ce84c135dc9b75e.jpg"
+      ]
     },
     {
       "name": "YahooImageClient",
-      "search_ok": false,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 0,
-      "n_downloaded": 0,
-      "error": "search_error: AttributeError: 'dict' object has no attribute 'identifier'",
-      "downloaded_images": [],
-      "search_samples": []
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 60,
+      "n_downloaded": 9,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/YahooImageClient/00000007.jpg",
+        "daily_test_results/YahooImageClient/00000009.jpg",
+        "daily_test_results/YahooImageClient/00000004.webp",
+        "daily_test_results/YahooImageClient/00000001.jpg",
+        "daily_test_results/YahooImageClient/00000002.jpg",
+        "daily_test_results/YahooImageClient/00000006.jpg",
+        "daily_test_results/YahooImageClient/00000003.jpg",
+        "daily_test_results/YahooImageClient/00000005.webp",
+        "daily_test_results/YahooImageClient/00000010.jpg"
+      ],
+      "search_samples": [
+        "https://img.pokemondb.net/artwork/large/pikachu.jpg",
+        "http://www.pixelstalk.net/wp-content/uploads/2016/03/Pokemon-pikachu-hd-wallpaper-background.jpg",
+        "https://wallpapers.com/images/hd/pikachu-4k-leaping-in-air-xtmr33dqibublbkz.jpg"
+      ]
     },
     {
       "name": "GelbooruImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
+      "download_ok": true,
+      "ok": true,
       "n_results": 42,
-      "n_downloaded": 0,
-      "error": "search_error: KeyError: 'candidate_urls'",
-      "downloaded_images": [],
-      "search_samples": []
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/GelbooruImageClient/00000007.jpg",
+        "daily_test_results/GelbooruImageClient/00000009.jpg",
+        "daily_test_results/GelbooruImageClient/00000002.jpg",
+        "daily_test_results/GelbooruImageClient/00000006.jpg",
+        "daily_test_results/GelbooruImageClient/00000001.png",
+        "daily_test_results/GelbooruImageClient/00000005.jpg",
+        "daily_test_results/GelbooruImageClient/00000003.jpg",
+        "daily_test_results/GelbooruImageClient/00000004.jpg",
+        "daily_test_results/GelbooruImageClient/00000008.jpg",
+        "daily_test_results/GelbooruImageClient/00000010.jpg"
+      ],
+      "search_samples": [
+        "https://gelbooru.com//images/7d/11/7d11c0c895e016bfb9338ffb29741ed8.png",
+        "https://img2.gelbooru.com//samples/19/d9/sample_19d9e67bfe4024e7f1f4c93f7262f679.jpg",
+        "https://img2.gelbooru.com//images/59/ff/59ffdc540cc392e3b0256fbcf7763b46.jpg"
+      ]
     },
     {
       "name": "PexelsImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
+      "download_ok": true,
+      "ok": true,
       "n_results": 24,
-      "n_downloaded": 0,
-      "error": "search_error: KeyError: 'candidate_urls'",
-      "downloaded_images": [],
-      "search_samples": []
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/PexelsImageClient/00000007.jpg",
+        "daily_test_results/PexelsImageClient/00000009.jpg",
+        "daily_test_results/PexelsImageClient/00000001.jpg",
+        "daily_test_results/PexelsImageClient/00000002.jpg",
+        "daily_test_results/PexelsImageClient/00000006.jpg",
+        "daily_test_results/PexelsImageClient/00000005.jpg",
+        "daily_test_results/PexelsImageClient/00000003.jpg",
+        "daily_test_results/PexelsImageClient/00000004.jpg",
+        "daily_test_results/PexelsImageClient/00000008.jpg",
+        "daily_test_results/PexelsImageClient/00000010.jpg"
+      ],
+      "search_samples": [
+        "https://images.pexels.com/photos/36495537/pexels-photo-36495537.jpeg?cs=srgb&dl=pexels-hakim-level-1458090143-36495537.jpg&fm=jpg",
+        "https://images.pexels.com/photos/33971762/pexels-photo-33971762.jpeg?cs=srgb&dl=pexels-aibek-skakov-418917601-33971762.jpg&fm=jpg",
+        "https://images.pexels.com/photos/33984198/pexels-photo-33984198.jpeg?cs=srgb&dl=pexels-aibek-skakov-418917601-33984198.jpg&fm=jpg"
+      ]
     },
     {
       "name": "PixabayImageClient",
-      "search_ok": false,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 0,
-      "n_downloaded": 0,
-      "error": "search_error: AttributeError: 'dict' object has no attribute 'identifier'",
-      "downloaded_images": [],
-      "search_samples": []
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 20,
+      "n_downloaded": 10,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/PixabayImageClient/00000008.png",
+        "daily_test_results/PixabayImageClient/00000003.png",
+        "daily_test_results/PixabayImageClient/00000001.jpg",
+        "daily_test_results/PixabayImageClient/00000002.jpg",
+        "daily_test_results/PixabayImageClient/00000006.png",
+        "daily_test_results/PixabayImageClient/00000005.jpg",
+        "daily_test_results/PixabayImageClient/00000009.png",
+        "daily_test_results/PixabayImageClient/00000007.png",
+        "daily_test_results/PixabayImageClient/00000004.png",
+        "daily_test_results/PixabayImageClient/00000010.jpg"
+      ],
+      "search_samples": [
+        "https://pixabay.com/get/gda1aff64682ed4b8775b7a6a5790e4527e38ce8912c1cbeffe8542f6444f95bef29eaf36ccecd39828bfe3b0098f4db4f717515406e5f6c0b052269f45ce9dc9_1280.jpg",
+        "https://pixabay.com/get/g6c038eda9cefb07f5b2761e17bf70861898a1b184cdfa139a6c0276621e0c42c1a6214511000e3306ab6e7b166777909df7f4323de514708e59fff1c21e27ad6_1280.jpg",
+        "https://pixabay.com/get/g68bddb4eb2a75f2db2fcc57c381494bf792c2626ab414140588e0f36dadca287559f632b7011fe1b37cfcd606f04caf32687ef50fc7dddb43cee3839f365a94e_1280.png"
+      ]
     },
     {
       "name": "DimTownImageClient",
       "search_ok": true,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 3,
-      "n_downloaded": 0,
-      "error": "download_error: AttributeError: 'dict' object has no attribute 'save_path'",
-      "downloaded_images": [],
+      "download_ok": true,
+      "ok": true,
+      "n_results": 2,
+      "n_downloaded": 2,
+      "error": null,
+      "downloaded_images": [
+        "daily_test_results/DimTownImageClient/00000001.jpg",
+        "daily_test_results/DimTownImageClient/00000002.jpg"
+      ],
       "search_samples": [
-        "https://lz.sinaimg.cn/mw2000/007PFMahgy1i8ga1q2q5ij30u01c942p.jpg",
-        "https://lz.sinaimg.cn/mw2000/007PFMahgy1i8ga1qnwbej30u018y430.jpg",
-        "https://lz.sinaimg.cn/mw2000/007PFMahgy1i8ga1s3kcaj316m0u0ju6.jpg"
+        "https://cc-img.townimg.com/uploads/2022/02/20220223023651863.jpg",
+        "https://cc-img.townimg.com/uploads/2022/02/20220223023651863-800x706.jpg"
       ]
     }
   ]
