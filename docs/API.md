@@ -32,49 +32,55 @@ ImageClient(
 
 Arguments:
 
-- **`image_sources`**  
-  Image sources to enable.  
-  - Type: `list | str`  
+- **`image_sources`**
+  Image sources to enable.
+  - Type: `list | str`
   - Default: `"BaiduImageClient"`
-  Examples:  
+  
+  Examples:
   ```python
+  # str
   image_sources="BaiduImageClient"
-  ```
-  ```python
+  # list
   image_sources=["BaiduImageClient", "BingImageClient"]
-  ```  
-  Notes:  
-  - A string is converted to a one-item list.  
-  - Invalid source names are ignored.  
-  - Initialization fails if no valid source remains.  
+  ```
+  
+  Notes:
+  - A string is converted to a one-item list.
+  - Invalid source names are ignored.
+  - Initialization fails if no valid source remains.
 
-- **`init_image_clients_cfg`**  
-  Per-source initialization config.  
+- **`init_image_clients_cfg`**
+  Per-source initialization config.
   - Type: `dict`
-  Example:  
+  
+  Example:
   ```python
   init_image_clients_cfg={
     "BaiduImageClient": {"work_dir": "outputs/baidu"},
     "BingImageClient": {"work_dir": "outputs/bing", "max_retries": 8},
   }
   ```
-  Common fields include:  
-  - `work_dir`  
-  - `max_retries`  
-  - `auto_set_proxies`  
-  - `random_update_ua`  
-  - `maintain_session`  
-  - `disable_print`  
-  - `default_search_cookies`  
-  - `default_download_cookies`  
+  
+  Common fields include:
+  - `work_dir`
+  - `max_retries`
+  - `auto_set_proxies`
+  - `random_update_ua`
+  - `maintain_session`
+  - `disable_print`
+  - `default_search_cookies`
+  - `default_download_cookies`
+  
   Note:  
-  - In practice, pass a per-source config dict.  
+  - In practice, pass a per-source config dict.
 
 - **`clients_threadings`**  
-  Per-source thread count used by both search and download.  
-  - Type: `dict`  
+  Per-source thread count used by both search and download.
+  - Type: `dict`
   - Default for missing sources: `5`
-  Example:  
+  
+  Example:
   ```python
   clients_threadings={
     "BaiduImageClient": 5,
@@ -83,15 +89,17 @@ Arguments:
   ```  
 
 - **`requests_overrides`**  
-  Per-source request arguments forwarded to the underlying HTTP requests.  
-  - Type: `dict`  
+  Per-source request arguments forwarded to the underlying HTTP requests.
+  - Type: `dict`
   - Default for missing sources: `{}`
-  Typical fields:  
-  - `timeout`  
-  - `headers`  
-  - `proxies`  
-  - `cookies`  
-  Example:  
+  
+  Typical fields:
+  - `timeout`
+  - `headers`
+  - `proxies`
+  - `cookies`
+  
+  Example:
   ```python
   requests_overrides={
     "BaiduImageClient": {"timeout": 10},
@@ -99,20 +107,22 @@ Arguments:
   }
   ```
 
-- **`search_filters`**  
-  Per-source search filters.  
-  - Type: `dict`  
+- **`search_filters`**
+  Per-source search filters.
+  - Type: `dict`
   - Default for missing sources: `{}`
-  Example:  
+  
+  Example:
   ```python
   search_filters={
     "BaiduImageClient": {"type": "face", "size": "large"},
     "BingImageClient": {"license": "commercial", "date": "pastmonth"},
   }
   ```
-  Notes:  
-  - Supported filter keys depend on the selected source.  
-  - Unsupported filters may be ignored or rejected by the source implementation.  
+  
+  Notes:
+  - Supported filter keys depend on the selected source.
+  - Unsupported filters may be ignored or rejected by the source implementation.
 
 #### `ImageClient.search()`
 
@@ -124,23 +134,26 @@ ImageClient.search(keyword, search_limits_per_source: int | dict = 1000) -> dict
 
 Arguments:
 
-- **`keyword`**  
-  Search keyword.  
-  Example:  
+- **`keyword`**
+  Search keyword.
+  
+  Example:
   ```python
   "golden retriever"
   ```  
 
-- **`search_limits_per_source`**  
-  Maximum number of results to request from each source.  
-  You can pass either:  
+- **`search_limits_per_source`**
+  Maximum number of results to request from each source.
+  
+  You can pass either:
   - one integer for all sources, or  
   - one dictionary for per-source limits
-  Examples:  
+  
+  Examples:
   ```python
+  # int
   results = client.search("dog", search_limits_per_source=30)
-  ```  
-  ```python
+  # dict
   results = client.search(
     "dog",
     search_limits_per_source={
@@ -148,11 +161,9 @@ Arguments:
         "BingImageClient": 20,
     },
   )
-  ```  
+  ```
 
-Returns:
-
-A dictionary keyed by source name:
+Returns (A dictionary keyed by source name):
 
 ```python
 {
@@ -212,22 +223,25 @@ ImageClient.download(image_infos: list[ImageInfo] | dict[str, list[ImageInfo]]) 
 
 Arguments:
 
-- **`image_infos`**  
-  Can be either:  
+- **`image_infos`**
+  Can be either:
   - a dictionary returned by `ImageClient.search()`, or
   - a flat list of `ImageInfo`
+  
   Examples:  
   ```python
+  # dict
   downloaded = client.download(results)
-  ```
-  ```python
+  # flat list
   flat_list = results["BaiduImageClient"]
   downloaded = client.download(flat_list)
   ```
 
-Returns:
+Returns (A flat list of successfully downloaded `ImageInfo` objects):
 
-A flat list of successfully downloaded `ImageInfo` objects.
+```python
+[ImageInfo, ImageInfo, ...]
+```
 
 Behavior:
 
