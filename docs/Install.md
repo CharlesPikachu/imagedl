@@ -20,6 +20,6 @@ cd imagedl
 python setup.py install
 ```
 
-Please note that some image sources need to be crawled using [DrissionPage](https://www.drissionpage.cn/). 
+Please note that some image sources need to be crawled using [DrissionPage](https://www.drissionpage.cn/), such as `EverypixelImageClient` and `GoogleImageClient`. 
 If DrissionPage cannot find a suitable browser in the current environment, it will automatically download the latest compatible beta version of Google Chrome for the current system. 
 So if you notice that the program is downloading a browser, there is no need to be overly concerned.

@@ -12,6 +12,7 @@ import click
 import json_repair
 from threading import Lock
 from typing import Iterable
+from itertools import chain
 from concurrent.futures import ThreadPoolExecutor
 from rich.progress import Progress, TextColumn, BarColumn, TimeRemainingColumn, MofNCompleteColumn
 if __name__ == '__main__':
@@ -78,7 +79,7 @@ class ImageClient():
             # download
             self.download(image_infos=search_results)
     '''search'''
-    def search(self, keyword, search_limits_per_source: int | dict = 1000):
+    def search(self, keyword, search_limits_per_source: int | dict = 1000) -> dict[str, list[ImageInfo]]:
         self.logger_handle.info(f'Searching {colorize(keyword, "highlight")} From {colorize("|".join(self.image_sources), "highlight")}')
         max_workers, main_progress_lock = min(len(self.image_sources), 10), Lock()
         if isinstance(search_limits_per_source, (int, float)): search_limits_per_source = {key: search_limits_per_source for key in self.image_sources}
@@ -93,13 +94,15 @@ class ImageClient():
             with ThreadPoolExecutor(max_workers=max_workers) as ex:
                 return dict(ex.map(search_func, self.image_sources))
     '''download'''
-    def download(self, image_infos: list[ImageInfo]):
-        classified_image_infos: dict[str, list] = {}
+    def download(self, image_infos: list[ImageInfo] | dict[str, list[ImageInfo]]) -> list[ImageInfo]:
+        if isinstance(image_infos, dict): image_infos = list(chain.from_iterable(image_infos.values()))
+        classified_image_infos: dict[str, list[ImageInfo]] = {}; downloaded_image_infos: list[ImageInfo] = []
         for image_info in image_infos:
             if image_info.source in classified_image_infos: classified_image_infos[image_info.source].append(image_info)
             else: classified_image_infos[image_info.source] = [image_info]
         for source, source_image_infos in classified_image_infos.items():
-            self.image_clients[source].download(image_infos=source_image_infos, num_threadings=self.clients_threadings[source], request_overrides=self.requests_overrides[source])
+            downloaded_image_infos.extend(self.image_clients[source].download(image_infos=source_image_infos, num_threadings=self.clients_threadings[source], request_overrides=self.requests_overrides[source]))
+        return downloaded_image_infos
     '''processinputs'''
     def processinputs(self, input_tip='', prefix: str = '\n'):
         # accept user inputs

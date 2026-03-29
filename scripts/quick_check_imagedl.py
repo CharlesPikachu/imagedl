@@ -20,7 +20,6 @@ QUERiES = ["Pikachu", "JK", "Cute Animals", "Mountains", "Girls"]
 MAX_SEARCH = 10
 MAX_DL_PER_CLIENT = 10
 RESULTS_ROOT = Path("daily_test_results")
-IMAGE_EXTENSIONS = (".rgb", ".gif", ".pbm", ".pgm", ".ppm", ".tif", ".tiff", ".rast", ".xbm", ".jpeg", ".jpg", ".bmp", ".png", ".webp", ".exr", ".svg", ".avif", ".heic", ".heif")
 SEARCH_SUPPLEMENT = { # It seems that the server used in the GitHub Action cannot access some search APIs, so we will skip the check and use SEARCH_SUPPLEMENT.
     'BaiduImageClient': [
         ImageInfo(source='BaiduImageClient', candidate_download_urls=['https://hellorfimg.zcool.cn/large/2437059527.jpg', 'https://img1.baidu.com/it/u=2136025053,3600010570&fm=253&fmt=auto&app=138&f=JPEG?w=684&h=500', 'https://hellorfimg.zcool.cn/large/2437059527.jpg', 'https://img1.baidu.com/it/u=2136025053,3600010570&fm=253&fmt=auto&app=138&f=JPEG?w=684&h=500', 'https://img1.baidu.com/it/u=2136025053,3600010570&fm=253&fmt=auto&app=138&f=JPEG?w=684&h=500'], identifier='https://hellorfimg.zcool.cn/large/2437059527.jpg', work_dir='tmp/BaiduImageClient/2025-11-17-01-21-12 CuteAnimals', save_path='tmp/BaiduImageClient/2025-11-17-01-21-12 CuteAnimals/00000001'),
@@ -128,8 +127,8 @@ def main():
         # --download checking
         try:
             subset = image_infos[:MAX_DL_PER_CLIENT]
-            client.download(subset, num_threadings=1)
-            n_downloaded = len([os.path.join(r, f) for r, _, fs in os.walk(tmp_dir) for f in fs if f.lower().endswith(IMAGE_EXTENSIONS)])
+            downloaded_image_infos = client.download(subset, num_threadings=1)
+            n_downloaded = len(downloaded_image_infos)
             status["n_downloaded"] = n_downloaded
             status["download_ok"] = status["n_downloaded"] > 0
             print(f"  Downloaded images: {n_downloaded} (Success)" if status["download_ok"] else f"  Downloaded images: {n_downloaded} (NULL)")
@@ -146,7 +145,7 @@ def main():
             continue
         # --moving to target_dir
         shutil.rmtree(target_dir, ignore_errors=True); os.makedirs(target_dir)
-        [shutil.move(os.path.join(r, f), target_dir) for r, _, fs in os.walk(tmp_dir) for f in fs if f.lower().endswith(IMAGE_EXTENSIONS)]
+        [shutil.move(os.path.join(r, f), target_dir) for r, _, fs in os.walk(tmp_dir) for f in fs]
         shutil.rmtree(tmp_dir, ignore_errors=True)
         status["downloaded_images"] = [str(p.as_posix()) for p in target_dir.glob("*")]
         # --summary

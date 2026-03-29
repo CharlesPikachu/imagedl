@@ -1,17 +1,37 @@
 # Quick Start
 
-After installing imagedl, you can use the following few lines of code to quickly get started with it,
+`imagedl` is built around `imagedl.ImageClient`. In the current implementation, `ImageClient` accepts one or more sources through `image_sources`, and lets you configure each source with `init_image_clients_cfg`, `clients_threadings`, `requests_overrides`, and `search_filters`. When no source is specified, the default source is `BaiduImageClient`.
 
-```python
+#### The simplest working example
+
+Start with one source and a small search limit. This is the easiest way to confirm that your environment is set up correctly.
+
+~~~python
+import random
 from imagedl import imagedl
 
-image_client = imagedl.ImageClient(image_source='BaiduImageClient')
-image_client.startcmdui()
-```
+client = imagedl.ImageClient(image_sources=["BaiduImageClient"], init_image_clients_cfg={})
+search_results = client.search(keyword="cute cats", search_limits_per_source=10)
+downloaded_results = client.download(image_infos=search_results)
 
-where `image_source` is used to specify the image search and download engine.
-Of course, you can equivalently enter `imagedl -i "BaiduImageClient"` in the terminal to execute the above code.
-`imagedl --help` displays the basic usage of the command-line tool.
+print(f"found {sum(len(v) for v in search_results.values())} items")
+print(f"downloaded {sum(len(v) for v in downloaded_results.values())} items")
+print('random example >>> ')
+print(random.choice(downloaded_results))
+~~~
+
+In the current API, `search()` returns a dictionary whose keys are source names and whose values are lists of `ImageInfo` objects. The updated `download()` method can now accept either:
+
+- the original dictionary returned by `search()`
+- a flat list of `ImageInfo` objects
+
+So the normal workflow is now simply: 
+
+*search -> download*
+
+#### CLI options
+
+The package also defines a command-line interface with these main options:
 
 ```bash
 Usage: imagedl [OPTIONS]
@@ -21,181 +41,298 @@ Options:
   -k, --keyword TEXT              The keywords for the image search. If left
                                   empty, an interactive terminal will open
                                   automatically.
-  -i, --image-source, --image_source [bingimageclient|baiduimageclient|googleimageclient|
-                                  i360imageclient|pixabayimageclient|yandeximageclient|
-                                  duckduckgoimageclient|sogouimageclient|yahooimageclient|
-                                  unsplashimageclient|danbooruimageclient|safebooruimageclient|
-                                  gelbooruimageclient|pexelsimageclient|huabanimageclient|
-                                  foodiesfeedimageclient|everypixelimageclient|weiboimageclient|
-                                  freenaturestockimageclient]
-                                  The image search and download source.
+  -s, --image-sources, --image_sources TEXT
+                                  The image search and download sources.
                                   [default: BaiduImageClient]
-  -s, --search-limits, --search_limits INTEGER RANGE
+  -c, --init-image-clients-cfg, --init_image_clients_cfg TEXT
+                                  Config such as `work_dir` for each image
+                                  client as a JSON string.
+  -o, --requests-overrides, --requests_overrides TEXT
+                                  Requests.get / Requests.post kwargs such as
+                                  `headers` and `proxies` for each image
+                                  client as a JSON string.
+  -t, --clients-threadings, --clients_threadings TEXT
+                                  Number of threads used for each image client
+                                  as a JSON string.
+  -f, --search-filters, --search_filters TEXT
+                                  Search filters for each image client as a
+                                  JSON string.
+  -l, --search-limits-per-source, --search_limits_per_source INTEGER RANGE
                                   Scale of image downloads.  [default: 1000;
                                   1<=x<=100000000.0]
-  -n, --num-threadings, --num_threadings INTEGER RANGE
-                                  Number of threads used.  [default: 5;
-                                  1<=x<=256]
-  -c, --init-image-client-cfg, --init_image_client_cfg TEXT
-                                  Client config such as `work_dir` as a JSON
-                                  string.
-  -r, --request-overrides, --request_overrides TEXT
-                                  Requests.get (or Requests.post) kwargs such
-                                  as `headers` and `proxies` as a JSON string.
   --help                          Show this message and exit.
 ```
 
-For class `imagedl.ImageClient`, the acceptable arguments include,
-
-- `image_source` (`str`, default: `'BaiduImageClient'`): The image search and download source, including `['BaiduImageClient', 'BingImageClient', 'GoogleImageClient', 'I360ImageClient', 'PixabayImageClient', 'YandexImageClient', 'DuckduckgoImageClient', 'SogouImageClient', 'YahooImageClient', 'UnsplashImageClient', 'GelbooruImageClient', 'SafebooruImageClient', 'DanbooruImageClient', 'PexelsImageClient', 'HuabanImageClient', 'FoodiesfeedImageClient', 'EverypixelImageClient', 'FreeNatureStockImageClient', 'WeiboImageClient']`.
-- `init_image_client_cfg` (`dict`, default: `{}`): Client initialization configuration such as `{'work_dir': 'images', 'max_retries': 5}`.
-- `search_limits` (`int`, default: `1000`): Scale of image downloads.
-- `num_threadings` (`int`, default: `5`): Number of threads used.
-- `request_overrides` (`dict`, default: `{}`): `requests.get` (or `requests.post`) kwargs such as `{'headers': {'User-Agent': xxx}, 'proxies': {}}`.
-
-The demonstration is as follows,
+The demonstration of running `imagedl -k "猫咪" -s "BaiduImageClient" -l 1000` is as follows,
 
 <div align="center">
   <img src="https://github.com/CharlesPikachu/imagedl/raw/main/docs/screenshot.gif" width="600"/>
 </div>
 <br />
 
-If you just want to do an image search, you can also do it like this,
+#### What happens during search and download
 
-```python
+Each source searches independently, using its own thread count, request overrides, and filters. 
+During searching, duplicate items are removed, and each result is assigned a unique save path automatically. 
+During downloading, the package groups results by source, tries the candidate image URLs one by one, detects the real file extension from the downloaded content, and then saves the file.
+
+#### Where files are saved
+
+By default, files are saved under `imagedl_outputs`. The actual folder structure is:
+
+~~~text
+imagedl_outputs/
+  <SourceName>/
+    <timestamp> <keyword>/
+      00000001.<ext>
+      00000002.<ext>
+      ...
+      search_results.pkl
+      download_results.pkl
+~~~
+
+The search stage writes `search_results.pkl`, and the download stage writes `download_results.pkl`. 
+Image filenames are numbered automatically, and the extension is added after the file content is successfully recognized.
+
+#### Main arguments of `ImageClient`
+
+The most important arguments are:
+
+- `image_sources`: a string or list of source names, such as `"BaiduImageClient"` or `["BaiduImageClient", "DuckduckgoImageClient"]`
+- `init_image_clients_cfg`: per-source initialization settings such as `work_dir`, `max_retries`, `maintain_session`, `cookies`, and curl-cffi-related options
+- `clients_threadings`: per-source thread counts used for search and download
+- `requests_overrides`: per-source request arguments such as custom headers or proxies
+- `search_filters`: per-source filter settings
+- `search_limits_per_source`: the number of images to search for each source when calling `search()`
+
+Internally, each source is initialized with defaults such as `work_dir="imagedl_outputs"`, `max_retries=5`, `maintain_session=False`, `auto_set_proxies=False`, `random_update_ua=False`, and disabled curl-cffi options unless you override them.
+
+#### Save images to a custom folder
+
+You can set a different output folder for each source through `init_image_clients_cfg`.
+
+~~~python
 from imagedl import imagedl
 
-image_client = imagedl.ImageClient(image_source='DuckduckgoImageClient', search_limits=1000, num_threadings=5)
-image_infos = image_client.search('cut animals', search_limits_overrides=10, num_threadings_overrides=1)
-print(image_infos)
-```
+client = imagedl.ImageClient(
+    image_sources=["BaiduImageClient"],
+    init_image_clients_cfg={
+        "BaiduImageClient": {
+            "work_dir": "my_images",
+            "max_retries": 8
+        }
+    }
+)
 
-In the code above, `search_limits_overrides` overrides the `search_limits` argument set when initializing `imagedl.ImageClient`, and `num_threadings_overrides` works in the same way.
-The output of this code looks like,
+search_results = client.search("sunset beach", search_limits_per_source=10)
+client.download(image_infos=search_results)
+~~~
 
-```python
-[
-    {
-        "candidate_urls": [
-            "https://img.freepik.com/.../cut-animal-cartoon-bundle-set_508290-2349.jpg",
-            "https://tse2.mm.bing.net/th/id/OIP.vD-8G0MjAMREv1bYbKaqEwHaHa..."
-        ],
-        "raw_data": {
-            "height": 626,
-            "width": 626,
-            "image": "https://img.freepik.com/.../cut-animal-cartoon-bundle-set_508290-2349.jpg",
-            "image_token": "fbff471d31328...",
-            "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.vD-8G0MjAMREv1bYbKaqEwHaHa...",
-            "thumbnail_token": "4ca07ad2aab9...",
-            "source": "Bing",
-            "title": "Premium Vector | Cut animal cartoon bundle set",
-            "url": "https://www.freepik.com/premium-vector/cut-animal-cartoon-bundle-set_25750969.htm"
-        },
-        "identifier": "fbff471d31328...",
-        "work_dir": "imagedl_outputs\\DuckduckgoImageClient\\2025-11-16-22-34-25 cutanimals",
-        "file_path": "imagedl_outputs\\DuckduckgoImageClient\\2025-11-16-22-34-25 cutanimals\\00000001"
+This is the recommended way to control where your files are saved.
+
+#### Search from multiple sources
+
+You can search several sources at once. In that case, it is usually best to configure thread count and output directory per source.
+
+~~~python
+from imagedl import imagedl
+
+client = imagedl.ImageClient(
+    image_sources=["BaiduImageClient", "DuckduckgoImageClient"],
+    init_image_clients_cfg={
+        "BaiduImageClient": {"work_dir": "outputs/baidu"},
+        "DuckduckgoImageClient": {"work_dir": "outputs/ddg"}
     },
-    ...
-]
-```
+    clients_threadings={
+        "BaiduImageClient": 4,
+        "DuckduckgoImageClient": 4
+    }
+)
 
-Then you can also call the image downloading function to download the images found by the search. The code is as follows,
+search_results = client.search(
+    keyword="golden retriever",
+    search_limits_per_source={
+        "BaiduImageClient": 10,
+        "DuckduckgoImageClient": 10
+    }
+)
 
-```python
+client.download(image_infos=search_results)
+~~~
+
+When `search_limits_per_source` is a single number, that same limit is applied to every source. When it is a dictionary, each source uses its own limit.
+
+#### Add request headers or proxies
+
+Use `requests_overrides` when you need custom headers, cookies, or proxies for a specific source.
+
+~~~python
 from imagedl import imagedl
 
-image_client = imagedl.ImageClient(image_source='DuckduckgoImageClient', search_limits=1000, num_threadings=5)
-image_infos = image_client.search('cut animals', search_limits_overrides=10, num_threadings_overrides=1)
-image_client.download(image_infos=image_infos)
-```
+client = imagedl.ImageClient(
+    image_sources=["BaiduImageClient"],
+    init_image_clients_cfg={},
+    requests_overrides={
+        "BaiduImageClient": {
+            "headers": {
+                "User-Agent": "Mozilla/5.0"
+            },
+            "proxies": {
+                "http": "http://127.0.0.1:7890",
+                "https": "http://127.0.0.1:7890"
+            }
+        }
+    }
+)
 
-If you prefer not to use the unified interface, you can also import a specific image search engine directly, as in the following code,
+search_results = client.search("mountains", search_limits_per_source=5)
+client.download(image_infos=search_results)
+~~~
 
-```python
+The package forwards these values to the underlying request calls for that source.
+
+#### A simple way to use one source directly
+
+If you only want to test or use a single website, you can import a concrete source client directly from `imagedl.modules.sources`. This is a very simple and beginner-friendly way to start.
+
+~~~python
+from imagedl.modules.sources import BaiduImageClient
+
+client = BaiduImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+~~~
+
+In this direct-source style:
+
+- `search()` returns a list of `ImageInfo` objects
+- `download()` takes that list directly
+- you do not need `imagedl.ImageClient`
+- you do not need to pass `image_sources`
+
+This style is convenient when you only care about one source and want the shortest possible code.
+
+You can choose from many built-in source clients:
+
+~~~python
 from imagedl.modules.sources import (
-    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, 
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient,
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient
+)
+~~~
+
+Here are some simple examples:
+
+~~~python
+from imagedl.modules.sources import (
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
     HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient
 )
 
-# bing tests
+# bing
 client = BingImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# 360 tests
+
+# 360
 client = I360ImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# baidu tests
+
+# baidu
 client = BaiduImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# sogou tests
+
+# sogou
 client = SogouImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# google tests
+
+# google
 client = GoogleImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# yandex tests
+
+# yandex
 client = YandexImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# pixabay tests
+
+# pixabay
 client = PixabayImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# duckduckgo tests
+
+# duckduckgo
 client = DuckduckgoImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# yahoo tests
+
+# yahoo
 client = YahooImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# unsplash tests
+
+# unsplash
 client = UnsplashImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# gelbooru tests
+
+# gelbooru
 client = GelbooruImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# safebooru tests
+
+# safebooru
 client = SafebooruImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# danbooru tests
+
+# danbooru
 client = DanbooruImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# pexels tests
+
+# pexels
 client = PexelsImageClient()
 image_infos = client.search('animals', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# dimtown tests 
+
+# dimtown
 client = DimTownImageClient()
 image_infos = client.search('JK', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# huaban tests 
+
+# huaban
 client = HuabanImageClient()
 image_infos = client.search('JK', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# foodiesfeed tests 
+
+# foodiesfeed
 client = FoodiesfeedImageClient()
 image_infos = client.search('pizza', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# everypixel tests (cookies required)
-client = EverypixelImageClient(default_search_cookies='xxxx')
+
+# everypixel
+client = EverypixelImageClient()
 image_infos = client.search('animals', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# freenaturestock tests 
+
+# freenaturestock
 client = FreeNatureStockImageClient()
 image_infos = client.search('mountains', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# weibo tests (cookies required)
+
+# weibo (cookies required)
 client = WeiboImageClient(default_search_cookies='xxxx')
 image_infos = client.search('animals', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-```
+~~~
+
+A good rule is:
+
+- use `imagedl.ImageClient` when you want a unified interface for one or more sources
+- use a direct source client when you want the shortest code for one specific source
