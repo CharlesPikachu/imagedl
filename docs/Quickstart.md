@@ -1,10 +1,14 @@
 # Quick Start
 
-`imagedl` is built around `imagedl.ImageClient`. In the current implementation, `ImageClient` accepts one or more sources through `image_sources`, and lets you configure each source with `init_image_clients_cfg`, `clients_threadings`, `requests_overrides`, and `search_filters`. When no source is specified, the default source is `BaiduImageClient`.
+`imagedl` is built around `imagedl.ImageClient`. 
+
+In the current implementation, `ImageClient` accepts one or more sources through `image_sources`, and lets you configure each source with `init_image_clients_cfg`, `clients_threadings`, `requests_overrides`, and `search_filters`. 
+
+When no source is specified, the default source is `BaiduImageClient`.
 
 #### The simplest working example
 
-Start with one source like "BaiduImageClient" and "BingImageClient" and a small search limit. This is the easiest way to confirm that your environment is set up correctly.
+Start with one source like `"BaiduImageClient"` and `"BingImageClient"` and a small search limit. This is the easiest way to confirm that your environment is set up correctly.
 
 ~~~python
 import random
