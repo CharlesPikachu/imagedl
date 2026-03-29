@@ -99,7 +99,7 @@ Arguments:
   }
   ```
 
-- **`search_filters`**
+- **`search_filters`**  
   Per-source search filters.  
   - Type: `dict`  
   - Default for missing sources: `{}`  
@@ -124,14 +124,14 @@ ImageClient.search(keyword, search_limits_per_source: int | dict = 1000) -> dict
 
 Arguments:
 
-- **`keyword`**
+- **`keyword`**  
   Search keyword.  
   Example:  
   ```python
   "golden retriever"
   ```  
 
-- **`search_limits_per_source`**
+- **`search_limits_per_source`**  
   Maximum number of results to request from each source.  
   You can pass either:  
   - one integer for all sources, or  
@@ -204,6 +204,70 @@ results = client.search(
   
 #### `ImageClient.download()`
 
+Downloads images returned by `ImageClient.search()`.
+
+```python
+ImageClient.download(image_infos: list[ImageInfo] | dict[str, list[ImageInfo]]) -> list[ImageInfo]
+```
+
+Arguments:
+
+- **`image_infos`**  
+  Can be either:  
+  - a dictionary returned by `ImageClient.search()`, or
+  - a flat list of `ImageInfo`
+  Examples:  
+  ```python
+  downloaded = client.download(results)
+  ```
+  ```python
+  flat_list = results["BaiduImageClient"]
+  downloaded = client.download(flat_list)
+  ```
+
+Returns:
+
+A flat list of successfully downloaded `ImageInfo` objects.
+
+Behavior:
+
+- If a dict is passed in, it is flattened automatically.
+- Images are regrouped internally by source before downloading.
+- Each source uses its configured thread count and request overrides.
+
+Example:
+
+```python
+results = client.search("puppy", search_limits_per_source=20)
+downloaded = client.download(results)
+
+print(results.keys())
+print(len(downloaded))
+```
+
+#### `ImageClient.startcmdui()`
+
+Starts the interactive command-line interface.
+
+Behavior:
+
+- prints basic program information
+- asks for a search keyword
+- runs `ImageClient.search()`
+- immediately runs `ImageClient.download()`
+
+Special inputs:
+
+- `q` or `Q`: quit
+- `r` or `R`: restart
+
+Example:
+
+```python
+client.startcmdui(search_limits_per_source=50)
+```
+
+## ``BaseImageClient`
 
 
 
