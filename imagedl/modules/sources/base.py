@@ -119,8 +119,8 @@ class BaseImageClient():
         # successful
         try:
             search_inputs, search_url, request_method = (search_url['inputs'], search_url['url'], search_url['method']) if isinstance(search_url, dict) else ({}, search_url, 'get')
-            (resp := {'get': self.get, 'post': self.post}[request_method](search_url, **search_inputs, **request_overrides)).raise_for_status()
-            resp.encoding = 'utf-8'; search_result = self._parsesearchresult(resp.text)
+            resp: requests.Response = getattr(self, request_method)(search_url, **search_inputs, **request_overrides)
+            resp.raise_for_status(); resp.encoding = 'utf-8'; search_result = self._parsesearchresult(resp.text)
             if isinstance(search_result, dict): search_result = ImageInfo.fromdict(search_result)
             if isinstance(search_result, ImageInfo): search_result = [search_result]
             assert isinstance(search_result, Iterable), 'format of search_result should be in "list[ImageInfo]", "dict" or "ImageInfo"'

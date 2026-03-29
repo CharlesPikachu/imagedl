@@ -89,7 +89,7 @@ class GoogleImageClient(BaseImageClient):
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
             params = dict(q=keyword, ijn=pn, start=pn*page_size, tbs=filter_str, tbm="isch")
             if language: params["lr"] = "lang_" + language
-            search_urls.append(base_url + urlencode(params))
+            search_urls.append({'url': base_url + urlencode(params), 'method': 'drissionget', 'inputs': {}})
         # return
         return search_urls
     '''_getfilter'''
@@ -115,8 +115,8 @@ class GoogleImageClient(BaseImageClient):
         search_filter.addrule("date", format_date_func)
         # return
         return search_filter
-    '''get'''
-    def get(self, url, **request_overrides):
+    '''drissionget'''
+    def drissionget(self, url, **request_overrides):
         request_overrides = request_overrides or {}
         page = DrissionPageUtils.initsmartbrowser(headless=False, requests_headers=None, requests_proxies=(request_overrides.get('proxies') or self._autosetproxies()), requests_cookies=(request_overrides.get('cookies') or self.default_cookies))
         page.get(url); page.wait.eles_loaded('tag:img', timeout=10); html_text = page.html; DrissionPageUtils.quitpage(page=page)

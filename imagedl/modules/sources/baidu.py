@@ -40,7 +40,7 @@ class BaiduImageClient(BaseImageClient):
             # --parse try5
             if ('thumburl' in item) and isinstance(item['thumburl'], str) and item['thumburl'].strip(): candidate_urls.append(item['thumburl'].strip())
             # --return
-            return candidate_urls
+            return [str(c).replace('\\/', '/') for c in candidate_urls if c and str(c).startswith('http')]
         # parse search result
         image_infos: list[ImageInfo] = []
         for item in (search_result.get('data', []) or []):
