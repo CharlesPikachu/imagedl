@@ -1,6 +1,7 @@
 '''initialize'''
 from .structure import ImageInfo
 from .io import touchdir, FileLock
+from .cheat import FakeRequestsResponse
 from .modulebuilder import BaseModuleBuilder
 from .importutils import optionalimport, optionalimportfrom
 from .chromium import DrissionPageUtils, ChromiumDownloaderUtils

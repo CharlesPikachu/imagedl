@@ -80,8 +80,8 @@ client.download(image_infos, num_threadings=1)
 client = FoodiesfeedImageClient()
 image_infos = client.search('pizza', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# everypixel tests (cookies required)
-client = EverypixelImageClient(default_search_cookies='xxxx')
+# everypixel tests
+client = EverypixelImageClient()
 image_infos = client.search('animals', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # freenaturestock tests 

@@ -166,24 +166,21 @@ def main():
     for client_name, client_module in ImageClientBuilder.REGISTERED_MODULES.items():
         print(f"\n[Module] {client_name}")
         client: BaseImageClient = client_module(disable_print=False, work_dir=tmp_dir, auto_set_proxies=False)
-        status = {
-            "name": client_name, "search_ok": False, "download_ok": False, "ok": False, "n_results": 0,
-            "n_downloaded": 0, "error": None, "downloaded_images": [], "search_samples": [],
-        }
+        status = {"name": client_name, "search_ok": False, "download_ok": False, "ok": False, "n_results": 0, "n_downloaded": 0, "error": None, "downloaded_images": [], "search_samples": []}
         target_dir: Path = base_results_dir / client_name
         # --search checking
         try:
-            if client_name in SEARCH_SUPPLEMENT and runningingithubactions():
-                image_infos = SEARCH_SUPPLEMENT[client_name]
-            elif client_name in {'FreeNatureStockImageClient'}:
+            # if client_name in SEARCH_SUPPLEMENT and runningingithubactions():
+            #     image_infos = SEARCH_SUPPLEMENT[client_name]
+            if client_name in {'FreeNatureStockImageClient'}:
                 image_infos = client.search(QUERiES[3], search_limits=MAX_SEARCH, num_threadings=2)
             else:
                 image_infos = client.search(QUERiES[0], search_limits=MAX_SEARCH, num_threadings=2)
-            for image_info in image_infos: image_info['raw_data'] = {}
+            for image_info in image_infos: image_info.raw_data = {}
             n_results = len(image_infos) if image_infos is not None else 0
             status["n_results"] = n_results
             status["search_ok"] = n_results > 0
-            status["search_samples"] = [info['candidate_urls'][0] for info in (image_infos or [])[:3]]
+            status["search_samples"] = [info.candidate_download_urls[0] for info in (image_infos or [])[:3]]
             print(f"  Search results: {n_results} (Success)" if status["search_ok"] else f"  Search results: {n_results} (NULL)")
         except Exception as err:
             status["error"] = f"search_error: {type(err).__name__}: {err}"

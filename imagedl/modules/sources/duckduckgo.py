@@ -36,7 +36,7 @@ class DuckduckgoImageClient(BaseImageClient):
     def ddgssearch(self, proxy: str = None, timeout: int = 5, verify: bool = True, search_overrides: dict = None) -> list[ImageInfo]:
         # import api
         try: from ddgs import DDGS
-        except Exception: print('You must install the official API before using this function via "pip install ddgs"'); return
+        except Exception: print('You must install the official API before using this function via "pip install ddgs"'); return []
         # init
         search_overrides, search_results = search_overrides or {}, []
         assert 'query' in search_overrides, 'please set "query" in "search_overrides" as the search keywords'
@@ -45,6 +45,8 @@ class DuckduckgoImageClient(BaseImageClient):
         for item in DDGS(proxy=proxy, timeout=timeout, verify=verify).images(**search_params):
             if not (candidate_urls := [url for url in [item.get('image'), item.get('thumbnail')] if url and str(url).startswith('http')]): continue
             search_results.append(ImageInfo(source=self.source, raw_data=item, candidate_download_urls=candidate_urls, identifier=candidate_urls[0]))
+        search_results = self._removeduplicates(image_infos=search_results)
+        search_results = self._appenduniquefilepathforimages(image_infos=search_results, keyword=search_params['query'])
         # return
         return search_results
     '''_initsession'''

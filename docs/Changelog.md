@@ -1,5 +1,7 @@
 # Release Log
 
+- 2026-03-29: Released pyimagedl v0.4.0 — refactored the overall imagedl framework, achieving a qualitative leap in image crawling efficiency; introduced DrissionPage to address the issue that some sites require cookies to be obtained manually, while also improving the crawling of Google Images search results; fixed a large number of potential bugs.
+
 - 2026-03-04: Released pyimagedl v0.3.8 — added image search and download functionality for Weibo; integrated the cloudscraper library to better download certain restricted images; code optimizations and bug fixes.
 
 - 2026-02-23: Released pyimagedl v0.3.7 — resolved underlying issues to restore reliable image search and download functionality across multiple supported platforms.
