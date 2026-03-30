@@ -8,5 +8,5 @@ WeChat Official Account (微信公众号):
 '''
 from imagedl import imagedl
 
-image_client = imagedl.ImageClient(image_source='BaiduImageClient')
+image_client = imagedl.ImageClient(image_sources='BaiduImageClient')
 image_client.startcmdui()

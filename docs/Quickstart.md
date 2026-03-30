@@ -219,9 +219,9 @@ You can choose from many built-in source clients:
 
 ~~~python
 from imagedl.modules.sources import (
-    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient,
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, StockSnapImageClient
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient,
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient,
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, 
 )
 ~~~
 
@@ -235,9 +235,9 @@ Here are some simple examples:
 
 ~~~python
 from imagedl.modules.sources import (
-    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient,
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, StockSnapImageClient
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient,
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient,
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, 
 )
 
 # bing
@@ -342,6 +342,11 @@ client.download(image_infos, num_threadings=1)
 
 # stocksnap 
 client = StockSnapImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# freeimages 
+client = FreeImagesImageClient()
 image_infos = client.search('mountains', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~

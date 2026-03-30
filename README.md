@@ -91,6 +91,7 @@ Imagedl lets you search for and download images from specific websites. If you f
 |  [EverypixelImageClient](https://www.everypixel.com/)        |  [Everypixel](https://www.everypixel.com/)                |   ✔️               |  ✔️                  |    [everypixel.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/everypixel.py)              |
 |  [FoodiesfeedImageClient](https://www.foodiesfeed.com/)      |  [Foodiesfeed美食图片](https://www.foodiesfeed.com/)      |   ✔️               |  ✔️                  |    [foodiesfeed.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/foodiesfeed.py)            |
 |  [FreeNatureStockImageClient](https://freenaturestock.com/)  |  [FreeNatureStock自然图片](https://freenaturestock.com/)  |   ✔️               |  ✔️                  |    [freenaturestock.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/freenaturestock.py)    |
+|  [FreeImagesImageClient](https://www.freeimages.com/)        |  [Freeimages](https://www.freeimages.com/)                |   ✔️               |  ✔️                  |    [freeimages.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/freeimages.py)              |
 |  [GoogleImageClient](https://images.google.com/)             |  [谷歌图片](https://images.google.com/)                   |   ✔️               |  ✔️                  |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)                      |
 |  [GelbooruImageClient](https://gelbooru.com/)                |  [Gelbooru动漫图片](https://gelbooru.com/)                |   ✔️               |  ✔️                  |    [gelbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gelbooru.py)                  |
 |  [HuabanImageClient](https://huaban.com/)                    |  [花瓣网](https://huaban.com/)                            |   ✔️               |  ✔️                  |    [huaban.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/huaban.py)                      |
@@ -347,9 +348,9 @@ You can choose from many built-in source clients:
 
 ~~~python
 from imagedl.modules.sources import (
-    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient,
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, StockSnapImageClient
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient,
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient,
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, 
 )
 ~~~
 
@@ -363,9 +364,9 @@ Here are some simple examples:
 
 ~~~python
 from imagedl.modules.sources import (
-    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient,
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, StockSnapImageClient
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient,
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient,
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, 
 )
 
 # bing
@@ -470,6 +471,11 @@ client.download(image_infos, num_threadings=1)
 
 # stocksnap 
 client = StockSnapImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# freeimages 
+client = FreeImagesImageClient()
 image_infos = client.search('mountains', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
