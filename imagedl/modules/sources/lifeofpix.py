@@ -44,5 +44,6 @@ class LifeOfPixImageClient(BaseImageClient):
         if 'Cookie' not in self.default_headers: self.default_headers['Cookie'] = cookies2string(resp.cookies.get_dict())
         if 'Cookie' not in self.default_search_headers: self.default_search_headers['Cookie'] = cookies2string(resp.cookies.get_dict())
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
-            search_urls.append(f"https://www.lifeofpix.com/api/search/photos/{quote(re.sub(r'\s+', '-', keyword.strip()), safe='')}/{page_size}.json?page={pn+1}")
+            keyword = quote(re.sub(r'\s+', '-', keyword.strip()), safe='')
+            search_urls.append(f"https://www.lifeofpix.com/api/search/photos/{keyword}/{page_size}.json?page={pn+1}")
         return search_urls
