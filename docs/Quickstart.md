@@ -221,9 +221,15 @@ You can choose from many built-in source clients:
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, StockSnapImageClient
 )
 ~~~
+
+To list all image sources supported by your current pyimagedl version:
+
+```bash
+python -c "from imagedl.modules import ImageClientBuilder; print(ImageClientBuilder.REGISTERED_MODULES.keys())"
+```
 
 Here are some simple examples:
 
@@ -231,7 +237,7 @@ Here are some simple examples:
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, StockSnapImageClient
 )
 
 # bing
@@ -332,6 +338,11 @@ client.download(image_infos, num_threadings=1)
 # weibo (cookies required)
 client = WeiboImageClient(default_search_cookies='xxxx')
 image_infos = client.search('animals', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# stocksnap 
+client = StockSnapImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
 

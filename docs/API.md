@@ -313,7 +313,29 @@ imagedl_outputs/BaiduImageClient/2026-03-29-10-30-15 cute cat/
 ## `BaseImageClient`
 
 `BaseImageClient` is the base class for lower-level source clients.
-It is useful when you want to extend the project or directly control a specific backend.
+It is useful when you want to extend the project or directly control a specific backend including,
+
+- `imagedl.imagedl.modules.sources.BaiduImageClient`
+- `imagedl.imagedl.modules.sources.BingImageClient`
+- `imagedl.imagedl.modules.sources.DuckduckgoImageClient`
+- `imagedl.imagedl.modules.sources.DanbooruImageClient`
+- `imagedl.imagedl.modules.sources.DimTownImageClient`
+- `imagedl.imagedl.modules.sources.EverypixelImageClient`
+- `imagedl.imagedl.modules.sources.FoodiesfeedImageClient`
+- `imagedl.imagedl.modules.sources.FreeNatureStockImageClient`
+- `imagedl.imagedl.modules.sources.GoogleImageClient`
+- `imagedl.imagedl.modules.sources.GelbooruImageClient`
+- `imagedl.imagedl.modules.sources.HuabanImageClient`
+- `imagedl.imagedl.modules.sources.I360ImageClient`
+- `imagedl.imagedl.modules.sources.PixabayImageClient`
+- `imagedl.imagedl.modules.sources.PexelsImageClient`
+- `imagedl.imagedl.modules.sources.SogouImageClient`
+- `imagedl.imagedl.modules.sources.SafebooruImageClient`
+- `imagedl.imagedl.modules.sources.StockSnapImageClient`
+- `imagedl.imagedl.modules.sources.UnsplashImageClient`
+- `imagedl.imagedl.modules.sources.WeiboImageClient`
+- `imagedl.imagedl.modules.sources.YandexImageClient`
+- `imagedl.imagedl.modules.sources.YahooImageClient`
 
 Module path:
 

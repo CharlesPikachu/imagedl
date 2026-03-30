@@ -99,6 +99,7 @@ Imagedl lets you search for and download images from specific websites. If you f
 |  [PexelsImageClient](https://www.pexels.com/zh-cn/)          |  [Pexels高清图片](https://www.pexels.com/zh-cn/)          |   ✔️               |  ✔️                  |    [pexels.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pexels.py)                      |
 |  [SogouImageClient](https://pic.sogou.com/)                  |  [搜狗图片](https://pic.sogou.com/)                       |   ✔️               |  ✔️                  |    [sogou.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/sogou.py)                        |
 |  [SafebooruImageClient](https://safebooru.org/)              |  [Safebooru动漫图片](https://safebooru.org/)              |   ✔️               |  ✔️                  |    [safebooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/safebooru.py)                |
+|  [StockSnapImageClient](https://stocksnap.io/)               |  [StockSnap.io](https://stocksnap.io/)                    |   ✔️               |  ✔️                  |    [stocksnap.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/stocksnap.py)                |
 |  [UnsplashImageClient](https://unsplash.com/)                |  [Unsplash图片](https://unsplash.com/)                    |   ✔️               |  ✔️                  |    [unsplash.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/unsplash.py)                  |
 |  [WeiboImageClient](https://m.weibo.cn/)                     |  [微博图片](https://m.weibo.cn/)                          |   ✔️               |  ✔️                  |    [weibo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/weibo.py)                        |
 |  [YandexImageClient](https://yandex.com/images/)             |  [Yandex图片](https://yandex.com/images/)                 |   ✔️               |  ✔️                  |    [yandex.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yandex.py)                      |
@@ -348,9 +349,15 @@ You can choose from many built-in source clients:
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, StockSnapImageClient
 )
 ~~~
+
+To list all image sources supported by your current pyimagedl version:
+
+```bash
+python -c "from imagedl.modules import ImageClientBuilder; print(ImageClientBuilder.REGISTERED_MODULES.keys())"
+```
 
 Here are some simple examples:
 
@@ -358,7 +365,7 @@ Here are some simple examples:
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, StockSnapImageClient
 )
 
 # bing
@@ -459,6 +466,11 @@ client.download(image_infos, num_threadings=1)
 # weibo (cookies required)
 client = WeiboImageClient(default_search_cookies='xxxx')
 image_infos = client.search('animals', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# stocksnap 
+client = StockSnapImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
 
