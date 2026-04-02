@@ -104,7 +104,7 @@ def main():
         try:
             if client_name in SEARCH_SUPPLEMENT and runningingithubactions():
                 image_infos = SEARCH_SUPPLEMENT[client_name]
-            elif client_name in {'FreeNatureStockImageClient', 'StockSnapImageClient', 'LifeOfPixImageClient'}:
+            elif client_name in {'FreeNatureStockImageClient', 'StockSnapImageClient', 'LifeOfPixImageClient', 'PexelsImageClient'}:
                 image_infos = client.search(QUERiES[3], search_limits=MAX_SEARCH, num_threadings=2)
             else:
                 image_infos = client.search(QUERiES[0], search_limits=MAX_SEARCH, num_threadings=2)
