@@ -36,7 +36,7 @@ jobs:
         run: |
           xvfb-run -a python scripts/quick_check_imagedl.py
 
-      - name: Commit and Push Daily Test Results
+      - name: Commit and Push Image Daily Test Results
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
