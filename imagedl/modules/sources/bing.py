@@ -35,10 +35,10 @@ class BingImageClient(BaseImageClient):
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
         request_overrides, search_urls, page_size = request_overrides or {}, [], 20
-        base_url = 'https://www.bing.com/images/async?q={keyword}&first={page}'
+        base_url = 'https://www.bing.com/images/async?q={keyword}&first={offset}'
         filter_str = "&qft=" + filter_str if (filter_str := self._getfilter().apply(filters)) else ""
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
-            search_url = base_url.format(keyword=quote(keyword), page=pn*page_size) + filter_str
+            search_url = base_url.format(keyword=quote(keyword), offset=pn*page_size) + filter_str
             search_urls.append(search_url)
         return search_urls
     '''_getfilter'''

@@ -1,5 +1,7 @@
 # Release Log
 
+- 2026-04-04: Released pyimagedl v0.4.2 — added support for searching and downloading images from gratisography.com; fixed image search and download for DuckDuckGo and Yahoo.
+
 - 2026-03-30: Released pyimagedl v0.4.1 — added three new image search and download websites: Life of Pix, FreeImages, and StockSnap, along with some minor changes.
 
 - 2026-03-29: Released pyimagedl v0.4.0 — refactored the overall imagedl framework, achieving a qualitative leap in image crawling efficiency; introduced DrissionPage to address the issue that some sites require cookies to be obtained manually, while also improving the crawling of Google Images search results; fixed some bugs.

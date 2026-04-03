@@ -326,6 +326,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.FreeImagesImageClient`
 - `imagedl.imagedl.modules.sources.GoogleImageClient`
 - `imagedl.imagedl.modules.sources.GelbooruImageClient`
+- `imagedl.imagedl.modules.sources.GratisoGraphyImageClient`
 - `imagedl.imagedl.modules.sources.HuabanImageClient`
 - `imagedl.imagedl.modules.sources.I360ImageClient`
 - `imagedl.imagedl.modules.sources.LifeOfPixImageClient`
