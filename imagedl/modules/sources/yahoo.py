@@ -9,6 +9,7 @@ WeChat Official Account (微信公众号):
 import math
 import primp
 import random
+import json_repair
 from bs4 import BeautifulSoup
 from urllib.parse import quote
 from .base import BaseImageClient
@@ -19,6 +20,11 @@ from ..utils import Filter, ImageInfo
 '''YahooImageClient'''
 class YahooImageClient(BaseImageClient):
     source = 'YahooImageClient'
+    CANDIDATE_SEARCH_URL_FORMATS = [
+        "https://images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://tw.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://hk.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://sg.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://in.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://au.images.search.yahoo.com/search/images?p={keyword}&b={offset}",
+        "https://nz.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://id.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://ca.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://br.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://espanol.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://uk.images.search.yahoo.com/search/images?p={keyword}&b={offset}",
+        "https://de.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://fr.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://it.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://es.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://search.yahoo.co.jp/image/search?p={keyword}&b={offset}", "https://kids.yahoo.co.jp/search/image?p={keyword}&b={offset}",
+    ]
     def __init__(self, **kwargs):
         super(YahooImageClient, self).__init__(**kwargs)
         self.default_search_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"}
@@ -32,13 +38,19 @@ class YahooImageClient(BaseImageClient):
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str) -> list[ImageInfo]:
         soup, image_infos, seen = BeautifulSoup(search_result, "lxml"), [], set()
-        for a in soup.select('a[data-origurl]'):
-            if (not (orig_url := a.get("data-origurl"))) or (orig_url in seen): continue
-            seen.add(orig_url); image_infos.append(ImageInfo(source=self.source, raw_data={str(k).lower(): v for k, v in a.attrs.items()}, candidate_download_urls=[orig_url], identifier=orig_url))
+        for li in soup.select("#sres > li.ld[data]"):
+            try: data = json_repair.loads(li["data"])
+            except Exception: continue
+            if (not (orig_url := data.get("ourl") or data.get("iurl"))) or (orig_url in seen): continue
+            seen.add(orig_url); image_infos.append(ImageInfo(source=self.source, raw_data={str(k).lower(): v for k, v in data.items()}, candidate_download_urls=[orig_url], identifier=orig_url))
         return image_infos
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword: str, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
         request_overrides, base_url = request_overrides or {}, "https://images.search.yahoo.com/search/images?p={keyword}&b={offset}"
+        for candidate_base_url in YahooImageClient.CANDIDATE_SEARCH_URL_FORMATS:
+            try: (resp := self.get(candidate_base_url.format(keyword=quote(keyword), offset=1), timeout=10, **request_overrides)).raise_for_status()
+            except Exception: base_url = "https://images.search.yahoo.com/search/images?p={keyword}&b={offset}"; continue
+            if self._parsesearchresult(resp.text): base_url = candidate_base_url; break
         filter_str, search_urls, page_size = self._getfilter().apply(filters, sep="&"), [], 60
         for page in range(math.ceil(search_limits * 1.2 / page_size)):
             search_url = base_url.format(keyword=quote(keyword), offset=(page * page_size + 1))
