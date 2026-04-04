@@ -1,6 +1,6 @@
 {
   "date": "2026-04-04",
-  "timestamp_utc": "2026-04-04T19:15:57.837496+00:00",
+  "timestamp_utc": "2026-04-04T19:48:42.607844+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls, Red Panda, James Webb",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -136,14 +136,29 @@
     },
     {
       "name": "DuckduckgoImageClient",
-      "search_ok": false,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 0,
-      "n_downloaded": 0,
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 10,
+      "n_downloaded": 10,
       "error": null,
-      "downloaded_images": [],
-      "search_samples": []
+      "downloaded_images": [
+        "daily_test_results/DuckduckgoImageClient/00000009.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000001.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000005.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000003.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000004.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000006.webp",
+        "daily_test_results/DuckduckgoImageClient/00000007.png",
+        "daily_test_results/DuckduckgoImageClient/00000008.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000010.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000002.png"
+      ],
+      "search_samples": [
+        "https://img.pokemondb.net/artwork/large/pikachu.jpg",
+        "https://4kwallpapers.com/images/wallpapers/pikachu-pokemon-5k-3840x2160-10896.png",
+        "https://wallpapers-clan.com/wp-content/uploads/2024/06/pokemon-pikachu-electric-jump-desktop-wallpaper-preview.jpg"
+      ]
     },
     {
       "name": "UnsplashImageClient",
@@ -296,8 +311,8 @@
         "daily_test_results/YandexImageClient/00000008.webp"
       ],
       "search_samples": [
-        "https://i.ytimg.com/vi/g5iX6OAbc6Y/maxresdefault.jpg",
         "https://i.pinimg.com/736x/07/80/84/078084612960b7ccde1e109e5ed3d3d7.jpg",
+        "https://i.ytimg.com/vi/g5iX6OAbc6Y/maxresdefault.jpg",
         "https://i.pinimg.com/236x/ee/73/5d/ee735dc022d870a40646dec874448920.jpg?nii=t"
       ]
     },
@@ -331,25 +346,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 82,
+      "n_results": 81,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/GoogleImageClient/00000007.jpg",
-        "daily_test_results/GoogleImageClient/00000009.jpg",
+        "daily_test_results/GoogleImageClient/00000003.png",
         "daily_test_results/GoogleImageClient/00000001.jpg",
-        "daily_test_results/GoogleImageClient/00000006.jpg",
-        "daily_test_results/GoogleImageClient/00000010.png",
-        "daily_test_results/GoogleImageClient/00000003.jpg",
+        "daily_test_results/GoogleImageClient/00000002.jpg",
+        "daily_test_results/GoogleImageClient/00000006.png",
+        "daily_test_results/GoogleImageClient/00000005.jpg",
         "daily_test_results/GoogleImageClient/00000004.jpg",
-        "daily_test_results/GoogleImageClient/00000005.png",
+        "daily_test_results/GoogleImageClient/00000009.png",
         "daily_test_results/GoogleImageClient/00000008.jpg",
-        "daily_test_results/GoogleImageClient/00000002.png"
+        "daily_test_results/GoogleImageClient/00000010.jpg"
       ],
       "search_samples": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Jiubq0hk6XSudkTIHZq3ibzCq-Srm4OJYg&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4aiBggKcJFbfodbOW1CyZbS92TPqf9QU_tTL3TnAeyyjPPZ8L0bFfrZpk&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7gt5GZIwg1LJfYrwzo7_4NIvd1BkNVq5ukOMIUkWyk0BoeBNcNFMF&s=0"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vE5X0mKUdfyyOc8yrgQJy-aCEHNSuGoigQ&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4aiBggKcJFbfodbOW1CyZbS92TPqf9QU_tTL3TnAeyyjPPZ8L0bFfrZpk&s"
       ]
     },
     {
@@ -389,19 +404,19 @@
       "downloaded_images": [
         "daily_test_results/YahooImageClient/00000007.jpg",
         "daily_test_results/YahooImageClient/00000009.jpg",
+        "daily_test_results/YahooImageClient/00000004.webp",
         "daily_test_results/YahooImageClient/00000001.jpg",
-        "daily_test_results/YahooImageClient/00000002.jpg",
+        "daily_test_results/YahooImageClient/00000006.jpg",
+        "daily_test_results/YahooImageClient/00000005.jpg",
         "daily_test_results/YahooImageClient/00000003.jpg",
-        "daily_test_results/YahooImageClient/00000004.jpg",
-        "daily_test_results/YahooImageClient/00000005.png",
-        "daily_test_results/YahooImageClient/00000006.webp",
-        "daily_test_results/YahooImageClient/00000008.jpg",
-        "daily_test_results/YahooImageClient/00000010.jpg"
+        "daily_test_results/YahooImageClient/00000010.avif",
+        "daily_test_results/YahooImageClient/00000008.webp",
+        "daily_test_results/YahooImageClient/00000002.png"
       ],
       "search_samples": [
-        "https://wallpapers-clan.com/wp-content/uploads/2024/06/pokemon-pikachu-electric-jump-desktop-wallpaper-preview.jpg",
-        "https://wallpapers.com/images/featured/pikachu-4k-uzcr6pdp4a36rrd4.jpg",
-        "http://www.cartonionline.com/wordpress/wp-content/uploads/2022/10/Pikachu.jpg"
+        "https://img.pokemondb.net/artwork/large/pikachu.jpg",
+        "https://4kwallpapers.com/images/wallpapers/pikachu-pokemon-5k-3840x2160-10896.png",
+        "http://www.pixelstalk.net/wp-content/uploads/2016/03/Pokemon-pikachu-hd-wallpaper-background.jpg"
       ]
     },
     {
@@ -466,20 +481,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/PixabayImageClient/00000008.png",
-        "daily_test_results/PixabayImageClient/00000009.jpg",
+        "daily_test_results/PixabayImageClient/00000003.png",
         "daily_test_results/PixabayImageClient/00000001.jpg",
+        "daily_test_results/PixabayImageClient/00000002.jpg",
         "daily_test_results/PixabayImageClient/00000006.png",
         "daily_test_results/PixabayImageClient/00000010.png",
-        "daily_test_results/PixabayImageClient/00000005.jpg",
-        "daily_test_results/PixabayImageClient/00000003.jpg",
-        "daily_test_results/PixabayImageClient/00000007.png",
-        "daily_test_results/PixabayImageClient/00000004.png",
-        "daily_test_results/PixabayImageClient/00000002.png"
+        "daily_test_results/PixabayImageClient/00000004.jpg",
+        "daily_test_results/PixabayImageClient/00000009.png",
+        "daily_test_results/PixabayImageClient/00000005.png",
+        "daily_test_results/PixabayImageClient/00000007.png"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g3c7930217a6fd875f7ad838e9aee46330dba1712d9b393656dd6e57d24e08e41a8f3a7c31b5503f01e01e953e80875b02cc68266e18ce5e77d6540ccf02e9247_1280.jpg",
-        "https://pixabay.com/get/gb457e673f7526e6c6d01c4d7a74fcb593de041fbcb120e231939cb0bb2e8ffb2ed6d9ef69b104f6da8fc3b8800a77d1e2d3cb213ae188d691f9a248a69b6060c_1280.png",
-        "https://pixabay.com/get/gb55d828e4a9aafaaeca110a836ac62c62ea0b08dbc4a968ab07e6dd0ceebb8bd634ffe763e082bbb0b0227ecaeb05878e93cd8134b5447c1976415e0110ac5e8_1280.jpg"
+        "https://pixabay.com/get/gd97d1d1adc9ab7269eace9f28c44a9b709e5b8c86f1651a9173929d80cc9c609c89bec81f748512794cee18bfb2ebffc9b85d87cff2ad9824c04ac94cae28aad_1280.jpg",
+        "https://pixabay.com/get/g1eb895672605315c96039ca38c47c02ebe620646ca5bbf0c8be6f312dc5db13499e1899d52063e2e7655ff03122de6ccc1082db9d6cda1abf734630614c18bae_1280.jpg",
+        "https://pixabay.com/get/gc003cfda35861997c3917563a2526ef1304f81832f74809050c2ba61b4a11c90f9a488d5ed0a98bb237c39906d90a4aa079cd4eed0dd14bcdd5363cf9c112246_1280.png"
       ]
     },
     {
@@ -578,14 +593,29 @@
     },
     {
       "name": "PicJumboImageClient",
-      "search_ok": false,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 0,
-      "n_downloaded": 0,
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 10,
+      "n_downloaded": 10,
       "error": null,
-      "downloaded_images": [],
-      "search_samples": []
+      "downloaded_images": [
+        "daily_test_results/PicJumboImageClient/00000007.jpg",
+        "daily_test_results/PicJumboImageClient/00000009.jpg",
+        "daily_test_results/PicJumboImageClient/00000001.jpg",
+        "daily_test_results/PicJumboImageClient/00000002.jpg",
+        "daily_test_results/PicJumboImageClient/00000006.jpg",
+        "daily_test_results/PicJumboImageClient/00000005.jpg",
+        "daily_test_results/PicJumboImageClient/00000003.jpg",
+        "daily_test_results/PicJumboImageClient/00000004.jpg",
+        "daily_test_results/PicJumboImageClient/00000008.jpg",
+        "daily_test_results/PicJumboImageClient/00000010.jpg"
+      ],
+      "search_samples": [
+        "https://i0.wp.com/picjumbo.com/wp-content/uploads/man-conquered-a-high-mountain-motivation-free-image.jpeg?w=1500&quality=50",
+        "https://i0.wp.com/picjumbo.com/wp-content/uploads/fascinating-huge-mountain-range-after-sunset-free-image.jpeg?w=1500&quality=50",
+        "https://i0.wp.com/picjumbo.com/wp-content/uploads/fall-is-coming-beautiful-autumn-nature-in-the-mountains-free-image.jpeg?w=1500&quality=50"
+      ]
     },
     {
       "name": "OpenverseImageClient",
@@ -618,7 +648,7 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 121,
+      "n_results": 124,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
