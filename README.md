@@ -76,7 +76,10 @@
 
 # 📘 Introduction
 
-Imagedl lets you search for and download images from specific websites. If you find it useful, please consider starring the repository to follow updates—thank you for your support!
+⚡ Imagedl is a lightweight image search and download tool designed for efficient large-scale image collection from specific websites. 
+It supports multiple major sources, including Google, Baidu, Bing, 360, Pixabay, Yandex, Sogou, Yahoo, DuckDuckGo, Unsplash, Safebooru, Gelbooru, Danbooru, Huaban, Foodiesfeed, Everypixel, Weibo, and more. 
+With support for diverse content such as web images, food, animals, architecture, nature, anime-style artwork, and high-resolution photography, Imagedl is well suited for constructing training and testing datasets for large models. 
+If you find it useful, please star the repository ⭐ to support development and keep up with future updates.
 
 
 # 🖼️ Supported Image Client
