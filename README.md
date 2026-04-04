@@ -103,6 +103,7 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [LifeOfPixImageClient](https://www.lifeofpix.com/)          |  [LifeOfPix](https://www.lifeofpix.com/)                  |   ✔️               |  ✔️                  |    [lifeofpix.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/lifeofpix.py)                |
 |  [PixabayImageClient](https://pixabay.com/zh/photos/)        |  [Pixabay高清图片](https://pixabay.com/zh/photos/)        |   ✔️               |  ✔️                  |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)                    |
 |  [PexelsImageClient](https://www.pexels.com/zh-cn/)          |  [Pexels高清图片](https://www.pexels.com/zh-cn/)          |   ✔️               |  ✔️                  |    [pexels.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pexels.py)                      |
+|  [PicJumboImageClient](https://picjumbo.com/)                |  [PicJumbo免费高清图库](https://picjumbo.com/)            |   ✔️               |  ✔️                  |    [picjumbo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/picjumbo.py)                  |
 |  [SogouImageClient](https://pic.sogou.com/)                  |  [搜狗图片](https://pic.sogou.com/)                       |   ✔️               |  ✔️                  |    [sogou.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/sogou.py)                        |
 |  [SafebooruImageClient](https://safebooru.org/)              |  [Safebooru动漫图片](https://safebooru.org/)              |   ✔️               |  ✔️                  |    [safebooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/safebooru.py)                |
 |  [StockSnapImageClient](https://stocksnap.io/)               |  [StockSnap.io](https://stocksnap.io/)                    |   ✔️               |  ✔️                  |    [stocksnap.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/stocksnap.py)                |
@@ -353,9 +354,9 @@ You can choose from many built-in source clients:
 
 ~~~python
 from imagedl.modules.sources import (
-    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient,
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, LifeOfPixImageClient, GratisoGraphyImageClient
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient,
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, 
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient
 )
 ~~~
 
@@ -369,9 +370,9 @@ Here are some simple examples:
 
 ~~~python
 from imagedl.modules.sources import (
-    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient,
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient,
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, LifeOfPixImageClient, GratisoGraphyImageClient
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient,
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, 
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient
 )
 
 # bing
@@ -491,6 +492,11 @@ client.download(image_infos, num_threadings=1)
 
 # gratisography 
 client = GratisoGraphyImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# picjumbo 
+client = PicJumboImageClient()
 image_infos = client.search('mountains', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~

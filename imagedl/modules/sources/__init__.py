@@ -16,6 +16,7 @@ from .dimtown import DimTownImageClient
 from .danbooru import DanbooruImageClient
 from .unsplash import UnsplashImageClient
 from .gelbooru import GelbooruImageClient
+from .picjumbo import PicJumboImageClient
 from .safebooru import SafebooruImageClient
 from .stocksnap import StockSnapImageClient
 from .lifeofpix import LifeOfPixImageClient
@@ -36,6 +37,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'EverypixelImageClient': EverypixelImageClient,  'GoogleImageClient': GoogleImageClient,                      'SafebooruImageClient': SafebooruImageClient,     'YahooImageClient': YahooImageClient,
         'GelbooruImageClient': GelbooruImageClient,      'PexelsImageClient': PexelsImageClient,                      'PixabayImageClient': PixabayImageClient,         'DimTownImageClient': DimTownImageClient, 
         'StockSnapImageClient': StockSnapImageClient,    'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,     'GratisoGraphyImageClient': GratisoGraphyImageClient,
+        'PicJumboImageClient': PicJumboImageClient,
     }
 
 

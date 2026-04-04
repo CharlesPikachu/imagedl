@@ -332,6 +332,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.LifeOfPixImageClient`
 - `imagedl.imagedl.modules.sources.PixabayImageClient`
 - `imagedl.imagedl.modules.sources.PexelsImageClient`
+- `imagedl.imagedl.modules.sources.PicJumboImageClient`
 - `imagedl.imagedl.modules.sources.SogouImageClient`
 - `imagedl.imagedl.modules.sources.SafebooruImageClient`
 - `imagedl.imagedl.modules.sources.StockSnapImageClient`
