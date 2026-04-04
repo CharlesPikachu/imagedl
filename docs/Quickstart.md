@@ -377,7 +377,7 @@ client.download(image_infos, num_threadings=1)
 
 # nasa tests
 client = NASAImageClient()
-image_infos = client.search('Red Panda', search_limits=10, num_threadings=1)
+image_infos = client.search('James Webb', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
 
