@@ -20,6 +20,7 @@ from .picjumbo import PicJumboImageClient
 from .safebooru import SafebooruImageClient
 from .stocksnap import StockSnapImageClient
 from .lifeofpix import LifeOfPixImageClient
+from .openverse import OpenverseImageClient
 from .duckduckgo import DuckduckgoImageClient
 from .freeimages import FreeImagesImageClient
 from .everypixel import EverypixelImageClient
@@ -37,7 +38,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'EverypixelImageClient': EverypixelImageClient,  'GoogleImageClient': GoogleImageClient,                      'SafebooruImageClient': SafebooruImageClient,     'YahooImageClient': YahooImageClient,
         'GelbooruImageClient': GelbooruImageClient,      'PexelsImageClient': PexelsImageClient,                      'PixabayImageClient': PixabayImageClient,         'DimTownImageClient': DimTownImageClient, 
         'StockSnapImageClient': StockSnapImageClient,    'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,     'GratisoGraphyImageClient': GratisoGraphyImageClient,
-        'PicJumboImageClient': PicJumboImageClient,
+        'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,
     }
 
 

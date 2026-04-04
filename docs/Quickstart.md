@@ -221,7 +221,7 @@ You can choose from many built-in source clients:
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, 
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, OpenverseImageClient
 )
 ~~~
 
@@ -237,7 +237,7 @@ Here are some simple examples:
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, 
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, OpenverseImageClient
 )
 
 # bing
@@ -363,6 +363,11 @@ client.download(image_infos, num_threadings=1)
 # picjumbo 
 client = PicJumboImageClient()
 image_infos = client.search('mountains', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# openverse 
+client = OpenverseImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
 
