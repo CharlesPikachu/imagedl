@@ -2,6 +2,7 @@
 from .base import BaseImageClient
 from .bing import BingImageClient
 from .i360 import I360ImageClient
+from .nasa import NASAImageClient
 from .baidu import BaiduImageClient
 from .sogou import SogouImageClient
 from .yahoo import YahooImageClient
@@ -39,7 +40,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'EverypixelImageClient': EverypixelImageClient,  'GoogleImageClient': GoogleImageClient,                      'SafebooruImageClient': SafebooruImageClient,       'YahooImageClient': YahooImageClient,
         'GelbooruImageClient': GelbooruImageClient,      'PexelsImageClient': PexelsImageClient,                      'PixabayImageClient': PixabayImageClient,           'DimTownImageClient': DimTownImageClient, 
         'StockSnapImageClient': StockSnapImageClient,    'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,       'GratisoGraphyImageClient': GratisoGraphyImageClient,
-        'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,
+        'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,   'NASAImageClient': NASAImageClient,
     }
 
 

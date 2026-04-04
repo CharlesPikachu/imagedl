@@ -69,9 +69,9 @@
 
 # 🆕 What's New
 
+- 2026-04-05: Released pyimagedl v0.4.3 — added search and download functionality for four new image websites, including NASA, iNaturalist, Picjumbo, and Openverse.
 - 2026-04-04: Released pyimagedl v0.4.2 — added support for searching and downloading images from gratisography.com; fixed image search and download for DuckDuckGo and Yahoo.
 - 2026-03-30: Released pyimagedl v0.4.1 — added three new image search and download websites: Life of Pix, FreeImages, and StockSnap, along with some minor changes.
-- 2026-03-29: Released pyimagedl v0.4.0 — refactored the overall imagedl framework, achieving a qualitative leap in image crawling efficiency; introduced DrissionPage to address the issue that some sites require cookies to be obtained manually, while also improving the crawling of Google Images search results; fixed some bugs.
 
 
 # 📘 Introduction
@@ -102,6 +102,7 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [I360ImageClient](https://image.so.com/)                    |  [360图片](https://image.so.com/)                         |   ✔️               |  ✔️                  |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)                          |
 |  [INaturalistImageClient](https://www.inaturalist.org/)      |  [iNaturalist物种数据库](https://www.inaturalist.org/)    |   ✔️               |  ✔️                  |    [inaturalist.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/inaturalist.py)            |
 |  [LifeOfPixImageClient](https://www.lifeofpix.com/)          |  [LifeOfPix](https://www.lifeofpix.com/)                  |   ✔️               |  ✔️                  |    [lifeofpix.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/lifeofpix.py)                |
+|  [NASAImageClient](https://www.nasa.gov/)                    |  [NASA](https://www.nasa.gov/)                            |   ✔️               |  ✔️                  |    [nasa.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/nasa.py)                          |
 |  [OpenverseImageClient](https://openverse.org/)              |  [Openverse](https://openverse.org/)                      |   ✔️               |  ✔️                  |    [openverse.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/openverse.py)                |
 |  [PixabayImageClient](https://pixabay.com/zh/photos/)        |  [Pixabay高清图片](https://pixabay.com/zh/photos/)        |   ✔️               |  ✔️                  |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)                    |
 |  [PexelsImageClient](https://www.pexels.com/zh-cn/)          |  [Pexels高清图片](https://www.pexels.com/zh-cn/)          |   ✔️               |  ✔️                  |    [pexels.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pexels.py)                      |
@@ -356,9 +357,9 @@ You can choose from many built-in source clients:
 
 ~~~python
 from imagedl.modules.sources import (
-    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient,
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, 
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, OpenverseImageClient, INaturalistImageClient
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
+    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient
 )
 ~~~
 
@@ -372,9 +373,9 @@ Here are some simple examples:
 
 ~~~python
 from imagedl.modules.sources import (
-    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient,
-    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, 
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, OpenverseImageClient, INaturalistImageClient
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
+    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient
 )
 
 # bing
@@ -509,6 +510,11 @@ client.download(image_infos, num_threadings=1)
 
 # inaturalist tests
 client = INaturalistImageClient()
+image_infos = client.search('Red Panda', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# nasa tests
+client = NASAImageClient()
 image_infos = client.search('Red Panda', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
