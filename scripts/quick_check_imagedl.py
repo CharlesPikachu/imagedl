@@ -16,7 +16,7 @@ from imagedl.modules import ImageClientBuilder, BaseImageClient, ImageInfo
 
 
 '''settings'''
-QUERiES = ["Pikachu", "JK", "Cute Animals", "Mountains", "Girls"]
+QUERiES = ["Pikachu", "JK", "Cute Animals", "Mountains", "Girls", "Red Panda"]
 MAX_SEARCH = 10
 MAX_DL_PER_CLIENT = 10
 RESULTS_ROOT = Path("daily_test_results")
@@ -106,6 +106,8 @@ def main():
                 image_infos = SEARCH_SUPPLEMENT[client_name]
             elif client_name in {'FreeNatureStockImageClient', 'StockSnapImageClient', 'LifeOfPixImageClient', 'PexelsImageClient', 'GratisoGraphyImageClient', 'PicJumboImageClient'}:
                 image_infos = client.search(QUERiES[3], search_limits=MAX_SEARCH, num_threadings=2)
+            elif client_name in {'INaturalistImageClient'}:
+                image_infos = client.search(QUERiES[5], search_limits=MAX_SEARCH, num_threadings=2)
             else:
                 image_infos = client.search(QUERiES[0], search_limits=MAX_SEARCH, num_threadings=2)
             for image_info in image_infos: image_info.raw_data = {}

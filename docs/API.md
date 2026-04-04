@@ -329,6 +329,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.GratisoGraphyImageClient`
 - `imagedl.imagedl.modules.sources.HuabanImageClient`
 - `imagedl.imagedl.modules.sources.I360ImageClient`
+- `imagedl.imagedl.modules.sources.INaturalistImageClient`
 - `imagedl.imagedl.modules.sources.LifeOfPixImageClient`
 - `imagedl.imagedl.modules.sources.OpenverseImageClient`
 - `imagedl.imagedl.modules.sources.PixabayImageClient`

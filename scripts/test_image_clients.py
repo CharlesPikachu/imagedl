@@ -9,7 +9,7 @@ WeChat Official Account (微信公众号):
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, 
-    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, OpenverseImageClient
+    HuabanImageClient, FoodiesfeedImageClient, EverypixelImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, OpenverseImageClient, INaturalistImageClient,
 )
 
 # bing tests
@@ -115,4 +115,8 @@ client.download(image_infos, num_threadings=1)
 # openverse tests
 client = OpenverseImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# inaturalist tests
+client = INaturalistImageClient()
+image_infos = client.search('Red Panda', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
