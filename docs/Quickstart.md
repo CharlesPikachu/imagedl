@@ -221,7 +221,7 @@ You can choose from many built-in source clients:
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
-    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient
+    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, YandeImageClient
 )
 ~~~
 
@@ -237,7 +237,7 @@ Here are some simple examples:
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
-    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient
+    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, YandeImageClient
 )
 
 # bing
@@ -370,14 +370,29 @@ client = OpenverseImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 
-# inaturalist tests
+# inaturalist
 client = INaturalistImageClient()
 image_infos = client.search('Red Panda', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 
-# nasa tests
+# nasa
 client = NASAImageClient()
 image_infos = client.search('James Webb', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# gbif
+client = GBIFImageClient()
+image_infos = client.search('jellyfish', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# loc.gov
+client = LocGovImageClient()
+image_infos = client.search('apollo 11', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# yande
+client = YandeImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
 

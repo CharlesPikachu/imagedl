@@ -69,9 +69,9 @@
 
 # 🆕 What's New
 
+- 2026-04-08: Released pyimagedl v0.4.4 — added support for three new image search and download sites: yande.re, loc.gov, and gbif.org; optimized parts of the code for better IDE hints.
 - 2026-04-05: Released pyimagedl v0.4.3 — added search and download functionality for four new image websites, including NASA, iNaturalist, Picjumbo, and Openverse.
 - 2026-04-04: Released pyimagedl v0.4.2 — added support for searching and downloading images from gratisography.com; fixed image search and download for DuckDuckGo and Yahoo.
-- 2026-03-30: Released pyimagedl v0.4.1 — added three new image search and download websites: Life of Pix, FreeImages, and StockSnap, along with some minor changes.
 
 
 # 📘 Introduction
@@ -98,10 +98,12 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [GoogleImageClient](https://images.google.com/)             |  [谷歌图片](https://images.google.com/)                   |   ✔️               |  ✔️                  |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)                      |
 |  [GelbooruImageClient](https://gelbooru.com/)                |  [Gelbooru动漫图片](https://gelbooru.com/)                |   ✔️               |  ✔️                  |    [gelbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gelbooru.py)                  |
 |  [GratisoGraphyImageClient](https://gratisography.com/)      |  [GratisoGraphy创意图片网站](https://gratisography.com/)  |   ✔️               |  ✔️                  |    [gratisography.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gratisography.py)        |
+|  [GBIFImageClient](https://www.gbif.org/)                    |  [全球生物多样性物种图库](https://www.gbif.org/)          |   ✔️               |  ✔️                  |    [gbif.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gbif.py)                          |
 |  [HuabanImageClient](https://huaban.com/)                    |  [花瓣网](https://huaban.com/)                            |   ✔️               |  ✔️                  |    [huaban.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/huaban.py)                      |
 |  [I360ImageClient](https://image.so.com/)                    |  [360图片](https://image.so.com/)                         |   ✔️               |  ✔️                  |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)                          |
 |  [INaturalistImageClient](https://www.inaturalist.org/)      |  [iNaturalist物种数据库](https://www.inaturalist.org/)    |   ✔️               |  ✔️                  |    [inaturalist.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/inaturalist.py)            |
 |  [LifeOfPixImageClient](https://www.lifeofpix.com/)          |  [LifeOfPix](https://www.lifeofpix.com/)                  |   ✔️               |  ✔️                  |    [lifeofpix.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/lifeofpix.py)                |
+|  [LocGovImageClient](https://www.loc.gov/)                   |  [美国国会图书馆](https://www.loc.gov/)                   |   ✔️               |  ✔️                  |    [locgov.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/locgov.py)                      |
 |  [NASAImageClient](https://www.nasa.gov/)                    |  [NASA](https://www.nasa.gov/)                            |   ✔️               |  ✔️                  |    [nasa.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/nasa.py)                          |
 |  [OpenverseImageClient](https://openverse.org/)              |  [Openverse](https://openverse.org/)                      |   ✔️               |  ✔️                  |    [openverse.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/openverse.py)                |
 |  [PixabayImageClient](https://pixabay.com/zh/photos/)        |  [Pixabay高清图片](https://pixabay.com/zh/photos/)        |   ✔️               |  ✔️                  |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)                    |
@@ -114,6 +116,7 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [WeiboImageClient](https://m.weibo.cn/)                     |  [微博图片](https://m.weibo.cn/)                          |   ✔️               |  ✔️                  |    [weibo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/weibo.py)                        |
 |  [YandexImageClient](https://yandex.com/images/)             |  [Yandex图片](https://yandex.com/images/)                 |   ✔️               |  ✔️                  |    [yandex.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yandex.py)                      |
 |  [YahooImageClient](https://images.search.yahoo.com/)        |  [雅虎图片](https://images.search.yahoo.com/)             |   ✔️               |  ✔️                  |    [yahoo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yahoo.py)                        |
+|  [YandeImageClient](https://yande.re/post)                   |  [Yande.re二次元原画](https://yande.re/post)              |   ✔️               |  ✔️                  |    [yande.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yande.py)                        |
 
 
 # 📦 Install
@@ -359,7 +362,7 @@ You can choose from many built-in source clients:
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
-    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient
+    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, YandeImageClient
 )
 ~~~
 
@@ -375,7 +378,7 @@ Here are some simple examples:
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
-    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient
+    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, YandeImageClient
 )
 
 # bing
@@ -508,14 +511,29 @@ client = OpenverseImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 
-# inaturalist tests
+# inaturalist
 client = INaturalistImageClient()
 image_infos = client.search('Red Panda', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 
-# nasa tests
+# nasa
 client = NASAImageClient()
 image_infos = client.search('James Webb', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# gbif
+client = GBIFImageClient()
+image_infos = client.search('jellyfish', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# loc.gov
+client = LocGovImageClient()
+image_infos = client.search('apollo 11', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# yande
+client = YandeImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
 

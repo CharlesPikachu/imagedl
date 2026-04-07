@@ -327,10 +327,12 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.GoogleImageClient`
 - `imagedl.imagedl.modules.sources.GelbooruImageClient`
 - `imagedl.imagedl.modules.sources.GratisoGraphyImageClient`
+- `imagedl.imagedl.modules.sources.GBIFImageClient`
 - `imagedl.imagedl.modules.sources.HuabanImageClient`
 - `imagedl.imagedl.modules.sources.I360ImageClient`
 - `imagedl.imagedl.modules.sources.INaturalistImageClient`
 - `imagedl.imagedl.modules.sources.LifeOfPixImageClient`
+- `imagedl.imagedl.modules.sources.LocGovImageClient`
 - `imagedl.imagedl.modules.sources.NASAImageClient`
 - `imagedl.imagedl.modules.sources.OpenverseImageClient`
 - `imagedl.imagedl.modules.sources.PixabayImageClient`
@@ -343,6 +345,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.WeiboImageClient`
 - `imagedl.imagedl.modules.sources.YandexImageClient`
 - `imagedl.imagedl.modules.sources.YahooImageClient`
+- `imagedl.imagedl.modules.sources.YandeImageClient`
 
 Module path:
 

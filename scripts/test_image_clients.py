@@ -9,7 +9,7 @@ WeChat Official Account (微信公众号):
 from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
-    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient
+    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, YandeImageClient
 )
 
 # bing tests
@@ -123,4 +123,16 @@ client.download(image_infos, num_threadings=1)
 # nasa tests
 client = NASAImageClient()
 image_infos = client.search('James Webb', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# gbif tests
+client = GBIFImageClient()
+image_infos = client.search('jellyfish', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# loc.gov tests
+client = LocGovImageClient()
+image_infos = client.search('apollo 11', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# yande tests
+client = YandeImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)

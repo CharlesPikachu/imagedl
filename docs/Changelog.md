@@ -1,5 +1,7 @@
 # Release Log
 
+- 2026-04-08: Released pyimagedl v0.4.4 — added support for three new image search and download sites: yande.re, loc.gov, and gbif.org; optimized parts of the code for better IDE hints.
+
 - 2026-04-05: Released pyimagedl v0.4.3 — added search and download functionality for four new image websites, including NASA, iNaturalist, Picjumbo, and Openverse.
 
 - 2026-04-04: Released pyimagedl v0.4.2 — added support for searching and downloading images from gratisography.com; fixed image search and download for DuckDuckGo and Yahoo.
