@@ -153,18 +153,14 @@ class BaseImageClient():
                 main_process_context.update(main_progress_id, description=f"Search from sources >>> completed ({int(main_process_context.tasks[main_progress_id].completed)}/{cur_total + len(search_urls)})")
         submitted_tasks = []; image_infos: dict[str, list[ImageInfo]] = {}
         with ThreadPoolExecutor(max_workers=num_threadings) as pool:
-            for search_url_idx, search_url in enumerate(search_urls):
-                image_infos[str(search_url_idx)] = []
-                submitted_tasks.append(pool.submit(self._search, keyword, search_url, request_overrides, image_infos[str(search_url_idx)], main_process_context, progress_id))
+            for search_url_idx, search_url in enumerate(search_urls): image_infos[str(search_url_idx)] = []; submitted_tasks.append(pool.submit(self._search, keyword, search_url, request_overrides, image_infos[str(search_url_idx)], main_process_context, progress_id))
             for future in as_completed(submitted_tasks):
                 future.result()
                 with main_progress_lock:
-                    main_process_context.advance(progress_id, 1)
-                    num_searched_urls = int(main_process_context.tasks[progress_id].completed)
+                    main_process_context.advance(progress_id, 1); num_searched_urls = int(main_process_context.tasks[progress_id].completed)
                     main_process_context.update(progress_id, description=f"{self.source}.search >>> completed ({num_searched_urls}/{len(search_urls)})")
-                    if main_progress_id is None: continue
-                    main_process_context.advance(main_progress_id, 1)
-                    main_process_context.update(main_progress_id, description=f"Search from sources >>> completed ({int(main_process_context.tasks[main_progress_id].completed)}/{int(main_process_context.tasks[main_progress_id].total or 0)})")
+                    main_progress_id is not None and main_process_context.advance(main_progress_id, 1)
+                    main_progress_id is not None and main_process_context.update(main_progress_id, description=f"Search from sources >>> completed ({int(main_process_context.tasks[main_progress_id].completed)}/{int(main_process_context.tasks[main_progress_id].total or 0)})")
         image_infos = list(chain.from_iterable(image_infos.values())); image_infos = self._removeduplicates(image_infos=image_infos)
         image_infos: list[ImageInfo] = self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
         # logging
@@ -189,10 +185,8 @@ class BaseImageClient():
             try: (resp := self.get(candidate_download_url, **request_overrides)).raise_for_status()
             except Exception: continue
             if not (ext_detect_result := ImageExtensionUtils.detectimagefile(binary_content=resp.content))['ok']: continue
-            image_info.download_url = candidate_download_url
-            image_info.ext_detect_result = ext_detect_result; image_info.ext = ext_detect_result['ext']
-            image_info.save_name = f"{image_info.save_name}.{image_info.ext}"
-            image_info.save_path = os.path.join(image_info.work_dir, image_info.save_name)
+            image_info.download_url = candidate_download_url; image_info.ext_detect_result = ext_detect_result; image_info.ext = ext_detect_result['ext']
+            image_info.save_name = f"{image_info.save_name}.{image_info.ext}"; image_info.save_path = os.path.join(image_info.work_dir, image_info.save_name)
             with open(image_info.save_path, 'wb') as fp: fp.write(resp.content)
             downloaded_image_infos.append(image_info); break
         return downloaded_image_infos
@@ -210,10 +204,7 @@ class BaseImageClient():
             images_progress_id, submitted_tasks = progress.add_task(f"{self.source}.download >>> completed (0/{len(image_infos)})", total=len(image_infos), kind='overall'), []; downloaded_image_infos: list[ImageInfo] = []
             with ThreadPoolExecutor(max_workers=num_threadings) as pool:
                 for image_info in image_infos: submitted_tasks.append(pool.submit(self._download, image_info, request_overrides, downloaded_image_infos))
-                for _ in as_completed(submitted_tasks):
-                    progress.advance(images_progress_id, 1)
-                    num_downloaded_images = int(progress.tasks[images_progress_id].completed)
-                    progress.update(images_progress_id, description=f"{self.source}.download >>> completed ({num_downloaded_images}/{len(image_infos)})")
+                for _ in as_completed(submitted_tasks): progress.advance(images_progress_id, 1); progress.update(images_progress_id, description=f"{self.source}.download >>> completed ({int(progress.tasks[images_progress_id].completed)}/{len(image_infos)})")
         # logging
         if len(downloaded_image_infos) > 0:
             work_dir_to_image_info, work_dir = defaultdict(list), ', '.join(list(set([str(img_info.work_dir) for img_info in downloaded_image_infos])))
