@@ -86,9 +86,7 @@ class YahooImageClient(BaseImageClient):
     def request(self, url: str, method: str, **kwargs):
         if 'cookies' not in kwargs: kwargs['cookies'] = self.default_cookies
         for _ in range(self.max_retries):
-            if not self.maintain_session:
-                self._initsession()
-                if self.random_update_ua: self.session.headers_update({'User-Agent': UserAgent().random})
+            if not self.maintain_session: self._initsession(); self.random_update_ua and self.session.headers.update({'User-Agent': UserAgent().random})
             proxies, resp = kwargs.pop('proxies', None) or self._autosetproxies(), None
             if proxies: self.session.proxy = random.choice(list(proxies.values())) if isinstance(proxies, dict) else proxies
             try: (resp := self.session.request(method, url, **kwargs)).raise_for_status()

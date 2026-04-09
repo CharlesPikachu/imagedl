@@ -25,6 +25,7 @@ from .safebooru import SafebooruImageClient
 from .stocksnap import StockSnapImageClient
 from .lifeofpix import LifeOfPixImageClient
 from .openverse import OpenverseImageClient
+from .wikipedia import WikipediaImageClient
 from .duckduckgo import DuckduckgoImageClient
 from .freeimages import FreeImagesImageClient
 from .everypixel import EverypixelImageClient
@@ -44,7 +45,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'GelbooruImageClient': GelbooruImageClient,      'PexelsImageClient': PexelsImageClient,                      'PixabayImageClient': PixabayImageClient,           'DimTownImageClient': DimTownImageClient, 
         'StockSnapImageClient': StockSnapImageClient,    'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,       'GratisoGraphyImageClient': GratisoGraphyImageClient,
         'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,   'NASAImageClient': NASAImageClient,
-        'GBIFImageClient': GBIFImageClient,              'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,
+        'GBIFImageClient': GBIFImageClient,              'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,               'WikipediaImageClient': WikipediaImageClient,
     }
 
 
