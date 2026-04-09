@@ -69,9 +69,9 @@
 
 # 🆕 What's New
 
+- 2026-04-09: Released pyimagedl v0.4.5 — fix a bug where the behavior of maintain session was inconsistent with expectations; add two new image search and download sources, jikan.moe and wiki.
 - 2026-04-08: Released pyimagedl v0.4.4 — added support for three new image search and download sites: yande.re, loc.gov, and gbif.org; optimized parts of the code for better IDE hints.
 - 2026-04-05: Released pyimagedl v0.4.3 — added search and download functionality for four new image websites, including NASA, iNaturalist, Picjumbo, and Openverse.
-- 2026-04-04: Released pyimagedl v0.4.2 — added support for searching and downloading images from gratisography.com; fixed image search and download for DuckDuckGo and Yahoo.
 
 
 # 📘 Introduction
@@ -102,6 +102,7 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [HuabanImageClient](https://huaban.com/)                    |  [花瓣网](https://huaban.com/)                            |   ✔️               |  ✔️                  |    [huaban.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/huaban.py)                      |
 |  [I360ImageClient](https://image.so.com/)                    |  [360图片](https://image.so.com/)                         |   ✔️               |  ✔️                  |    [i360.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/i360.py)                          |
 |  [INaturalistImageClient](https://www.inaturalist.org/)      |  [iNaturalist物种数据库](https://www.inaturalist.org/)    |   ✔️               |  ✔️                  |    [inaturalist.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/inaturalist.py)            |
+|  [JikanImageClient](https://jikan.moe/)                      |  [Jikan动漫角色图](https://jikan.moe/)                    |   ✔️               |  ✔️                  |    [jikan.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/jikan.py)                        |
 |  [LifeOfPixImageClient](https://www.lifeofpix.com/)          |  [LifeOfPix](https://www.lifeofpix.com/)                  |   ✔️               |  ✔️                  |    [lifeofpix.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/lifeofpix.py)                |
 |  [LocGovImageClient](https://www.loc.gov/)                   |  [美国国会图书馆](https://www.loc.gov/)                   |   ✔️               |  ✔️                  |    [locgov.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/locgov.py)                      |
 |  [NASAImageClient](https://www.nasa.gov/)                    |  [NASA](https://www.nasa.gov/)                            |   ✔️               |  ✔️                  |    [nasa.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/nasa.py)                          |
@@ -364,7 +365,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient
+	YandeImageClient, JikanImageClient
 )
 ~~~
 
@@ -381,7 +382,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient
+	YandeImageClient, JikanImageClient
 )
 
 # bing
@@ -541,6 +542,11 @@ client.download(image_infos, num_threadings=1)
 
 # wiki
 client = WikipediaImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# jikan
+client = JikanImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~

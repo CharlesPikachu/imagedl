@@ -9,6 +9,7 @@ from .sogou import SogouImageClient
 from .yahoo import YahooImageClient
 from .weibo import WeiboImageClient
 from .yande import YandeImageClient
+from .jikan import JikanImageClient
 from .pexels import PexelsImageClient
 from .google import GoogleImageClient
 from ..utils import BaseModuleBuilder
@@ -46,6 +47,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'StockSnapImageClient': StockSnapImageClient,    'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,       'GratisoGraphyImageClient': GratisoGraphyImageClient,
         'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,   'NASAImageClient': NASAImageClient,
         'GBIFImageClient': GBIFImageClient,              'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,               'WikipediaImageClient': WikipediaImageClient,
+        'JikanImageClient': JikanImageClient,
     }
 
 

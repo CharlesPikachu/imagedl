@@ -331,6 +331,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.HuabanImageClient`
 - `imagedl.imagedl.modules.sources.I360ImageClient`
 - `imagedl.imagedl.modules.sources.INaturalistImageClient`
+- `imagedl.imagedl.modules.sources.JikanImageClient`
 - `imagedl.imagedl.modules.sources.LifeOfPixImageClient`
 - `imagedl.imagedl.modules.sources.LocGovImageClient`
 - `imagedl.imagedl.modules.sources.NASAImageClient`
