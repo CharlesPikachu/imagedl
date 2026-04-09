@@ -101,7 +101,7 @@ class BaseImageClient():
             identifiers.add(image_info.identifier); unique_image_infos.append(image_info)
         return unique_image_infos
     '''_appenduniquefilepathforimages'''
-    def _appenduniquefilepathforimages(self, keyword: str, image_infos: list[ImageInfo]):
+    def _appenduniquefilepathforimages(self, keyword: str, image_infos: list[ImageInfo]) -> list[ImageInfo]:
         time_stamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         work_dir = sanitize_filepath(os.path.join(self.work_dir, self.source, f'{time_stamp} {keyword}')); touchdir(work_dir)
         for idx, image_info in enumerate(image_infos):
@@ -142,16 +142,16 @@ class BaseImageClient():
         # construct search urls
         search_urls = self._constructsearchurls(keyword=keyword, search_limits=search_limits, filters=filters, request_overrides=request_overrides)
         # multi threadings for searching images
-        if main_process_context is None: owns_progress = True; main_process_context = Progress(TextColumn("{task.description}"), BarColumn(bar_width=None), MofNCompleteColumn(), TimeRemainingColumn(), refresh_per_second=10); main_process_context.__enter__()
-        else: owns_progress = False
-        if main_progress_lock is None: main_progress_lock = Lock()
+        owns_progress = True if main_process_context is None else False
+        if owns_progress: main_process_context = Progress(TextColumn("{task.description}"), BarColumn(bar_width=None), MofNCompleteColumn(), TimeRemainingColumn(), refresh_per_second=10); main_process_context.__enter__()
+        main_progress_lock = Lock() if main_progress_lock is None else main_progress_lock
         with main_progress_lock:
             progress_id = main_process_context.add_task(f"{self.source}.search >>> completed (0/{len(search_urls)})", total=len(search_urls))
             if main_progress_id is not None:
                 cur_total = main_process_context.tasks[main_progress_id].total or 0
                 main_process_context.update(main_progress_id, total=cur_total + len(search_urls))
                 main_process_context.update(main_progress_id, description=f"Search from sources >>> completed ({int(main_process_context.tasks[main_progress_id].completed)}/{cur_total + len(search_urls)})")
-        image_infos, submitted_tasks = {}, []
+        submitted_tasks = []; image_infos: dict[str, list[ImageInfo]] = {}
         with ThreadPoolExecutor(max_workers=num_threadings) as pool:
             for search_url_idx, search_url in enumerate(search_urls):
                 image_infos[str(search_url_idx)] = []
@@ -166,7 +166,7 @@ class BaseImageClient():
                     main_process_context.advance(main_progress_id, 1)
                     main_process_context.update(main_progress_id, description=f"Search from sources >>> completed ({int(main_process_context.tasks[main_progress_id].completed)}/{int(main_process_context.tasks[main_progress_id].total or 0)})")
         image_infos = list(chain.from_iterable(image_infos.values())); image_infos = self._removeduplicates(image_infos=image_infos)
-        image_infos = self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
+        image_infos: list[ImageInfo] = self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
         # logging
         if len(image_infos) > 0:
             work_dir_to_image_info, work_dir = defaultdict(list), ', '.join(list(set([str(img_info.work_dir) for img_info in image_infos])))
