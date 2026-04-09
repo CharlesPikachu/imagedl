@@ -75,15 +75,15 @@ class BaseImageClient():
     '''_listccimpersonates'''
     def _listccimpersonates(self):
         curl_cffi = optionalimport('curl_cffi')
-        if TYPE_CHECKING: import curl_cffi
         root = Path(curl_cffi.__file__).resolve().parent
         exts = {".py", ".so", ".pyd", ".dll", ".dylib"}
         pat = re.compile(rb"\b(?:chrome|edge|safari|firefox|tor)(?:\d+[a-z_]*|_android|_ios)?\b")
         return sorted({m.decode("utf-8", "ignore") for p in root.rglob("*") if p.suffix in exts for m in pat.findall(p.read_bytes())})
     '''_initsession'''
     def _initsession(self):
+        if self.maintain_session and getattr(self, 'session', None): self.session.headers = self.default_headers; return
         curl_cffi = optionalimport('curl_cffi')
-        if TYPE_CHECKING: import curl_cffi
+        if TYPE_CHECKING: import curl_cffi as curl_cffi
         self.session = requests.Session() if not self.enable_curl_cffi else curl_cffi.requests.Session()
         self.session.headers = self.default_headers
     '''_constructsearchurls'''
@@ -235,11 +235,9 @@ class BaseImageClient():
         if 'cookies' not in kwargs: kwargs['cookies'] = self.default_cookies
         if 'impersonate' not in kwargs and self.enable_curl_cffi: kwargs['impersonate'] = random.choice(self.cc_impersonates)
         resp, cloudscraper = None, optionalimport('cloudscraper')
-        if TYPE_CHECKING: import cloudscraper
+        if TYPE_CHECKING: import cloudscraper as cloudscraper
         for _ in range(self.max_retries):
-            if not self.maintain_session:
-                self._initsession()
-                if self.random_update_ua: self.session.headers.update({'User-Agent': UserAgent().random})
+            if not self.maintain_session: self._initsession(); self.random_update_ua and self.session.headers.update({'User-Agent': UserAgent().random})
             proxies = kwargs.pop('proxies', None) or self._autosetproxies()
             try: (resp := self.session.get(url, proxies=proxies, **kwargs)).raise_for_status(); return resp
             except Exception as err: self.logger_handle.error(f'{self.source}.get >>> {url} (Error: {err}; status={getattr(locals().get("resp"), "status_code", None)})', disable_print=self.disable_print)
@@ -253,11 +251,9 @@ class BaseImageClient():
         if 'cookies' not in kwargs: kwargs['cookies'] = self.default_cookies
         if 'impersonate' not in kwargs and self.enable_curl_cffi: kwargs['impersonate'] = random.choice(self.cc_impersonates)
         resp, cloudscraper = None, optionalimport('cloudscraper')
-        if TYPE_CHECKING: import cloudscraper
+        if TYPE_CHECKING: import cloudscraper as cloudscraper
         for _ in range(self.max_retries):
-            if not self.maintain_session:
-                self._initsession()
-                if self.random_update_ua: self.session.headers.update({'User-Agent': UserAgent().random})
+            if not self.maintain_session: self._initsession(); self.random_update_ua and self.session.headers.update({'User-Agent': UserAgent().random})
             proxies = kwargs.pop('proxies', None) or self._autosetproxies()
             try: (resp := self.session.post(url, proxies=proxies, **kwargs)).raise_for_status(); return resp
             except Exception as err: self.logger_handle.error(f'{self.source}.post >>> {url} (Error: {err}; status={getattr(locals().get("resp"), "status_code", None)})', disable_print=self.disable_print)
