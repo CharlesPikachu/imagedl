@@ -84,7 +84,7 @@ class ImageClient():
         max_workers, main_progress_lock = min(len(self.image_sources), 10), Lock()
         if isinstance(search_limits_per_source, (int, float)): search_limits_per_source = {key: search_limits_per_source for key in self.image_sources}
         with Progress(TextColumn("{task.description}"), BarColumn(bar_width=None), MofNCompleteColumn(), TimeRemainingColumn(), refresh_per_second=10) as main_process_context:
-            main_progress_id = main_process_context.add_task(f"Search from sources >>> completed (0/0) URLs", total=0)
+            main_progress_id = main_process_context.add_task(f"Search From Sources >>> Completed (0/0) URLs", total=0)
             def search_func(img_s):
                 try:
                     return img_s, self.image_clients[img_s].search(keyword=keyword, search_limits=search_limits_per_source[img_s], num_threadings=self.clients_threadings[img_s], filters=self.search_filters[img_s], request_overrides=self.requests_overrides[img_s], main_process_context=main_process_context, main_progress_id=main_progress_id, main_progress_lock=main_progress_lock)
