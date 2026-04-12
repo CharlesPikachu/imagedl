@@ -150,7 +150,7 @@ class BaseImageClient():
             if main_progress_id is not None:
                 cur_total = main_process_context.tasks[main_progress_id].total or 0
                 main_process_context.update(main_progress_id, total=cur_total + len(search_urls))
-                main_process_context.update(main_progress_id, description=f"Search from sources >>> completed ({int(main_process_context.tasks[main_progress_id].completed)}/{cur_total + len(search_urls)})")
+                main_process_context.update(main_progress_id, description=f"Search from sources >>> completed ({int(main_process_context.tasks[main_progress_id].completed)}/{cur_total + len(search_urls)}) URLs")
         submitted_tasks = []; image_infos: dict[str, list[ImageInfo]] = {}
         with ThreadPoolExecutor(max_workers=num_threadings) as pool:
             for search_url_idx, search_url in enumerate(search_urls): image_infos[str(search_url_idx)] = []; submitted_tasks.append(pool.submit(self._search, keyword, search_url, request_overrides, image_infos[str(search_url_idx)], main_process_context, progress_id))
@@ -160,7 +160,7 @@ class BaseImageClient():
                     main_process_context.advance(progress_id, 1); num_searched_urls = int(main_process_context.tasks[progress_id].completed)
                     main_process_context.update(progress_id, description=f"{self.source}.search >>> completed ({num_searched_urls}/{len(search_urls)})")
                     main_progress_id is not None and main_process_context.advance(main_progress_id, 1)
-                    main_progress_id is not None and main_process_context.update(main_progress_id, description=f"Search from sources >>> completed ({int(main_process_context.tasks[main_progress_id].completed)}/{int(main_process_context.tasks[main_progress_id].total or 0)})")
+                    main_progress_id is not None and main_process_context.update(main_progress_id, description=f"Search from sources >>> completed ({int(main_process_context.tasks[main_progress_id].completed)}/{int(main_process_context.tasks[main_progress_id].total or 0)}) URLs")
         image_infos = list(chain.from_iterable(image_infos.values())); image_infos = self._removeduplicates(image_infos=image_infos)
         image_infos: list[ImageInfo] = self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
         # logging
