@@ -161,16 +161,13 @@ class BaseImageClient():
                     main_process_context.update(progress_id, description=f"{self.source}.search >>> Completed ({num_searched_urls}/{len(search_urls)}) Search URLs")
                     main_progress_id is not None and main_process_context.advance(main_progress_id, 1)
                     main_progress_id is not None and main_process_context.update(main_progress_id, description=f"Search From Sources >>> Completed ({int(main_process_context.tasks[main_progress_id].completed)}/{int(main_process_context.tasks[main_progress_id].total or 0)}) Search URLs")
-        image_infos = list(chain.from_iterable(image_infos.values())); image_infos = self._removeduplicates(image_infos=image_infos)
-        image_infos: list[ImageInfo] = self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
-        # logging
-        if len(image_infos) > 0:
-            work_dir_to_image_info, work_dir = defaultdict(list), ', '.join(list(set([str(img_info.work_dir) for img_info in image_infos])))
-            for img_info in image_infos: img_info.work_dir = str(img_info.work_dir); work_dir_to_image_info[img_info.work_dir].append(img_info.todict())
-            for w, items in work_dir_to_image_info.items(): touchdir(w); self._savetopkl(items, os.path.join(w, "search_results.pkl"))
-        else:
-            work_dir = self.work_dir
-        self.logger_handle.info(f'Finished searching images using {self.source}. Search results have been saved to {work_dir}, valid items: {len(image_infos)}.', disable_print=self.disable_print)
+        image_infos = self._removeduplicates(image_infos=list(chain.from_iterable(image_infos.values())))
+        image_infos = self._appenduniquefilepathforimages(image_infos=image_infos, keyword=keyword)
+        # logging and save search results
+        work_dir_to_image_info, work_dir_for_logging = defaultdict(list), ', '.join(list(set([str(img_info.work_dir) for img_info in image_infos if isinstance(img_info, ImageInfo)])))
+        for image_info in image_infos: isinstance(image_info, ImageInfo) and work_dir_to_image_info[image_info.work_dir].append(image_info.todict())
+        [(touchdir(w), self._savetopkl(items, os.path.join(w, "search_results.pkl"))) for w, items in work_dir_to_image_info.items()]
+        self.logger_handle.info(f'Finished searching images from {self.source}. Search results have been saved to {work_dir_for_logging}, valid items: {len(image_infos)}.', disable_print=self.disable_print)
         if owns_progress: main_process_context.__exit__(None, None, None)
         # return
         return image_infos
@@ -205,14 +202,11 @@ class BaseImageClient():
             with ThreadPoolExecutor(max_workers=num_threadings) as pool:
                 for image_info in image_infos: submitted_tasks.append(pool.submit(self._download, image_info, request_overrides, downloaded_image_infos))
                 for _ in as_completed(submitted_tasks): progress.advance(images_progress_id, 1); progress.update(images_progress_id, description=f"{self.source}.download >>> Completed ({int(progress.tasks[images_progress_id].completed)}/{len(image_infos)}) ImageInfos")
-        # logging
-        if len(downloaded_image_infos) > 0:
-            work_dir_to_image_info, work_dir = defaultdict(list), ', '.join(list(set([str(img_info.work_dir) for img_info in downloaded_image_infos])))
-            for img_info in downloaded_image_infos: img_info.work_dir = str(img_info.work_dir); work_dir_to_image_info[img_info.work_dir].append(img_info.todict())
-            for w, items in work_dir_to_image_info.items(): touchdir(w); self._savetopkl(items, os.path.join(w, "download_results.pkl"))
-        else:
-            work_dir = self.work_dir
-        self.logger_handle.info(f'Finished downloading images using {self.source}. Download results have been saved to {work_dir}, valid downloads: {len(downloaded_image_infos)}.', disable_print=self.disable_print)
+        # logging and save download results
+        work_dir_to_image_info, work_dir_for_logging = defaultdict(list), ', '.join(list(set([str(img_info.work_dir) for img_info in downloaded_image_infos])))
+        for image_info in downloaded_image_infos: work_dir_to_image_info[image_info.work_dir].append(image_info.todict())
+        [(touchdir(w), self._savetopkl(items, os.path.join(w, "download_results.pkl"))) for w, items in work_dir_to_image_info.items()]
+        self.logger_handle.info(f'Finished downloading images from {self.source}. Download results have been saved to {work_dir_for_logging}, valid downloads: {len(downloaded_image_infos)}.', disable_print=self.disable_print)
         # return
         return downloaded_image_infos
     '''_autosetproxies'''
