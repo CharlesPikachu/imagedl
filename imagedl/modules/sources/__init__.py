@@ -33,6 +33,7 @@ from .freeimages import FreeImagesImageClient
 from .everypixel import EverypixelImageClient
 from .inaturalist import INaturalistImageClient
 from .foodiesfeed import FoodiesfeedImageClient
+from .clevelandart import ClevelandArtImageClient
 from .gratisography import GratisoGraphyImageClient
 from .freenaturestock import FreeNatureStockImageClient
 
@@ -40,15 +41,15 @@ from .freenaturestock import FreeNatureStockImageClient
 '''ImageClientBuilder'''
 class ImageClientBuilder(BaseModuleBuilder):
     REGISTERED_MODULES = {
-        'BingImageClient': BingImageClient,              'FoodiesfeedImageClient': FoodiesfeedImageClient,            'DanbooruImageClient': DanbooruImageClient,         'HuabanImageClient': HuabanImageClient,
-        'BaiduImageClient': BaiduImageClient,            'DuckduckgoImageClient': DuckduckgoImageClient,              'UnsplashImageClient': UnsplashImageClient,         'WeiboImageClient': WeiboImageClient, 
-        'I360ImageClient': I360ImageClient,              'FreeNatureStockImageClient': FreeNatureStockImageClient,    'SogouImageClient': SogouImageClient,               'YandexImageClient': YandexImageClient,
-        'EverypixelImageClient': EverypixelImageClient,  'GoogleImageClient': GoogleImageClient,                      'SafebooruImageClient': SafebooruImageClient,       'YahooImageClient': YahooImageClient,
-        'GelbooruImageClient': GelbooruImageClient,      'PexelsImageClient': PexelsImageClient,                      'PixabayImageClient': PixabayImageClient,           'DimTownImageClient': DimTownImageClient, 
-        'StockSnapImageClient': StockSnapImageClient,    'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,       'GratisoGraphyImageClient': GratisoGraphyImageClient,
-        'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,   'NASAImageClient': NASAImageClient,
-        'GBIFImageClient': GBIFImageClient,              'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,               'WikipediaImageClient': WikipediaImageClient,
-        'JikanImageClient': JikanImageClient,            'FlickrImageClient': FlickrImageClient,
+        'BingImageClient': BingImageClient,              'FoodiesfeedImageClient': FoodiesfeedImageClient,            'DanbooruImageClient': DanbooruImageClient,          'HuabanImageClient': HuabanImageClient,
+        'BaiduImageClient': BaiduImageClient,            'DuckduckgoImageClient': DuckduckgoImageClient,              'UnsplashImageClient': UnsplashImageClient,          'WeiboImageClient': WeiboImageClient, 
+        'I360ImageClient': I360ImageClient,              'FreeNatureStockImageClient': FreeNatureStockImageClient,    'SogouImageClient': SogouImageClient,                'YandexImageClient': YandexImageClient,
+        'EverypixelImageClient': EverypixelImageClient,  'GoogleImageClient': GoogleImageClient,                      'SafebooruImageClient': SafebooruImageClient,        'YahooImageClient': YahooImageClient,
+        'GelbooruImageClient': GelbooruImageClient,      'PexelsImageClient': PexelsImageClient,                      'PixabayImageClient': PixabayImageClient,            'DimTownImageClient': DimTownImageClient, 
+        'StockSnapImageClient': StockSnapImageClient,    'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,        'GratisoGraphyImageClient': GratisoGraphyImageClient,
+        'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,    'NASAImageClient': NASAImageClient,
+        'GBIFImageClient': GBIFImageClient,              'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,                'WikipediaImageClient': WikipediaImageClient,
+        'JikanImageClient': JikanImageClient,            'FlickrImageClient': FlickrImageClient,                      'ClevelandArtImageClient': ClevelandArtImageClient,
     }
 
 

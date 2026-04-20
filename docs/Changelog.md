@@ -1,5 +1,7 @@
 # Release Log
 
+- 2026-04-21: Released pyimagedl v0.4.6 — optimize the implementation of the base image client; add support for searching and downloading images from Flickr and the Cleveland Museum of Art; fix several bugs.
+
 - 2026-04-09: Released pyimagedl v0.4.5 — fix a bug where the behavior of maintain session was inconsistent with expectations; add two new image search and download sources, jikan.moe and wiki.
 
 - 2026-04-08: Released pyimagedl v0.4.4 — added support for three new image search and download sites: yande.re, loc.gov, and gbif.org; optimized parts of the code for better IDE hints.

@@ -10,7 +10,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient, JikanImageClient, FlickrImageClient,
+	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient
 )
 
 # bing tests
@@ -148,4 +148,8 @@ client.download(image_infos, num_threadings=1)
 # flickr tests
 client = FlickrImageClient()
 image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# clevelandart tests
+client = ClevelandArtImageClient()
+image_infos = client.search('Anatomy', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)

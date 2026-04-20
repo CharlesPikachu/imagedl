@@ -16,7 +16,7 @@ from imagedl.modules import ImageClientBuilder, BaseImageClient, ImageInfo
 
 
 '''settings'''
-QUERiES = ["Pikachu", "JK", "Cute Animals", "Mountains", "Girls", "Red Panda", "James Webb", "Jellyfish", "Apollo L1"]
+QUERiES = ["Pikachu", "JK", "Cute Animals", "Mountains", "Girls", "Red Panda", "James Webb", "Jellyfish", "Apollo L1", "Anatomy"]
 MAX_SEARCH = 10
 MAX_DL_PER_CLIENT = 10
 RESULTS_ROOT = Path("daily_test_results")
@@ -138,6 +138,8 @@ def main():
                 image_infos = client.search(QUERiES[7], search_limits=MAX_SEARCH, num_threadings=2)
             elif client_name in {'LocGovImageClient'}:
                 image_infos = client.search(QUERiES[8], search_limits=MAX_SEARCH, num_threadings=2)
+            elif client_name in {'ClevelandArtImageClient'}:
+                image_infos = client.search(QUERiES[9], search_limits=MAX_SEARCH, num_threadings=2)
             else:
                 image_infos = client.search(QUERiES[0], search_limits=MAX_SEARCH, num_threadings=2)
             for image_info in image_infos: image_info.raw_data = {}

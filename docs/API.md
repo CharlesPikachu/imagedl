@@ -317,6 +317,7 @@ It is useful when you want to extend the project or directly control a specific 
 
 - `imagedl.imagedl.modules.sources.BaiduImageClient`
 - `imagedl.imagedl.modules.sources.BingImageClient`
+- `imagedl.imagedl.modules.sources.ClevelandArtImageClient`
 - `imagedl.imagedl.modules.sources.DuckduckgoImageClient`
 - `imagedl.imagedl.modules.sources.DanbooruImageClient`
 - `imagedl.imagedl.modules.sources.DimTownImageClient`
