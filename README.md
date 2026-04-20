@@ -95,6 +95,7 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [FoodiesfeedImageClient](https://www.foodiesfeed.com/)      |  [Foodiesfeed美食图片](https://www.foodiesfeed.com/)      |   ✔️               |  ✔️                  |    [foodiesfeed.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/foodiesfeed.py)            |
 |  [FreeNatureStockImageClient](https://freenaturestock.com/)  |  [FreeNatureStock自然图片](https://freenaturestock.com/)  |   ✔️               |  ✔️                  |    [freenaturestock.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/freenaturestock.py)    |
 |  [FreeImagesImageClient](https://www.freeimages.com/)        |  [Freeimages](https://www.freeimages.com/)                |   ✔️               |  ✔️                  |    [freeimages.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/freeimages.py)              |
+|  [FlickrImageClient](https://www.flickr.com/)                |  [Flickr](https://www.flickr.com/)                        |   ✔️               |  ✔️                  |    [flickr.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/flickr.py)                      |
 |  [GoogleImageClient](https://images.google.com/)             |  [谷歌图片](https://images.google.com/)                   |   ✔️               |  ✔️                  |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)                      |
 |  [GelbooruImageClient](https://gelbooru.com/)                |  [Gelbooru动漫图片](https://gelbooru.com/)                |   ✔️               |  ✔️                  |    [gelbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gelbooru.py)                  |
 |  [GratisoGraphyImageClient](https://gratisography.com/)      |  [GratisoGraphy创意图片网站](https://gratisography.com/)  |   ✔️               |  ✔️                  |    [gratisography.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gratisography.py)        |
@@ -365,7 +366,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient, JikanImageClient
+	YandeImageClient, JikanImageClient, FlickrImageClient
 )
 ~~~
 
@@ -382,7 +383,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient, JikanImageClient
+	YandeImageClient, JikanImageClient, FlickrImageClient
 )
 
 # bing
@@ -548,6 +549,11 @@ client.download(image_infos, num_threadings=1)
 # jikan
 client = JikanImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# flickr
+client = FlickrImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
 
