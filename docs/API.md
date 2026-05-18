@@ -336,6 +336,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.JikanImageClient`
 - `imagedl.imagedl.modules.sources.LifeOfPixImageClient`
 - `imagedl.imagedl.modules.sources.LocGovImageClient`
+- `imagedl.imagedl.modules.sources.MetropolitanImageClient`
 - `imagedl.imagedl.modules.sources.NASAImageClient`
 - `imagedl.imagedl.modules.sources.OpenverseImageClient`
 - `imagedl.imagedl.modules.sources.PixabayImageClient`

@@ -33,6 +33,7 @@ from .freeimages import FreeImagesImageClient
 from .everypixel import EverypixelImageClient
 from .inaturalist import INaturalistImageClient
 from .foodiesfeed import FoodiesfeedImageClient
+from .metropolitan import MetropolitanImageClient
 from .clevelandart import ClevelandArtImageClient
 from .gratisography import GratisoGraphyImageClient
 from .freenaturestock import FreeNatureStockImageClient
@@ -49,7 +50,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'StockSnapImageClient': StockSnapImageClient,    'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,        'GratisoGraphyImageClient': GratisoGraphyImageClient,
         'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,    'NASAImageClient': NASAImageClient,
         'GBIFImageClient': GBIFImageClient,              'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,                'WikipediaImageClient': WikipediaImageClient,
-        'JikanImageClient': JikanImageClient,            'FlickrImageClient': FlickrImageClient,                      'ClevelandArtImageClient': ClevelandArtImageClient,
+        'JikanImageClient': JikanImageClient,            'FlickrImageClient': FlickrImageClient,                      'ClevelandArtImageClient': ClevelandArtImageClient,  'MetropolitanImageClient': MetropolitanImageClient,
     }
 
 
