@@ -315,6 +315,7 @@ imagedl_outputs/BaiduImageClient/2026-03-29-10-30-15 cute cat/
 `BaseImageClient` is the base class for lower-level source clients.
 It is useful when you want to extend the project or directly control a specific backend including,
 
+- `imagedl.imagedl.modules.sources.AICImageClient`
 - `imagedl.imagedl.modules.sources.BaiduImageClient`
 - `imagedl.imagedl.modules.sources.BingImageClient`
 - `imagedl.imagedl.modules.sources.ClevelandArtImageClient`

@@ -1,4 +1,5 @@
 '''initialize'''
+from .aic import AICImageClient
 from .base import BaseImageClient
 from .bing import BingImageClient
 from .i360 import I360ImageClient
@@ -51,6 +52,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,    'NASAImageClient': NASAImageClient,
         'GBIFImageClient': GBIFImageClient,              'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,                'WikipediaImageClient': WikipediaImageClient,
         'JikanImageClient': JikanImageClient,            'FlickrImageClient': FlickrImageClient,                      'ClevelandArtImageClient': ClevelandArtImageClient,  'MetropolitanImageClient': MetropolitanImageClient,
+        'AICImageClient': AICImageClient,
     }
 
 

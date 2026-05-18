@@ -86,6 +86,7 @@ If you find it useful, please star the repository ⭐ to support development and
 
 |  ImageClient (EN)                                                |  ImageClient (CN)                                         |   Search           |  Download            |    Code Snippet                                                                                                            |
 |  :----:                                                          |  :----:                                                   |   :----:           |  :----:              |    :----:                                                                                                                  |
+|  [AICImageClient](https://www.artic.edu/)                        |  [芝加哥艺术博物馆](https://www.artic.edu/)               |   ✔️               |  ✔️                  |    [aic.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/aic.py)                            |
 |  [BaiduImageClient](https://image.baidu.com/)                    |  [百度图片](https://image.baidu.com/)                     |   ✔️               |  ✔️                  |    [baidu.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/baidu.py)                        |
 |  [BingImageClient](https://www.bing.com/images)                  |  [必应图片](https://www.bing.com/images)                  |   ✔️               |  ✔️                  |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)                          |
 |  [ClevelandArtImageClient](https://www.clevelandart.org/home)    |  [克利夫兰艺术博物馆](https://www.clevelandart.org/home)  |   ✔️               |  ✔️                  |    [clevelandart.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/clevelandart.py)          |
@@ -368,7 +369,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient
+	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient
 )
 ~~~
 
@@ -385,7 +386,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient
+	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient
 )
 
 # bing
@@ -565,6 +566,11 @@ client.download(image_infos, num_threadings=1)
 
 # metropolitan
 client = MetropolitanImageClient()
+image_infos = client.search('Bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# aic
+client = AICImageClient()
 image_infos = client.search('Bridge', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
