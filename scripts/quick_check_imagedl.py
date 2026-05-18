@@ -141,7 +141,7 @@ def main():
             elif client_name in {'ClevelandArtImageClient'}:
                 image_infos = client.search(QUERiES[9], search_limits=MAX_SEARCH, num_threadings=2)
                 for image_info in image_infos: image_info.candidate_download_urls = image_info.candidate_download_urls[::-1]
-            elif client_name in {'MetropolitanImageClient', 'AICImageClient'}:
+            elif client_name in {'MetropolitanImageClient', 'AICImageClient', 'WellcomeImageClient'}:
                 image_infos = client.search(QUERiES[10], search_limits=MAX_SEARCH, num_threadings=2)
             else:
                 image_infos = client.search(QUERiES[0], search_limits=MAX_SEARCH, num_threadings=2)

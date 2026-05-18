@@ -349,6 +349,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.UnsplashImageClient`
 - `imagedl.imagedl.modules.sources.WeiboImageClient`
 - `imagedl.imagedl.modules.sources.WikipediaImageClient`
+- `imagedl.imagedl.modules.sources.WellcomeImageClient`
 - `imagedl.imagedl.modules.sources.YandexImageClient`
 - `imagedl.imagedl.modules.sources.YahooImageClient`
 - `imagedl.imagedl.modules.sources.YandeImageClient`

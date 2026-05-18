@@ -10,7 +10,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient
+	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient
 )
 
 # bing tests
@@ -159,5 +159,9 @@ image_infos = client.search('Bridge', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 # aic tests
 client = AICImageClient()
+image_infos = client.search('Bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# wellcome tests
+client = WellcomeImageClient()
 image_infos = client.search('Bridge', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)

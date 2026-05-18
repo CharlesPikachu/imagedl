@@ -120,6 +120,7 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [UnsplashImageClient](https://unsplash.com/)                    |  [Unsplash图片](https://unsplash.com/)                    |   ✔️               |  ✔️                  |    [unsplash.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/unsplash.py)                  |
 |  [WeiboImageClient](https://m.weibo.cn/)                         |  [微博图片](https://m.weibo.cn/)                          |   ✔️               |  ✔️                  |    [weibo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/weibo.py)                        |
 |  [WikipediaImageClient](https://en.wikipedia.org/wiki/Wiki)      |  [维基百科](https://en.wikipedia.org/wiki/Wiki)           |   ✔️               |  ✔️                  |    [wikipedia.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/wikipedia.py)                |
+|  [WellcomeImageClient](https://wellcomecollection.org/)          |  [惠康收藏馆](https://wellcomecollection.org/)            |   ✔️               |  ✔️                  |    [wellcome.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/wellcome.py)                  |
 |  [YandexImageClient](https://yandex.com/images/)                 |  [Yandex图片](https://yandex.com/images/)                 |   ✔️               |  ✔️                  |    [yandex.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yandex.py)                      |
 |  [YahooImageClient](https://images.search.yahoo.com/)            |  [雅虎图片](https://images.search.yahoo.com/)             |   ✔️               |  ✔️                  |    [yahoo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yahoo.py)                        |
 |  [YandeImageClient](https://yande.re/post)                       |  [Yande.re二次元原画](https://yande.re/post)              |   ✔️               |  ✔️                  |    [yande.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yande.py)                        |
@@ -369,7 +370,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient
+	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient
 )
 ~~~
 
@@ -386,7 +387,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient
+	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient
 )
 
 # bing
@@ -571,6 +572,11 @@ client.download(image_infos, num_threadings=1)
 
 # aic
 client = AICImageClient()
+image_infos = client.search('Bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# wellcome
+client = WellcomeImageClient()
 image_infos = client.search('Bridge', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~

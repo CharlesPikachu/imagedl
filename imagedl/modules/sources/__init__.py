@@ -24,6 +24,7 @@ from .danbooru import DanbooruImageClient
 from .unsplash import UnsplashImageClient
 from .gelbooru import GelbooruImageClient
 from .picjumbo import PicJumboImageClient
+from .wellcome import WellcomeImageClient
 from .safebooru import SafebooruImageClient
 from .stocksnap import StockSnapImageClient
 from .lifeofpix import LifeOfPixImageClient
@@ -52,7 +53,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,    'NASAImageClient': NASAImageClient,
         'GBIFImageClient': GBIFImageClient,              'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,                'WikipediaImageClient': WikipediaImageClient,
         'JikanImageClient': JikanImageClient,            'FlickrImageClient': FlickrImageClient,                      'ClevelandArtImageClient': ClevelandArtImageClient,  'MetropolitanImageClient': MetropolitanImageClient,
-        'AICImageClient': AICImageClient,
+        'AICImageClient': AICImageClient,                'WellcomeImageClient': WellcomeImageClient,
     }
 
 
