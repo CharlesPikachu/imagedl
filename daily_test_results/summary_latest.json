@@ -1,6 +1,6 @@
 {
   "date": "2026-05-25",
-  "timestamp_utc": "2026-05-25T14:04:08.360160+00:00",
+  "timestamp_utc": "2026-05-25T14:27:41.116234+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls, Red Panda, James Webb, Jellyfish, Apollo L1, Anatomy, Bridge",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -300,21 +300,21 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/YandexImageClient/00000010.webp",
         "daily_test_results/YandexImageClient/00000008.jpg",
         "daily_test_results/YandexImageClient/00000002.jpg",
-        "daily_test_results/YandexImageClient/00000009.jpg",
         "daily_test_results/YandexImageClient/00000007.jpg",
-        "daily_test_results/YandexImageClient/00000001.webp",
-        "daily_test_results/YandexImageClient/00000003.png",
+        "daily_test_results/YandexImageClient/00000010.jpg",
         "daily_test_results/YandexImageClient/00000004.jpg",
         "daily_test_results/YandexImageClient/00000006.jpg",
-        "daily_test_results/YandexImageClient/00000005.webp"
+        "daily_test_results/YandexImageClient/00000009.webp",
+        "daily_test_results/YandexImageClient/00000003.webp",
+        "daily_test_results/YandexImageClient/00000005.jpg",
+        "daily_test_results/YandexImageClient/00000001.jpg"
       ],
       "search_samples": [
-        "https://static.wikia.nocookie.net/pokemonnj/images/7/75/25Pikachu-Female-TCG_GO.png/revision/latest?cb=20240727023841",
-        "https://i.pinimg.com/736x/0e/a4/25/0ea42526ff1f9b0e6bcfd6a2aa4dcc23.jpg",
-        "https://e1.pngegg.com/pngimages/516/513/png-clipart-pokemon-pokemon-pikachu-illustration-thumbnail.png"
+        "https://i.ytimg.com/vi/xRrVCQzXMNc/maxresdefault.jpg",
+        "https://i.pinimg.com/474x/9d/da/61/9dda617e52c3060a4d979d7c090bc647.jpg?nii=t",
+        "https://static.wikia.nocookie.net/nintendo/images/a/a3/PKMNSS025-Cap.png/revision/latest?cb=20230528035545&path-prefix=en"
       ]
     },
     {
@@ -396,14 +396,29 @@
     },
     {
       "name": "YahooImageClient",
-      "search_ok": false,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 0,
-      "n_downloaded": 0,
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 60,
+      "n_downloaded": 10,
       "error": null,
-      "downloaded_images": [],
-      "search_samples": []
+      "downloaded_images": [
+        "daily_test_results/YahooImageClient/00000008.jpg",
+        "daily_test_results/YahooImageClient/00000009.jpg",
+        "daily_test_results/YahooImageClient/00000006.webp",
+        "daily_test_results/YahooImageClient/00000004.jpg",
+        "daily_test_results/YahooImageClient/00000010.avif",
+        "daily_test_results/YahooImageClient/00000003.webp",
+        "daily_test_results/YahooImageClient/00000007.avif",
+        "daily_test_results/YahooImageClient/00000002.png",
+        "daily_test_results/YahooImageClient/00000005.png",
+        "daily_test_results/YahooImageClient/00000001.jpg"
+      ],
+      "search_samples": [
+        "https://images4.alphacoders.com/132/thumb-1920-1329988.jpeg",
+        "https://media.criticalhit.net/2019/10/Gigantamax-Pikachu-Official-Art.png",
+        "https://pokedex.gg/api/image?url=https:%2F%2Futfs.io%2Ff%2F9486b0e9-cc12-4b8b-8b95-d1f4e6ff8cef-9fx5tr.png&w=300&format=webp&q=80"
+      ]
     },
     {
       "name": "GelbooruImageClient",
@@ -467,10 +482,10 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/PixabayImageClient/00000002.jpg",
+        "daily_test_results/PixabayImageClient/00000010.png",
         "daily_test_results/PixabayImageClient/00000009.png",
         "daily_test_results/PixabayImageClient/00000006.png",
         "daily_test_results/PixabayImageClient/00000003.png",
-        "daily_test_results/PixabayImageClient/00000010.jpg",
         "daily_test_results/PixabayImageClient/00000008.png",
         "daily_test_results/PixabayImageClient/00000005.jpg",
         "daily_test_results/PixabayImageClient/00000004.png",
@@ -478,9 +493,9 @@
         "daily_test_results/PixabayImageClient/00000001.jpg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g2c23b81e51e621fa92b97a4200e6322760d23a629b107ee451fbcf9732f4ea7a9ed98f9d7353f256fb50a5466415ba00377444a04768c7fcd0cd3721ee74d0a6_1280.jpg",
-        "https://pixabay.com/get/gd95fa422bf600463f8a50d23745b74a0a62f03012055818999e583d621393f052e31073e36556df0f9d03ee7b3e08d7ec76d60cf5b80066fc6e5c069d36d7d8f_1280.jpg",
-        "https://pixabay.com/get/g00b470cbbd4197431bb10ba1eb19ebcd3061a4818fdfe03a8c5bed1eb6c7de8fba8a3a4b73acc21f6cd0322ac247abd9b0afc8c66377b95d13edf60371d706cb_1280.png"
+        "https://pixabay.com/get/ga4fcf50710c6a7a0811baf8d2de0e8ccb4bf471740610763ffa9c0e6f60f6165a5aded660231581b109d7e4ace8e9aa0fb95242f9f2418b0dc5638b2a4e4396e_1280.jpg",
+        "https://pixabay.com/get/g326bf7ccc462d104ba8111f998af0b9e662869ff97840997af7e5abd5bd121cd9f5aa8aa7862ccb8fd2918200465a742accaf08c7cd4fe1778de4b81eb978b9e_1280.jpg",
+        "https://pixabay.com/get/g669ed82e97c05c72644225ac10e4fe4d8233e964c09893a03ad35211d458f0bad5a34a112bc04a6555d36d56994751a8c4653105000acba0c80e3fe99edca495_1280.png"
       ]
     },
     {
@@ -780,12 +795,11 @@
       "download_ok": true,
       "ok": true,
       "n_results": 50,
-      "n_downloaded": 9,
+      "n_downloaded": 8,
       "error": null,
       "downloaded_images": [
         "daily_test_results/WikipediaImageClient/00000008.jpg",
         "daily_test_results/WikipediaImageClient/00000002.jpg",
-        "daily_test_results/WikipediaImageClient/00000009.jpg",
         "daily_test_results/WikipediaImageClient/00000007.jpg",
         "daily_test_results/WikipediaImageClient/00000010.jpg",
         "daily_test_results/WikipediaImageClient/00000004.jpg",
@@ -827,14 +841,29 @@
     },
     {
       "name": "FlickrImageClient",
-      "search_ok": false,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 0,
-      "n_downloaded": 0,
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 42,
+      "n_downloaded": 10,
       "error": null,
-      "downloaded_images": [],
-      "search_samples": []
+      "downloaded_images": [
+        "daily_test_results/FlickrImageClient/00000008.jpg",
+        "daily_test_results/FlickrImageClient/00000002.jpg",
+        "daily_test_results/FlickrImageClient/00000009.jpg",
+        "daily_test_results/FlickrImageClient/00000007.jpg",
+        "daily_test_results/FlickrImageClient/00000010.jpg",
+        "daily_test_results/FlickrImageClient/00000004.jpg",
+        "daily_test_results/FlickrImageClient/00000003.jpg",
+        "daily_test_results/FlickrImageClient/00000006.jpg",
+        "daily_test_results/FlickrImageClient/00000005.jpg",
+        "daily_test_results/FlickrImageClient/00000001.jpg"
+      ],
+      "search_samples": [
+        "https://live.staticflickr.com/31337/52123390476_c04ecef495_b.jpg",
+        "https://live.staticflickr.com/65535/52721998390_d0c0fc6e82_b.jpg",
+        "https://live.staticflickr.com/3927/15397797846_b4d0eb2f83_b.jpg"
+      ]
     },
     {
       "name": "ClevelandArtImageClient",
