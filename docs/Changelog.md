@@ -1,6 +1,6 @@
 # Release Log
 
-- 2026-06-13: Released pyimagedl v0.4.8 — Fix image search and download functionality for everypixel; add image search and download support for Internet Archive image collections and Konachan anime images.
+- 2026-06-13: Released pyimagedl v0.4.8 — fix image search and download functionality for everypixel; add image search and download support for Internet Archive image collections and Konachan anime images.
 
 - 2026-05-18: Released pyimagedl v0.4.7 — added image search and download features for three platforms: the Wellcome Collection, the Art Institute of Chicago, and the Metropolitan Museum of Art.
 
