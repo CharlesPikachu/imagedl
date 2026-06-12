@@ -129,7 +129,7 @@ client.download(image_infos, num_threadings=1)
 client = GBIFImageClient()
 image_infos = client.search('jellyfish', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
-# loc.gov tests
+# loc.gov tests (requests from non-U.S. IP addresses are blocked by Cloudflare Challenge, making the service unavailable)
 client = LocGovImageClient()
 image_infos = client.search('apollo 11', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
