@@ -34,6 +34,7 @@ from .wikipedia import WikipediaImageClient
 from .duckduckgo import DuckduckgoImageClient
 from .freeimages import FreeImagesImageClient
 from .everypixel import EverypixelImageClient
+from .openlibrary import OpenLibraryImageClient
 from .inaturalist import INaturalistImageClient
 from .foodiesfeed import FoodiesfeedImageClient
 from .metropolitan import MetropolitanImageClient
@@ -46,16 +47,17 @@ from .internetarchive import InternetArchiveImageClient
 '''ImageClientBuilder'''
 class ImageClientBuilder(BaseModuleBuilder):
     REGISTERED_MODULES = {
-        'BingImageClient': BingImageClient,              'FoodiesfeedImageClient': FoodiesfeedImageClient,            'DanbooruImageClient': DanbooruImageClient,          'HuabanImageClient': HuabanImageClient,
-        'BaiduImageClient': BaiduImageClient,            'DuckduckgoImageClient': DuckduckgoImageClient,              'UnsplashImageClient': UnsplashImageClient,          'WeiboImageClient': WeiboImageClient, 
-        'I360ImageClient': I360ImageClient,              'FreeNatureStockImageClient': FreeNatureStockImageClient,    'SogouImageClient': SogouImageClient,                'YandexImageClient': YandexImageClient,
-        'EverypixelImageClient': EverypixelImageClient,  'GoogleImageClient': GoogleImageClient,                      'SafebooruImageClient': SafebooruImageClient,        'YahooImageClient': YahooImageClient,
-        'GelbooruImageClient': GelbooruImageClient,      'PexelsImageClient': PexelsImageClient,                      'PixabayImageClient': PixabayImageClient,            'DimTownImageClient': DimTownImageClient, 
-        'StockSnapImageClient': StockSnapImageClient,    'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,        'GratisoGraphyImageClient': GratisoGraphyImageClient,
-        'PicJumboImageClient': PicJumboImageClient,      'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,    'NASAImageClient': NASAImageClient,
-        'GBIFImageClient': GBIFImageClient,              'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,                'WikipediaImageClient': WikipediaImageClient,
-        'JikanImageClient': JikanImageClient,            'FlickrImageClient': FlickrImageClient,                      'ClevelandArtImageClient': ClevelandArtImageClient,  'MetropolitanImageClient': MetropolitanImageClient,
-        'AICImageClient': AICImageClient,                'WellcomeImageClient': WellcomeImageClient,                  'KonachanImageClient': KonachanImageClient,          'InternetArchiveImageClient': InternetArchiveImageClient,
+        'BingImageClient': BingImageClient,                 'FoodiesfeedImageClient': FoodiesfeedImageClient,            'DanbooruImageClient': DanbooruImageClient,          'HuabanImageClient': HuabanImageClient,
+        'BaiduImageClient': BaiduImageClient,               'DuckduckgoImageClient': DuckduckgoImageClient,              'UnsplashImageClient': UnsplashImageClient,          'WeiboImageClient': WeiboImageClient, 
+        'I360ImageClient': I360ImageClient,                 'FreeNatureStockImageClient': FreeNatureStockImageClient,    'SogouImageClient': SogouImageClient,                'YandexImageClient': YandexImageClient,
+        'EverypixelImageClient': EverypixelImageClient,     'GoogleImageClient': GoogleImageClient,                      'SafebooruImageClient': SafebooruImageClient,        'YahooImageClient': YahooImageClient,
+        'GelbooruImageClient': GelbooruImageClient,         'PexelsImageClient': PexelsImageClient,                      'PixabayImageClient': PixabayImageClient,            'DimTownImageClient': DimTownImageClient, 
+        'StockSnapImageClient': StockSnapImageClient,       'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,        'GratisoGraphyImageClient': GratisoGraphyImageClient,
+        'PicJumboImageClient': PicJumboImageClient,         'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,    'NASAImageClient': NASAImageClient,
+        'GBIFImageClient': GBIFImageClient,                 'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,                'WikipediaImageClient': WikipediaImageClient,
+        'JikanImageClient': JikanImageClient,               'FlickrImageClient': FlickrImageClient,                      'ClevelandArtImageClient': ClevelandArtImageClient,  'MetropolitanImageClient': MetropolitanImageClient,
+        'AICImageClient': AICImageClient,                   'WellcomeImageClient': WellcomeImageClient,                  'KonachanImageClient': KonachanImageClient,          'InternetArchiveImageClient': InternetArchiveImageClient,
+        'OpenLibraryImageClient': OpenLibraryImageClient,
     }
 
 

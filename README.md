@@ -69,9 +69,9 @@
 
 # 🆕 What's New
 
+- 2026-06-27: Released pyimagedl v0.4.9 — added support for image search and download from openlibrary.org; fixed the FreeImages image client because the old API had been deprecated.
 - 2026-06-13: Released pyimagedl v0.4.8 — fix image search and download functionality for everypixel; add image search and download support for Internet Archive image collections and Konachan anime images.
 - 2026-05-18: Released pyimagedl v0.4.7 — added image search and download features for three platforms: the Wellcome Collection, the Art Institute of Chicago, and the Metropolitan Museum of Art.
-- 2026-04-21: Released pyimagedl v0.4.6 — optimize the implementation of the base image client; add support for searching and downloading images from Flickr and the Cleveland Museum of Art; fix several bugs.
 
 
 # 📘 Introduction
@@ -113,6 +113,7 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [MetropolitanImageClient](https://www.metmuseum.org/zh)         |  [大都会艺术博物馆](https://www.metmuseum.org/zh)         |   ✔️               |  ✔️                  |    [metropolitan.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/metropolitan.py)          |
 |  [NASAImageClient](https://www.nasa.gov/)                        |  [NASA](https://www.nasa.gov/)                            |   ✔️               |  ✔️                  |    [nasa.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/nasa.py)                          |
 |  [OpenverseImageClient](https://openverse.org/)                  |  [Openverse](https://openverse.org/)                      |   ✔️               |  ✔️                  |    [openverse.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/openverse.py)                |
+|  [OpenLibraryImageClient](https://openlibrary.org/)              |  [OpenLibrary](https://openlibrary.org/)                  |   ✔️               |  ✔️                  |    [openlibrary.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/openlibrary.py)            |
 |  [PixabayImageClient](https://pixabay.com/zh/photos/)            |  [Pixabay高清图片](https://pixabay.com/zh/photos/)        |   ✔️               |  ✔️                  |    [pixabay.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pixabay.py)                    |
 |  [PexelsImageClient](https://www.pexels.com/zh-cn/)              |  [Pexels高清图片](https://www.pexels.com/zh-cn/)          |   ✔️               |  ✔️                  |    [pexels.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/pexels.py)                      |
 |  [PicJumboImageClient](https://picjumbo.com/)                    |  [PicJumbo免费高清图库](https://picjumbo.com/)            |   ✔️               |  ✔️                  |    [picjumbo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/picjumbo.py)                  |
@@ -372,7 +373,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient
+	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient, OpenLibraryImageClient,
 )
 ~~~
 
@@ -389,7 +390,7 @@ from imagedl.modules.sources import (
     BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
-	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient
+	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient, OpenLibraryImageClient,
 )
 
 # bing
@@ -589,6 +590,11 @@ client.download(image_infos, num_threadings=1)
 
 # internet archive
 client = InternetArchiveImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# openlibrary
+client = OpenLibraryImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~

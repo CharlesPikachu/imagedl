@@ -342,6 +342,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.MetropolitanImageClient`
 - `imagedl.imagedl.modules.sources.NASAImageClient`
 - `imagedl.imagedl.modules.sources.OpenverseImageClient`
+- `imagedl.imagedl.modules.sources.OpenLibraryImageClient`
 - `imagedl.imagedl.modules.sources.PixabayImageClient`
 - `imagedl.imagedl.modules.sources.PexelsImageClient`
 - `imagedl.imagedl.modules.sources.PicJumboImageClient`
