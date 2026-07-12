@@ -69,9 +69,9 @@
 
 # 🆕 What's New
 
+- 2026-07-13: Released pyimagedl v0.5.0 — regularly maintain the codebase to ensure that all image clients remain functional; add four new image clients: Bluesky, SMK, VAM, and Wallhaven.
 - 2026-06-27: Released pyimagedl v0.4.9 — added support for image search and download from openlibrary.org; fixed the FreeImages image client because the old API had been deprecated.
 - 2026-06-13: Released pyimagedl v0.4.8 — fix image search and download functionality for everypixel; add image search and download support for Internet Archive image collections and Konachan anime images.
-- 2026-05-18: Released pyimagedl v0.4.7 — added image search and download features for three platforms: the Wellcome Collection, the Art Institute of Chicago, and the Metropolitan Museum of Art.
 
 
 # 📘 Introduction
@@ -89,6 +89,7 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [AICImageClient](https://www.artic.edu/)                        |  [芝加哥艺术博物馆](https://www.artic.edu/)               |   ✔️               |  ✔️                  |    [aic.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/aic.py)                            |
 |  [BaiduImageClient](https://image.baidu.com/)                    |  [百度图片](https://image.baidu.com/)                     |   ✔️               |  ✔️                  |    [baidu.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/baidu.py)                        |
 |  [BingImageClient](https://www.bing.com/images)                  |  [必应图片](https://www.bing.com/images)                  |   ✔️               |  ✔️                  |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)                          |
+|  [BlueskyImageClient](https://bsky.app/)                         |  [Bluesky](https://bsky.app/)                             |   ✔️               |  ✔️                  |    [bluesky.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bluesky.py)                    |
 |  [ClevelandArtImageClient](https://www.clevelandart.org/home)    |  [克利夫兰艺术博物馆](https://www.clevelandart.org/home)  |   ✔️               |  ✔️                  |    [clevelandart.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/clevelandart.py)          |
 |  [DuckduckgoImageClient](https://duckduckgo.com/)                |  [DuckDuckGo图片](https://duckduckgo.com/)                |   ✔️               |  ✔️                  |    [duckduckgo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/duckduckgo.py)              |
 |  [DanbooruImageClient](https://danbooru.donmai.us/)              |  [Danbooru动漫图片](https://danbooru.donmai.us/)          |   ✔️               |  ✔️                  |    [danbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/danbooru.py)                  |
@@ -120,10 +121,13 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [SogouImageClient](https://pic.sogou.com/)                      |  [搜狗图片](https://pic.sogou.com/)                       |   ✔️               |  ✔️                  |    [sogou.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/sogou.py)                        |
 |  [SafebooruImageClient](https://safebooru.org/)                  |  [Safebooru动漫图片](https://safebooru.org/)              |   ✔️               |  ✔️                  |    [safebooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/safebooru.py)                |
 |  [StockSnapImageClient](https://stocksnap.io/)                   |  [StockSnap.io](https://stocksnap.io/)                    |   ✔️               |  ✔️                  |    [stocksnap.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/stocksnap.py)                |
+|  [SMKImageClient](https://www.smk.dk/en/)                        |  [丹麦国家美术馆 SMK](https://www.smk.dk/en/)             |   ✔️               |  ✔️                  |    [smk.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/smk.py)                            |
 |  [UnsplashImageClient](https://unsplash.com/)                    |  [Unsplash图片](https://unsplash.com/)                    |   ✔️               |  ✔️                  |    [unsplash.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/unsplash.py)                  |
+|  [VAMImageClient](https://www.vam.ac.uk/)                        |  [英国国立维多利亚与艾伯特博物馆](https://www.vam.ac.uk/) |   ✔️               |  ✔️                  |    [vam.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/vam.py)                            |
 |  [WeiboImageClient](https://m.weibo.cn/)                         |  [微博图片](https://m.weibo.cn/)                          |   ✔️               |  ✔️                  |    [weibo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/weibo.py)                        |
 |  [WikipediaImageClient](https://en.wikipedia.org/wiki/Wiki)      |  [维基百科](https://en.wikipedia.org/wiki/Wiki)           |   ✔️               |  ✔️                  |    [wikipedia.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/wikipedia.py)                |
 |  [WellcomeImageClient](https://wellcomecollection.org/)          |  [惠康收藏馆](https://wellcomecollection.org/)            |   ✔️               |  ✔️                  |    [wellcome.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/wellcome.py)                  |
+|  [WallhavenImageClient](https://wallhaven.cc/)                   |  [Wallhaven 壁纸网](https://wallhaven.cc/)                |   ✔️               |  ✔️                  |    [wallhaven.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/wallhaven.py)                |
 |  [YandexImageClient](https://yandex.com/images/)                 |  [Yandex图片](https://yandex.com/images/)                 |   ✔️               |  ✔️                  |    [yandex.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yandex.py)                      |
 |  [YahooImageClient](https://images.search.yahoo.com/)            |  [雅虎图片](https://images.search.yahoo.com/)             |   ✔️               |  ✔️                  |    [yahoo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yahoo.py)                        |
 |  [YandeImageClient](https://yande.re/post)                       |  [Yande.re二次元原画](https://yande.re/post)              |   ✔️               |  ✔️                  |    [yande.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/yande.py)                        |
@@ -374,6 +378,7 @@ from imagedl.modules.sources import (
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
 	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient, OpenLibraryImageClient,
+	WallhavenImageClient, VAMImageClient, SMKImageClient, BlueskyImageClient,
 )
 ~~~
 
@@ -391,6 +396,7 @@ from imagedl.modules.sources import (
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
 	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient, OpenLibraryImageClient,
+	WallhavenImageClient, VAMImageClient, SMKImageClient, BlueskyImageClient,
 )
 
 # bing
@@ -596,6 +602,26 @@ client.download(image_infos, num_threadings=1)
 # openlibrary
 client = OpenLibraryImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# wallhaven
+client = WallhavenImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# vam
+client = VAMImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# smk
+client = SMKImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# bluesky
+client = BlueskyImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
 

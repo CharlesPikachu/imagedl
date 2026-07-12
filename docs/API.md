@@ -318,6 +318,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.AICImageClient`
 - `imagedl.imagedl.modules.sources.BaiduImageClient`
 - `imagedl.imagedl.modules.sources.BingImageClient`
+- `imagedl.imagedl.modules.sources.BlueskyImageClient`
 - `imagedl.imagedl.modules.sources.ClevelandArtImageClient`
 - `imagedl.imagedl.modules.sources.DuckduckgoImageClient`
 - `imagedl.imagedl.modules.sources.DanbooruImageClient`
@@ -349,10 +350,13 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.SogouImageClient`
 - `imagedl.imagedl.modules.sources.SafebooruImageClient`
 - `imagedl.imagedl.modules.sources.StockSnapImageClient`
+- `imagedl.imagedl.modules.sources.SMKImageClient`
 - `imagedl.imagedl.modules.sources.UnsplashImageClient`
+- `imagedl.imagedl.modules.sources.VAMImageClient`
 - `imagedl.imagedl.modules.sources.WeiboImageClient`
 - `imagedl.imagedl.modules.sources.WikipediaImageClient`
 - `imagedl.imagedl.modules.sources.WellcomeImageClient`
+- `imagedl.imagedl.modules.sources.WallhavenImageClient`
 - `imagedl.imagedl.modules.sources.YandexImageClient`
 - `imagedl.imagedl.modules.sources.YahooImageClient`
 - `imagedl.imagedl.modules.sources.YandeImageClient`

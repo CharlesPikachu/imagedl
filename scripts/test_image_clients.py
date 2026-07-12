@@ -11,6 +11,7 @@ from imagedl.modules.sources import (
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
 	YandeImageClient, JikanImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient, OpenLibraryImageClient,
+    WallhavenImageClient, VAMImageClient, SMKImageClient, BlueskyImageClient,
 )
 
 # bing tests
@@ -176,4 +177,20 @@ client.download(image_infos, num_threadings=1)
 # openlibrary tests
 client = OpenLibraryImageClient()
 image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# wallhaven tests
+client = WallhavenImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# vam tests
+client = VAMImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# smk tests
+client = SMKImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# bluesky tests
+client = BlueskyImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)

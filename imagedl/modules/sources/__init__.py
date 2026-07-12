@@ -1,5 +1,7 @@
 '''initialize'''
 from .aic import AICImageClient
+from .smk import SMKImageClient
+from .vam import VAMImageClient
 from .base import BaseImageClient
 from .bing import BingImageClient
 from .i360 import I360ImageClient
@@ -18,6 +20,7 @@ from ..utils import BaseModuleBuilder
 from .yandex import YandexImageClient
 from .huaban import HuabanImageClient
 from .locgov import LocGovImageClient
+from .bluesky import BlueskyImageClient
 from .pixabay import PixabayImageClient
 from .dimtown import DimTownImageClient
 from .danbooru import DanbooruImageClient
@@ -31,6 +34,7 @@ from .stocksnap import StockSnapImageClient
 from .lifeofpix import LifeOfPixImageClient
 from .openverse import OpenverseImageClient
 from .wikipedia import WikipediaImageClient
+from .wallhaven import WallhavenImageClient
 from .duckduckgo import DuckduckgoImageClient
 from .freeimages import FreeImagesImageClient
 from .everypixel import EverypixelImageClient
@@ -57,7 +61,8 @@ class ImageClientBuilder(BaseModuleBuilder):
         'GBIFImageClient': GBIFImageClient,                 'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,                'WikipediaImageClient': WikipediaImageClient,
         'JikanImageClient': JikanImageClient,               'FlickrImageClient': FlickrImageClient,                      'ClevelandArtImageClient': ClevelandArtImageClient,  'MetropolitanImageClient': MetropolitanImageClient,
         'AICImageClient': AICImageClient,                   'WellcomeImageClient': WellcomeImageClient,                  'KonachanImageClient': KonachanImageClient,          'InternetArchiveImageClient': InternetArchiveImageClient,
-        'OpenLibraryImageClient': OpenLibraryImageClient,
+        'OpenLibraryImageClient': OpenLibraryImageClient,   'SMKImageClient': SMKImageClient,                            'BlueskyImageClient': BlueskyImageClient,            'WallhavenImageClient': WallhavenImageClient,
+        'VAMImageClient': VAMImageClient,
     }
 
 
