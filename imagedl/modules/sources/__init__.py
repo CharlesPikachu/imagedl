@@ -12,7 +12,6 @@ from .sogou import SogouImageClient
 from .yahoo import YahooImageClient
 from .weibo import WeiboImageClient
 from .yande import YandeImageClient
-from .jikan import JikanImageClient
 from .flickr import FlickrImageClient
 from .pexels import PexelsImageClient
 from .google import GoogleImageClient
@@ -59,10 +58,9 @@ class ImageClientBuilder(BaseModuleBuilder):
         'StockSnapImageClient': StockSnapImageClient,       'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,        'GratisoGraphyImageClient': GratisoGraphyImageClient,
         'PicJumboImageClient': PicJumboImageClient,         'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,    'NASAImageClient': NASAImageClient,
         'GBIFImageClient': GBIFImageClient,                 'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,                'WikipediaImageClient': WikipediaImageClient,
-        'JikanImageClient': JikanImageClient,               'FlickrImageClient': FlickrImageClient,                      'ClevelandArtImageClient': ClevelandArtImageClient,  'MetropolitanImageClient': MetropolitanImageClient,
+        'FlickrImageClient': FlickrImageClient,             'ClevelandArtImageClient': ClevelandArtImageClient,          'MetropolitanImageClient': MetropolitanImageClient,  'VAMImageClient': VAMImageClient,
         'AICImageClient': AICImageClient,                   'WellcomeImageClient': WellcomeImageClient,                  'KonachanImageClient': KonachanImageClient,          'InternetArchiveImageClient': InternetArchiveImageClient,
         'OpenLibraryImageClient': OpenLibraryImageClient,   'SMKImageClient': SMKImageClient,                            'BlueskyImageClient': BlueskyImageClient,            'WallhavenImageClient': WallhavenImageClient,
-        'VAMImageClient': VAMImageClient,
     }
 
 

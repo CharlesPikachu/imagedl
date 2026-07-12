@@ -1,6 +1,6 @@
 # Release Log
 
-- 2026-07-13: Released pyimagedl v0.5.0 — regularly maintain the codebase to ensure that all image clients remain functional; add four new image clients: Bluesky, SMK, VAM, and Wallhaven.
+- 2026-07-13: Released pyimagedl v0.5.0 — regularly maintain the codebase to ensure that all image clients remain functional; add four new image clients: Bluesky, SMK, VAM, and Wallhaven; remove JikanImageClient.
 
 - 2026-06-27: Released pyimagedl v0.4.9 — added support for image search and download from openlibrary.org; fixed the FreeImages image client because the old API had been deprecated.
 
