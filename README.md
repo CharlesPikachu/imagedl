@@ -656,11 +656,11 @@ If you use this project in your research, please cite the repository.
 
 # 🌟 Star History
 
-<a href="https://www.star-history.com/?type=date&legend=top-left&repos=CharlesPikachu%2Fimagedl">
+<a href="https://www.star-history.com/?repos=CharlesPikachu%2Fimagedl&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=CharlesPikachu/imagedl&type=date&theme=dark&legend=top-left&sealed_token=vRQceeifLfTLnZDp4MgVG-EKlaWQNBIJlTc_HALyEz3xEARMY7a0jrq61WADe1NbBpr6FlryPpZLExgXHx9uz4eu0WokuZSBHG7db5NJYiE1hjH_dsxoFQ" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=CharlesPikachu/imagedl&type=date&legend=top-left&sealed_token=vRQceeifLfTLnZDp4MgVG-EKlaWQNBIJlTc_HALyEz3xEARMY7a0jrq61WADe1NbBpr6FlryPpZLExgXHx9uz4eu0WokuZSBHG7db5NJYiE1hjH_dsxoFQ" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=CharlesPikachu/imagedl&type=date&legend=top-left&sealed_token=vRQceeifLfTLnZDp4MgVG-EKlaWQNBIJlTc_HALyEz3xEARMY7a0jrq61WADe1NbBpr6FlryPpZLExgXHx9uz4eu0WokuZSBHG7db5NJYiE1hjH_dsxoFQ" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=CharlesPikachu/imagedl&type=date&theme=dark&legend=top-left&sealed_token=z1791M68JJkpH76-9qRDDVODMDptkJO8c7w0_RMtb31Utb6NHg8-SG9rY4eKlcwRzPPq5YG7RFCJ_fYgcznaTBqAZy000Pa5VsQjvL7irUsQqiIBPahjLw" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=CharlesPikachu/imagedl&type=date&legend=top-left&sealed_token=z1791M68JJkpH76-9qRDDVODMDptkJO8c7w0_RMtb31Utb6NHg8-SG9rY4eKlcwRzPPq5YG7RFCJ_fYgcznaTBqAZy000Pa5VsQjvL7irUsQqiIBPahjLw" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=CharlesPikachu/imagedl&type=date&legend=top-left&sealed_token=z1791M68JJkpH76-9qRDDVODMDptkJO8c7w0_RMtb31Utb6NHg8-SG9rY4eKlcwRzPPq5YG7RFCJ_fYgcznaTBqAZy000Pa5VsQjvL7irUsQqiIBPahjLw" />
  </picture>
 </a>
 
