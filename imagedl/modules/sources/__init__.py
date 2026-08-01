@@ -3,6 +3,7 @@ from .aic import AICImageClient
 from .smk import SMKImageClient
 from .vam import VAMImageClient
 from .base import BaseImageClient
+from .cara import CaraImageClient
 from .bing import BingImageClient
 from .i360 import I360ImageClient
 from .nasa import NASAImageClient
@@ -12,6 +13,7 @@ from .sogou import SogouImageClient
 from .yahoo import YahooImageClient
 from .weibo import WeiboImageClient
 from .yande import YandeImageClient
+from .finna import FinnaImageClient
 from .flickr import FlickrImageClient
 from .pexels import PexelsImageClient
 from .google import GoogleImageClient
@@ -61,6 +63,7 @@ class ImageClientBuilder(BaseModuleBuilder):
         'FlickrImageClient': FlickrImageClient,             'ClevelandArtImageClient': ClevelandArtImageClient,          'MetropolitanImageClient': MetropolitanImageClient,  'VAMImageClient': VAMImageClient,
         'AICImageClient': AICImageClient,                   'WellcomeImageClient': WellcomeImageClient,                  'KonachanImageClient': KonachanImageClient,          'InternetArchiveImageClient': InternetArchiveImageClient,
         'OpenLibraryImageClient': OpenLibraryImageClient,   'SMKImageClient': SMKImageClient,                            'BlueskyImageClient': BlueskyImageClient,            'WallhavenImageClient': WallhavenImageClient,
+        'CaraImageClient': CaraImageClient,                 'FinnaImageClient': FinnaImageClient,
     }
 
 
