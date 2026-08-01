@@ -320,6 +320,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.BingImageClient`
 - `imagedl.imagedl.modules.sources.BlueskyImageClient`
 - `imagedl.imagedl.modules.sources.ClevelandArtImageClient`
+- `imagedl.imagedl.modules.sources.CaraImageClient`
 - `imagedl.imagedl.modules.sources.DuckduckgoImageClient`
 - `imagedl.imagedl.modules.sources.DanbooruImageClient`
 - `imagedl.imagedl.modules.sources.DimTownImageClient`
@@ -328,6 +329,7 @@ It is useful when you want to extend the project or directly control a specific 
 - `imagedl.imagedl.modules.sources.FreeNatureStockImageClient`
 - `imagedl.imagedl.modules.sources.FreeImagesImageClient`
 - `imagedl.imagedl.modules.sources.FlickrImageClient`
+- `imagedl.imagedl.modules.sources.FinnaImageClient`
 - `imagedl.imagedl.modules.sources.GoogleImageClient`
 - `imagedl.imagedl.modules.sources.GelbooruImageClient`
 - `imagedl.imagedl.modules.sources.GratisoGraphyImageClient`

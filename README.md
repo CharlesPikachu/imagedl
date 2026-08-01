@@ -91,6 +91,7 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [BingImageClient](https://www.bing.com/images)                  |  [必应图片](https://www.bing.com/images)                  |   ✔️               |  ✔️                  |    [bing.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bing.py)                          |
 |  [BlueskyImageClient](https://bsky.app/)                         |  [Bluesky](https://bsky.app/)                             |   ✔️               |  ✔️                  |    [bluesky.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/bluesky.py)                    |
 |  [ClevelandArtImageClient](https://www.clevelandart.org/home)    |  [克利夫兰艺术博物馆](https://www.clevelandart.org/home)  |   ✔️               |  ✔️                  |    [clevelandart.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/clevelandart.py)          |
+|  [CaraImageClient](https://cara.app/explore)                     |  [Cara艺术平台](https://cara.app/explore)                 |   ✔️               |  ✔️                  |    [cara.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/cara.py)                          |
 |  [DuckduckgoImageClient](https://duckduckgo.com/)                |  [DuckDuckGo图片](https://duckduckgo.com/)                |   ✔️               |  ✔️                  |    [duckduckgo.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/duckduckgo.py)              |
 |  [DanbooruImageClient](https://danbooru.donmai.us/)              |  [Danbooru动漫图片](https://danbooru.donmai.us/)          |   ✔️               |  ✔️                  |    [danbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/danbooru.py)                  |
 |  [DimTownImageClient](https://dimtown.com/home)                  |  [次元小镇](https://dimtown.com/home)                     |   ✔️               |  ✔️                  |    [dimtown.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/dimtown.py)                    |
@@ -99,6 +100,7 @@ If you find it useful, please star the repository ⭐ to support development and
 |  [FreeNatureStockImageClient](https://freenaturestock.com/)      |  [FreeNatureStock自然图片](https://freenaturestock.com/)  |   ✔️               |  ✔️                  |    [freenaturestock.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/freenaturestock.py)    |
 |  [FreeImagesImageClient](https://www.freeimages.com/)            |  [Freeimages](https://www.freeimages.com/)                |   ✔️               |  ✔️                  |    [freeimages.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/freeimages.py)              |
 |  [FlickrImageClient](https://www.flickr.com/)                    |  [Flickr](https://www.flickr.com/)                        |   ✔️               |  ✔️                  |    [flickr.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/flickr.py)                      |
+|  [FinnaImageClient](https://www.finna.fi/)                       |  [芬兰国家数字文化资源检索平台](https://www.finna.fi/)    |   ✔️               |  ✔️                  |    [finna.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/finna.py)                        |
 |  [GoogleImageClient](https://images.google.com/)                 |  [谷歌图片](https://images.google.com/)                   |   ✔️               |  ✔️                  |    [google.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/google.py)                      |
 |  [GelbooruImageClient](https://gelbooru.com/)                    |  [Gelbooru动漫图片](https://gelbooru.com/)                |   ✔️               |  ✔️                  |    [gelbooru.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gelbooru.py)                  |
 |  [GratisoGraphyImageClient](https://gratisography.com/)          |  [GratisoGraphy创意图片网站](https://gratisography.com/)  |   ✔️               |  ✔️                  |    [gratisography.py](https://github.com/CharlesPikachu/imagedl/blob/main/imagedl/modules/sources/gratisography.py)        |
@@ -377,7 +379,7 @@ from imagedl.modules.sources import (
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
 	YandeImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient, OpenLibraryImageClient, SMKImageClient, 
-	WallhavenImageClient, VAMImageClient, BlueskyImageClient,
+	WallhavenImageClient, VAMImageClient, BlueskyImageClient, CaraImageClient, FinnaImageClient
 )
 ~~~
 
@@ -395,7 +397,7 @@ from imagedl.modules.sources import (
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
 	YandeImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient, OpenLibraryImageClient, SMKImageClient, 
-	WallhavenImageClient, VAMImageClient, BlueskyImageClient,
+	WallhavenImageClient, VAMImageClient, BlueskyImageClient, CaraImageClient, FinnaImageClient
 )
 
 # bing
@@ -616,6 +618,16 @@ client.download(image_infos, num_threadings=1)
 # bluesky
 client = BlueskyImageClient()
 image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# cara
+client = CaraImageClient()
+image_infos = client.search('northern lights', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# finna
+client = FinnaImageClient()
+image_infos = client.search('northern lights', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
 

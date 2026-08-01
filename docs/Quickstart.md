@@ -223,7 +223,7 @@ from imagedl.modules.sources import (
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient, 
 	YandeImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient, OpenLibraryImageClient, SMKImageClient, 
-	WallhavenImageClient, VAMImageClient, BlueskyImageClient,
+	WallhavenImageClient, VAMImageClient, BlueskyImageClient, CaraImageClient, FinnaImageClient
 )
 ~~~
 
@@ -241,7 +241,7 @@ from imagedl.modules.sources import (
     DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
     FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
 	YandeImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient, OpenLibraryImageClient, SMKImageClient, 
-	WallhavenImageClient, VAMImageClient, BlueskyImageClient,
+	WallhavenImageClient, VAMImageClient, BlueskyImageClient, CaraImageClient, FinnaImageClient
 )
 
 # bing
@@ -462,6 +462,16 @@ client.download(image_infos, num_threadings=1)
 # bluesky
 client = BlueskyImageClient()
 image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# cara
+client = CaraImageClient()
+image_infos = client.search('northern lights', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+
+# finna
+client = FinnaImageClient()
+image_infos = client.search('northern lights', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 ~~~
 
