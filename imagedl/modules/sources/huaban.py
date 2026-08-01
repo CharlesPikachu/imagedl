@@ -17,7 +17,7 @@ from ..utils import searchdictbykey, ImageInfo
 class HuabanImageClient(BaseImageClient):
     source = 'HuabanImageClient'
     def __init__(self, **kwargs):
-        kwargs['enable_search_curl_cffi'] = True
+        kwargs.setdefault('enable_search_curl_cffi', True)
         super(HuabanImageClient, self).__init__(**kwargs)
         self.default_search_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'}
         self.default_download_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'}

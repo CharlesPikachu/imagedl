@@ -17,9 +17,13 @@ from urllib.parse import quote, urlencode
 class FoodiesfeedImageClient(BaseImageClient):
     source = 'FoodiesfeedImageClient'
     def __init__(self, **kwargs):
+        kwargs.setdefault('enable_search_curl_cffi', True)
         super(FoodiesfeedImageClient, self).__init__(**kwargs)
-        self.default_search_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"}
-        self.default_download_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"}
+        self.default_search_headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
+            'Accept': '*/*', 'Accept-Language': 'en-US,en;q=0.9', 'Referer': 'https://www.foodiesfeed.com/',
+        }
+        self.default_download_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36', 'Referer': 'https://www.foodiesfeed.com/',}
         self.default_headers = self.default_search_headers
         self._initsession()
     '''_parsesearchresult'''
@@ -38,9 +42,17 @@ class FoodiesfeedImageClient(BaseImageClient):
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword: str, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
         request_overrides, filters, base_url = request_overrides or {}, filters or {}, 'https://www.foodiesfeed.com/api/hybrid-photos?'
-        (params := {'page': 1, 'limit': 24, 'locale': 'zh', 'sort': 'relevance', 'requireTagMatch': 'false', 'apiLocation': 'hybrid-search', 'localExhausted': 'true', 'istockOffset': 24, 'totalLoaded': 24, 'searchQuery': keyword}).update(filters)
+        (params := {'page': 1, 'limit': 24, 'locale': 'en', 'sort': 'relevance', 'requireTagMatch': 'false', 'apiLocation': 'hybrid-search', 'localExhausted': 'false', 'istockOffset': 4, 'totalLoaded': 48, 'searchQuery': keyword, 'istockSearchQuery': keyword}).update(filters)
         search_urls, page_size = [], int(params['limit'])
-        for pn in range(math.ceil(search_limits * 1.2 / page_size)):
-            params['page'] = pn + 1; params['istockOffset'] = pn * page_size; params['totalLoaded'] = (pn + 1) * page_size
-            search_urls.append(base_url + urlencode(params, quote_via=quote))
+        for pn in range((page_num := math.ceil(search_limits * 1.2 / page_size))):
+            params['page'] = pn + 1; search_urls.append(search_url := base_url + urlencode(params, quote_via=quote))
+            if pn == page_num - 1: continue # no need to request the current page if there is no next page
+            try:
+                (resp := self.get(search_url, **request_overrides)).raise_for_status()
+                search_result: dict = json_repair.loads(resp.text)
+                params['localExhausted'] = str(search_result.get('localExhausted', params['localExhausted'])).lower()
+                params['istockOffset'] = search_result.get('istockOffset', params['istockOffset'])
+                params['totalLoaded'] = search_result.get('totalLoaded', params['totalLoaded'])
+                resp.close()
+            except Exception: break
         return search_urls

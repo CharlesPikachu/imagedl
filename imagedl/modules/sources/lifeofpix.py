@@ -18,7 +18,7 @@ from ..utils import ImageInfo, cookies2string
 class LifeOfPixImageClient(BaseImageClient):
     source = 'LifeOfPixImageClient'
     def __init__(self, **kwargs):
-        kwargs['enable_search_curl_cffi'] = True
+        kwargs.setdefault('enable_search_curl_cffi', True)
         super(LifeOfPixImageClient, self).__init__(**kwargs)
         self.default_search_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36", "Accept": "application/json, text/plain, */*", "Accept-Language": "en-US,en;q=0.9", "Referer": "https://www.lifeofpix.com/", "X-Requested-With": "XMLHttpRequest"}
         self.default_download_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"}
