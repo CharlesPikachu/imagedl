@@ -1,6 +1,6 @@
 {
-  "date": "2026-08-04",
-  "timestamp_utc": "2026-08-04T04:16:42.943450+00:00",
+  "date": "2026-08-05",
+  "timestamp_utc": "2026-08-05T04:16:13.034113+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls, Red Panda, James Webb, Jellyfish, Apollo L1, Anatomy, Bridge, Northern Lights",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,51 +10,36 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 10,
+      "n_results": 35,
       "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
         "daily_test_results/BingImageClient/00000009.jpg",
-        "daily_test_results/BingImageClient/00000006.webp",
+        "daily_test_results/BingImageClient/00000005.jpg",
         "daily_test_results/BingImageClient/00000002.jpg",
-        "daily_test_results/BingImageClient/00000008.jpg",
-        "daily_test_results/BingImageClient/00000004.jpg",
+        "daily_test_results/BingImageClient/00000010.png",
         "daily_test_results/BingImageClient/00000007.jpg",
         "daily_test_results/BingImageClient/00000001.png",
-        "daily_test_results/BingImageClient/00000005.webp",
-        "daily_test_results/BingImageClient/00000003.png"
+        "daily_test_results/BingImageClient/00000003.jpg",
+        "daily_test_results/BingImageClient/00000006.png",
+        "daily_test_results/BingImageClient/00000004.webp"
       ],
       "search_samples": [
-        "https://4kwallpapers.com/images/wallpapers/pikachu-pokemon-5k-3840x2160-10896.png",
+        "https://i.pinimg.com/originals/eb/2a/4b/eb2a4bedf397dfc7e085431c7ee0d282.png",
         "http://www.cartonionline.com/wordpress/wp-content/uploads/2022/10/Pikachu.jpg",
-        "https://i.pinimg.com/originals/eb/2a/4b/eb2a4bedf397dfc7e085431c7ee0d282.png"
+        "https://images.hdqwalls.com/download/cute-pikachu-6o-3840x2160.jpg"
       ]
     },
     {
       "name": "FoodiesfeedImageClient",
-      "search_ok": true,
-      "download_ok": true,
-      "ok": true,
-      "n_results": 14,
-      "n_downloaded": 10,
+      "search_ok": false,
+      "download_ok": false,
+      "ok": false,
+      "n_results": 0,
+      "n_downloaded": 0,
       "error": null,
-      "downloaded_images": [
-        "daily_test_results/FoodiesfeedImageClient/00000009.jpg",
-        "daily_test_results/FoodiesfeedImageClient/00000005.jpg",
-        "daily_test_results/FoodiesfeedImageClient/00000002.jpg",
-        "daily_test_results/FoodiesfeedImageClient/00000006.jpg",
-        "daily_test_results/FoodiesfeedImageClient/00000001.jpg",
-        "daily_test_results/FoodiesfeedImageClient/00000008.jpg",
-        "daily_test_results/FoodiesfeedImageClient/00000004.jpg",
-        "daily_test_results/FoodiesfeedImageClient/00000007.jpg",
-        "daily_test_results/FoodiesfeedImageClient/00000003.jpg",
-        "daily_test_results/FoodiesfeedImageClient/00000010.jpg"
-      ],
-      "search_samples": [
-        "https://media.istockphoto.com/id/2273004347/photo/pikachu-nudibranch.jpg?b=1&s=612x612&w=0&k=20&c=reS-m2_XPabnzfRRWYLLI6HFolJSCHwEReTo1x83Xq0=",
-        "https://media.istockphoto.com/id/2237954495/photo/pikachu-nudibranch.jpg?b=1&s=612x612&w=0&k=20&c=Fyw7lvMYkdNZXOW8i6YEZ6XAyHDPko41lghO9S9A-aw=",
-        "https://media.istockphoto.com/id/2237952826/photo/pikachu-nudibranch.jpg?b=1&s=612x612&w=0&k=20&c=01bONGVZNFnKnMAhwo5-rdiFkml0prTF1sUyRXR2oCQ="
-      ]
+      "downloaded_images": [],
+      "search_samples": []
     },
     {
       "name": "DanbooruImageClient",
@@ -66,20 +51,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/DanbooruImageClient/00000009.jpg",
-        "daily_test_results/DanbooruImageClient/00000005.jpg",
         "daily_test_results/DanbooruImageClient/00000002.jpg",
         "daily_test_results/DanbooruImageClient/00000006.jpg",
-        "daily_test_results/DanbooruImageClient/00000010.png",
-        "daily_test_results/DanbooruImageClient/00000008.png",
-        "daily_test_results/DanbooruImageClient/00000004.jpg",
+        "daily_test_results/DanbooruImageClient/00000008.jpg",
         "daily_test_results/DanbooruImageClient/00000007.jpg",
         "daily_test_results/DanbooruImageClient/00000001.png",
-        "daily_test_results/DanbooruImageClient/00000003.jpg"
+        "daily_test_results/DanbooruImageClient/00000003.jpg",
+        "daily_test_results/DanbooruImageClient/00000010.jpg",
+        "daily_test_results/DanbooruImageClient/00000005.png",
+        "daily_test_results/DanbooruImageClient/00000004.png"
       ],
       "search_samples": [
-        "https://cdn.donmai.us/original/c1/fb/c1fba944482f96500ee46710692735e2.png",
-        "https://cdn.donmai.us/original/bf/2f/bf2ff883cc0ff4f83d3cd7b5256ea122.jpg",
-        "https://cdn.donmai.us/original/56/0c/560ca90e4e51ea11d324c90b0adbef60.jpg"
+        "https://cdn.donmai.us/original/a7/af/a7af15bd693ed57202f5d3a1f66e6750.png",
+        "https://cdn.donmai.us/original/da/18/da18db83ca1e924d34de7cd42daa9e78.jpg",
+        "https://cdn.donmai.us/original/79/fd/79fd8231e018ea015b06212eb28645ba.jpg"
       ]
     },
     {
@@ -87,25 +72,25 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 44,
+      "n_results": 43,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/HuabanImageClient/00000005.jpg",
-        "daily_test_results/HuabanImageClient/00000002.jpg",
-        "daily_test_results/HuabanImageClient/00000007.png",
         "daily_test_results/HuabanImageClient/00000010.png",
+        "daily_test_results/HuabanImageClient/00000001.jpg",
         "daily_test_results/HuabanImageClient/00000008.png",
         "daily_test_results/HuabanImageClient/00000009.png",
-        "daily_test_results/HuabanImageClient/00000001.png",
+        "daily_test_results/HuabanImageClient/00000004.jpg",
+        "daily_test_results/HuabanImageClient/00000007.jpg",
         "daily_test_results/HuabanImageClient/00000003.jpg",
         "daily_test_results/HuabanImageClient/00000006.png",
-        "daily_test_results/HuabanImageClient/00000004.png"
+        "daily_test_results/HuabanImageClient/00000002.png",
+        "daily_test_results/HuabanImageClient/00000005.png"
       ],
       "search_samples": [
-        "https://gd-hbimg-edge.huaban.com/710fc985310a94a91e3f3e17f17803d979282f74fac04-7UB8fe?auth_key=1785830400-fc1c324fa25d4b4c9e86a995aa76652c-0-b856184df7baa7eed9005c77e63ac05f",
-        "https://gd-hbimg-edge.huaban.com/da5a9ce41b18f8baa0e6c71eca93b92bfe479f201c9250-almBTd?auth_key=1785830400-fc1c324fa25d4b4c9e86a995aa76652c-0-223427857f79ff4e13b51d4ac3f83991",
-        "https://gd-hbimg-edge.huaban.com/0d271f42c70c392c5b3187576a0c520a713823761a3991-1ks542?auth_key=1785830400-fc1c324fa25d4b4c9e86a995aa76652c-0-62e25b2bdd9b02373f4d710f4d9f839b"
+        "https://gd-hbimg-edge.huaban.com/da5a9ce41b18f8baa0e6c71eca93b92bfe479f201c9250-almBTd?auth_key=1785916800-106843bd7c414205980738dee144178c-0-7406769f9341d0886b23152a1b25e02b",
+        "https://gd-hbimg-edge.huaban.com/14e88056c6432c4b973d897292c20fc13a9a98211058d-bJp8xF?auth_key=1785916800-106843bd7c414205980738dee144178c-0-81cc89852ce32bdb8f8c29065c23fecd",
+        "https://gd-hbimg-edge.huaban.com/0d271f42c70c392c5b3187576a0c520a713823761a3991-1ks542?auth_key=1785916800-106843bd7c414205980738dee144178c-0-c7a17f6e5a29b06759e454b672e4878f"
       ]
     },
     {
@@ -191,7 +176,7 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 42,
+      "n_results": 39,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
@@ -207,9 +192,9 @@
         "daily_test_results/WeiboImageClient/00000010.jpg"
       ],
       "search_samples": [
-        "https://wx1.sinaimg.cn/mw2000/006wwqkTgy1iet9jzjb2oj34e275ukju.jpg",
-        "https://wx2.sinaimg.cn/mw2000/006wwqkTgy1iet9k2u50nj34256mdx6x.jpg",
-        "https://wx1.sinaimg.cn/mw2000/006wwqkTgy1iet9k65wt5j34g078yqvf.jpg"
+        "https://wx2.sinaimg.cn/mw2000/006pPEeXgy1ifa8xe54paj30u1141akz.jpg",
+        "https://wx1.sinaimg.cn/mw2000/006pPEeXgy1ifa8xewee1j30u1141tju.jpg",
+        "https://wx4.sinaimg.cn/mw2000/006pPEeXgy1ifa8xfh4mkj30u1141gxf.jpg"
       ]
     },
     {
@@ -273,21 +258,21 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
+        "daily_test_results/SogouImageClient/00000009.jpg",
         "daily_test_results/SogouImageClient/00000005.jpg",
         "daily_test_results/SogouImageClient/00000002.jpg",
         "daily_test_results/SogouImageClient/00000006.jpg",
         "daily_test_results/SogouImageClient/00000001.jpg",
-        "daily_test_results/SogouImageClient/00000008.png",
+        "daily_test_results/SogouImageClient/00000008.jpg",
         "daily_test_results/SogouImageClient/00000004.jpg",
         "daily_test_results/SogouImageClient/00000007.jpg",
         "daily_test_results/SogouImageClient/00000003.jpg",
-        "daily_test_results/SogouImageClient/00000010.jpg",
-        "daily_test_results/SogouImageClient/00000009.gif"
+        "daily_test_results/SogouImageClient/00000010.jpg"
       ],
       "search_samples": [
+        "https://b-ssl.duitang.com/uploads/item/201409/28/20140928125626_AydKN.thumb.700_0.jpeg",
         "https://img.zcool.cn/community/01a05e58c27767a801219c77de1f11.jpg@1280w_1l_2o_100sh.jpg",
-        "http://imge.kugou.com/stdmusic/20151231/20151231171419566617.jpg",
-        "https://b-ssl.duitang.com/uploads/item/201209/23/20120923095021_8dreA.thumb.700_0.jpeg"
+        "http://imge.kugou.com/stdmusic/20151231/20151231171419566617.jpg"
       ]
     },
     {
@@ -300,20 +285,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/YandexImageClient/00000009.jpg",
+        "daily_test_results/YandexImageClient/00000007.webp",
         "daily_test_results/YandexImageClient/00000008.webp",
+        "daily_test_results/YandexImageClient/00000002.jpg",
         "daily_test_results/YandexImageClient/00000006.jpg",
-        "daily_test_results/YandexImageClient/00000010.png",
-        "daily_test_results/YandexImageClient/00000002.webp",
-        "daily_test_results/YandexImageClient/00000007.jpg",
+        "daily_test_results/YandexImageClient/00000010.webp",
+        "daily_test_results/YandexImageClient/00000001.jpg",
         "daily_test_results/YandexImageClient/00000003.jpg",
         "daily_test_results/YandexImageClient/00000005.webp",
-        "daily_test_results/YandexImageClient/00000001.webp",
         "daily_test_results/YandexImageClient/00000004.webp"
       ],
       "search_samples": [
-        "https://static.wikia.nocookie.net/pokemonfanon/images/d/d1/Pikachu_2-Sapphirejas.png/revision/latest?cb=20210813012753",
-        "https://static.wikia.nocookie.net/protagonists/images/0/0a/Pikachu_Pokepark.webp/revision/latest?cb=20250326071933",
-        "https://i.pinimg.com/236x/82/bb/f0/82bbf06c9f2aafb31889e5fe99fe9299.jpg"
+        "https://cdn.mos.cms.futurecdn.net/Pm5pqoFwcuRamHbyiVWuuh.jpg",
+        "https://i.pinimg.com/736x/a9/e7/76/a9e776e5c934d666d1f2e257beea0a2b.jpg",
+        "https://i.ytimg.com/vi/z0U0HAaC02c/maxresdefault.jpg"
       ]
     },
     {
@@ -376,21 +361,21 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/SafebooruImageClient/00000009.jpg",
         "daily_test_results/SafebooruImageClient/00000005.jpg",
-        "daily_test_results/SafebooruImageClient/00000002.jpg",
-        "daily_test_results/SafebooruImageClient/00000007.png",
-        "daily_test_results/SafebooruImageClient/00000001.jpg",
+        "daily_test_results/SafebooruImageClient/00000006.jpg",
+        "daily_test_results/SafebooruImageClient/00000010.png",
         "daily_test_results/SafebooruImageClient/00000008.png",
+        "daily_test_results/SafebooruImageClient/00000009.png",
         "daily_test_results/SafebooruImageClient/00000004.jpg",
+        "daily_test_results/SafebooruImageClient/00000007.jpg",
+        "daily_test_results/SafebooruImageClient/00000001.png",
         "daily_test_results/SafebooruImageClient/00000003.jpg",
-        "daily_test_results/SafebooruImageClient/00000006.png",
-        "daily_test_results/SafebooruImageClient/00000010.jpg"
+        "daily_test_results/SafebooruImageClient/00000002.png"
       ],
       "search_samples": [
-        "https://safebooru.org/images/586/99b5411586b79ecd8f9781b263ef59f933c34a45.jpg",
-        "https://safebooru.org/images/74/083847e71e4e7551f2ca90ff09c0b5e801c3bac3.jpg",
-        "https://safebooru.org/images/74/c033041197e790ac02f794a0c17d1ba0b9fc212e.jpg"
+        "https://safebooru.org/images/1354/c9cb6890cec06767b4ce51391e4a0be0c61a1309.png",
+        "https://safebooru.org/images/586/d3034f93d73251e0be7f6c6e3fdc2ad0e4417f16.png",
+        "https://safebooru.org/images/586/99b5411586b79ecd8f9781b263ef59f933c34a45.jpg"
       ]
     },
     {
@@ -399,17 +384,18 @@
       "download_ok": true,
       "ok": true,
       "n_results": 10,
-      "n_downloaded": 8,
+      "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
         "daily_test_results/YahooImageClient/00000006.jpg",
+        "daily_test_results/YahooImageClient/00000010.webp",
         "daily_test_results/YahooImageClient/00000001.jpg",
         "daily_test_results/YahooImageClient/00000008.jpg",
         "daily_test_results/YahooImageClient/00000004.jpg",
         "daily_test_results/YahooImageClient/00000007.jpg",
         "daily_test_results/YahooImageClient/00000002.avif",
         "daily_test_results/YahooImageClient/00000003.jpg",
-        "daily_test_results/YahooImageClient/00000005.webp"
+        "daily_test_results/YahooImageClient/00000005.png"
       ],
       "search_samples": [
         "https://wallpapers.com/images/featured/pikachu-4k-uzcr6pdp4a36rrd4.jpg",
@@ -430,17 +416,17 @@
         "daily_test_results/GelbooruImageClient/00000005.jpg",
         "daily_test_results/GelbooruImageClient/00000002.jpg",
         "daily_test_results/GelbooruImageClient/00000006.jpg",
-        "daily_test_results/GelbooruImageClient/00000010.png",
-        "daily_test_results/GelbooruImageClient/00000001.jpg",
         "daily_test_results/GelbooruImageClient/00000008.jpg",
         "daily_test_results/GelbooruImageClient/00000004.jpg",
         "daily_test_results/GelbooruImageClient/00000007.jpg",
-        "daily_test_results/GelbooruImageClient/00000003.jpg"
+        "daily_test_results/GelbooruImageClient/00000001.png",
+        "daily_test_results/GelbooruImageClient/00000003.jpg",
+        "daily_test_results/GelbooruImageClient/00000010.jpg"
       ],
       "search_samples": [
-        "https://img4.gelbooru.com//samples/c1/fb/sample_c1fba944482f96500ee46710692735e2.jpg",
-        "https://img4.gelbooru.com//samples/bf/2f/sample_bf2ff883cc0ff4f83d3cd7b5256ea122.jpg",
-        "https://img4.gelbooru.com//images/56/0c/560ca90e4e51ea11d324c90b0adbef60.jpg"
+        "https://img4.gelbooru.com//images/a7/af/a7af15bd693ed57202f5d3a1f66e6750.png",
+        "https://img4.gelbooru.com//images/91/73/917386f5d8ad7640bb115cc6762e4223.jpeg",
+        "https://img4.gelbooru.com//images/e7/20/e720d1bae654941422bfe4051b82c585.jpeg"
       ]
     },
     {
@@ -478,21 +464,21 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/PixabayImageClient/00000009.jpg",
         "daily_test_results/PixabayImageClient/00000002.jpg",
         "daily_test_results/PixabayImageClient/00000006.jpg",
-        "daily_test_results/PixabayImageClient/00000010.png",
         "daily_test_results/PixabayImageClient/00000001.jpg",
         "daily_test_results/PixabayImageClient/00000008.png",
+        "daily_test_results/PixabayImageClient/00000009.png",
         "daily_test_results/PixabayImageClient/00000004.jpg",
         "daily_test_results/PixabayImageClient/00000007.jpg",
         "daily_test_results/PixabayImageClient/00000003.jpg",
+        "daily_test_results/PixabayImageClient/00000010.jpg",
         "daily_test_results/PixabayImageClient/00000005.png"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g868c7ccd006a85315964bf88ba9b7f4269b6609cb27fb2f221f712dbf45ca9fad15c7d87ad37ea0f85d25b80bd79227aaa5195efd5cb68cbb79b232f59f27829_1280.jpg",
-        "https://pixabay.com/get/g331ad30f4e53c1c266d2f0269c9deea6764fe9298bbf490434f14e5b4c0373d329e9553267e88940c085bdbc35cbf1d533740bf36f583fa1bdd347cc135babdd_1280.jpg",
-        "https://pixabay.com/get/g0585efc6206bc047c13ceab91aa806ea9f11bd0ed173f9a5a1131e19c519ccce5b658cb3bbc5ce59652a7227060786eb7ee9dd6bfa94acd5037f60e02a547483_1280.jpg"
+        "https://pixabay.com/get/g59fcaea1b8dbbc184661dbad47a3685d05b14473cc2e63e5442e9771f3d9992e6881dd625ce7914e6f1739241f40da49c3fbc0775130b5d2f6c6e0eac5fdcd13_1280.jpg",
+        "https://pixabay.com/get/g946d048c59006a215702f982e8bf5677dc876f17a7268a4dc52a3a5ab1d2dc0728d9f9b3b901031b13b5e772f41b22aa1e4af54c41ef465206a09194f54268c5_1280.jpg",
+        "https://pixabay.com/get/g0eb70052716285dbbdd4691313c20d5b08fd001fc4d23122bdcfdda4aeae474f4a9efc9b5954534182c945acd963666339e9b1759708ef57f188ee1992aa5cd9_1280.jpg"
       ]
     },
     {
@@ -1006,9 +992,9 @@
         "daily_test_results/InternetArchiveImageClient/00000010.jpg"
       ],
       "search_samples": [
-        "https://archive.org/services/img/ash-and-pikachu-alone-without-his-18-friends-7.30.2026",
-        "https://archive.org/services/img/hey-you-pikachu",
-        "https://archive.org/services/img/dengeki_202511"
+        "https://archive.org/services/img/reduction_resort___perky__rotation_sheet__by_melodycharlotte_d9d7hhg-fullview",
+        "https://archive.org/services/img/dengeki_202511",
+        "https://archive.org/services/img/brenni-murasakis-characters-by-color-drawings"
       ]
     },
     {
@@ -1068,18 +1054,19 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 3,
-      "n_downloaded": 3,
+      "n_results": 4,
+      "n_downloaded": 4,
       "error": null,
       "downloaded_images": [
         "daily_test_results/BlueskyImageClient/00000002.webp",
         "daily_test_results/BlueskyImageClient/00000003.webp",
-        "daily_test_results/BlueskyImageClient/00000001.webp"
+        "daily_test_results/BlueskyImageClient/00000001.webp",
+        "daily_test_results/BlueskyImageClient/00000004.webp"
       ],
       "search_samples": [
-        "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:risqvxa7rhltdf5usqezeuwk/bafkreia2lwsdbohak45vbuozbxlkzsmtkt6uee22n3lz7dxkjta6z6cw4i",
-        "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:risqvxa7rhltdf5usqezeuwk/bafkreic5jjiykqauoqtcgytwngwcsevvjni5vqxsomxplrjs5l7kcazigy",
-        "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:miweif7dpq5vxbeuxhhtm37w/bafkreih4qakwevuqv4cthno6ykqlx4d73st7iqpht3vf7aiwogltsaopta"
+        "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:5olkd3vuiqu75rgyfjjovvbq/bafkreieh3leijcj2phc2f7fsfhmvkjok7p3rbs5amyinxyzknl73uwujfu",
+        "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:5olkd3vuiqu75rgyfjjovvbq/bafkreic6vgsjejrawp4yyociyug75t6w3thw7o3attast2inldmtzcjiz4",
+        "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:5olkd3vuiqu75rgyfjjovvbq/bafkreie3jd5uk3owtlhhaknbg4hbqmgalu424mpedvnlf27vb3y242afcq"
       ]
     },
     {
