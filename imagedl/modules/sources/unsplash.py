@@ -8,15 +8,16 @@ WeChat Official Account (微信公众号):
 '''
 import math
 import json_repair
+from typing import Unpack
 from ..utils import ImageInfo
-from .base import BaseImageClient
 from urllib.parse import quote, urlencode
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''UnsplashImageClient'''
 class UnsplashImageClient(BaseImageClient):
     source = 'UnsplashImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(UnsplashImageClient, self).__init__(**kwargs)
         self.default_search_headers = {
             "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7", "cache-control": "max-age=0", "sec-ch-ua-mobile": "?0", "sec-ch-ua-platform": '"Windows"', "sec-fetch-dest": "document", "upgrade-insecure-requests": "1", "sec-fetch-mode": "navigate", "sec-fetch-site": "none", "sec-fetch-user": "?1", "accept-encoding": "gzip, deflate, br, zstd", "priority": "u=0, i", 

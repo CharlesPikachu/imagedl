@@ -7,15 +7,16 @@ WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
 import json_repair
+from typing import Unpack
 from ..utils import ImageInfo
-from .base import BaseImageClient
 from urllib.parse import quote, urlencode
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''BlueskyImageClient'''
 class BlueskyImageClient(BaseImageClient):
     source = 'BlueskyImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(BlueskyImageClient, self).__init__(**kwargs)
         self.default_search_headers = {'Accept': 'application/json, text/plain, */*', 'Referer': 'https://bsky.app/', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',}
         self.default_download_headers = {'Referer': 'https://bsky.app/', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',}

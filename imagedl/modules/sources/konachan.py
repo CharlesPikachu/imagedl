@@ -8,15 +8,16 @@ WeChat Official Account (微信公众号):
 '''
 import math
 import json_repair
+from typing import Unpack
 from ..utils import ImageInfo
-from .base import BaseImageClient
 from urllib.parse import quote, urlencode
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''KonachanImageClient'''
 class KonachanImageClient(BaseImageClient):
     source = 'KonachanImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(KonachanImageClient, self).__init__(**kwargs)
         self.default_search_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36", "Accept": "application/json,text/plain,*/*", "Referer": "https://konachan.net/"}
         self.default_download_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36", "Referer": "https://konachan.net/"}

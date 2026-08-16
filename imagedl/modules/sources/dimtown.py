@@ -8,16 +8,17 @@ WeChat Official Account (微信公众号):
 '''
 import re
 import math
+from typing import Unpack
 from bs4 import BeautifulSoup
 from ..utils import ImageInfo
-from .base import BaseImageClient
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''DimTownImageClient'''
 class DimTownImageClient(BaseImageClient):
     source = 'DimTownImageClient'
     POST_URL_RE = re.compile(r"^https?://dimtown\.com/\d+\.html$")
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(DimTownImageClient, self).__init__(**kwargs)
         self.default_search_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"}
         self.default_download_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"}

@@ -10,16 +10,17 @@ import re
 import math
 import html
 import json_repair
+from typing import Unpack
 from urllib.parse import quote
-from .base import BaseImageClient
 from ..utils import Filter, ImageInfo
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''YandexImageClient'''
 class YandexImageClient(BaseImageClient):
     source = 'YandexImageClient'
     CANDIDATE_DOMAINS = ['https://yandex.com', 'https://yandex.ru', 'https://yandex.kz', 'https://yandex.by', 'https://yandex.com.tr']
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         if 'maintain_session' not in kwargs: kwargs['maintain_session'] = True
         super(YandexImageClient, self).__init__(**kwargs)
         self.default_search_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',}

@@ -11,11 +11,12 @@ import primp
 import random
 import requests
 import json_repair
+from typing import Unpack
 from contextlib import suppress
-from .base import BaseImageClient
 from urllib.parse import urlencode
 from fake_useragent import UserAgent
 from ..utils import Filter, ImageInfo
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''DuckduckgoImageClient'''
@@ -26,7 +27,7 @@ class DuckduckgoImageClient(BaseImageClient):
         "lt-lt": "Lithuania", "xl-es": "Latin America", "my-ms": "Malaysia", "my-en": "Malaysia (en)", "mx-es": "Mexico", "nl-nl": "Netherlands", "nz-en": "New Zealand", "no-no": "Norway", "pe-es": "Peru", "ph-en": "Philippines", "ph-tl": "Philippines (tl)", "pl-pl": "Poland", "pt-pt": "Portugal", "ro-ro": "Romania", "ru-ru": "Russia", "us-en": "United States", "ue-es": "United States (es)", "ve-es": "Venezuela", 
         "sg-en": "Singapore", "sk-sk": "Slovak Republic", "sl-sl": "Slovenia", "za-en": "South Africa", "es-es": "Spain", "se-sv": "Sweden", "ch-de": "Switzerland (de)", "ch-fr": "Switzerland (fr)", "ch-it": "Switzerland (it)", "tw-tzh": "Taiwan", "th-th": "Thailand", "tr-tr": "Turkey", "ua-uk": "Ukraine", "uk-en": "United Kingdom", "vn-vi": "Vietnam", "wt-wt": "No region",
     }
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(DuckduckgoImageClient, self).__init__(**kwargs)
         self.default_search_headers = {"Accept": "*/*", "Accept-Language": "en-US,en;q=0.5", "Referer": "https://duckduckgo.com/", "Sec-GPC": "1", "Connection": "keep-alive", "Sec-Fetch-Dest": "empty", "Sec-Fetch-Mode": "cors", "Sec-Fetch-Site": "same-origin", "Priority": "u=4"}
         self.default_download_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"}

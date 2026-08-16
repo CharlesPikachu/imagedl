@@ -9,15 +9,16 @@ WeChat Official Account (微信公众号):
 import re
 import math
 import json_repair
+from typing import Unpack
 from urllib.parse import quote
-from .base import BaseImageClient
 from ..utils import ImageInfo, cookies2string
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''LifeOfPixImageClient'''
 class LifeOfPixImageClient(BaseImageClient):
     source = 'LifeOfPixImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         kwargs.setdefault('enable_search_curl_cffi', True)
         super(LifeOfPixImageClient, self).__init__(**kwargs)
         self.default_search_headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36", "Accept": "application/json, text/plain, */*", "Accept-Language": "en-US,en;q=0.9", "Referer": "https://www.lifeofpix.com/", "X-Requested-With": "XMLHttpRequest"}

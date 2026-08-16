@@ -8,15 +8,16 @@ WeChat Official Account (微信公众号):
 '''
 import math
 import json_repair
+from typing import Unpack
 from ..utils import ImageInfo
 from urllib.parse import quote
-from .base import BaseImageClient
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''StockSnapImageClient'''
 class StockSnapImageClient(BaseImageClient):
     source = 'StockSnapImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(StockSnapImageClient, self).__init__(**kwargs)
         self.default_search_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'}
         self.default_download_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'}

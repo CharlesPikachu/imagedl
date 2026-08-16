@@ -340,7 +340,7 @@ image_infos = client.search('mountains', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 
 # weibo (cookies required)
-client = WeiboImageClient(default_search_cookies='xxxx')
+client = WeiboImageClient(default_search_cookies='Your Authenticated Cookies')
 image_infos = client.search('animals', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 
@@ -464,8 +464,8 @@ client = BlueskyImageClient()
 image_infos = client.search('bridge', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 
-# cara
-client = CaraImageClient()
+# cara (cookies required)
+client = CaraImageClient(default_search_cookies='Your Authenticated Cookies')
 image_infos = client.search('northern lights', search_limits=10, num_threadings=1)
 client.download(image_infos, num_threadings=1)
 

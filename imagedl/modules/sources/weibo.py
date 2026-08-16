@@ -9,16 +9,17 @@ WeChat Official Account (微信公众号):
 import re
 import math
 import json_repair
+from typing import Unpack
 from ..utils import ImageInfo
 from urllib.parse import quote
-from .base import BaseImageClient
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''WeiboImageClient'''
 class WeiboImageClient(BaseImageClient):
     source = 'WeiboImageClient'
     SINAIMG_RE = re.compile(r'(https?://wx\d\.sinaimg\.cn/)' r'(?:thumbnail|thumb150|thumb180|small|square|bmiddle|mw\d+|orj\d+)' r'(/)')
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(WeiboImageClient, self).__init__(**kwargs)
         self.default_search_headers = {
             'Cookie': 'SUB=_2AkMeQriDf8NxqwFRmv0Rz2LgbI9-zA_EieKoHklYJRM3HRl-yT9yqmE5tRB6NcKWbCbMDwPRXM1ooQJ1pNNWP8ZEg0Ev; WEIBOCN_FROM=1110006030; MLOGIN=0; _T_WM=91941672904; XSRF-TOKEN=72dc30; mweibo_short_token=664a2add81; M_WEIBOCN_PARAMS=luicode%3D10000011%26lfid%3D100103type%253D1%2526q%253D%25E7%258C%25AB%25E5%2592%25AA%26fid%3D100103type%253D1%2526q%253D%25E7%258C%25AB%25E5%2592%25AA%26uicode%3D10000011',

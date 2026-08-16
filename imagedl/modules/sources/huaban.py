@@ -8,15 +8,16 @@ WeChat Official Account (微信公众号):
 '''
 import math
 import json_repair
-from .base import BaseImageClient
+from typing import Unpack
 from urllib.parse import quote, urlencode
 from ..utils import searchdictbykey, ImageInfo
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''HuabanImageClient'''
 class HuabanImageClient(BaseImageClient):
     source = 'HuabanImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         kwargs.setdefault('enable_search_curl_cffi', True)
         super(HuabanImageClient, self).__init__(**kwargs)
         self.default_search_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36'}

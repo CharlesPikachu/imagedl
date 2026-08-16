@@ -11,16 +11,17 @@ import math
 import random
 import datetime
 import json_repair
+from typing import Unpack
 from bs4 import BeautifulSoup
-from .base import BaseImageClient
 from urllib.parse import urlencode
+from .base import BaseImageClient, BaseImageClientKwargs
 from ..utils import Filter, ImageInfo, DrissionPageUtils, FakeRequestsResponse
 
 
 '''GoogleImageClient'''
 class GoogleImageClient(BaseImageClient):
     source = 'GoogleImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(GoogleImageClient, self).__init__(**kwargs)
         self.default_search_headers = {'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',}
         self.default_download_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36'}

@@ -9,9 +9,10 @@ WeChat Official Account (微信公众号):
 import math
 import random
 import json_repair
+from typing import Unpack
 from ..utils import ImageInfo
-from .base import BaseImageClient
 from urllib.parse import quote, urlencode
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''FlickrImageClient'''
@@ -21,7 +22,7 @@ class FlickrImageClient(BaseImageClient):
         '0f15ff623f1198a1f7f52550f8c36057', 'a6365f14201cd3c5f34678e671b9ab8d', 'f7e7fb8cc34e52db3e5af5e1727d0c0b', 'ca4dd89d3dfaeaf075144c3fdec76756',
         '9b4439ce94de7e2ec2c2e6ffadc22bcf', '6c2dba48efdbccaced44ea0b445fecbf', '57bded31ef9c635326e4acfa2c62b7dc', '929033444e3a0d9a3859195d56d36552',
     ]
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(FlickrImageClient, self).__init__(**kwargs)
         self.default_search_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"}
         self.default_download_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"}

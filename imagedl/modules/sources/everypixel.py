@@ -8,15 +8,16 @@ WeChat Official Account (微信公众号):
 '''
 import math
 import json_repair
-from .base import BaseImageClient
+from typing import Unpack
 from urllib.parse import quote, urlencode
+from .base import BaseImageClient, BaseImageClientKwargs
 from ..utils import ImageInfo, DrissionPageUtils, FakeRequestsResponse
 
 
 '''EverypixelImageClient'''
 class EverypixelImageClient(BaseImageClient):
     source = 'EverypixelImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(EverypixelImageClient, self).__init__(**kwargs)
         self.default_search_headers = {}
         self.default_download_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"}

@@ -9,9 +9,10 @@ WeChat Official Account (微信公众号):
 import math
 import random
 import json_repair
+from typing import Unpack
 from urllib.parse import quote
-from .base import BaseImageClient
 from ..utils import Filter, ImageInfo
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''PixabayImageClient'''
@@ -23,7 +24,7 @@ class PixabayImageClient(BaseImageClient):
         '20583871-24538aa0638807f136238470d', '34787804-1aefa27f7d66275b11fe28ff3', '15089766-5bf9896a3416c7dcc335047dc', '47820586-1bbcb8dfd700ccd5c12e5d9e1',
     ]
     API_KEY = random.choice(CANDIDATE_API_KEYS)
-    def __init__(self, api_key: str = None, **kwargs):
+    def __init__(self, api_key: str = None, **kwargs: Unpack[BaseImageClientKwargs]):
         super(PixabayImageClient, self).__init__(**kwargs)
         PixabayImageClient.API_KEY = api_key if api_key is not None else PixabayImageClient.API_KEY
         self.default_search_headers = {'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2', 'Referer': 'keep-alive', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36'}

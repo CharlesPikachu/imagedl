@@ -21,7 +21,7 @@ from datetime import datetime
 from collections import defaultdict
 from fake_useragent import UserAgent
 from pathvalidate import sanitize_filepath
-from typing import TYPE_CHECKING, Iterable
+from typing import TYPE_CHECKING, Iterable, TypedDict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from ..utils import usedownloadheaderscookies, usesearchheaderscookies, touchdir, cookies2dict, optionalimport, optionalimportfrom, LoggerHandle, Filter, ImageInfo, ImageExtensionUtils
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn, DownloadColumn, TransferSpeedColumn, TimeRemainingColumn, MofNCompleteColumn, ProgressColumn, Task
@@ -37,6 +37,22 @@ class ImageAwareColumn(ProgressColumn):
         kind = task.fields.get("kind", "download")
         if kind == "overall": completed = int(task.completed); total = int(task.total) if task.total is not None else 0; return Text(f"{completed}/{total} images")
         else: return self._download_col.render(task)
+
+
+'''BaseImageClientKwargs'''
+class BaseImageClientKwargs(TypedDict, total=False):
+    auto_set_proxies: bool
+    random_update_ua: bool
+    enable_search_curl_cffi: bool
+    enable_download_curl_cffi: bool
+    max_retries: int
+    logger_handle: LoggerHandle
+    maintain_session: bool
+    disable_print: bool
+    work_dir: str
+    freeproxy_settings: dict
+    default_search_cookies: dict
+    default_download_cookies: dict
 
 
 '''BaseImageClient'''

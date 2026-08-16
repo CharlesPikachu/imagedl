@@ -8,16 +8,17 @@ WeChat Official Account (微信公众号):
 '''
 import math
 import html as ihtml
+from typing import Unpack
 from bs4 import BeautifulSoup
 from ..utils import ImageInfo
-from .base import BaseImageClient
 from urllib.parse import quote, urlencode, urljoin
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''GelbooruImageClient'''
 class GelbooruImageClient(BaseImageClient):
     source = 'GelbooruImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(GelbooruImageClient, self).__init__(**kwargs)
         self.default_search_headers = {
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", "accept-encoding": "gzip, deflate, br, zstd", "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7", "cache-control": "max-age=0", "cookie": "PHPSESSID=ngt7lipci8vs7k5ualdrufj3id", "priority": "u=0, i", "sec-ch-ua-platform": "\"Windows\"", "sec-fetch-site": "same-origin",

@@ -8,16 +8,17 @@ WeChat Official Account (微信公众号):
 '''
 import re
 import math
+from typing import Unpack
 from bs4 import BeautifulSoup
 from ..utils import ImageInfo
-from .base import BaseImageClient
 from urllib.parse import quote, urljoin
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''GratisoGraphyImageClient'''
 class GratisoGraphyImageClient(BaseImageClient):
     source = 'GratisoGraphyImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(GratisoGraphyImageClient, self).__init__(**kwargs)
         self.default_search_headers = {
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7", "cache-control": "max-age=0", "sec-fetch-user": "?1", "sec-ch-ua": '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"', 

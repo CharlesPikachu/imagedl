@@ -8,15 +8,16 @@ WeChat Official Account:
 '''
 import math
 import json_repair
+from typing import Unpack
 from ..utils import ImageInfo
-from .base import BaseImageClient
 from urllib.parse import quote, urlencode
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''OpenLibraryImageClient'''
 class OpenLibraryImageClient(BaseImageClient):
     source = 'OpenLibraryImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(OpenLibraryImageClient, self).__init__(**kwargs)
         self.default_search_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36", "accept": "application/json", "referer": "https://openlibrary.org/"}
         self.default_download_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36", "referer": "https://openlibrary.org/"}

@@ -7,15 +7,16 @@ WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
 import json_repair
+from typing import Unpack
 from ..utils import ImageInfo
-from .base import BaseImageClient
 from urllib.parse import quote, urlencode
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''DanbooruImageClient'''
 class DanbooruImageClient(BaseImageClient):
     source = 'DanbooruImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(DanbooruImageClient, self).__init__(**kwargs)
         self.default_search_headers = {}
         self.default_download_headers = {}

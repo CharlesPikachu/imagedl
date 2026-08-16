@@ -8,15 +8,16 @@ WeChat Official Account (微信公众号):
 '''
 import math
 import json_repair
+from typing import Unpack
 from ..utils import ImageInfo
-from .base import BaseImageClient
 from urllib.parse import quote, urlencode
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''FoodiesfeedImageClient'''
 class FoodiesfeedImageClient(BaseImageClient):
     source = 'FoodiesfeedImageClient'
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         kwargs.setdefault('enable_search_curl_cffi', True)
         super(FoodiesfeedImageClient, self).__init__(**kwargs)
         self.default_search_headers = {

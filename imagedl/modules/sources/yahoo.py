@@ -10,11 +10,12 @@ import math
 import primp
 import random
 import json_repair
+from typing import Unpack
 from bs4 import BeautifulSoup
 from urllib.parse import quote
-from .base import BaseImageClient
 from fake_useragent import UserAgent
 from ..utils import Filter, ImageInfo
+from .base import BaseImageClient, BaseImageClientKwargs
 
 
 '''YahooImageClient'''
@@ -25,7 +26,7 @@ class YahooImageClient(BaseImageClient):
         "https://nz.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://id.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://ca.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://br.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://espanol.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://uk.images.search.yahoo.com/search/images?p={keyword}&b={offset}",
         "https://de.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://fr.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://it.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://es.images.search.yahoo.com/search/images?p={keyword}&b={offset}", "https://search.yahoo.co.jp/image/search?p={keyword}&b={offset}", "https://kids.yahoo.co.jp/search/image?p={keyword}&b={offset}",
     ]
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Unpack[BaseImageClientKwargs]):
         super(YahooImageClient, self).__init__(**kwargs)
         self.default_search_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"}
         self.default_download_headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"}
