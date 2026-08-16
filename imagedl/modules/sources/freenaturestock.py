@@ -7,10 +7,10 @@ WeChat Official Account (微信公众号):
     Charles的皮卡丘
 '''
 import math
-from typing import Unpack
 from bs4 import BeautifulSoup
 from ..utils import ImageInfo
 from urllib.parse import urljoin
+from typing_extensions import Unpack
 from .base import BaseImageClient, BaseImageClientKwargs
 
 

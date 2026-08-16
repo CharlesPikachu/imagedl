@@ -9,8 +9,8 @@ WeChat Official Account (微信公众号):
 import re
 import math
 import json_repair
-from typing import Unpack
 from urllib.parse import quote
+from typing_extensions import Unpack
 from ..utils import ImageInfo, cookies2string
 from .base import BaseImageClient, BaseImageClientKwargs
 

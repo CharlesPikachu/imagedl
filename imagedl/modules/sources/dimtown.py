@@ -8,9 +8,9 @@ WeChat Official Account (微信公众号):
 '''
 import re
 import math
-from typing import Unpack
 from bs4 import BeautifulSoup
 from ..utils import ImageInfo
+from typing_extensions import Unpack
 from .base import BaseImageClient, BaseImageClientKwargs
 
 

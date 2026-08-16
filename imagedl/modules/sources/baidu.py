@@ -8,8 +8,8 @@ WeChat Official Account (微信公众号):
 '''
 import math
 import json_repair
-from typing import Unpack
 from urllib.parse import quote
+from typing_extensions import Unpack
 from ..utils import lowerdictkeys, Filter, ImageInfo
 from .base import BaseImageClient, BaseImageClientKwargs
 

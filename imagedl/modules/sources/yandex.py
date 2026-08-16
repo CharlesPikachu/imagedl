@@ -10,8 +10,8 @@ import re
 import math
 import html
 import json_repair
-from typing import Unpack
 from urllib.parse import quote
+from typing_extensions import Unpack
 from ..utils import Filter, ImageInfo
 from .base import BaseImageClient, BaseImageClientKwargs
 

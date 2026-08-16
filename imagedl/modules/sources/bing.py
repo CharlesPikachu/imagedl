@@ -9,9 +9,9 @@ WeChat Official Account (微信公众号):
 import re
 import math
 import html
-from typing import Unpack
 from bs4 import BeautifulSoup
 from urllib.parse import quote
+from typing_extensions import Unpack
 from ..utils import Filter, ImageInfo
 from .base import BaseImageClient, BaseImageClientKwargs
 

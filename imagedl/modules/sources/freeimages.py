@@ -10,9 +10,9 @@ import math
 import primp
 import random
 import json_repair
-from typing import Unpack
 from ..utils import ImageInfo
 from fake_useragent import UserAgent
+from typing_extensions import Unpack
 from urllib.parse import urlencode, quote
 from .base import BaseImageClient, BaseImageClientKwargs
 

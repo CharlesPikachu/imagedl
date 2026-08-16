@@ -9,6 +9,7 @@ json-repair>=0.58.6,<1
 prettytable>=3.17.0,<4
 platformdirs>=4.9.4,<5
 pathvalidate>=3.3.1,<4
+typing_extensions>=4.1.0,<5
 standard-imghdr>=3.13.0,<4 ; python_version >= "3.13"
 curl-cffi>=0.14.0,<1
 primp>=1.2.2,<2

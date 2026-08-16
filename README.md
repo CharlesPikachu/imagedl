@@ -69,9 +69,9 @@
 
 # 🆕 What's New
 
+- 2026-08-17: Released pyimagedl v0.5.2 — add initialization parameter autocompletion for image clients.
 - 2026-08-02: Released pyimagedl v0.5.1 — perform routine monthly code maintenance, fix the FoodiesfeedImageClient and StockSnapImageClient, and add new CaraImageClient and FinnaImageClient.
 - 2026-07-13: Released pyimagedl v0.5.0 — regularly maintain the codebase to ensure that all image clients remain functional; add four new image clients: Bluesky, SMK, VAM, and Wallhaven; remove JikanImageClient.
-- 2026-06-27: Released pyimagedl v0.4.9 — added support for image search and download from openlibrary.org; fixed the FreeImages image client because the old API had been deprecated.
 
 
 # 📘 Introduction

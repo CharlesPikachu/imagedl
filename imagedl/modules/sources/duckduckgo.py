@@ -11,10 +11,10 @@ import primp
 import random
 import requests
 import json_repair
-from typing import Unpack
 from contextlib import suppress
 from urllib.parse import urlencode
 from fake_useragent import UserAgent
+from typing_extensions import Unpack
 from ..utils import Filter, ImageInfo
 from .base import BaseImageClient, BaseImageClientKwargs
 

@@ -10,10 +10,10 @@ import math
 import primp
 import random
 import json_repair
-from typing import Unpack
 from bs4 import BeautifulSoup
 from urllib.parse import quote
 from fake_useragent import UserAgent
+from typing_extensions import Unpack
 from ..utils import Filter, ImageInfo
 from .base import BaseImageClient, BaseImageClientKwargs
 
