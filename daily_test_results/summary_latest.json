@@ -1,6 +1,6 @@
 {
   "date": "2026-08-21",
-  "timestamp_utc": "2026-08-21T02:24:21.289620+00:00",
+  "timestamp_utc": "2026-08-21T17:30:56.885425+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls, Red Panda, James Webb, Jellyfish, Apollo L1, Anatomy, Bridge, Northern Lights",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,24 +10,23 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 25,
-      "n_downloaded": 9,
+      "n_results": 35,
+      "n_downloaded": 8,
       "error": null,
       "downloaded_images": [
         "daily_test_results/BingImageClient/00000009.jpg",
-        "daily_test_results/BingImageClient/00000006.png",
-        "daily_test_results/BingImageClient/00000007.webp",
         "daily_test_results/BingImageClient/00000008.jpg",
-        "daily_test_results/BingImageClient/00000010.png",
-        "daily_test_results/BingImageClient/00000002.png",
-        "daily_test_results/BingImageClient/00000001.png",
-        "daily_test_results/BingImageClient/00000005.png",
-        "daily_test_results/BingImageClient/00000003.png"
+        "daily_test_results/BingImageClient/00000010.jpg",
+        "daily_test_results/BingImageClient/00000003.jpg",
+        "daily_test_results/BingImageClient/00000004.jpg",
+        "daily_test_results/BingImageClient/00000002.jpg",
+        "daily_test_results/BingImageClient/00000005.jpg",
+        "daily_test_results/BingImageClient/00000007.jpg"
       ],
       "search_samples": [
-        "https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png",
-        "https://freepnglogo.com/images/all_img/youtube-logo-a100.png",
-        "https://freepnglogo.com/images/all_img/1701508739youtube-png.png"
+        "https://dinealonerecords.com/wp-content/uploads/2020/01/nobro-1.png",
+        "https://montrealrocks.ca/wp-content/uploads/2021/11/IMG_0274-1200x800.jpg",
+        "https://montrealrocks.ca/wp-content/uploads/2021/11/NOBRO-Better-Days-Press-Photo-scaled.jpg"
       ]
     },
     {
@@ -69,17 +68,17 @@
         "daily_test_results/DanbooruImageClient/00000004.png",
         "daily_test_results/DanbooruImageClient/00000007.png",
         "daily_test_results/DanbooruImageClient/00000006.png",
-        "daily_test_results/DanbooruImageClient/00000008.jpg",
         "daily_test_results/DanbooruImageClient/00000010.jpg",
-        "daily_test_results/DanbooruImageClient/00000001.png",
-        "daily_test_results/DanbooruImageClient/00000002.jpg",
+        "daily_test_results/DanbooruImageClient/00000003.jpg",
+        "daily_test_results/DanbooruImageClient/00000002.png",
+        "daily_test_results/DanbooruImageClient/00000008.png",
         "daily_test_results/DanbooruImageClient/00000005.png",
-        "daily_test_results/DanbooruImageClient/00000003.png"
+        "daily_test_results/DanbooruImageClient/00000001.jpg"
       ],
       "search_samples": [
+        "https://cdn.donmai.us/original/4f/02/4f029dd4e01ff268f5ec5da1384fb979.jpg",
         "https://cdn.donmai.us/original/bb/f0/bbf0ccd185ae6a7258b5633d3f6b3679.png",
-        "https://cdn.donmai.us/original/8c/07/8c07b0b30b85d69cdd7a1cf267f3345d.jpg",
-        "https://cdn.donmai.us/original/c2/8f/c28fe6ee4ccc334ed0f25b67cd3151f4.png"
+        "https://cdn.donmai.us/original/8c/07/8c07b0b30b85d69cdd7a1cf267f3345d.jpg"
       ]
     },
     {
@@ -91,21 +90,21 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/HuabanImageClient/00000006.jpg",
-        "daily_test_results/HuabanImageClient/00000007.png",
         "daily_test_results/HuabanImageClient/00000009.png",
         "daily_test_results/HuabanImageClient/00000003.gif",
+        "daily_test_results/HuabanImageClient/00000006.png",
         "daily_test_results/HuabanImageClient/00000005.webp",
         "daily_test_results/HuabanImageClient/00000010.png",
+        "daily_test_results/HuabanImageClient/00000007.gif",
         "daily_test_results/HuabanImageClient/00000002.png",
         "daily_test_results/HuabanImageClient/00000001.png",
         "daily_test_results/HuabanImageClient/00000004.jpg",
         "daily_test_results/HuabanImageClient/00000008.png"
       ],
       "search_samples": [
-        "https://gd-hbimg-edge.huaban.com/74987bf7000898c7c57eed86f8258c3f8320f92da9f0-ODz104?auth_key=1787284800-f19f7bda87a64b2f8920f3b937211d45-0-69e2d42c611cbcd4e5922bf5fd82003f",
-        "https://gd-hbimg-edge.huaban.com/291ee0a97a4aca9b789b6a3f4abbea800500a45f2d2-MVWXXn?auth_key=1787284800-f19f7bda87a64b2f8920f3b937211d45-0-6081837e9f70c3173d93c921325808d9",
-        "https://gd-hbimg-edge.huaban.com/a688b998b5baa5c28025531e4a5e30b53a493de4701b2-7oY5YJ?auth_key=1787284800-f19f7bda87a64b2f8920f3b937211d45-0-9d268b6c5a513eb740b49823ffd12bc6"
+        "https://gd-hbimg-edge.huaban.com/f10f4a286a5fd80624a6f6414f663fe9f0ccabc3ec870-dPee10?auth_key=1787342400-89f0a6ba8cf54cd5ace7295be46f41c3-0-7602cc504f88c7dab3fc672bdea52c0a",
+        "https://gd-hbimg-edge.huaban.com/291ee0a97a4aca9b789b6a3f4abbea800500a45f2d2-MVWXXn?auth_key=1787342400-89f0a6ba8cf54cd5ace7295be46f41c3-0-5a77ec162526043b26c6f9740769d81d",
+        "https://gd-hbimg-edge.huaban.com/a688b998b5baa5c28025531e4a5e30b53a493de4701b2-7oY5YJ?auth_key=1787342400-89f0a6ba8cf54cd5ace7295be46f41c3-0-65e1afba973c2d4ad5f003e092e0da5b"
       ]
     },
     {
@@ -191,7 +190,7 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 34,
+      "n_results": 43,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
@@ -284,21 +283,21 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/YandexImageClient/00000009.jpg",
+        "daily_test_results/YandexImageClient/00000009.png",
         "daily_test_results/YandexImageClient/00000008.webp",
         "daily_test_results/YandexImageClient/00000010.webp",
-        "daily_test_results/YandexImageClient/00000004.jpg",
+        "daily_test_results/YandexImageClient/00000003.jpg",
+        "daily_test_results/YandexImageClient/00000004.webp",
+        "daily_test_results/YandexImageClient/00000001.png",
         "daily_test_results/YandexImageClient/00000002.jpg",
         "daily_test_results/YandexImageClient/00000006.webp",
-        "daily_test_results/YandexImageClient/00000003.png",
         "daily_test_results/YandexImageClient/00000005.jpg",
-        "daily_test_results/YandexImageClient/00000001.jpg",
         "daily_test_results/YandexImageClient/00000007.jpg"
       ],
       "search_samples": [
-        "https://i.ytimg.com/vi/Q9Kkpmqm2IM/maxresdefault.jpg",
-        "https://i.pinimg.com/originals/be/1e/a7/be1ea7a46e2fadab1a759fdc78f6f894.jpg?nii=t",
-        "https://i.pinimg.com/originals/d9/ee/90/d9ee90e7efbbf850730dddd8d8daf796.png?nii=t"
+        "https://i.pinimg.com/originals/d9/ee/90/d9ee90e7efbbf850730dddd8d8daf796.png?nii=t",
+        "https://i.pinimg.com/736x/d0/78/a4/d078a4d6904c1a62ef45b7df1abf7d59.jpg",
+        "https://i.pinimg.com/736x/a9/e7/76/a9e776e5c934d666d1f2e257beea0a2b.jpg"
       ]
     },
     {
@@ -365,17 +364,17 @@
         "daily_test_results/SafebooruImageClient/00000004.png",
         "daily_test_results/SafebooruImageClient/00000007.png",
         "daily_test_results/SafebooruImageClient/00000006.png",
-        "daily_test_results/SafebooruImageClient/00000008.jpg",
         "daily_test_results/SafebooruImageClient/00000010.jpg",
-        "daily_test_results/SafebooruImageClient/00000001.png",
-        "daily_test_results/SafebooruImageClient/00000002.jpg",
+        "daily_test_results/SafebooruImageClient/00000003.jpg",
+        "daily_test_results/SafebooruImageClient/00000002.png",
+        "daily_test_results/SafebooruImageClient/00000008.png",
         "daily_test_results/SafebooruImageClient/00000005.png",
-        "daily_test_results/SafebooruImageClient/00000003.png"
+        "daily_test_results/SafebooruImageClient/00000001.jpg"
       ],
       "search_samples": [
+        "https://safebooru.org/images/4172/46c06d699c9d05344924d99f2cf01d3c29ba2ad9.jpg",
         "https://safebooru.org/images/3916/2517377c2ef5f462b9e0e48644f0506fc26d2b52.png",
-        "https://safebooru.org/images/3916/33e15e1387692cae9093bf4520bead8cb9e936cf.jpg",
-        "https://safebooru.org/images/3916/553e33be3d2033c335771e2cd5b7ea905bd1fce9.png"
+        "https://safebooru.org/images/3916/33e15e1387692cae9093bf4520bead8cb9e936cf.jpg"
       ]
     },
     {
@@ -388,12 +387,12 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/YahooImageClient/00000006.jpg",
-        "daily_test_results/YahooImageClient/00000002.avif",
         "daily_test_results/YahooImageClient/00000008.jpg",
-        "daily_test_results/YahooImageClient/00000010.jpg",
-        "daily_test_results/YahooImageClient/00000005.webp",
+        "daily_test_results/YahooImageClient/00000010.webp",
         "daily_test_results/YahooImageClient/00000003.jpg",
         "daily_test_results/YahooImageClient/00000004.jpg",
+        "daily_test_results/YahooImageClient/00000002.jpg",
+        "daily_test_results/YahooImageClient/00000005.png",
         "daily_test_results/YahooImageClient/00000001.jpg",
         "daily_test_results/YahooImageClient/00000007.jpg"
       ],
@@ -414,19 +413,19 @@
       "downloaded_images": [
         "daily_test_results/GelbooruImageClient/00000006.jpg",
         "daily_test_results/GelbooruImageClient/00000009.jpg",
-        "daily_test_results/GelbooruImageClient/00000004.png",
         "daily_test_results/GelbooruImageClient/00000008.jpg",
         "daily_test_results/GelbooruImageClient/00000010.jpg",
         "daily_test_results/GelbooruImageClient/00000003.jpg",
+        "daily_test_results/GelbooruImageClient/00000004.jpg",
         "daily_test_results/GelbooruImageClient/00000002.jpg",
-        "daily_test_results/GelbooruImageClient/00000005.jpg",
+        "daily_test_results/GelbooruImageClient/00000005.png",
         "daily_test_results/GelbooruImageClient/00000001.jpg",
         "daily_test_results/GelbooruImageClient/00000007.jpg"
       ],
       "search_samples": [
+        "https://img4.gelbooru.com//samples/4f/02/sample_4f029dd4e01ff268f5ec5da1384fb979.jpg",
         "https://img4.gelbooru.com//samples/bb/f0/sample_bbf0ccd185ae6a7258b5633d3f6b3679.jpg",
-        "https://img4.gelbooru.com//samples/8c/07/sample_8c07b0b30b85d69cdd7a1cf267f3345d.jpg",
-        "https://img4.gelbooru.com//samples/b3/86/sample_b3867a129ad255e97a4207e76a68b7a7.jpg"
+        "https://img4.gelbooru.com//samples/8c/07/sample_8c07b0b30b85d69cdd7a1cf267f3345d.jpg"
       ]
     },
     {
@@ -476,9 +475,9 @@
         "daily_test_results/PixabayImageClient/00000001.jpg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g182fd9bb6af7b27b4b746a03b302c0c36b9b74abe9db6de152f1b5766b4b96af062f97d1871815f9f92f0853cdad57c8e05c6121372e92573543d77ecb1be814_1280.jpg",
-        "https://pixabay.com/get/gd59a4f273a04e4934eb543482581f13877ce89885e5905a138a3e2003bf97bc7a328b5e395a8d1a4814d9a8dad7c0a5375ced2031f999beef80fabf0739a9c7c_1280.jpg",
-        "https://pixabay.com/get/g93b2ca22ffe3b15101b72b03a7dd754cef41a19d74a7eca8939594ef0c779c1e673ba4700deff5cd70f08b4334de19ac344b87d78cbb0bbba88a82db895fefd6_1280.jpg"
+        "https://pixabay.com/get/ga6c93b27952742e6cb55e3fd0e073e9ef9d2807c50e44a76babf49d915f57777980fbd24946f89e30958a1fec50e8706dfdae0327da3a84dc3ad1759ac97642a_1280.jpg",
+        "https://pixabay.com/get/gf57c23504416240511b852ff009c8d87ea3bd9de14ef9ca96504bffba9aac3e5fd4200b93c2065dfcb3b15fcbe1a6b7e88ad14f92d4dce64005d94a98d72f910_1280.jpg",
+        "https://pixabay.com/get/g81a4ed2b1719ec56f3072cdbd8da5dc36635bbf0f729e5137d3f18d6868fa5373c0c30e4de59730dc708b402d6524e446a442b357d6adbb1c7ce3db515b3d396_1280.jpg"
       ]
     },
     {
@@ -984,17 +983,17 @@
         "daily_test_results/InternetArchiveImageClient/00000009.jpg",
         "daily_test_results/InternetArchiveImageClient/00000008.jpg",
         "daily_test_results/InternetArchiveImageClient/00000010.jpg",
-        "daily_test_results/InternetArchiveImageClient/00000003.jpg",
         "daily_test_results/InternetArchiveImageClient/00000004.jpg",
         "daily_test_results/InternetArchiveImageClient/00000002.jpg",
+        "daily_test_results/InternetArchiveImageClient/00000003.png",
         "daily_test_results/InternetArchiveImageClient/00000005.jpg",
         "daily_test_results/InternetArchiveImageClient/00000001.jpg",
         "daily_test_results/InternetArchiveImageClient/00000007.jpg"
       ],
       "search_samples": [
         "https://archive.org/services/img/image_2026-02-24_133813320",
-        "https://archive.org/services/img/5.2-remake-indigenous-x",
-        "https://archive.org/services/img/2024-pokemon-holiday-giftcardholder"
+        "https://archive.org/services/img/sample_e20008a42cca7ebc2d72fddfafc8f61f",
+        "https://archive.org/services/img/pikachupictures"
       ]
     },
     {
@@ -1051,14 +1050,18 @@
     },
     {
       "name": "BlueskyImageClient",
-      "search_ok": false,
-      "download_ok": false,
-      "ok": false,
-      "n_results": 0,
-      "n_downloaded": 0,
+      "search_ok": true,
+      "download_ok": true,
+      "ok": true,
+      "n_results": 1,
+      "n_downloaded": 1,
       "error": null,
-      "downloaded_images": [],
-      "search_samples": []
+      "downloaded_images": [
+        "daily_test_results/BlueskyImageClient/00000001.webp"
+      ],
+      "search_samples": [
+        "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:fintwx3u32hhcaud6vs45yiu/bafkreigg2f4dezymls3oxak2mwbfa67g37ejjb4nsroaj4wqc4obfoennm"
+      ]
     },
     {
       "name": "WallhavenImageClient",
