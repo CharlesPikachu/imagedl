@@ -1,6 +1,6 @@
 # Release Log
 
-- 2026-08-25: Released pyimagedl v0.5.3 — perform routine monthly code maintenance, fix FreeNatureStockImageClient.
+- 2026-08-25: Released pyimagedl v0.5.3 — fix FreeNatureStockImageClient.
 
 - 2026-08-17: Released pyimagedl v0.5.2 — add initialization parameter autocompletion for image clients.
 
