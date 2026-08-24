@@ -40,5 +40,5 @@ class FreeNatureStockImageClient(BaseImageClient):
         request_overrides, search_urls, page_size, filters = request_overrides or {}, [], 48, filters or {}
         base_url = 'https://freenaturestock.com/category/{keyword}/page/{pn}/'
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
-            search_urls.append(base_url.format(pn=pn+1, keyword=quote(keyword)) if pn > 0 else f'https://freenaturestock.com/category/{quote(keyword)}')
+            search_urls.append(base_url.format(pn=pn+1, keyword=quote(keyword.replace(' ', '-')).lower()) if pn > 0 else f'https://freenaturestock.com/category/{quote(keyword.replace(" ", "-")).lower()}')
         return search_urls
