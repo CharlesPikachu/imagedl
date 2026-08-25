@@ -1,6 +1,6 @@
 {
-  "date": "2026-08-24",
-  "timestamp_utc": "2026-08-24T23:04:47.976142+00:00",
+  "date": "2026-08-25",
+  "timestamp_utc": "2026-08-25T00:06:41.181161+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls, Red Panda, James Webb, Jellyfish, Apollo L1, Anatomy, Bridge, Northern Lights",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -104,9 +104,9 @@
         "daily_test_results/HuabanImageClient/00000001.jpg"
       ],
       "search_samples": [
-        "https://gd-hbimg-edge.huaban.com/80601ead117ac08bbebb0164acc200f140a305f62eb7a-SAJTVI?auth_key=1787616000-c45822cbb9e54c6590a303c570fd3622-0-77adaf2cbbf37e7e69a4b0f0c7e65835",
-        "https://gd-hbimg-edge.huaban.com/5f9a57fa1320baff0d5ed8fd158c0ffb1a31d67334d4-JrJkDl?auth_key=1787616000-c45822cbb9e54c6590a303c570fd3622-0-6afb77ea3bc68ebb18e623da30a69d67",
-        "https://gd-hbimg-edge.huaban.com/6e04ea0dc3549da36f2d477453c86726f1b1587611fee3-YjTiPp?auth_key=1787616000-c45822cbb9e54c6590a303c570fd3622-0-271dd91d289871a1a35c894d2d5ad510"
+        "https://gd-hbimg-edge.huaban.com/80601ead117ac08bbebb0164acc200f140a305f62eb7a-SAJTVI?auth_key=1787630400-5f56026b0d9f4bdba752b99dbbe78b62-0-1863394e16069699bbfbad794978c496",
+        "https://gd-hbimg-edge.huaban.com/5f9a57fa1320baff0d5ed8fd158c0ffb1a31d67334d4-JrJkDl?auth_key=1787630400-5f56026b0d9f4bdba752b99dbbe78b62-0-6e193fa85c0a31db3d114983ee8e633e",
+        "https://gd-hbimg-edge.huaban.com/6e04ea0dc3549da36f2d477453c86726f1b1587611fee3-YjTiPp?auth_key=1787630400-5f56026b0d9f4bdba752b99dbbe78b62-0-fa4795b79633f328e0987b450fc6a19a"
       ]
     },
     {
@@ -492,9 +492,9 @@
         "daily_test_results/PixabayImageClient/00000001.jpg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g75a98036f69a80a190ec1141fa2ec2fd8de396cfc6252b29187ab5f5704199590346abad12a8b15eb1e505bcb086c93777a614653e21e27123e0c752dc5d0844_1280.jpg",
-        "https://pixabay.com/get/gcf0cc0a3b057ebc8e061842d8a7009078d9e8632093f15f3287b88e173693e8f4fe412fe5b4c52c74a1f0937bac4ccb0320ff1794c64df4ca64d6ee6f1d9cc63_1280.jpg",
-        "https://pixabay.com/get/g0d16fe10db08a82778033250a338a0ee0d3b9d5b939f64494e112f131074fae96f86484bc85bcbc434d446182e0cc2088ef816cf5f4916bc6d4a38e2c05ee5d6_1280.jpg"
+        "https://pixabay.com/get/ge7735da40a547903ac6d13f03a46e20730a987ff6963ca48b83d2d6ae4aaf7889e128a21b150632b0341ca0fd5c6b3358deeacda289ca7ae28a73b0097f18b74_1280.jpg",
+        "https://pixabay.com/get/g5fd66564177fdb383f690d0ef58eb2fdc31bfaa30dc56405220a985d365304ffba062d9358cbbfb42c020520bd5f2e0ec755d9dd01753351bb24e6de23ede251_1280.jpg",
+        "https://pixabay.com/get/ga501cb09bd290ed7e4102a4aa130b0f1626fe67ad6f2b35ff6a5b49cd2564580653ec9cb73349d019c4ae5dd888ed767700f4e343d03d30170d7145045b29f88_1280.jpg"
       ]
     },
     {
@@ -1008,9 +1008,9 @@
         "daily_test_results/InternetArchiveImageClient/00000007.jpg"
       ],
       "search_samples": [
-        "https://archive.org/services/img/macys-thanksgiving-day-parade-2010-pikachu-with-poke-ball-part-3",
-        "https://archive.org/services/img/macys-thanksgiving-day-parade-2013-pikachu-with-poke-ball-part-1",
-        "https://archive.org/services/img/macys-thanksgiving-day-parade-2012-pikachu-with-poke-ball-part-1"
+        "https://archive.org/services/img/image_2026-02-24_133813320",
+        "https://archive.org/services/img/5.2-remake-indigenous-x",
+        "https://archive.org/services/img/smackjeeves-126664"
       ]
     },
     {
