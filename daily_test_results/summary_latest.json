@@ -1,6 +1,6 @@
 {
   "date": "2026-08-25",
-  "timestamp_utc": "2026-08-25T00:06:41.181161+00:00",
+  "timestamp_utc": "2026-08-25T02:19:21.211691+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls, Red Panda, James Webb, Jellyfish, Apollo L1, Anatomy, Bridge, Northern Lights",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -483,18 +483,18 @@
         "daily_test_results/PixabayImageClient/00000009.jpg",
         "daily_test_results/PixabayImageClient/00000007.png",
         "daily_test_results/PixabayImageClient/00000006.png",
-        "daily_test_results/PixabayImageClient/00000008.jpg",
         "daily_test_results/PixabayImageClient/00000010.png",
         "daily_test_results/PixabayImageClient/00000003.jpg",
         "daily_test_results/PixabayImageClient/00000004.jpg",
+        "daily_test_results/PixabayImageClient/00000008.png",
         "daily_test_results/PixabayImageClient/00000002.jpg",
         "daily_test_results/PixabayImageClient/00000005.jpg",
         "daily_test_results/PixabayImageClient/00000001.jpg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/ge7735da40a547903ac6d13f03a46e20730a987ff6963ca48b83d2d6ae4aaf7889e128a21b150632b0341ca0fd5c6b3358deeacda289ca7ae28a73b0097f18b74_1280.jpg",
-        "https://pixabay.com/get/g5fd66564177fdb383f690d0ef58eb2fdc31bfaa30dc56405220a985d365304ffba062d9358cbbfb42c020520bd5f2e0ec755d9dd01753351bb24e6de23ede251_1280.jpg",
-        "https://pixabay.com/get/ga501cb09bd290ed7e4102a4aa130b0f1626fe67ad6f2b35ff6a5b49cd2564580653ec9cb73349d019c4ae5dd888ed767700f4e343d03d30170d7145045b29f88_1280.jpg"
+        "https://pixabay.com/get/g26cdcc3ebe2310f3f73b4b8bddfc65f44c6039e185405ce3f38cd1cfe60cac473bbe30d03d7323bd012980e93713b261e77acfacd3bc41a839f53a9c340a3754_1280.jpg",
+        "https://pixabay.com/get/gaff95470c806855bb9c43e60c179aca9f4b7ac3b054b08447060222f1c8fa37345dda4afb545ac8b47d0697f075eb42faf239f4d42a017a0321ce803cd83a669_1280.jpg",
+        "https://pixabay.com/get/g5f6b7ea3fae0a516d48ccfdf5b628360851d2583d043dc83eb53fb5906332c257a3b69d1d7286b1518081118fe6212ad223eacd5f0297c1f729dcf15b3564be5_1280.jpg"
       ]
     },
     {
@@ -1009,8 +1009,8 @@
       ],
       "search_samples": [
         "https://archive.org/services/img/image_2026-02-24_133813320",
-        "https://archive.org/services/img/5.2-remake-indigenous-x",
-        "https://archive.org/services/img/smackjeeves-126664"
+        "https://archive.org/services/img/pikachu_202409",
+        "https://archive.org/services/img/screenshot-video-player_202411"
       ]
     },
     {
@@ -1041,29 +1041,14 @@
     },
     {
       "name": "SMKImageClient",
-      "search_ok": true,
-      "download_ok": true,
-      "ok": true,
-      "n_results": 51,
-      "n_downloaded": 10,
+      "search_ok": false,
+      "download_ok": false,
+      "ok": false,
+      "n_results": 0,
+      "n_downloaded": 0,
       "error": null,
-      "downloaded_images": [
-        "daily_test_results/SMKImageClient/00000006.jpg",
-        "daily_test_results/SMKImageClient/00000009.jpg",
-        "daily_test_results/SMKImageClient/00000008.jpg",
-        "daily_test_results/SMKImageClient/00000010.jpg",
-        "daily_test_results/SMKImageClient/00000003.jpg",
-        "daily_test_results/SMKImageClient/00000004.jpg",
-        "daily_test_results/SMKImageClient/00000002.jpg",
-        "daily_test_results/SMKImageClient/00000005.jpg",
-        "daily_test_results/SMKImageClient/00000001.jpg",
-        "daily_test_results/SMKImageClient/00000007.jpg"
-      ],
-      "search_samples": [
-        "https://api.smk.dk/api/v1/download/W3siaW1nX3VybCI6Imh0dHBzOi8vaWlwLnNtay5kay9paWlmL2pwMi9rcDc4Z2c5NW5fS0tTMjAwNC05Mi5USUYuanAyL2Z1bGwvZnVsbC8wL25hdGl2ZS5qcGciLCJwdWJsaWNfZG9tYWluIjp0cnVlLCJvYmplY3RfbnVtYmVyIjoiS0tTMjAwNC05MiIsIm51bSI6IiJ9XQ==/KKS2004-92.jpg",
-        "https://api.smk.dk/api/v1/download/W3siaW1nX3VybCI6Imh0dHBzOi8vaWlwLnNtay5kay9paWlmL2pwMi8yYjg4cWY3N21fa2tzMjAwNC03MC50aWYucmVjb25zdHJ1Y3RlZC50aWYuanAyL2Z1bGwvZnVsbC8wL25hdGl2ZS5qcGciLCJwdWJsaWNfZG9tYWluIjp0cnVlLCJvYmplY3RfbnVtYmVyIjoiS0tTMjAwNC03MCIsIm51bSI6IiJ9XQ==/KKS2004-70.jpg",
-        "https://api.smk.dk/api/v1/thumbnail/7e26ee86-b4c4-470f-b839-5fccc04d98b2.jpg"
-      ]
+      "downloaded_images": [],
+      "search_samples": []
     },
     {
       "name": "BlueskyImageClient",
