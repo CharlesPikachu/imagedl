@@ -9,7 +9,6 @@ WeChat Official Account (微信公众号):
 import math
 import primp
 import random
-import json_repair
 from bs4 import BeautifulSoup
 from urllib.parse import quote
 from fake_useragent import UserAgent
@@ -39,11 +38,9 @@ class YahooImageClient(BaseImageClient):
     '''_parsesearchresult'''
     def _parsesearchresult(self, search_result: str) -> list[ImageInfo]:
         soup, image_infos, seen = BeautifulSoup(search_result, "lxml"), [], set()
-        for li in soup.select("#sres > li.ld[data]"):
-            try: data = json_repair.loads(li["data"])
-            except Exception: continue
-            if (not (orig_url := data.get("ourl") or data.get("iurl"))) or (orig_url in seen): continue
-            seen.add(orig_url); image_infos.append(ImageInfo(source=self.source, raw_data={str(k).lower(): v for k, v in data.items()}, candidate_download_urls=[orig_url], identifier=orig_url))
+        for item in soup.select("a[data-origurl], a[data-iurl], a[data-url], [data-origurl], [data-iurl], [data-url]"):
+            if (not (orig_url := item.get("data-origurl") or item.get("data-iurl") or item.get("data-url"))) or (orig_url in seen): continue
+            seen.add(orig_url); image_infos.append(ImageInfo(source=self.source, raw_data={str(k).lower(): v for k, v in item.attrs.items()}, candidate_download_urls=[orig_url], identifier=orig_url))
         return image_infos
     '''_constructsearchurls'''
     def _constructsearchurls(self, keyword: str, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):

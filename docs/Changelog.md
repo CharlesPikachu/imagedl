@@ -1,5 +1,7 @@
 # Release Log
 
+- 2026-09-19: Released pyimagedl v0.5.4 — perform monthly maintenance checks on the image clients; this update fixes the Yahoo and Sogou image clients.
+
 - 2026-08-25: Released pyimagedl v0.5.3 — fix FreeNatureStockImageClient.
 
 - 2026-08-17: Released pyimagedl v0.5.2 — add initialization parameter autocompletion for image clients.
