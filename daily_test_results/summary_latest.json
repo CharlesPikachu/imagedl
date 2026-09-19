@@ -1,6 +1,6 @@
 {
-  "date": "2026-09-18",
-  "timestamp_utc": "2026-09-18T18:19:18.945394+00:00",
+  "date": "2026-09-19",
+  "timestamp_utc": "2026-09-19T05:33:44.051479+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls, Red Panda, James Webb, Jellyfish, Apollo L1, Anatomy, Bridge, Northern Lights",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -10,25 +10,24 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 12,
-      "n_downloaded": 10,
+      "n_results": 35,
+      "n_downloaded": 9,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/BingImageClient/00000009.png",
         "daily_test_results/BingImageClient/00000005.jpg",
         "daily_test_results/BingImageClient/00000002.png",
-        "daily_test_results/BingImageClient/00000007.jpg",
         "daily_test_results/BingImageClient/00000006.png",
-        "daily_test_results/BingImageClient/00000010.jpg",
-        "daily_test_results/BingImageClient/00000008.jpg",
+        "daily_test_results/BingImageClient/00000007.png",
         "daily_test_results/BingImageClient/00000001.png",
-        "daily_test_results/BingImageClient/00000003.png",
+        "daily_test_results/BingImageClient/00000003.jpg",
+        "daily_test_results/BingImageClient/00000009.jpg",
+        "daily_test_results/BingImageClient/00000008.webp",
         "daily_test_results/BingImageClient/00000004.jpg"
       ],
       "search_samples": [
         "https://www.pngall.com/wp-content/uploads/5/Pokemon-Pikachu.png",
         "https://i.pinimg.com/originals/eb/2a/4b/eb2a4bedf397dfc7e085431c7ee0d282.png",
-        "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c02cdf55-057c-493a-9467-7fbcc417064b/dfvvca3-553dc247-632d-4918-a0ba-8053d5f91d86.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2MwMmNkZjU1LTA1N2MtNDkzYS05NDY3LTdmYmNjNDE3MDY0YlwvZGZ2dmNhMy01NTNkYzI0Ny02MzJkLTQ5MTgtYTBiYS04MDUzZDVmOTFkODYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.de1IyF6EFbfio6pYQ_9DRGYGVxiqS0hXon4A-hT392s"
+        "https://wallpapers-clan.com/wp-content/uploads/2024/06/pokemon-pikachu-electric-jump-desktop-wallpaper-preview.jpg"
       ]
     },
     {
@@ -62,8 +61,8 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 10,
-      "n_downloaded": 10,
+      "n_results": 8,
+      "n_downloaded": 8,
       "error": null,
       "downloaded_images": [
         "daily_test_results/DanbooruImageClient/00000005.jpg",
@@ -73,14 +72,12 @@
         "daily_test_results/DanbooruImageClient/00000001.jpg",
         "daily_test_results/DanbooruImageClient/00000008.jpg",
         "daily_test_results/DanbooruImageClient/00000003.jpg",
-        "daily_test_results/DanbooruImageClient/00000009.jpg",
-        "daily_test_results/DanbooruImageClient/00000004.jpg",
-        "daily_test_results/DanbooruImageClient/00000010.png"
+        "daily_test_results/DanbooruImageClient/00000004.jpg"
       ],
       "search_samples": [
-        "https://cdn.donmai.us/original/a9/0a/a90a717e7accabc1734c860bba7ba3f4.jpg",
-        "https://cdn.donmai.us/original/99/5e/995e5a6359999d1b2f27d4224f4067d1.jpg",
-        "https://cdn.donmai.us/original/49/e7/49e7b128548b009ce16c6f51cfe3e655.jpg"
+        "https://cdn.donmai.us/original/70/e1/70e184539907aa556e4d0dafc99801f1.jpg",
+        "https://cdn.donmai.us/original/4b/2f/4b2fe2aa031e3ac8a57875bf581bd816.jpg",
+        "https://cdn.donmai.us/original/86/5d/865d955525876abd2926040ae5398b67.jpg"
       ]
     },
     {
@@ -92,6 +89,7 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
+        "daily_test_results/HuabanImageClient/00000009.png",
         "daily_test_results/HuabanImageClient/00000008.png",
         "daily_test_results/HuabanImageClient/00000006.png",
         "daily_test_results/HuabanImageClient/00000007.png",
@@ -100,13 +98,12 @@
         "daily_test_results/HuabanImageClient/00000003.webp",
         "daily_test_results/HuabanImageClient/00000002.webp",
         "daily_test_results/HuabanImageClient/00000001.png",
-        "daily_test_results/HuabanImageClient/00000005.png",
-        "daily_test_results/HuabanImageClient/00000009.jpg"
+        "daily_test_results/HuabanImageClient/00000005.png"
       ],
       "search_samples": [
-        "https://gd-hbimg-edge.huaban.com/eed60a5d6bf6017f3190472e6910c7063ef6496567fbcb-N6L2k9?auth_key=1789761600-4713a8cce2c44e038f4e1aa62ed7fa3b-0-98c0e6660c43723e19b70d6b901ee7bf",
-        "https://gd-hbimg-edge.huaban.com/7fb7405321c91be751f3324bc2680189f6e0437e5fbc2-3cQe4J?auth_key=1789761600-4713a8cce2c44e038f4e1aa62ed7fa3b-0-c440139786a7becdce626e73e345353b",
-        "https://gd-hbimg-edge.huaban.com/dcbd94735b8e2481c975558287411202f2e2c4fb2405c-PVUof8?auth_key=1789761600-4713a8cce2c44e038f4e1aa62ed7fa3b-0-ec45f2e92afcb454649fc66e6811382b"
+        "https://gd-hbimg-edge.huaban.com/eed60a5d6bf6017f3190472e6910c7063ef6496567fbcb-N6L2k9?auth_key=1789804800-4e0d71be502a4f399ea92f1fa37919ef-0-71e4222bb4f8ac96b0b2c835ed2a67bb",
+        "https://gd-hbimg-edge.huaban.com/7fb7405321c91be751f3324bc2680189f6e0437e5fbc2-3cQe4J?auth_key=1789804800-4e0d71be502a4f399ea92f1fa37919ef-0-e8fe79e3705efec8d73d16b22fbd7bc6",
+        "https://gd-hbimg-edge.huaban.com/dcbd94735b8e2481c975558287411202f2e2c4fb2405c-PVUof8?auth_key=1789804800-4e0d71be502a4f399ea92f1fa37919ef-0-8bc0edf76ac88a62212544f6e6601891"
       ]
     },
     {
@@ -147,12 +144,12 @@
         "daily_test_results/DuckduckgoImageClient/00000005.jpg",
         "daily_test_results/DuckduckgoImageClient/00000002.png",
         "daily_test_results/DuckduckgoImageClient/00000007.jpg",
+        "daily_test_results/DuckduckgoImageClient/00000009.avif",
         "daily_test_results/DuckduckgoImageClient/00000010.jpg",
         "daily_test_results/DuckduckgoImageClient/00000001.jpg",
         "daily_test_results/DuckduckgoImageClient/00000008.jpg",
         "daily_test_results/DuckduckgoImageClient/00000003.jpg",
         "daily_test_results/DuckduckgoImageClient/00000006.webp",
-        "daily_test_results/DuckduckgoImageClient/00000009.jpg",
         "daily_test_results/DuckduckgoImageClient/00000004.jpg"
       ],
       "search_samples": [
@@ -192,7 +189,7 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 53,
+      "n_results": 59,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
@@ -301,20 +298,20 @@
       "error": null,
       "downloaded_images": [
         "daily_test_results/YandexImageClient/00000005.jpg",
-        "daily_test_results/YandexImageClient/00000007.gif",
+        "daily_test_results/YandexImageClient/00000010.webp",
+        "daily_test_results/YandexImageClient/00000007.jpg",
         "daily_test_results/YandexImageClient/00000002.jpg",
-        "daily_test_results/YandexImageClient/00000010.jpg",
+        "daily_test_results/YandexImageClient/00000004.webp",
+        "daily_test_results/YandexImageClient/00000001.webp",
         "daily_test_results/YandexImageClient/00000006.jpg",
         "daily_test_results/YandexImageClient/00000003.webp",
-        "daily_test_results/YandexImageClient/00000001.jpg",
         "daily_test_results/YandexImageClient/00000008.jpg",
-        "daily_test_results/YandexImageClient/00000009.jpg",
-        "daily_test_results/YandexImageClient/00000004.jpg"
+        "daily_test_results/YandexImageClient/00000009.webp"
       ],
       "search_samples": [
-        "https://i.pinimg.com/474x/05/a8/1e/05a81e497f8bfdba019b2b7b5ae02bcd.jpg",
-        "https://techraptor.net/sites/default/files/2026-02/pokemon-presents-february-2026-announced-header.jpg",
-        "https://static.wikia.nocookie.net/nintendo/images/8/8d/PKMNSV025-Cap.png/revision/latest?cb=20230531020104&path-prefix=en"
+        "https://static.wikia.nocookie.net/pokemon-the-journey-begins/images/4/4c/Ash%27s_Pikachu.png/revision/latest?cb=20150618065101",
+        "https://i.pinimg.com/736x/99/72/86/997286bdf581333120c5f93a9b07a83b.jpg",
+        "https://static.wikia.nocookie.net/protagonists/images/0/0a/Pikachu_Pokepark.webp/revision/latest?cb=20250326071933"
       ]
     },
     {
@@ -389,9 +386,9 @@
         "daily_test_results/SafebooruImageClient/00000004.jpg"
       ],
       "search_samples": [
-        "https://safebooru.org/images/592/d2d0e57c755ddfea5be7e28eae75030d03f3c8a9.jpg",
-        "https://safebooru.org/images/592/49f3f42b31d5b17da9e7014a54492795ec96fd72.jpg",
-        "https://safebooru.org/images/592/1b08ab38d803c16980c90fc01b8ff138e0f26366.jpg"
+        "https://safebooru.org/images/592/0f42f52d6e49a430453fc6350bfb2ca4aba31f4c.jpg",
+        "https://safebooru.org/images/592/9add59483bfebd80059f13803b42227c01c780a6.jpg",
+        "https://safebooru.org/images/592/da27964cc4a4253de739f8b4eea83b1c7a9ae25d.jpg"
       ]
     },
     {
@@ -440,9 +437,9 @@
         "daily_test_results/GelbooruImageClient/00000004.jpg"
       ],
       "search_samples": [
-        "https://img4.gelbooru.com//samples/99/5e/sample_995e5a6359999d1b2f27d4224f4067d1.jpg",
-        "https://img4.gelbooru.com//samples/49/e7/sample_49e7b128548b009ce16c6f51cfe3e655.jpg",
-        "https://img4.gelbooru.com//samples/b5/2e/sample_b52eeb0af47e4d81fe1d608b16cdd9bc.jpg"
+        "https://img4.gelbooru.com//samples/70/e1/sample_70e184539907aa556e4d0dafc99801f1.jpg",
+        "https://img4.gelbooru.com//samples/4b/2f/sample_4b2fe2aa031e3ac8a57875bf581bd816.jpg",
+        "https://img4.gelbooru.com//samples/8c/8d/sample_8c8da936754f0debd077b03ab9c910f6.jpg"
       ]
     },
     {
@@ -480,21 +477,21 @@
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
-        "daily_test_results/PixabayImageClient/00000008.png",
-        "daily_test_results/PixabayImageClient/00000007.jpg",
+        "daily_test_results/PixabayImageClient/00000009.png",
         "daily_test_results/PixabayImageClient/00000002.jpg",
-        "daily_test_results/PixabayImageClient/00000006.png",
+        "daily_test_results/PixabayImageClient/00000007.png",
         "daily_test_results/PixabayImageClient/00000004.png",
-        "daily_test_results/PixabayImageClient/00000010.jpg",
+        "daily_test_results/PixabayImageClient/00000006.jpg",
         "daily_test_results/PixabayImageClient/00000001.jpg",
+        "daily_test_results/PixabayImageClient/00000008.jpg",
         "daily_test_results/PixabayImageClient/00000003.jpg",
         "daily_test_results/PixabayImageClient/00000005.png",
-        "daily_test_results/PixabayImageClient/00000009.jpg"
+        "daily_test_results/PixabayImageClient/00000010.png"
       ],
       "search_samples": [
-        "https://pixabay.com/get/gc0b85d48e03472cb645c3944f25336a37b8ebdb839a3810ac613e7d786d7b23d54ab6e3a8aee9de0a551a86d3b3d407dfb4066477f0aef9466cddf505bf50bc6_1280.jpg",
-        "https://pixabay.com/get/g04a117450642c33240ba10a15aaea96aed3d07e2f5c84286015c2e64cf32843ede6b93711bdb2fdf72facff26d27e0067053ec47c119d4eda52dae22ef22aed4_1280.jpg",
-        "https://pixabay.com/get/gb2b28950d9be43519006cfbe4235283334f08e686534f62c5cc4b853e327442aca0e7202a8aae0dc2a453845c8f642774d82bfa305e7d479be1c3fd32429b45d_1280.jpg"
+        "https://pixabay.com/get/g24191931b78509b1b7f6ea6aa47e266eab0119d9fddd48f422ac80ebd8aea264b585af902f71af032c5b6878d82baf0a92a6242fef831d9f3335e6b5e1f4bc6c_1280.jpg",
+        "https://pixabay.com/get/g1d68cb192a903fb8d290153fa42895f43ef7ba68804d9cb4a514c13888f342c09b49875e18771703cee0ccb43ac948c7c74fdb84f83e2e4d68f2f37f36109144_1280.jpg",
+        "https://pixabay.com/get/g1185c612466c7b89736415b268df1b28542fb21aac1af4edf75e5c1fa1036afaaec2d68e2daa50dd0130d90c45f2be4fcc640d98e73671f2f7e7622c4d492c96_1280.jpg"
       ]
     },
     {
@@ -1010,7 +1007,7 @@
       "search_samples": [
         "https://archive.org/services/img/macys-thanksgiving-day-parade-2010-pikachu-with-poke-ball-part-3",
         "https://archive.org/services/img/macys-thanksgiving-day-parade-2013-pikachu-with-poke-ball-part-1",
-        "https://archive.org/services/img/animated-pokemon-stickers"
+        "https://archive.org/services/img/macys-thanksgiving-day-parade-2012-pikachu-with-poke-ball-part-1"
       ]
     },
     {
@@ -1087,41 +1084,24 @@
     },
     {
       "name": "WallhavenImageClient",
-      "search_ok": true,
-      "download_ok": true,
-      "ok": true,
-      "n_results": 24,
-      "n_downloaded": 10,
+      "search_ok": false,
+      "download_ok": false,
+      "ok": false,
+      "n_results": 0,
+      "n_downloaded": 0,
       "error": null,
-      "downloaded_images": [
-        "daily_test_results/WallhavenImageClient/00000008.png",
-        "daily_test_results/WallhavenImageClient/00000007.jpg",
-        "daily_test_results/WallhavenImageClient/00000002.jpg",
-        "daily_test_results/WallhavenImageClient/00000006.png",
-        "daily_test_results/WallhavenImageClient/00000004.png",
-        "daily_test_results/WallhavenImageClient/00000001.jpg",
-        "daily_test_results/WallhavenImageClient/00000003.jpg",
-        "daily_test_results/WallhavenImageClient/00000005.png",
-        "daily_test_results/WallhavenImageClient/00000009.jpg",
-        "daily_test_results/WallhavenImageClient/00000010.png"
-      ],
-      "search_samples": [
-        "https://w.wallhaven.cc/full/dg/wallhaven-dgwvzg.jpg",
-        "https://w.wallhaven.cc/full/83/wallhaven-83vpqk.jpg",
-        "https://w.wallhaven.cc/full/83/wallhaven-83q77o.jpg"
-      ]
+      "downloaded_images": [],
+      "search_samples": []
     },
     {
       "name": "CaraImageClient",
       "search_ok": true,
-      "download_ok": true,
-      "ok": true,
+      "download_ok": false,
+      "ok": false,
       "n_results": 1,
-      "n_downloaded": 1,
+      "n_downloaded": 0,
       "error": null,
-      "downloaded_images": [
-        "daily_test_results/CaraImageClient/00000001.jpg"
-      ],
+      "downloaded_images": [],
       "search_samples": [
         "https://cdn.cara.app/production/posts/15921b2f-298f-4e1f-92ac-959104a5659e/1788888420117-s1hkyr1zvma.jpg?verify=1789689600-UZgeZEjkF2Kb%2B6T2QajhsSY6n%2B6r1oTdAaCLaDmdnDs%3D"
       ]
