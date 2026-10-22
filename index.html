@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>imagedl API Health Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-elevated: rgba(15, 23, 42, 0.9);
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --accent: #facc15;          /* 皮卡丘黄 */
+      --accent-soft: rgba(250, 204, 21, 0.16);
+      --danger: #fb7185;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --radius-lg: 1.5rem;
+      --radius-md: 0.9rem;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* 粒子背景画布：放在内容后面但在背景前面 */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1200px;
+      padding: 24px 18px 40px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .app-loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.96),
+        rgba(24, 24, 27, 0.95)
+      );
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-title h1 {
+      margin: 0 0 6px;
+      font-size: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pika-badge {
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.4);
+      color: #facc15;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .header-title p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .meta-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+    }
+
+    /* Overall 状态徽章，基于 meta-pill 再覆盖颜色 */
+    .badge {
+      border-width: 1px;
+      border-style: solid;
+      font-weight: 600;
+    }
+
+    /* 真·全部正常 = 绿色 */
+    .badge-ok {
+      background: rgba(34, 197, 94, 0.18);   /* 绿 */
+      color: #bbf7d0;
+      border-color: rgba(34, 197, 94, 0.6);
+    }
+
+    /* 有模块挂了 = 红色 */
+    .badge-fail {
+      background: rgba(248, 113, 113, 0.18); /* 红 */
+      color: #fecaca;
+      border-color: rgba(248, 113, 113, 0.6);
+    }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      margin-bottom: 14px;
+    }
+
+    .section-header h2 {
+      margin: 0 0 4px;
+      font-size: 1.3rem;
+    }
+
+    .section-header p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      position: relative;
+      padding: 14px 16px 14px;
+      border-radius: var(--radius-md);
+      background:
+        radial-gradient(circle at top left, rgba(250, 204, 21, 0.04), transparent 45%),
+        radial-gradient(circle at bottom right, rgba(253, 224, 71, 0.05), transparent 55%),
+        var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      transform: translateY(0);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(250, 204, 21, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.85);
+      border-color: rgba(250, 204, 21, 0.45);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    /* 模块名过长省略号显示，并用 title 提示完整内容 */
+    .card-header h3 {
+      margin: 0;
+      font-size: 1rem;
+      max-width: 70%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status-pill {
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .status-ok {
+      background: rgba(45, 212, 191, 0.2);
+      color: #5eead4;
+    }
+
+    .status-fail {
+      background: rgba(248, 113, 113, 0.16);
+      color: #fecaca;
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+	
+    .metric-row .query-value {
+      flex: 1;
+      text-align: right;
+      margin-left: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .metric-row.small {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .tag-ok,
+    .tag-fail {
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+    }
+
+    .tag-ok {
+      background: rgba(45, 212, 191, 0.15);
+      color: #6ee7b7;
+    }
+
+    .tag-fail {
+      background: rgba(248, 113, 113, 0.16);
+      color: #fecaca;
+    }
+
+    /* Sample 文本自动换行，避免太长的 URL 撑爆布局 */
+    .sample-text {
+      margin: 6px 0 0;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      overflow-wrap: anywhere;
+      word-break: break-all;
+    }
+	
+    .query-text {
+      margin: 6px 0 0;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      overflow-wrap: anywhere;
+      word-break: break-all;
+      opacity: 0.95;
+    }
+
+    .error-text {
+      margin: 6px 0 0;
+      font-size: 0.78rem;
+      color: var(--danger);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+      transform: translateY(0);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .gallery-image-wrapper {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .gallery-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.22s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+      border-color: rgba(250, 204, 21, 0.45);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 10px 8px;
+      font-size: 0.8rem;
+    }
+
+    .gallery-module {
+      color: var(--text-muted);
+      max-width: 70%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .gallery-status {
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+    }
+
+    .gallery-status-ok {
+      background: rgba(45, 212, 191, 0.16);
+      color: #6ee7b7;
+    }
+
+    .gallery-status-fail {
+      background: rgba(248, 113, 113, 0.16);
+      color: #fecaca;
+    }
+
+    .footer {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+      .header {
+        padding: 14px 14px;
+      }
+
+      .header-title h1 {
+        font-size: 1.35rem;
+        flex-wrap: wrap;
+      }
+
+      .header-meta {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 粒子背景画布 -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="app">
+    <header class="header">
+      <div class="header-title">
+        <span>
+          imagedl API Health
+        </span>
+        <span class="pika-badge" title="Pikachu-powered monitoring">
+          ⚡ CharlesPikachu
+        </span>
+        <p style="margin: 4px 0 0; font-size: 0.78rem; color: var(--text-muted);">
+          Author: <strong>Zhenchao Jin + GPT 5.1</strong>
+        </p>
+      </div>
+      <div class="header-meta">
+        <span id="last-run" class="meta-pill">Last run: --</span>
+        <span id="overall-status" class="meta-pill badge">Loading...</span>
+      </div>
+    </header>
+
+    <main>
+      <section id="summary-section" class="section">
+        <div class="section-header">
+          <h2>Module Status</h2>
+          <p>Each card shows the latest search &amp; download health for a module.</p>
+        </div>
+        <div id="cards-container" class="cards-grid">
+          <!-- JS 动态填充 -->
+        </div>
+      </section>
+
+      <section id="gallery-section" class="section">
+        <div class="section-header">
+          <h2>Latest Image Gallery</h2>
+          <p>Real images downloaded in the most recent run, directly from this repo.</p>
+        </div>
+        <div id="gallery-grid" class="gallery-grid">
+          <!-- JS 动态填充 -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      Built with ⚡ by <strong>Zhenchao Jin + GPT 5.1</strong> ·
+      <a href="https://github.com/your-name/imagedl-monitor" target="_blank" rel="noreferrer">
+        View on GitHub
+      </a>
+    </footer>
+  </div>
+
+  <script>
+    const SUMMARY_URL = "daily_test_results/summary_latest.json";
+    let GLOBAL_QUERY = null;
+	
+    async function fetchSummary() {
+      const res = await fetch(SUMMARY_URL + "?cache-bust=" + Date.now());
+      if (!res.ok) {
+        throw new Error("Failed to load summary.json");
+      }
+      return res.json();
+    }
+
+    function setOverallStatus(data) {
+      const badge = document.getElementById("overall-status");
+      const lastRunEl = document.getElementById("last-run");
+      const modules = data.modules || [];
+      const allOk = modules.length > 0 && modules.every((m) => m.ok);
+      const okCount = modules.filter((m) => m.ok).length;
+
+      if (badge) {
+        badge.textContent = allOk ? "ALL GREEN" : `${okCount}/${modules.length} OK`;
+        badge.classList.toggle("badge-ok", allOk);
+        badge.classList.toggle("badge-fail", !allOk);
+      }
+      if (lastRunEl) {
+        lastRunEl.textContent = `Last run: ${data.timestamp_utc || data.date}`;
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function truncate(str, maxLen) {
+      if (!str || str.length <= maxLen) return str;
+      return str.slice(0, maxLen - 1) + "…";
+    }
+
+    function createModuleCard(mod) {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const statusClass = mod.ok ? "status-ok" : "status-fail";
+      const statusText = mod.ok ? "Healthy" : "Issue";
+
+      // 这里优先用每个模块自己的 mod.query，没有的话用全局 GLOBAL_QUERY
+      const querySource = mod.query != null ? mod.query : GLOBAL_QUERY;
+      const queryRaw = querySource != null ? String(querySource) : null;
+      const queryShort = queryRaw ? truncate(queryRaw, 80) : null;
+
+      const sampleRaw =
+        mod.search_samples && mod.search_samples[0]
+          ? String(mod.search_samples[0])
+          : null;
+      const sampleShort = sampleRaw ? truncate(sampleRaw, 80) : null;
+
+      card.innerHTML = `
+        <div class="card-header">
+          <h3 title="${escapeHtml(mod.name)}">${escapeHtml(mod.name)}</h3>
+          <span class="status-pill ${statusClass}">${statusText}</span>
+        </div>
+        <div class="card-body">
+
+          ${
+            // ✅ 这一块就是插在最上面的一行 Query
+            queryShort
+              ? `<div class="metric-row">
+                  <span>Query</span>
+                  <span class="query-value" title="${escapeHtml(queryRaw)}">
+                    ${escapeHtml(queryShort)}
+                  </span>
+                </div>`
+              : ""
+          }
+          <div class="metric-row">
+            <span>Search results</span>
+            <span>${mod.n_results}</span>
+          </div>
+          <div class="metric-row">
+            <span>Images downloaded</span>
+            <span>${mod.n_downloaded}</span>
+          </div>
+          <div class="metric-row small">
+            <span>Search</span>
+            <span class="${mod.search_ok ? "tag-ok" : "tag-fail"}">
+              ${mod.search_ok ? "OK" : "FAIL"}
+            </span>
+          </div>
+          <div class="metric-row small">
+            <span>Download</span>
+            <span class="${mod.download_ok ? "tag-ok" : "tag-fail"}">
+              ${mod.download_ok ? "OK" : "FAIL"}
+            </span>
+          </div>
+
+          ${
+            sampleShort
+              ? `<p class="sample-text" title="${escapeHtml(sampleRaw)}">
+                  Sample: ${escapeHtml(sampleShort)}
+                </p>`
+              : ""
+          }
+
+          ${mod.error ? `<p class="error-text">${escapeHtml(mod.error)}</p>` : ""}
+        </div>
+      `;
+      return card;
+    }
+
+    function createGalleryItem(mod, imgPath) {
+      const div = document.createElement("div");
+      div.className = "gallery-item";
+      div.innerHTML = `
+        <div class="gallery-image-wrapper">
+          <img src="${imgPath}" alt="${escapeHtml(mod.name)} image" loading="lazy">
+        </div>
+        <div class="gallery-meta">
+          <span class="gallery-module" title="${escapeHtml(mod.name)}">
+            ${escapeHtml(mod.name)}
+          </span>
+          <span class="gallery-status ${
+            mod.ok ? "gallery-status-ok" : "gallery-status-fail"
+          }">
+            ${mod.ok ? "OK" : "Issue"}
+          </span>
+        </div>
+      `;
+      return div;
+    }
+
+    async function initDashboard() {
+      const cardsContainer = document.getElementById("cards-container");
+      const galleryGrid = document.getElementById("gallery-grid");
+      const app = document.querySelector(".app");
+
+      try {
+        const data = await fetchSummary();
+        setOverallStatus(data);
+
+        // 把顶层的 query 存到全局变量
+        GLOBAL_QUERY = data.query || null;
+
+        const modules = data.modules || [];
+
+        modules.forEach((mod) => {
+          if (cardsContainer) {
+            cardsContainer.appendChild(createModuleCard(mod));
+          }
+          if (galleryGrid) {
+            (mod.downloaded_images || []).forEach((imgPath) => {
+              galleryGrid.appendChild(createGalleryItem(mod, imgPath));
+            });
+          }
+        });
+
+        if (app) {
+          app.classList.add("app-loaded");
+        }
+      } catch (err) {
+        console.error(err);
+        if (cardsContainer) {
+          cardsContainer.innerHTML =
+            '<p class="error-text">Failed to load latest results. Check if the workflow has run.</p>';
+        }
+      }
+    }
+
+    /* 粒子背景：更亮、更明显的电光效果 */
+    function initParticles() {
+      const canvas = document.getElementById("bg-canvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      resize();
+      window.addEventListener("resize", resize);
+
+      const particles = [];
+      const maxParticles = Math.min(110, Math.floor(width / 12));
+
+      for (let i = 0; i < maxParticles; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          r: 1.5 + Math.random() * 2.5,
+          alpha: 0.5 + Math.random() * 0.5,
+          flicker: Math.random() * Math.PI * 2,
+        });
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, width, height);
+
+        // 粒子移动
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.flicker += 0.03;
+
+          if (p.x < -20) p.x = width + 20;
+          if (p.x > width + 20) p.x = -20;
+          if (p.y < -20) p.y = height + 20;
+          if (p.y > height + 20) p.y = -20;
+        }
+
+        // 画点 + 连线
+        for (let i = 0; i < particles.length; i++) {
+          const p1 = particles[i];
+          const flickerFactor = 0.6 + Math.sin(p1.flicker) * 0.4;
+
+          // 画点（偏黄的电光）
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(250, 204, 21, ${p1.alpha * flickerFactor})`;
+          ctx.shadowColor = "rgba(250, 204, 21, 0.5)";
+          ctx.shadowBlur = 8;
+          ctx.arc(p1.x, p1.y, p1.r, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          // 和附近粒子连线
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 180) {
+              const lineAlpha = (1 - dist / 180) * 0.55 * flickerFactor;
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(250, 250, 210, ${lineAlpha})`;
+              ctx.lineWidth = 0.7;
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      step();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initDashboard();
+      initParticles();
+    });
+  </script>
+</body>
+</html>

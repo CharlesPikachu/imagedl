@@ -1,0 +1,71 @@
+'''initialize'''
+from .aic import AICImageClient
+from .smk import SMKImageClient
+from .vam import VAMImageClient
+from .base import BaseImageClient
+from .cara import CaraImageClient
+from .bing import BingImageClient
+from .i360 import I360ImageClient
+from .nasa import NASAImageClient
+from .gbif import GBIFImageClient
+from .baidu import BaiduImageClient
+from .sogou import SogouImageClient
+from .yahoo import YahooImageClient
+from .weibo import WeiboImageClient
+from .yande import YandeImageClient
+from .finna import FinnaImageClient
+from .flickr import FlickrImageClient
+from .pexels import PexelsImageClient
+from .google import GoogleImageClient
+from ..utils import BaseModuleBuilder
+from .yandex import YandexImageClient
+from .huaban import HuabanImageClient
+from .locgov import LocGovImageClient
+from .bluesky import BlueskyImageClient
+from .pixabay import PixabayImageClient
+from .dimtown import DimTownImageClient
+from .danbooru import DanbooruImageClient
+from .unsplash import UnsplashImageClient
+from .gelbooru import GelbooruImageClient
+from .picjumbo import PicJumboImageClient
+from .wellcome import WellcomeImageClient
+from .konachan import KonachanImageClient
+from .safebooru import SafebooruImageClient
+from .stocksnap import StockSnapImageClient
+from .lifeofpix import LifeOfPixImageClient
+from .openverse import OpenverseImageClient
+from .wikipedia import WikipediaImageClient
+from .wallhaven import WallhavenImageClient
+from .duckduckgo import DuckduckgoImageClient
+from .freeimages import FreeImagesImageClient
+from .everypixel import EverypixelImageClient
+from .openlibrary import OpenLibraryImageClient
+from .inaturalist import INaturalistImageClient
+from .foodiesfeed import FoodiesfeedImageClient
+from .metropolitan import MetropolitanImageClient
+from .clevelandart import ClevelandArtImageClient
+from .gratisography import GratisoGraphyImageClient
+from .freenaturestock import FreeNatureStockImageClient
+from .internetarchive import InternetArchiveImageClient
+
+
+'''ImageClientBuilder'''
+class ImageClientBuilder(BaseModuleBuilder):
+    REGISTERED_MODULES = {
+        'BingImageClient': BingImageClient,                 'FoodiesfeedImageClient': FoodiesfeedImageClient,            'DanbooruImageClient': DanbooruImageClient,          'HuabanImageClient': HuabanImageClient,
+        'BaiduImageClient': BaiduImageClient,               'DuckduckgoImageClient': DuckduckgoImageClient,              'UnsplashImageClient': UnsplashImageClient,          'WeiboImageClient': WeiboImageClient, 
+        'I360ImageClient': I360ImageClient,                 'FreeNatureStockImageClient': FreeNatureStockImageClient,    'SogouImageClient': SogouImageClient,                'YandexImageClient': YandexImageClient,
+        'EverypixelImageClient': EverypixelImageClient,     'GoogleImageClient': GoogleImageClient,                      'SafebooruImageClient': SafebooruImageClient,        'YahooImageClient': YahooImageClient,
+        'GelbooruImageClient': GelbooruImageClient,         'PexelsImageClient': PexelsImageClient,                      'PixabayImageClient': PixabayImageClient,            'DimTownImageClient': DimTownImageClient, 
+        'StockSnapImageClient': StockSnapImageClient,       'FreeImagesImageClient': FreeImagesImageClient,              'LifeOfPixImageClient': LifeOfPixImageClient,        'GratisoGraphyImageClient': GratisoGraphyImageClient,
+        'PicJumboImageClient': PicJumboImageClient,         'OpenverseImageClient': OpenverseImageClient,                'INaturalistImageClient': INaturalistImageClient,    'NASAImageClient': NASAImageClient,
+        'GBIFImageClient': GBIFImageClient,                 'LocGovImageClient': LocGovImageClient,                      'YandeImageClient': YandeImageClient,                'WikipediaImageClient': WikipediaImageClient,
+        'FlickrImageClient': FlickrImageClient,             'ClevelandArtImageClient': ClevelandArtImageClient,          'MetropolitanImageClient': MetropolitanImageClient,  'VAMImageClient': VAMImageClient,
+        'AICImageClient': AICImageClient,                   'WellcomeImageClient': WellcomeImageClient,                  'KonachanImageClient': KonachanImageClient,          'InternetArchiveImageClient': InternetArchiveImageClient,
+        'OpenLibraryImageClient': OpenLibraryImageClient,   'SMKImageClient': SMKImageClient,                            'BlueskyImageClient': BlueskyImageClient,            'WallhavenImageClient': WallhavenImageClient,
+        'CaraImageClient': CaraImageClient,                 'FinnaImageClient': FinnaImageClient,
+    }
+
+
+'''BuildImageClient'''
+BuildImageClient = ImageClientBuilder().build

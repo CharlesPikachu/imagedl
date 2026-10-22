@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - name: "Zhenchao Jin"
+title: "Imagedl: Search and download images from specific websites"
+date-released: 2022-03-21
+url: "https://github.com/CharlesPikachu/imagedl"
+license: Apache-2.0

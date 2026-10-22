@@ -1,0 +1,200 @@
+'''
+Function:
+    Implementation of Dedicated ImageClient
+Author:
+    Zhenchao Jin
+WeChat Official Account (微信公众号):
+    Charles的皮卡丘
+'''
+from imagedl.modules.sources import (
+    BingImageClient, I360ImageClient, YahooImageClient, BaiduImageClient, SogouImageClient, GoogleImageClient, YandexImageClient, PixabayImageClient, FreeImagesImageClient, PicJumboImageClient, EverypixelImageClient,
+    DuckduckgoImageClient, UnsplashImageClient, GelbooruImageClient, SafebooruImageClient, DanbooruImageClient, PexelsImageClient, DimTownImageClient, StockSnapImageClient, LifeOfPixImageClient, OpenverseImageClient, 
+    FoodiesfeedImageClient, FreeNatureStockImageClient, WeiboImageClient, GratisoGraphyImageClient, INaturalistImageClient, NASAImageClient, HuabanImageClient, GBIFImageClient, LocGovImageClient, WikipediaImageClient,
+	YandeImageClient, FlickrImageClient, ClevelandArtImageClient, MetropolitanImageClient, AICImageClient, WellcomeImageClient, KonachanImageClient, InternetArchiveImageClient, OpenLibraryImageClient, SMKImageClient, 
+    WallhavenImageClient, VAMImageClient, BlueskyImageClient, CaraImageClient, FinnaImageClient
+)
+
+# bing tests
+client = BingImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# 360 tests
+client = I360ImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# baidu tests
+client = BaiduImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# sogou tests
+client = SogouImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# google tests
+client = GoogleImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# yandex tests
+client = YandexImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# pixabay tests
+client = PixabayImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# duckduckgo tests
+client = DuckduckgoImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# yahoo tests
+client = YahooImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# unsplash tests
+client = UnsplashImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# gelbooru tests
+client = GelbooruImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# safebooru tests
+client = SafebooruImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# danbooru tests
+client = DanbooruImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# pexels tests
+client = PexelsImageClient()
+image_infos = client.search('animals', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# dimtown tests 
+client = DimTownImageClient()
+image_infos = client.search('JK', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# huaban tests 
+client = HuabanImageClient()
+image_infos = client.search('JK', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# foodiesfeed tests 
+client = FoodiesfeedImageClient()
+image_infos = client.search('pizza', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# everypixel tests
+client = EverypixelImageClient()
+image_infos = client.search('animals', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# freenaturestock tests 
+client = FreeNatureStockImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# weibo tests (cookies required)
+client = WeiboImageClient(default_search_cookies='Your Authenticated Cookies')
+image_infos = client.search('animals', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# stocksnap tests 
+client = StockSnapImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# freeimages tests 
+client = FreeImagesImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# lifeofpix tests 
+client = LifeOfPixImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# gratisography tests 
+client = GratisoGraphyImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# picjumbo tests
+client = PicJumboImageClient()
+image_infos = client.search('mountains', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# openverse tests
+client = OpenverseImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# inaturalist tests
+client = INaturalistImageClient()
+image_infos = client.search('Red Panda', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# nasa tests
+client = NASAImageClient()
+image_infos = client.search('James Webb', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# gbif tests
+client = GBIFImageClient()
+image_infos = client.search('jellyfish', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# loc.gov tests (requests from non-U.S. IP addresses are blocked by Cloudflare Challenge, making the service unavailable)
+client = LocGovImageClient()
+image_infos = client.search('apollo 11', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# yande tests
+client = YandeImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# wiki tests
+client = WikipediaImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# flickr tests
+client = FlickrImageClient()
+image_infos = client.search('Cute Dogs', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# clevelandart tests
+client = ClevelandArtImageClient()
+image_infos = client.search('Anatomy', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# metropolitan tests
+client = MetropolitanImageClient()
+image_infos = client.search('Bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# aic tests
+client = AICImageClient()
+image_infos = client.search('Bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# wellcome tests
+client = WellcomeImageClient()
+image_infos = client.search('Bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# konachan tests
+client = KonachanImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# internet archive tests
+client = InternetArchiveImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# openlibrary tests
+client = OpenLibraryImageClient()
+image_infos = client.search('pikachu', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# wallhaven tests
+client = WallhavenImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# vam tests
+client = VAMImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# smk tests
+client = SMKImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# bluesky tests
+client = BlueskyImageClient()
+image_infos = client.search('bridge', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# cara tests (cookies required)
+client = CaraImageClient(default_search_cookies='Your Authenticated Cookies')
+image_infos = client.search('northern lights', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
+# finna tests
+client = FinnaImageClient()
+image_infos = client.search('northern lights', search_limits=10, num_threadings=1)
+client.download(image_infos, num_threadings=1)
