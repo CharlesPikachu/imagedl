@@ -31,7 +31,7 @@ class GoogleImageClient(BaseImageClient):
     def officialsearchanddownload(self, google_image_search_overrides: dict = None, search_overrides: dict = None):
         # import api
         try: from google_images_search import GoogleImagesSearch
-        except Exception: print('You must install the official API before using this function via "pip install google_images_search"'); return []
+        except Exception: print('Before using this function, install the required package via "pip install google_images_search". Windows users must additionally install windows-curses via "pip install windows-curses".'); return []
         # init
         google_image_search_overrides, search_overrides = google_image_search_overrides or {}, search_overrides or {}
         assert 'q' in search_overrides, 'please set "q" in "search_overrides" as the search keywords'
@@ -54,7 +54,7 @@ class GoogleImageClient(BaseImageClient):
         # init
         search_overrides, search_results = search_overrides or {}, []
         assert 'q' in search_overrides, 'please set "q" in "search_overrides" as the search keywords'
-        CANDIDATE_API_KEYS = ['cb37586e2a8d129c4142b06c3d46a19aa8bb11187c776a85977298893a5a3266']
+        CANDIDATE_API_KEYS = ['cb37586e2a8d129c4142b06c3d46a19aa8bb11187c776a85977298893a5a3266', '6c7060eedbfd3e7fc0939531ff67218db56ebfb8774655a1b8c98a51eac08400']
         # search
         (search_params := {'q': 'girls', 'google_domain': 'google.com', 'tbm': 'isch', 'api_key': random.choice(CANDIDATE_API_KEYS)}).update(search_overrides)
         for item in json_repair.loads(GoogleSearch(search_params).get_results())['images_results']:
