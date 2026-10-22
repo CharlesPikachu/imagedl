@@ -47,7 +47,7 @@ class YandexImageClient(BaseImageClient):
     def _constructsearchurls(self, keyword, search_limits=1000, filters: dict = None, request_overrides: dict = None):
         request_overrides, base_url = request_overrides or {}, '{domain}/images/search?text={keyword}&p={page}'
         for domain in YandexImageClient.CANDIDATE_DOMAINS:
-            try: self.session.get(domain, timeout=10).raise_for_status(); break
+            try: (resp := self.session.get(base_url.format(domain=domain, keyword=quote(keyword), page=1), timeout=10)).raise_for_status(); assert "initialState" in str(resp.text); break
             except Exception: continue
         filter_str, search_urls, page_size = self._getfilter().apply(filters, sep='&'), [], 30
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
