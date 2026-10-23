@@ -31,7 +31,7 @@ class GoogleImageClient(BaseImageClient):
     def officialsearchanddownload(self, google_image_search_overrides: dict = None, search_overrides: dict = None):
         # import api
         try: from google_images_search import GoogleImagesSearch
-        except Exception: print('Before using this function, install the required package via "pip install google_images_search". Windows users must additionally install windows-curses via "pip install windows-curses".'); return []
+        except Exception: print('You must install the official API before using this function via "pip install google_images_search". Windows users additionally need to install "windows-curses" via "pip install windows-curses".'); return []
         # init
         google_image_search_overrides, search_overrides = google_image_search_overrides or {}, search_overrides or {}
         assert 'q' in search_overrides, 'please set "q" in "search_overrides" as the search keywords'
