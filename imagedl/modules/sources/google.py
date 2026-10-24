@@ -119,6 +119,8 @@ class GoogleImageClient(BaseImageClient):
     '''drissionget'''
     def drissionget(self, url, **request_overrides):
         request_overrides = request_overrides or {}
-        page = DrissionPageUtils.initsmartbrowser(headless=False, requests_headers=None, requests_proxies=(request_overrides.get('proxies') or self._autosetproxies()), requests_cookies=(request_overrides.get('cookies') or self.default_cookies))
-        page.get(url); page.wait.eles_loaded('tag:img', timeout=10); html_text = page.html; DrissionPageUtils.quitpage(page=page)
+        page = DrissionPageUtils.initsmartbrowser(headless=False, requests_headers=None, requests_proxies=(request_overrides.get('proxies') or self._autosetproxies()), requests_cookies=(request_overrides.get('cookies') or self.default_cookies)); page.get(url)
+        if '/sorry/' in page.url or 'unusual traffic' in page.html.lower(): print('Google CAPTCHA detected, please complete it manually...')
+        while '/sorry/' in page.url or 'unusual traffic' in page.html.lower(): page.wait(1)
+        page.wait.eles_loaded('tag:img', timeout=10); html_text = page.html; DrissionPageUtils.quitpage(page=page)
         return FakeRequestsResponse(predefined_text=html_text, status_code=200)
