@@ -11,6 +11,7 @@ import math
 from bs4 import BeautifulSoup
 from ..utils import ImageInfo
 from typing_extensions import Unpack
+from urllib.parse import urljoin, urlencode
 from .base import BaseImageClient, BaseImageClientKwargs
 
 
@@ -29,8 +30,8 @@ class DimTownImageClient(BaseImageClient):
         # format search result
         soup = BeautifulSoup(search_result, "html.parser")
         # parse search result
-        box, image_infos = soup.select_one("#content .content_left"), []
-        real_urls = list(dict.fromkeys(u for tag, attr in (("a", "href"), ("img", "src")) for x in (box.select(f"{tag}[{attr}]") if box else []) for u in (x.get(attr),) if u and u.split("?", 1)[0].lower().endswith((".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp"))))
+        box, image_infos = soup.select_one(".article-content, .entry-content, .post-content, article, #content .content_left, main"), []
+        real_urls = list(dict.fromkeys(urljoin("https://dimtown.com/", u) for tag, attr in (("a", "href"), ("img", "src")) for x in (box.select(f"{tag}[{attr}]") if box else []) for u in (x.get(attr),) if u and u.split("?", 1)[0].lower().endswith((".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp"))))
         for real_url in real_urls:
             image_infos.append(ImageInfo(source=self.source, raw_data=search_result, candidate_download_urls=[real_url], identifier=real_url))
         # return
@@ -39,10 +40,11 @@ class DimTownImageClient(BaseImageClient):
     def _constructsearchurls(self, keyword: str, search_limits: int = 1000, filters: dict = None, request_overrides: dict = None):
         request_overrides, search_urls, page_size, filters = request_overrides or {}, [], 25, filters or {}
         for pn in range(math.ceil(search_limits * 1.2 / page_size)):
-            try: (resp := self.get(f'https://dimtown.com/page/{pn+1}?s={keyword}', **request_overrides)).raise_for_status()
+            url = f"https://dimtown.com/{'page/' + str(pn+1) + '/' if pn else ''}?{urlencode({'s': keyword})}"
+            try: (resp := self.get(url, **request_overrides)).raise_for_status()
             except Exception: break
             soup, post_urls, seen = BeautifulSoup(resp.text, "html.parser"), [], set()
-            for a in soup.select('ul#index_ajax_list a[target="_blank"][href]'):
-                if DimTownImageClient.POST_URL_RE.fullmatch((url := a["href"].strip())) and (url not in seen): seen.add(url); post_urls.append(url)
+            for a in soup.select('article a[href], .post-item a[href], .post-list a[href], .search-results a[href], ul#index_ajax_list a[href]'):
+                if DimTownImageClient.POST_URL_RE.fullmatch((url := urljoin(resp.url, a["href"].strip()).split("?", 1)[0])) and (url not in seen): seen.add(url); post_urls.append(url)
             search_urls.extend(post_urls)
         return search_urls

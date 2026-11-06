@@ -33,7 +33,7 @@ class DanbooruImageClient(BaseImageClient):
             if (file_url := item.get('file_url')) and (not str(file_url).startswith('http')): file_url = f"https:{file_url}"
             if (large_file_url := item.get('large_file_url')) and (not str(large_file_url).startswith('http')): large_file_url = f"https:{large_file_url}"
             if (preview_file_url := item.get('preview_file_url')) and (not str(preview_file_url).startswith('http')): preview_file_url = f"https:{preview_file_url}"
-            candidate_urls = [url for url in [file_url, large_file_url, preview_file_url] if url]
+            if not (candidate_urls := [url for url in [file_url, large_file_url, preview_file_url] if url]): continue
             image_infos.append(ImageInfo(source=self.source, raw_data=item, candidate_download_urls=candidate_urls, identifier=item.get('id') or item.get('md5') or candidate_urls[0]))
         # return
         return image_infos

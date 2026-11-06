@@ -1,5 +1,7 @@
 # Release Log
 
+- 2026-11-07: Released pyimagedl v0.5.6 — performed routine monthly maintenance on all image clients and fixed several bugs in the Danbooru and Dimtown image clients.
+
 - 2026-10-23: Released pyimagedl v0.5.5 — performed monthly routine maintenance on all image clients and fixed six: Yandex, Unsplash, Metropolitan, Wellcome, PicJumbo, and DuckDuckGo.
 
 - 2026-09-19: Released pyimagedl v0.5.4 — perform monthly maintenance checks on the image clients; this update fixes the Yahoo and Sogou image clients.
