@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-10",
-  "timestamp_utc": "2026-11-10T23:59:18.389405+00:00",
+  "date": "2026-11-11",
+  "timestamp_utc": "2026-11-11T07:39:41.775638+00:00",
   "query": "Pikachu, JK, Cute Animals, Mountains, Girls, Red Panda, James Webb, Jellyfish, Apollo L1, Anatomy, Bridge, Northern Lights",
   "max_search": 10,
   "max_download_per_client": 10,
@@ -11,22 +11,24 @@
       "download_ok": true,
       "ok": true,
       "n_results": 35,
-      "n_downloaded": 8,
+      "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
         "daily_test_results/BingImageClient/00000002.png",
-        "daily_test_results/BingImageClient/00000003.jpg",
+        "daily_test_results/BingImageClient/00000009.jpg",
         "daily_test_results/BingImageClient/00000004.png",
         "daily_test_results/BingImageClient/00000010.jpg",
+        "daily_test_results/BingImageClient/00000006.jpg",
         "daily_test_results/BingImageClient/00000001.png",
+        "daily_test_results/BingImageClient/00000003.png",
+        "daily_test_results/BingImageClient/00000008.jpg",
         "daily_test_results/BingImageClient/00000007.jpg",
-        "daily_test_results/BingImageClient/00000005.jpg",
-        "daily_test_results/BingImageClient/00000009.png"
+        "daily_test_results/BingImageClient/00000005.jpg"
       ],
       "search_samples": [
-        "https://i.pinimg.com/originals/eb/2a/4b/eb2a4bedf397dfc7e085431c7ee0d282.png",
-        "https://assets.stickpng.com/images/580b57fcd9996e24bc43c325.png",
-        "https://www.pixelstalk.net/wp-content/uploads/2016/03/Free-download-Pikachu-wallpaper-HD.jpg"
+        "https://img.itch.zone/aW1nLzI2ODM4MTMucG5n/original/nQLymZ.png",
+        "https://www.bitgab.com/uploads/1597796080-pikachu-1597796080.png",
+        "https://www.pngall.com/wp-content/uploads/5/Pokemon-Pikachu-PNG-HD-Image.png"
       ]
     },
     {
@@ -376,12 +378,12 @@
       "downloaded_images": [
         "daily_test_results/YahooImageClient/00000004.jpg",
         "daily_test_results/YahooImageClient/00000003.jpg",
+        "daily_test_results/YahooImageClient/00000005.webp",
         "daily_test_results/YahooImageClient/00000006.jpg",
         "daily_test_results/YahooImageClient/00000002.avif",
         "daily_test_results/YahooImageClient/00000001.jpg",
         "daily_test_results/YahooImageClient/00000008.jpg",
         "daily_test_results/YahooImageClient/00000007.jpg",
-        "daily_test_results/YahooImageClient/00000005.png",
         "daily_test_results/YahooImageClient/00000010.webp"
       ],
       "search_samples": [
@@ -458,9 +460,9 @@
         "daily_test_results/PixabayImageClient/00000005.jpg"
       ],
       "search_samples": [
-        "https://pixabay.com/get/g04af05a6e56c9285135191a8e19f2f5d754333285f4c42e9604ac36744a3cfb583633e7a078692306978b48823fef93ca7c2ab3c4176bea0e88f15ddef3abe32_1280.jpg",
-        "https://pixabay.com/get/g1b7c7b6543899d9f9024a994d484675b4bcb162abc1cca390478140153954a30f62f0cc1b31cc95c4d71398897752b867037df8e3afd0bf58bf792c6da97f7c6_1280.jpg",
-        "https://pixabay.com/get/g3a51fcbd12b89241ba9551106eeca5206d36d86acc170a1e06ab3909cca1bec78097648f1328ed4c0a2fc171839a6be2cb6004a398fd79c90fc2150637dfc6dd_1280.jpg"
+        "https://pixabay.com/get/gc551c09d8233298c6e4209c5ebf9aed1d6ab0ff0a9e11f31494f9d4acd32280f10d348710e05f0561960d90ef38bb49286de141bbd96e2be9b7bcdf596fca1fa_1280.jpg",
+        "https://pixabay.com/get/g7f500fa2b94bf9375bdf1eb6dae37f5d29a04a5956a2228d0311b9a171d36f24539c6c61b33c2f102c364106ae8b8c17fc766493543419a90853a5e20aca0ebe_1280.jpg",
+        "https://pixabay.com/get/g7fae31e2624a2fcde919acc77f2a95b0bc4e4c7d614258285d61cf2e9dbac57b3fe8af692aeefa6cf66581f9eb3eb9d3496ebf153ff7f09184b0a2f8439117ce_1280.jpg"
       ]
     },
     {
@@ -468,7 +470,7 @@
       "search_ok": true,
       "download_ok": true,
       "ok": true,
-      "n_results": 594,
+      "n_results": 657,
       "n_downloaded": 10,
       "error": null,
       "downloaded_images": [
@@ -485,8 +487,8 @@
       ],
       "search_samples": [
         "https://cc-img.townimg.com/uploads/2026/10/20261029154701904.jpg",
-        "https://cc-img.townimg.com/uploads/2026/11/20261102134227657.webp",
-        "https://cc-img.townimg.com/uploads/2026/11/20261102134312351.webp"
+        "https://cc-img.townimg.com/uploads/2026/11/20261110000425440bdcc5bb7943ee83aab71c376d1e3e.webp",
+        "https://cc-img.townimg.com/uploads/2026/11/20261110000444bad6a3d561624d6da42443ae8e410673.webp"
       ]
     },
     {
@@ -728,12 +730,14 @@
       "download_ok": true,
       "ok": true,
       "n_results": 10,
-      "n_downloaded": 3,
+      "n_downloaded": 5,
       "error": null,
       "downloaded_images": [
+        "daily_test_results/LocGovImageClient/00000004.jpg",
         "daily_test_results/LocGovImageClient/00000002.jpg",
         "daily_test_results/LocGovImageClient/00000003.jpg",
-        "daily_test_results/LocGovImageClient/00000001.jpg"
+        "daily_test_results/LocGovImageClient/00000001.jpg",
+        "daily_test_results/LocGovImageClient/00000005.jpg"
       ],
       "search_samples": [
         "https://tile.loc.gov/image-services/iiif/service:rbc:rbc0001:2021:2021rosen1082:0001/full/pct:100/0/default.jpg#h=3370&w=268",
@@ -972,9 +976,9 @@
         "daily_test_results/InternetArchiveImageClient/00000005.jpg"
       ],
       "search_samples": [
-        "https://archive.org/services/img/macys-thanksgiving-day-parade-2012-pikachu-with-poke-ball-part-1",
-        "https://archive.org/services/img/satoshi___yo__hikari_by_koreanmonk1984-d5ekdfk",
-        "https://archive.org/services/img/my-nintendo-wallpaper-detective-pikachu"
+        "https://archive.org/services/img/revlar-pikachu-clone",
+        "https://archive.org/services/img/screenshot-20250314-225917-you-tube-2_202602",
+        "https://archive.org/services/img/mugen_pikachu_sprites_by_imhomiejaydev_de0rel2"
       ]
     },
     {
@@ -1061,13 +1065,13 @@
         "daily_test_results/WallhavenImageClient/00000010.png",
         "daily_test_results/WallhavenImageClient/00000002.jpg",
         "daily_test_results/WallhavenImageClient/00000003.jpg",
-        "daily_test_results/WallhavenImageClient/00000008.png",
         "daily_test_results/WallhavenImageClient/00000006.png",
-        "daily_test_results/WallhavenImageClient/00000009.jpg",
         "daily_test_results/WallhavenImageClient/00000004.png",
         "daily_test_results/WallhavenImageClient/00000001.jpg",
+        "daily_test_results/WallhavenImageClient/00000008.jpg",
         "daily_test_results/WallhavenImageClient/00000007.jpg",
-        "daily_test_results/WallhavenImageClient/00000005.png"
+        "daily_test_results/WallhavenImageClient/00000005.png",
+        "daily_test_results/WallhavenImageClient/00000009.png"
       ],
       "search_samples": [
         "https://w.wallhaven.cc/full/dg/wallhaven-dgwvzg.jpg",
